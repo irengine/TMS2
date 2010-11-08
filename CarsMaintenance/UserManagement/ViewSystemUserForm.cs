@@ -22,7 +22,7 @@ namespace CarsMaintenance.UserManagement
         private void LoadData()
         {
             var query = from u in SystemHelper.TMSContext.SystemUsers
-                        where u.Deleted == false
+                        where u.Deleted == false && u.SystemUserID > 100
                         orderby u.SystemUserID
                         select u;
 
