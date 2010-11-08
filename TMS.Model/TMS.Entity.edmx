@@ -1,0 +1,2430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TMS.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TMSModelStoreContainer">
+          <EntitySet Name="Article" EntityType="TMS.Model.Store.Article" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InboundOrder" EntityType="TMS.Model.Store.InboundOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InboundOrderDetail" EntityType="TMS.Model.Store.InboundOrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OutboundOrder" EntityType="TMS.Model.Store.OutboundOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OutboundOrderDetail" EntityType="TMS.Model.Store.OutboundOrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PurchaseOrder" EntityType="TMS.Model.Store.PurchaseOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RepairOrder" EntityType="TMS.Model.Store.RepairOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RepairOrderDetail" EntityType="TMS.Model.Store.RepairOrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ScrapOrder" EntityType="TMS.Model.Store.ScrapOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ScrapOrderDetail" EntityType="TMS.Model.Store.ScrapOrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supply" EntityType="TMS.Model.Store.Supply" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemRole" EntityType="TMS.Model.Store.SystemRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemUser" EntityType="TMS.Model.Store.SystemUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tool" EntityType="TMS.Model.Store.Tool" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ToolCategory" EntityType="TMS.Model.Store.ToolCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ToolInventory" EntityType="TMS.Model.Store.ToolInventory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ToolInventoryHistory" EntityType="TMS.Model.Store.ToolInventoryHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Unit" EntityType="TMS.Model.Store.Unit" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ChildCategory_ParentCategory" Association="TMS.Model.Store.FK_ChildCategory_ParentCategory">
+            <End Role="ToolCategory" EntitySet="ToolCategory" />
+            <End Role="ToolCategory1" EntitySet="ToolCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildUnit_ParentUnit" Association="TMS.Model.Store.FK_ChildUnit_ParentUnit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Unit1" EntitySet="Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrder_OutboundOrder" Association="TMS.Model.Store.FK_InboundOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+            <End Role="InboundOrder" EntitySet="InboundOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrder_SystemUser" Association="TMS.Model.Store.FK_InboundOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="InboundOrder" EntitySet="InboundOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrder_Unit" Association="TMS.Model.Store.FK_InboundOrder_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="InboundOrder" EntitySet="InboundOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_InboundOrder" Association="TMS.Model.Store.FK_InboundOrderDetail_InboundOrder">
+            <End Role="InboundOrder" EntitySet="InboundOrder" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_InboundOrderDetail" Association="TMS.Model.Store.FK_InboundOrderDetail_InboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_Tool" Association="TMS.Model.Store.FK_InboundOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrder_SystemUser" Association="TMS.Model.Store.FK_OutboundOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrder_Unit" Association="TMS.Model.Store.FK_OutboundOrder_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrderDetail_OutboundOrder" Association="TMS.Model.Store.FK_OutboundOrderDetail_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrderDetail_Tool" Association="TMS.Model.Store.FK_OutboundOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supply" Association="TMS.Model.Store.FK_PurchaseOrder_Supply">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_SystemUser" Association="TMS.Model.Store.FK_PurchaseOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Tool" Association="TMS.Model.Store.FK_PurchaseOrder_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrder_OutboundOrder" Association="TMS.Model.Store.FK_RepairOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+            <End Role="RepairOrder" EntitySet="RepairOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrder_SystemUser" Association="TMS.Model.Store.FK_RepairOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="RepairOrder" EntitySet="RepairOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrder_Unit" Association="TMS.Model.Store.FK_RepairOrder_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="RepairOrder" EntitySet="RepairOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_OutboundOrderDetail" Association="TMS.Model.Store.FK_RepairOrderDetail_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_RepairOrder" Association="TMS.Model.Store.FK_RepairOrderDetail_RepairOrder">
+            <End Role="RepairOrder" EntitySet="RepairOrder" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_Tool" Association="TMS.Model.Store.FK_RepairOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrder_OutboundOrder" Association="TMS.Model.Store.FK_ScrapOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrder_SystemUser" Association="TMS.Model.Store.FK_ScrapOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrder_Unit" Association="TMS.Model.Store.FK_ScrapOrder_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_OutboundOrderDetail" Association="TMS.Model.Store.FK_ScrapOrderDetail_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_ScrapOrder" Association="TMS.Model.Store.FK_ScrapOrderDetail_ScrapOrder">
+            <End Role="ScrapOrder" EntitySet="ScrapOrder" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_Tool" Association="TMS.Model.Store.FK_ScrapOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tool_ToolCategory" Association="TMS.Model.Store.FK_Tool_ToolCategory">
+            <End Role="ToolCategory" EntitySet="ToolCategory" />
+            <End Role="Tool" EntitySet="Tool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventory_Supply" Association="TMS.Model.Store.FK_ToolInventory_Supply">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="ToolInventory" EntitySet="ToolInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventory_Tool" Association="TMS.Model.Store.FK_ToolInventory_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="ToolInventory" EntitySet="ToolInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_OutboundOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_OutboundOrderDetail" Association="TMS.Model.Store.FK_ToolInventoryHistory_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetail" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_PurchaseOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Supply" Association="TMS.Model.Store.FK_ToolInventoryHistory_Supply">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Tool" Association="TMS.Model.Store.FK_ToolInventoryHistory_Tool">
+            <End Role="Tool" EntitySet="Tool" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Unit" Association="TMS.Model.Store.FK_ToolInventoryHistory_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Content" Type="text" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InboundOrder">
+          <Key>
+            <PropertyRef Name="InboundOrderID" />
+          </Key>
+          <Property Name="InboundOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InboundDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InboundOrderDetail">
+          <Key>
+            <PropertyRef Name="InboundOrderDetailID" />
+          </Key>
+          <Property Name="InboundOrderDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InboundOrderID" Type="int" Nullable="false" />
+          <Property Name="InboundDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderDetailID" Type="int" Nullable="false" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PrescrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="TransferQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="OutboundOrder">
+          <Key>
+            <PropertyRef Name="OutboundOrderID" />
+          </Key>
+          <Property Name="OutboundOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OutboundDate" Type="datetime2" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Job" Type="varchar" MaxLength="50" />
+          <Property Name="Berth" Type="varchar" MaxLength="50" />
+          <Property Name="Machine" Type="varchar" MaxLength="50" />
+          <Property Name="Ship" Type="varchar" MaxLength="50" />
+          <Property Name="Hatch" Type="varchar" MaxLength="50" />
+          <Property Name="Cargo" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+          <Property Name="Process" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OutboundOrderDetail">
+          <Key>
+            <PropertyRef Name="OutboundOrderDetailID" />
+          </Key>
+          <Property Name="OutboundOrderDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OutboundOrderID" Type="int" Nullable="false" />
+          <Property Name="OutboundDate" Type="datetime2" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="PurchaseOrderID" />
+          </Key>
+          <Property Name="PurchaseOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseDate" Type="datetime2" Nullable="false" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="SupplyID" Type="int" Nullable="false" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" />
+          <Property Name="Comment" Type="nvarchar" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepairOrder">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+          </Key>
+          <Property Name="RepairOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RepairDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderID" Type="int" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepairOrderDetail">
+          <Key>
+            <PropertyRef Name="RepairOrderDetailID" />
+          </Key>
+          <Property Name="RepairOrderDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RepairOrderID" Type="int" Nullable="false" />
+          <Property Name="RepairDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderDetailID" Type="int" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapReason" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ScrapOrder">
+          <Key>
+            <PropertyRef Name="ScrapOrderID" />
+          </Key>
+          <Property Name="ScrapOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ScrapDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderID" Type="int" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScrapOrderDetail">
+          <Key>
+            <PropertyRef Name="ScrapOrderDetailID" />
+          </Key>
+          <Property Name="ScrapOrderDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ScrapOrderID" Type="int" Nullable="false" />
+          <Property Name="ScrapDate" Type="datetime2" Nullable="false" />
+          <Property Name="OutboundOrderDetailID" Type="int" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="PrescrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapReason" Type="varchar" MaxLength="50" />
+          <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="SupplyID" />
+          </Key>
+          <Property Name="SupplyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="400" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="SystemRoleID" />
+          </Key>
+          <Property Name="SystemRoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Name="SystemUserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Roles" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tool">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Diameter" Type="varchar" MaxLength="20" />
+          <Property Name="Length" Type="varchar" MaxLength="20" />
+          <Property Name="Load2" Type="varchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar" MaxLength="20" />
+          <Property Name="Dimensions" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Unit" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="RatedQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Comment" Type="nvarchar" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="ToolCategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToolCategory">
+          <Key>
+            <PropertyRef Name="ToolCategoryID" />
+          </Key>
+          <Property Name="ToolCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="ParentCategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="ToolInventory">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OutQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="SupplyID" Type="int" />
+          <Property Name="LastInboundDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ToolInventoryHistory">
+          <Key>
+            <PropertyRef Name="ToolInventoryHistoryID" />
+          </Key>
+          <Property Name="ToolInventoryHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ToolInventoryHistoryDate" Type="datetime2" Nullable="false" />
+          <Property Name="ToolID" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PurchaseOrderID" Type="int" />
+          <Property Name="SupplyID" Type="int" />
+          <Property Name="OutboundOrderID" Type="int" />
+          <Property Name="OutboundOrderDetailID" Type="int" />
+          <Property Name="InboundOrderID" Type="int" />
+          <Property Name="InboundOrderDetailID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ScrapOrderID" Type="int" />
+          <Property Name="ScrapOrderDetailID" Type="int" />
+          <Property Name="RepairOrderID" Type="int" />
+          <Property Name="RepairOrderDetailID" Type="int" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="400" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="InternalCode" Type="varchar" MaxLength="50" />
+          <Property Name="ParentUnitID" Type="int" />
+        </EntityType>
+        <Association Name="FK_ChildCategory_ParentCategory">
+          <End Role="ToolCategory" Type="TMS.Model.Store.ToolCategory" Multiplicity="0..1" />
+          <End Role="ToolCategory1" Type="TMS.Model.Store.ToolCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToolCategory">
+              <PropertyRef Name="ToolCategoryID" />
+            </Principal>
+            <Dependent Role="ToolCategory1">
+              <PropertyRef Name="ParentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildUnit_ParentUnit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="0..1" />
+          <End Role="Unit1" Type="TMS.Model.Store.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="Unit1">
+              <PropertyRef Name="ParentUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrder_OutboundOrder">
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="1" />
+          <End Role="InboundOrder" Type="TMS.Model.Store.InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrder_SystemUser">
+          <End Role="SystemUser" Type="TMS.Model.Store.SystemUser" Multiplicity="1" />
+          <End Role="InboundOrder" Type="TMS.Model.Store.InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrder_Unit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="1" />
+          <End Role="InboundOrder" Type="TMS.Model.Store.InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_InboundOrder">
+          <End Role="InboundOrder" Type="TMS.Model.Store.InboundOrder" Multiplicity="1" />
+          <End Role="InboundOrderDetail" Type="TMS.Model.Store.InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrder">
+              <PropertyRef Name="InboundOrderID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="InboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_InboundOrderDetail">
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="1" />
+          <End Role="InboundOrderDetail" Type="TMS.Model.Store.InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="InboundOrderDetail" Type="TMS.Model.Store.InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrder_SystemUser">
+          <End Role="SystemUser" Type="TMS.Model.Store.SystemUser" Multiplicity="1" />
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="OutboundOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrder_Unit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="1" />
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="OutboundOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrderDetail_OutboundOrder">
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="1" />
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrderDetail_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="OutboundOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Supply">
+          <End Role="Supply" Type="TMS.Model.Store.Supply" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="TMS.Model.Store.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_SystemUser">
+          <End Role="SystemUser" Type="TMS.Model.Store.SystemUser" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="TMS.Model.Store.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="TMS.Model.Store.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrder_OutboundOrder">
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="0..1" />
+          <End Role="RepairOrder" Type="TMS.Model.Store.RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrder_SystemUser">
+          <End Role="SystemUser" Type="TMS.Model.Store.SystemUser" Multiplicity="1" />
+          <End Role="RepairOrder" Type="TMS.Model.Store.RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrder_Unit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="0..1" />
+          <End Role="RepairOrder" Type="TMS.Model.Store.RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_OutboundOrderDetail">
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="0..1" />
+          <End Role="RepairOrderDetail" Type="TMS.Model.Store.RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_RepairOrder">
+          <End Role="RepairOrder" Type="TMS.Model.Store.RepairOrder" Multiplicity="1" />
+          <End Role="RepairOrderDetail" Type="TMS.Model.Store.RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrder">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="RepairOrderDetail" Type="TMS.Model.Store.RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrder_OutboundOrder">
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="0..1" />
+          <End Role="ScrapOrder" Type="TMS.Model.Store.ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrder_SystemUser">
+          <End Role="SystemUser" Type="TMS.Model.Store.SystemUser" Multiplicity="1" />
+          <End Role="ScrapOrder" Type="TMS.Model.Store.ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrder_Unit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="0..1" />
+          <End Role="ScrapOrder" Type="TMS.Model.Store.ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_OutboundOrderDetail">
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="0..1" />
+          <End Role="ScrapOrderDetail" Type="TMS.Model.Store.ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_ScrapOrder">
+          <End Role="ScrapOrder" Type="TMS.Model.Store.ScrapOrder" Multiplicity="1" />
+          <End Role="ScrapOrderDetail" Type="TMS.Model.Store.ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrder">
+              <PropertyRef Name="ScrapOrderID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="ScrapOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="ScrapOrderDetail" Type="TMS.Model.Store.ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tool_ToolCategory">
+          <End Role="ToolCategory" Type="TMS.Model.Store.ToolCategory" Multiplicity="1" />
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToolCategory">
+              <PropertyRef Name="ToolCategoryID" />
+            </Principal>
+            <Dependent Role="Tool">
+              <PropertyRef Name="ToolCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventory_Supply">
+          <End Role="Supply" Type="TMS.Model.Store.Supply" Multiplicity="0..1" />
+          <End Role="ToolInventory" Type="TMS.Model.Store.ToolInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="ToolInventory">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventory_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="ToolInventory" Type="TMS.Model.Store.ToolInventory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ToolInventory">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_OutboundOrder">
+          <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_OutboundOrderDetail">
+          <End Role="OutboundOrderDetail" Type="TMS.Model.Store.OutboundOrderDetail" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_PurchaseOrder">
+          <End Role="PurchaseOrder" Type="TMS.Model.Store.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Supply">
+          <End Role="Supply" Type="TMS.Model.Store.Supply" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Tool">
+          <End Role="Tool" Type="TMS.Model.Store.Tool" Multiplicity="1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Unit">
+          <End Role="Unit" Type="TMS.Model.Store.Unit" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TMS.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SystemUsers" EntityType="TMS.Model.SystemUser" />
+          <EntitySet Name="ToolCategories" EntityType="TMS.Model.ToolCategory" />
+          <AssociationSet Name="FK_ChildCategory_ParentCategory" Association="TMS.Model.FK_ChildCategory_ParentCategory">
+            <End Role="ToolCategory" EntitySet="ToolCategories" />
+            <End Role="ToolCategory1" EntitySet="ToolCategories" />
+          </AssociationSet>
+          <EntitySet Name="Supplies" EntityType="TMS.Model.Supply" />
+          <EntitySet Name="Tools" EntityType="TMS.Model.Tool" />
+          <AssociationSet Name="FK_Tool_ToolCategory" Association="TMS.Model.FK_Tool_ToolCategory">
+            <End Role="ToolCategory" EntitySet="ToolCategories" />
+            <End Role="Tool" EntitySet="Tools" />
+          </AssociationSet>
+          <EntitySet Name="PurchaseOrders" EntityType="TMS.Model.PurchaseOrder" />
+          <EntitySet Name="Units" EntityType="TMS.Model.Unit" />
+          <AssociationSet Name="FK_PurchaseOrder_Supply" Association="TMS.Model.FK_PurchaseOrder_Supply">
+            <End Role="Supply" EntitySet="Supplies" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Tool" Association="TMS.Model.FK_PurchaseOrder_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <EntitySet Name="ToolInventories" EntityType="TMS.Model.ToolInventory" />
+          <AssociationSet Name="FK_ToolInventory_Supply" Association="TMS.Model.FK_ToolInventory_Supply">
+            <End Role="Supply" EntitySet="Supplies" />
+            <End Role="ToolInventory" EntitySet="ToolInventories" />
+          </AssociationSet>
+          <EntitySet Name="SystemRoles" EntityType="TMS.Model.SystemRole" />
+          <AssociationSet Name="FK_ChildUnit_ParentUnit" Association="TMS.Model.FK_ChildUnit_ParentUnit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Unit1" EntitySet="Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventory_Tool" Association="TMS.Model.FK_ToolInventory_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="ToolInventory" EntitySet="ToolInventories" />
+          </AssociationSet>
+          <EntitySet Name="ToolInventoryHistories" EntityType="TMS.Model.ToolInventoryHistory" />
+          <AssociationSet Name="FK_ToolInventoryHistory_PurchaseOrder" Association="TMS.Model.FK_ToolInventoryHistory_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Supply" Association="TMS.Model.FK_ToolInventoryHistory_Supply">
+            <End Role="Supply" EntitySet="Supplies" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Tool" Association="TMS.Model.FK_ToolInventoryHistory_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_SystemUser" Association="TMS.Model.FK_PurchaseOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <EntitySet Name="OutboundOrders" EntityType="TMS.Model.OutboundOrder" />
+          <EntitySet Name="OutboundOrderDetails" EntityType="TMS.Model.OutboundOrderDetail" />
+          <AssociationSet Name="FK_OutboundOrder_SystemUser" Association="TMS.Model.FK_OutboundOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrder_Unit" Association="TMS.Model.FK_OutboundOrder_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrderDetail_OutboundOrder" Association="TMS.Model.FK_OutboundOrderDetail_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OutboundOrderDetail_Tool" Association="TMS.Model.FK_OutboundOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_OutboundOrder" Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_OutboundOrderDetail" Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_Unit" Association="TMS.Model.FK_ToolInventoryHistory_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <EntitySet Name="InboundOrders" EntityType="TMS.Model.InboundOrder" />
+          <EntitySet Name="InboundOrderDetails" EntityType="TMS.Model.InboundOrderDetail" />
+          <AssociationSet Name="FK_InboundOrder_OutboundOrder" Association="TMS.Model.FK_InboundOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+            <End Role="InboundOrder" EntitySet="InboundOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrder_SystemUser" Association="TMS.Model.FK_InboundOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="InboundOrder" EntitySet="InboundOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrder_Unit" Association="TMS.Model.FK_InboundOrder_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="InboundOrder" EntitySet="InboundOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_InboundOrder" Association="TMS.Model.FK_InboundOrderDetail_InboundOrder">
+            <End Role="InboundOrder" EntitySet="InboundOrders" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_OutboundOrderDetail" Association="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InboundOrderDetail_Tool" Association="TMS.Model.FK_InboundOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="ScrapOrders" EntityType="TMS.Model.ScrapOrder" />
+          <EntitySet Name="ScrapOrderDetails" EntityType="TMS.Model.ScrapOrderDetail" />
+          <AssociationSet Name="FK_ScrapOrder_OutboundOrder" Association="TMS.Model.FK_ScrapOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_OutboundOrderDetail" Association="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrder_SystemUser" Association="TMS.Model.FK_ScrapOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrder_Unit" Association="TMS.Model.FK_ScrapOrder_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ScrapOrder" EntitySet="ScrapOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_ScrapOrder" Association="TMS.Model.FK_ScrapOrderDetail_ScrapOrder">
+            <End Role="ScrapOrder" EntitySet="ScrapOrders" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScrapOrderDetail_Tool" Association="TMS.Model.FK_ScrapOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="RepairOrders" EntityType="TMS.Model.RepairOrder" />
+          <EntitySet Name="RepairOrderDetails" EntityType="TMS.Model.RepairOrderDetail" />
+          <AssociationSet Name="FK_RepairOrder_OutboundOrder" Association="TMS.Model.FK_RepairOrder_OutboundOrder">
+            <End Role="OutboundOrder" EntitySet="OutboundOrders" />
+            <End Role="RepairOrder" EntitySet="RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_OutboundOrderDetail" Association="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail">
+            <End Role="OutboundOrderDetail" EntitySet="OutboundOrderDetails" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrder_SystemUser" Association="TMS.Model.FK_RepairOrder_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="RepairOrder" EntitySet="RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrder_Unit" Association="TMS.Model.FK_RepairOrder_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="RepairOrder" EntitySet="RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_RepairOrder" Association="TMS.Model.FK_RepairOrderDetail_RepairOrder">
+            <End Role="RepairOrder" EntitySet="RepairOrders" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RepairOrderDetail_Tool" Association="TMS.Model.FK_RepairOrderDetail_Tool">
+            <End Role="Tool" EntitySet="Tools" />
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="Articles" EntityType="TMS.Model.Article" />
+          </EntityContainer>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="SystemUserID" />
+          </Key>
+          <Property Type="Int32" Name="SystemUserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Roles" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="TMS.Model.FK_PurchaseOrder_SystemUser" FromRole="SystemUser" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="OutboundOrders" Relationship="TMS.Model.FK_OutboundOrder_SystemUser" FromRole="SystemUser" ToRole="OutboundOrder" />
+          <NavigationProperty Name="InboundOrders" Relationship="TMS.Model.FK_InboundOrder_SystemUser" FromRole="SystemUser" ToRole="InboundOrder" />
+          <NavigationProperty Name="ScrapOrders" Relationship="TMS.Model.FK_ScrapOrder_SystemUser" FromRole="SystemUser" ToRole="ScrapOrder" />
+          <NavigationProperty Name="RepairOrders" Relationship="TMS.Model.FK_RepairOrder_SystemUser" FromRole="SystemUser" ToRole="RepairOrder" />
+        </EntityType>
+        <EntityType Name="ToolCategory">
+          <Key>
+            <PropertyRef Name="ToolCategoryID" />
+          </Key>
+          <Property Type="Int32" Name="ToolCategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ParentCategoryID" />
+          <NavigationProperty Name="ChildCategories" Relationship="TMS.Model.FK_ChildCategory_ParentCategory" FromRole="ToolCategory" ToRole="ToolCategory1" />
+          <NavigationProperty Name="ParentCategory" Relationship="TMS.Model.FK_ChildCategory_ParentCategory" FromRole="ToolCategory1" ToRole="ToolCategory" />
+          <NavigationProperty Name="Tools" Relationship="TMS.Model.FK_Tool_ToolCategory" FromRole="ToolCategory" ToRole="Tool" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ChildCategory_ParentCategory">
+          <End Type="TMS.Model.ToolCategory" Role="ToolCategory" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolCategory" Role="ToolCategory1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToolCategory">
+              <PropertyRef Name="ToolCategoryID" />
+            </Principal>
+            <Dependent Role="ToolCategory1">
+              <PropertyRef Name="ParentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="SupplyID" />
+          </Key>
+          <Property Type="Int32" Name="SupplyID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="TMS.Model.FK_PurchaseOrder_Supply" FromRole="Supply" ToRole="PurchaseOrder" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ToolInventories" Relationship="TMS.Model.FK_ToolInventory_Supply" FromRole="Supply" ToRole="ToolInventory" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_Supply" FromRole="Supply" ToRole="ToolInventoryHistory" />
+        </EntityType>
+        <EntityType Name="Tool">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Type="Int32" Name="ToolID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ToolCategoryID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Dimensions" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Unit" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comment" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ToolCategory" Relationship="TMS.Model.FK_Tool_ToolCategory" FromRole="Tool" ToRole="ToolCategory" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="TMS.Model.FK_PurchaseOrder_Tool" FromRole="Tool" ToRole="PurchaseOrder" />
+          <Property Type="String" Name="Diameter" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Length" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="Load2" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ToolInventory" Relationship="TMS.Model.FK_ToolInventory_Tool" FromRole="Tool" ToRole="ToolInventory" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_Tool" FromRole="Tool" ToRole="ToolInventoryHistory" />
+          <NavigationProperty Name="OutboundOrderDetails" Relationship="TMS.Model.FK_OutboundOrderDetail_Tool" FromRole="Tool" ToRole="OutboundOrderDetail" />
+          <Property Type="Decimal" Name="RatedQuantity" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="InboundOrderDetails" Relationship="TMS.Model.FK_InboundOrderDetail_Tool" FromRole="Tool" ToRole="InboundOrderDetail" />
+          <NavigationProperty Name="ScrapOrderDetails" Relationship="TMS.Model.FK_ScrapOrderDetail_Tool" FromRole="Tool" ToRole="ScrapOrderDetail" />
+          <NavigationProperty Name="RepairOrderDetails" Relationship="TMS.Model.FK_RepairOrderDetail_Tool" FromRole="Tool" ToRole="RepairOrderDetail" />
+        </EntityType>
+        <Association Name="FK_Tool_ToolCategory">
+          <End Type="TMS.Model.ToolCategory" Role="ToolCategory" Multiplicity="1" />
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToolCategory">
+              <PropertyRef Name="ToolCategoryID" />
+            </Principal>
+            <Dependent Role="Tool">
+              <PropertyRef Name="ToolCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="PurchaseOrderID" />
+          </Key>
+          <Property Type="Int32" Name="PurchaseOrderID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SupplyID" Nullable="false" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="String" Name="Comment" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supply" Relationship="TMS.Model.FK_PurchaseOrder_Supply" FromRole="PurchaseOrder" ToRole="Supply" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_PurchaseOrder_Tool" FromRole="PurchaseOrder" ToRole="Tool" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_PurchaseOrder" FromRole="PurchaseOrder" ToRole="ToolInventoryHistory" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
+          <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_PurchaseOrder_SystemUser" FromRole="PurchaseOrder" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Type="Int32" Name="UnitID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ParentUnitID" />
+          <NavigationProperty Name="ChildUnits" Relationship="TMS.Model.FK_ChildUnit_ParentUnit" FromRole="Unit" ToRole="Unit1" />
+          <NavigationProperty Name="ParentUnit" Relationship="TMS.Model.FK_ChildUnit_ParentUnit" FromRole="Unit1" ToRole="Unit" />
+          <Property Type="String" Name="Comment" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="InternalCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OutboundOrders" Relationship="TMS.Model.FK_OutboundOrder_Unit" FromRole="Unit" ToRole="OutboundOrder" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_Unit" FromRole="Unit" ToRole="ToolInventoryHistory" />
+          <NavigationProperty Name="InboundOrders" Relationship="TMS.Model.FK_InboundOrder_Unit" FromRole="Unit" ToRole="InboundOrder" />
+          <NavigationProperty Name="ScrapOrders" Relationship="TMS.Model.FK_ScrapOrder_Unit" FromRole="Unit" ToRole="ScrapOrder" />
+          <NavigationProperty Name="RepairOrders" Relationship="TMS.Model.FK_RepairOrder_Unit" FromRole="Unit" ToRole="RepairOrder" />
+        </EntityType>
+        <Association Name="FK_PurchaseOrder_Supply">
+          <End Type="TMS.Model.Supply" Role="Supply" Multiplicity="1" />
+          <End Type="TMS.Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ToolInventory">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Type="Decimal" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="SupplyID" />
+          <Property Type="DateTime" Name="LastInboundDate" />
+          <NavigationProperty Name="Supply" Relationship="TMS.Model.FK_ToolInventory_Supply" FromRole="ToolInventory" ToRole="Supply" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_ToolInventory_Tool" FromRole="ToolInventory" ToRole="Tool" />
+          <Property Type="Decimal" Name="OutQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="ScrapQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RepairingQuantity" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK_ToolInventory_Supply">
+          <End Type="TMS.Model.Supply" Role="Supply" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventory" Role="ToolInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="ToolInventory">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SystemRole">
+          <Key>
+            <PropertyRef Name="SystemRoleID" />
+          </Key>
+          <Property Type="Int32" Name="SystemRoleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ChildUnit_ParentUnit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="TMS.Model.Unit" Role="Unit1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="Unit1">
+              <PropertyRef Name="ParentUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventory_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.ToolInventory" Role="ToolInventory" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ToolInventory">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ToolInventoryHistory">
+          <Key>
+            <PropertyRef Name="ToolInventoryHistoryID" />
+          </Key>
+          <Property Type="Int32" Name="ToolInventoryHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="PurchaseOrderID" />
+          <Property Type="Int32" Name="SupplyID" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="TMS.Model.FK_ToolInventoryHistory_PurchaseOrder" FromRole="ToolInventoryHistory" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Supply" Relationship="TMS.Model.FK_ToolInventoryHistory_Supply" FromRole="ToolInventoryHistory" ToRole="Supply" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_ToolInventoryHistory_Tool" FromRole="ToolInventoryHistory" ToRole="Tool" />
+          <Property Type="DateTime" Name="ToolInventoryHistoryDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderID" />
+          <Property Type="Int32" Name="OutboundOrderDetailID" />
+          <Property Type="Int32" Name="CustomerID" />
+          <NavigationProperty Name="OutboundOrder" Relationship="TMS.Model.FK_ToolInventoryHistory_OutboundOrder" FromRole="ToolInventoryHistory" ToRole="OutboundOrder" />
+          <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_ToolInventoryHistory_OutboundOrderDetail" FromRole="ToolInventoryHistory" ToRole="OutboundOrderDetail" />
+          <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_ToolInventoryHistory_Unit" FromRole="ToolInventoryHistory" ToRole="Unit" />
+          <Property Type="Int32" Name="InboundOrderID" />
+          <Property Type="Int32" Name="InboundOrderDetailID" />
+          <Property Type="Int32" Name="ScrapOrderID" />
+          <Property Type="Int32" Name="ScrapOrderDetailID" />
+          <Property Type="Int32" Name="RepairOrderID" />
+          <Property Type="Int32" Name="RepairOrderDetailID" />
+        </EntityType>
+        <Association Name="FK_ToolInventoryHistory_PurchaseOrder">
+          <End Type="TMS.Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Supply">
+          <End Type="TMS.Model.Supply" Role="Supply" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="SupplyID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="SupplyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_SystemUser">
+          <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="TMS.Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OutboundOrder">
+          <Key>
+            <PropertyRef Name="OutboundOrderID" />
+          </Key>
+          <Property Type="Int32" Name="OutboundOrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="OutboundDate" Nullable="false" />
+          <Property Type="Int32" Name="Version" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="Job" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Berth" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Machine" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Ship" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Hatch" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Cargo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Quantity" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Process" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
+          <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_OutboundOrder_SystemUser" FromRole="OutboundOrder" ToRole="SystemUser" />
+          <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_OutboundOrder_Unit" FromRole="OutboundOrder" ToRole="Unit" />
+          <NavigationProperty Name="Items" Relationship="TMS.Model.FK_OutboundOrderDetail_OutboundOrder" FromRole="OutboundOrder" ToRole="OutboundOrderDetail" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_OutboundOrder" FromRole="OutboundOrder" ToRole="ToolInventoryHistory" />
+          <NavigationProperty Name="InboundOrders" Relationship="TMS.Model.FK_InboundOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="InboundOrder" />
+          <NavigationProperty Name="ScrapOrders" Relationship="TMS.Model.FK_ScrapOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="ScrapOrder" />
+          <NavigationProperty Name="RepairOrders" Relationship="TMS.Model.FK_RepairOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="RepairOrder" />
+        </EntityType>
+        <EntityType Name="OutboundOrderDetail">
+          <Key>
+            <PropertyRef Name="OutboundOrderDetailID" />
+          </Key>
+          <Property Type="Int32" Name="OutboundOrderDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OutboundOrderID" Nullable="false" />
+          <Property Type="Int32" Name="Version" Nullable="false" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="OutboundOrder" Relationship="TMS.Model.FK_OutboundOrderDetail_OutboundOrder" FromRole="OutboundOrderDetail" ToRole="OutboundOrder" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_OutboundOrderDetail_Tool" FromRole="OutboundOrderDetail" ToRole="Tool" />
+          <Property Type="DateTime" Name="OutboundDate" Nullable="false" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="ToolInventoryHistory" />
+          <NavigationProperty Name="InboundOrderDetails" Relationship="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="InboundOrderDetail" />
+          <NavigationProperty Name="ScrapOrderDetails" Relationship="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="ScrapOrderDetail" />
+          <NavigationProperty Name="RepairOrderDetails" Relationship="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="RepairOrderDetail" />
+        </EntityType>
+        <Association Name="FK_OutboundOrder_SystemUser">
+          <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="OutboundOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrder_Unit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="OutboundOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrderDetail_OutboundOrder">
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="1" />
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OutboundOrderDetail_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="OutboundOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_OutboundOrder">
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_OutboundOrderDetail">
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_Unit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InboundOrder">
+          <Key>
+            <PropertyRef Name="InboundOrderID" />
+          </Key>
+          <Property Type="Int32" Name="InboundOrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="InboundDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
+          <NavigationProperty Name="OutboundOrder" Relationship="TMS.Model.FK_InboundOrder_OutboundOrder" FromRole="InboundOrder" ToRole="OutboundOrder" />
+          <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_InboundOrder_SystemUser" FromRole="InboundOrder" ToRole="SystemUser" />
+          <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_InboundOrder_Unit" FromRole="InboundOrder" ToRole="Unit" />
+          <NavigationProperty Name="Items" Relationship="TMS.Model.FK_InboundOrderDetail_InboundOrder" FromRole="InboundOrder" ToRole="InboundOrderDetail" />
+        </EntityType>
+        <EntityType Name="InboundOrderDetail">
+          <Key>
+            <PropertyRef Name="InboundOrderDetailID" />
+          </Key>
+          <Property Type="Int32" Name="InboundOrderDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InboundOrderID" Nullable="false" />
+          <Property Type="DateTime" Name="InboundDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderDetailID" Nullable="false" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="PrescrapQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="TransferQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="InboundOrder" Relationship="TMS.Model.FK_InboundOrderDetail_InboundOrder" FromRole="InboundOrderDetail" ToRole="InboundOrder" />
+          <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" FromRole="InboundOrderDetail" ToRole="OutboundOrderDetail" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_InboundOrderDetail_Tool" FromRole="InboundOrderDetail" ToRole="Tool" />
+        </EntityType>
+        <Association Name="FK_InboundOrder_OutboundOrder">
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrder_SystemUser">
+          <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrder_Unit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="InboundOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_InboundOrder">
+          <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrderDetail" Role="InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrder">
+              <PropertyRef Name="InboundOrderID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="InboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_OutboundOrderDetail">
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrderDetail" Role="InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InboundOrderDetail_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.InboundOrderDetail" Role="InboundOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="InboundOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ScrapOrder">
+          <Key>
+            <PropertyRef Name="ScrapOrderID" />
+          </Key>
+          <Property Type="Int32" Name="ScrapOrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ScrapDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderID" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
+          <NavigationProperty Name="OutboundOrder" Relationship="TMS.Model.FK_ScrapOrder_OutboundOrder" FromRole="ScrapOrder" ToRole="OutboundOrder" />
+          <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_ScrapOrder_SystemUser" FromRole="ScrapOrder" ToRole="SystemUser" />
+          <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_ScrapOrder_Unit" FromRole="ScrapOrder" ToRole="Unit" />
+          <NavigationProperty Name="Items" Relationship="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" FromRole="ScrapOrder" ToRole="ScrapOrderDetail" />
+        </EntityType>
+        <EntityType Name="ScrapOrderDetail">
+          <Key>
+            <PropertyRef Name="ScrapOrderDetailID" />
+          </Key>
+          <Property Type="Int32" Name="ScrapOrderDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ScrapOrderID" Nullable="false" />
+          <Property Type="DateTime" Name="ScrapDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderDetailID" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="PrescrapQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="ScrapQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RepairingQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail" FromRole="ScrapOrderDetail" ToRole="OutboundOrderDetail" />
+          <NavigationProperty Name="ScrapOrder" Relationship="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" FromRole="ScrapOrderDetail" ToRole="ScrapOrder" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_ScrapOrderDetail_Tool" FromRole="ScrapOrderDetail" ToRole="Tool" />
+          <Property Type="String" Name="ScrapReason" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ScrapOrder_OutboundOrder">
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ScrapOrder" Role="ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_OutboundOrderDetail">
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.ScrapOrderDetail" Role="ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrder_SystemUser">
+          <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="TMS.Model.ScrapOrder" Role="ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrder_Unit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="TMS.Model.ScrapOrder" Role="ScrapOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="ScrapOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_ScrapOrder">
+          <End Type="TMS.Model.ScrapOrder" Role="ScrapOrder" Multiplicity="1" />
+          <End Type="TMS.Model.ScrapOrderDetail" Role="ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrder">
+              <PropertyRef Name="ScrapOrderID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="ScrapOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScrapOrderDetail_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.ScrapOrderDetail" Role="ScrapOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="ScrapOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RepairOrder">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+          </Key>
+          <Property Type="Int32" Name="RepairOrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="RepairDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderID" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomerID" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
+          <NavigationProperty Name="OutboundOrder" Relationship="TMS.Model.FK_RepairOrder_OutboundOrder" FromRole="RepairOrder" ToRole="OutboundOrder" />
+          <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_RepairOrder_SystemUser" FromRole="RepairOrder" ToRole="SystemUser" />
+          <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_RepairOrder_Unit" FromRole="RepairOrder" ToRole="Unit" />
+          <NavigationProperty Name="Items" Relationship="TMS.Model.FK_RepairOrderDetail_RepairOrder" FromRole="RepairOrder" ToRole="RepairOrderDetail" />
+        </EntityType>
+        <EntityType Name="RepairOrderDetail">
+          <Key>
+            <PropertyRef Name="RepairOrderDetailID" />
+          </Key>
+          <Property Type="Int32" Name="RepairOrderDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RepairOrderID" Nullable="false" />
+          <Property Type="DateTime" Name="RepairDate" Nullable="false" />
+          <Property Type="Int32" Name="OutboundOrderDetailID" />
+          <Property Type="Int32" Name="ToolID" Nullable="false" />
+          <Property Type="Decimal" Name="RepairingQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="ScrapQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="String" Name="ScrapReason" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" FromRole="RepairOrderDetail" ToRole="OutboundOrderDetail" />
+          <NavigationProperty Name="RepairOrder" Relationship="TMS.Model.FK_RepairOrderDetail_RepairOrder" FromRole="RepairOrderDetail" ToRole="RepairOrder" />
+          <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_RepairOrderDetail_Tool" FromRole="RepairOrderDetail" ToRole="Tool" />
+        </EntityType>
+        <Association Name="FK_RepairOrder_OutboundOrder">
+          <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.RepairOrder" Role="RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="OutboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_OutboundOrderDetail">
+          <End Type="TMS.Model.OutboundOrderDetail" Role="OutboundOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.RepairOrderDetail" Role="RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OutboundOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="OutboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrder_SystemUser">
+          <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="TMS.Model.RepairOrder" Role="RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="SystemUserID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="LastUpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrder_Unit">
+          <End Type="TMS.Model.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="TMS.Model.RepairOrder" Role="RepairOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="RepairOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_RepairOrder">
+          <End Type="TMS.Model.RepairOrder" Role="RepairOrder" Multiplicity="1" />
+          <End Type="TMS.Model.RepairOrderDetail" Role="RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrder">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RepairOrderDetail_Tool">
+          <End Type="TMS.Model.Tool" Role="Tool" Multiplicity="1" />
+          <End Type="TMS.Model.RepairOrderDetail" Role="RepairOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tool">
+              <PropertyRef Name="ToolID" />
+            </Principal>
+            <Dependent Role="RepairOrderDetail">
+              <PropertyRef Name="ToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Type="Int32" Name="ArticleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TMSModelStoreContainer" CdmEntityContainer="TMSEntities">
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="TMS.Model.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="SystemUserID" ColumnName="SystemUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToolCategories">
+            <EntityTypeMapping TypeName="TMS.Model.ToolCategory">
+              <MappingFragment StoreEntitySet="ToolCategory">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ToolCategoryID" ColumnName="ToolCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplies">
+            <EntityTypeMapping TypeName="TMS.Model.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupplyID" ColumnName="SupplyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tools">
+            <EntityTypeMapping TypeName="TMS.Model.Tool">
+              <MappingFragment StoreEntitySet="Tool">
+                <ScalarProperty Name="RatedQuantity" ColumnName="RatedQuantity" />
+                <ScalarProperty Name="Load2" ColumnName="Load2" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Dimensions" ColumnName="Dimensions" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ToolCategoryID" ColumnName="ToolCategoryID" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="TMS.Model.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="SupplyID" ColumnName="SupplyID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="TMS.Model.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="InternalCode" ColumnName="InternalCode" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ParentUnitID" ColumnName="ParentUnitID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToolInventories">
+            <EntityTypeMapping TypeName="TMS.Model.ToolInventory">
+              <MappingFragment StoreEntitySet="ToolInventory">
+                <ScalarProperty Name="RepairingQuantity" ColumnName="RepairingQuantity" />
+                <ScalarProperty Name="ScrapQuantity" ColumnName="ScrapQuantity" />
+                <ScalarProperty Name="OutQuantity" ColumnName="OutQuantity" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="LastInboundDate" ColumnName="LastInboundDate" />
+                <ScalarProperty Name="SupplyID" ColumnName="SupplyID" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemRoles">
+            <EntityTypeMapping TypeName="TMS.Model.SystemRole">
+              <MappingFragment StoreEntitySet="SystemRole">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="SystemRoleID" ColumnName="SystemRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToolInventoryHistories">
+            <EntityTypeMapping TypeName="TMS.Model.ToolInventoryHistory">
+              <MappingFragment StoreEntitySet="ToolInventoryHistory">
+                <ScalarProperty Name="RepairOrderDetailID" ColumnName="RepairOrderDetailID" />
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="ScrapOrderDetailID" ColumnName="ScrapOrderDetailID" />
+                <ScalarProperty Name="ScrapOrderID" ColumnName="ScrapOrderID" />
+                <ScalarProperty Name="InboundOrderDetailID" ColumnName="InboundOrderDetailID" />
+                <ScalarProperty Name="InboundOrderID" ColumnName="InboundOrderID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OutboundOrderDetailID" ColumnName="OutboundOrderDetailID" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+                <ScalarProperty Name="ToolInventoryHistoryDate" ColumnName="ToolInventoryHistoryDate" />
+                <ScalarProperty Name="SupplyID" ColumnName="SupplyID" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="ToolInventoryHistoryID" ColumnName="ToolInventoryHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OutboundOrders">
+            <EntityTypeMapping TypeName="TMS.Model.OutboundOrder">
+              <MappingFragment StoreEntitySet="OutboundOrder">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Hatch" ColumnName="Hatch" />
+                <ScalarProperty Name="Ship" ColumnName="Ship" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="Berth" ColumnName="Berth" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="OutboundDate" ColumnName="OutboundDate" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OutboundOrderDetails">
+            <EntityTypeMapping TypeName="TMS.Model.OutboundOrderDetail">
+              <MappingFragment StoreEntitySet="OutboundOrderDetail">
+                <ScalarProperty Name="OutboundDate" ColumnName="OutboundDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+                <ScalarProperty Name="OutboundOrderDetailID" ColumnName="OutboundOrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InboundOrders">
+            <EntityTypeMapping TypeName="TMS.Model.InboundOrder">
+              <MappingFragment StoreEntitySet="InboundOrder">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+                <ScalarProperty Name="InboundDate" ColumnName="InboundDate" />
+                <ScalarProperty Name="InboundOrderID" ColumnName="InboundOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InboundOrderDetails">
+            <EntityTypeMapping TypeName="TMS.Model.InboundOrderDetail">
+              <MappingFragment StoreEntitySet="InboundOrderDetail">
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="TransferQuantity" ColumnName="TransferQuantity" />
+                <ScalarProperty Name="PrescrapQuantity" ColumnName="PrescrapQuantity" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="OutboundOrderDetailID" ColumnName="OutboundOrderDetailID" />
+                <ScalarProperty Name="InboundDate" ColumnName="InboundDate" />
+                <ScalarProperty Name="InboundOrderID" ColumnName="InboundOrderID" />
+                <ScalarProperty Name="InboundOrderDetailID" ColumnName="InboundOrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScrapOrders">
+            <EntityTypeMapping TypeName="TMS.Model.ScrapOrder">
+              <MappingFragment StoreEntitySet="ScrapOrder">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+                <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+                <ScalarProperty Name="ScrapOrderID" ColumnName="ScrapOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScrapOrderDetails">
+            <EntityTypeMapping TypeName="TMS.Model.ScrapOrderDetail">
+              <MappingFragment StoreEntitySet="ScrapOrderDetail">
+                <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="RepairingQuantity" ColumnName="RepairingQuantity" />
+                <ScalarProperty Name="ScrapQuantity" ColumnName="ScrapQuantity" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PrescrapQuantity" ColumnName="PrescrapQuantity" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="OutboundOrderDetailID" ColumnName="OutboundOrderDetailID" />
+                <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+                <ScalarProperty Name="ScrapOrderID" ColumnName="ScrapOrderID" />
+                <ScalarProperty Name="ScrapOrderDetailID" ColumnName="ScrapOrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairOrders">
+            <EntityTypeMapping TypeName="TMS.Model.RepairOrder">
+              <MappingFragment StoreEntitySet="RepairOrder">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="OutboundOrderID" ColumnName="OutboundOrderID" />
+                <ScalarProperty Name="RepairDate" ColumnName="RepairDate" />
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairOrderDetails">
+            <EntityTypeMapping TypeName="TMS.Model.RepairOrderDetail">
+              <MappingFragment StoreEntitySet="RepairOrderDetail">
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
+                <ScalarProperty Name="ScrapQuantity" ColumnName="ScrapQuantity" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="RepairingQuantity" ColumnName="RepairingQuantity" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="OutboundOrderDetailID" ColumnName="OutboundOrderDetailID" />
+                <ScalarProperty Name="RepairDate" ColumnName="RepairDate" />
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="RepairOrderDetailID" ColumnName="RepairOrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="TMS.Model.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TMS.Entity" ZoomLevel="74">
+        <EntityTypeShape EntityType="TMS.Model.SystemUser" Width="1.5" PointX="0.75" PointY="17" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="TMS.Model.ToolCategory" Width="1.5" PointX="1.5" PointY="13.625" Height="2.5430916341145817" />
+        <AssociationConnector Association="TMS.Model.FK_ChildCategory_ParentCategory" >
+          <ConnectorPoint PointX="2.0319230769230767" PointY="16.168091634114582" />
+          <ConnectorPoint PointX="2.0319230769230767" PointY="16.418091634114582" />
+          <ConnectorPoint PointX="2.4784615384615383" PointY="16.418091634114582" />
+          <ConnectorPoint PointX="2.4784615384615383" PointY="16.168091634114582" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.Supply" Width="1.5" PointX="0.75" PointY="1.75" Height="2.5430916341145817" />
+        <EntityTypeShape EntityType="TMS.Model.Tool" Width="1.5" PointX="0.75" PointY="7.5" Height="4.8353279622395826" />
+        <AssociationConnector Association="TMS.Model.FK_Tool_ToolCategory" >
+          <ConnectorPoint PointX="1.875" PointY="13.625" />
+          <ConnectorPoint PointX="1.875" PointY="12.52634765625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.PurchaseOrder" Width="1.5" PointX="3" PointY="3" Height="3.6892097981770817" />
+        <EntityTypeShape EntityType="TMS.Model.Unit" Width="1.5" PointX="0.75" PointY="21.875" Height="3.4981901041666674" />
+        <AssociationConnector Association="TMS.Model.FK_PurchaseOrder_Supply" >
+          <ConnectorPoint PointX="2.25" PointY="3.6465458170572909" />
+          <ConnectorPoint PointX="3" PointY="3.6465458170572909" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_PurchaseOrder_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="7.5069220769230771" />
+          <ConnectorPoint PointX="2.4410744349011204" PointY="7.3158476420219554" />
+          <ConnectorPoint PointX="2.5589255650988791" PointY="7.197996511824198" />
+          <ConnectorPoint PointX="2.65625" PointY="7.1006720769230771" />
+          <ConnectorPoint PointX="2.65625" PointY="4.2486333681233717" />
+          <ConnectorPoint PointX="3" PointY="4.2486333681233717" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.ToolInventory" Width="1.5" PointX="6" PointY="8.375" Height="2.9251310221354174" IsExpanded="true" />
+        <AssociationConnector Association="TMS.Model.FK_ToolInventory_Supply" >
+          <ConnectorPoint PointX="2.25" PointY="2.03125" />
+          <ConnectorPoint PointX="7.15625" PointY="2.03125" />
+          <ConnectorPoint PointX="7.15625" PointY="8.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.SystemRole" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5879931640624996" />
+        <AssociationConnector Association="TMS.Model.FK_ChildUnit_ParentUnit" >
+          <ConnectorPoint PointX="1.2819230769230767" PointY="25.564209798177085" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="25.814209798177089" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="25.814209798177089" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="25.564209798177085" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventory_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.9901718888835" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="5.6744794791666671" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="5.8411461458333331" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="7.15625" PointY="11.990171888883502" />
+          <ConnectorPoint PointX="7.15625" PointY="11.300131022135417" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.ToolInventoryHistory" Width="1.5" PointX="5.25" PointY="2.375" Height="4.45328857421875" />
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_PurchaseOrder" >
+          <ConnectorPoint PointX="4.5" PointY="5.7079270426432283" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.7079270426432274" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="5.7079270426432283" />
+          <ConnectorPoint PointX="5.25" PointY="5.7079270426432283" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Supply" >
+          <ConnectorPoint PointX="2.25" PointY="2.65625" />
+          <ConnectorPoint PointX="5.25" PointY="2.65625" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="7.525383615384615" />
+          <ConnectorPoint PointX="2.4410744349011204" PointY="7.3343091804834941" />
+          <ConnectorPoint PointX="2.5589255650988791" PointY="7.2164580502857367" />
+          <ConnectorPoint PointX="2.875" PointY="6.9003836153846159" />
+          <ConnectorPoint PointX="2.875" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="4.5754521625600981" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="4.7421188292267642" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="4.75" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="4.8160744349011209" PointY="8.0262929153592939" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="7.9084417851615365" />
+          <ConnectorPoint PointX="5.25" PointY="7.5923673502604156" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_PurchaseOrder_SystemUser" >
+          <ConnectorPoint PointX="1.3909620384615384" PointY="17" />
+          <ConnectorPoint PointX="1.3909620384615384" PointY="16.433716634114582" />
+          <ConnectorPoint PointX="3.25" PointY="16.433716634114582" />
+          <ConnectorPoint PointX="3.25" PointY="12.77634765625" />
+          <ConnectorPoint PointX="2.5" PointY="12.77634765625" />
+          <ConnectorPoint PointX="2.5" PointY="5.500173583150227" />
+          <ConnectorPoint PointX="2.5729166666666665" PointY="5.5001735831502261" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="5.500173583150227" />
+          <ConnectorPoint PointX="3" PointY="5.500173583150227" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.OutboundOrder" Width="1.5" PointX="3" PointY="21.125" Height="5.026347656249996" />
+        <EntityTypeShape EntityType="TMS.Model.OutboundOrderDetail" Width="1.5" PointX="3" PointY="8.25" Height="3.3071704101562496" />
+        <AssociationConnector Association="TMS.Model.FK_OutboundOrder_SystemUser" >
+          <ConnectorPoint PointX="2.25" PointY="18.582580743199038" />
+          <ConnectorPoint PointX="3.3789025" PointY="18.582580743199038" />
+          <ConnectorPoint PointX="3.3789025" PointY="21.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_OutboundOrder_Unit" >
+          <ConnectorPoint PointX="2.25" PointY="24.656652425130211" />
+          <ConnectorPoint PointX="3" PointY="24.656652425130211" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_OutboundOrderDetail_OutboundOrder" >
+          <ConnectorPoint PointX="4.1914025000000006" PointY="21.125" />
+          <ConnectorPoint PointX="4.1914025000000006" PointY="11.748190104166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_OutboundOrderDetail_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="9.9990950520833337" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="9.9990950520833337" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="9.9990950520833337" />
+          <ConnectorPoint PointX="3" PointY="9.9990950520833337" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrder" >
+          <ConnectorPoint PointX="4.5" PointY="21.126152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="20.751152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="4.1820885213216137" />
+          <ConnectorPoint PointX="5.25" PointY="4.1820885213216137" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrderDetail" >
+          <ConnectorPoint PointX="4.5" PointY="11.650737990586761" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.650737990586759" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.650737990586761" />
+          <ConnectorPoint PointX="5.578125625" PointY="11.650737990586761" />
+          <ConnectorPoint PointX="5.578125625" PointY="7.5923673502604156" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Unit" >
+          <ConnectorPoint PointX="2.25" PointY="23.855176049798281" />
+          <ConnectorPoint PointX="2.75" PointY="23.855176049798281" />
+          <ConnectorPoint PointX="2.75" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="3.2955691666666667" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="3.4622358333333336" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="3.7018191666666671" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="3.8684858333333341" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="5" PointY="20.616150716145832" />
+          <ConnectorPoint PointX="5" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="5.4947922916666672" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="5.6614589583333332" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="6.1953148124999995" PointY="8.0923673502604156" />
+          <ConnectorPoint PointX="6.1953148124999995" PointY="7.5923673502604156" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.InboundOrder" Width="1.5" PointX="6" PointY="17.25" Height="3.1161507161458317" />
+        <EntityTypeShape EntityType="TMS.Model.InboundOrderDetail" Width="1.5" PointX="8.25" PointY="8.25" Height="3.3071704101562496" />
+        <AssociationConnector Association="TMS.Model.FK_InboundOrder_OutboundOrder" >
+          <ConnectorPoint PointX="3.7851525000000006" PointY="21.125" />
+          <ConnectorPoint PointX="3.7851525000000006" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="5.4244766666666671" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="5.5911433333333331" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="6" PointY="17.916290371599519" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_InboundOrder_SystemUser" >
+          <ConnectorPoint PointX="2.25" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="3.2955691666666667" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="3.4622358333333336" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="3.7018191666666671" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="3.8684858333333341" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="5.4244766666666671" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="5.5911433333333331" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="6" PointY="19.206501587300117" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_InboundOrder_Unit" >
+          <ConnectorPoint PointX="2.25" PointY="21.876152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="21.501152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="3.2955691666666667" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="3.4622358333333336" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="3.7018191666666671" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="3.8684858333333341" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="5.4244766666666671" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="5.5911433333333331" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="6" PointY="19.817578151722977" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_InboundOrder" >
+          <ConnectorPoint PointX="7.5" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="9" PointY="18.808075358072916" />
+          <ConnectorPoint PointX="9" PointY="11.55717041015625" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" >
+          <ConnectorPoint PointX="4.5" PointY="8.28125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="8.2812499999999982" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="8.28125" />
+          <ConnectorPoint PointX="5.4947922916666672" PointY="8.28125" />
+          <ConnectorPoint PointX="5.6614589583333332" PointY="8.28125" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="8.28125" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="8.28125" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="8.28125" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="8.28125" />
+          <ConnectorPoint PointX="8.25" PointY="8.28125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.869178496525082" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="5.6744794791666671" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="5.8411461458333331" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="8.5937475" PointY="11.869178496525084" />
+          <ConnectorPoint PointX="8.5937475" PointY="11.55717041015625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.ScrapOrder" Width="1.5" PointX="5.25" PointY="21.875" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="TMS.Model.ScrapOrderDetail" Width="1.5" PointX="5.25" PointY="12.125" Height="3.4981901041666674" />
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrder_OutboundOrder" >
+          <ConnectorPoint PointX="4.5" PointY="23.988855506347662" />
+          <ConnectorPoint PointX="5.25" PointY="23.988855506347662" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail" >
+          <ConnectorPoint PointX="4.5" PointY="11.475432006361089" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.475432006361087" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.475432006361089" />
+          <ConnectorPoint PointX="5.4947922916666672" PointY="11.475432006361089" />
+          <ConnectorPoint PointX="5.6614589583333332" PointY="11.475432006361089" />
+          <ConnectorPoint PointX="5.7578128125" PointY="11.475432006361089" />
+          <ConnectorPoint PointX="5.7578128125" PointY="12.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrder_SystemUser" >
+          <ConnectorPoint PointX="2.25" PointY="17.09375" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="17.09375" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="17.09375" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.09375" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.09375" />
+          <ConnectorPoint PointX="5.50781" PointY="17.09375" />
+          <ConnectorPoint PointX="5.50781" PointY="21.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrder_Unit" >
+          <ConnectorPoint PointX="1.5" PointY="21.875" />
+          <ConnectorPoint PointX="1.5" PointY="20.875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.875" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="20.875" />
+          <ConnectorPoint PointX="3.2955691666666667" PointY="20.875" />
+          <ConnectorPoint PointX="3.4622358333333336" PointY="20.875" />
+          <ConnectorPoint PointX="3.7018191666666671" PointY="20.875" />
+          <ConnectorPoint PointX="3.8684858333333341" PointY="20.875" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="20.875" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="20.875" />
+          <ConnectorPoint PointX="4.66781951282051" PointY="20.875" />
+          <ConnectorPoint PointX="4.8344861794871763" PointY="20.875" />
+          <ConnectorPoint PointX="4.9375" PointY="20.875" />
+          <ConnectorPoint PointX="4.9375" PointY="22.900675753173836" />
+          <ConnectorPoint PointX="5.25" PointY="22.900675753173836" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" >
+          <ConnectorPoint PointX="5.828125" PointY="21.875" />
+          <ConnectorPoint PointX="5.828125" PointY="15.814209798177084" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="12.325673828125" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="12.325673828125" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="12.325673828125" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="12.325673828125" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="12.325673828125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.325673828124998" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="12.325673828125" />
+          <ConnectorPoint PointX="5.25" PointY="12.325673828125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.RepairOrder" Width="1.5" PointX="8.25" PointY="20" Height="3.3071704101562531" />
+        <EntityTypeShape EntityType="TMS.Model.RepairOrderDetail" Width="1.5" PointX="8.25" PointY="3.25" Height="3.4981901041666674" />
+        <AssociationConnector Association="TMS.Model.FK_RepairOrder_OutboundOrder" >
+          <ConnectorPoint PointX="4.5" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.4244766666666671" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.5911433333333331" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="8.25" PointY="21.500578923076915" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" >
+          <ConnectorPoint PointX="4.5" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="4.8761528461538468" PointY="7.875" />
+          <ConnectorPoint PointX="4.8840340169270826" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="5.0507006835937487" PointY="7.875" />
+          <ConnectorPoint PointX="5.4947922916666672" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="5.6614589583333332" PointY="7.875" />
+          <ConnectorPoint PointX="6.1119814791666665" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="6.2786481458333325" PointY="7.875" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.875" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="7.875" />
+          <ConnectorPoint PointX="9" PointY="7.875" />
+          <ConnectorPoint PointX="9" PointY="6.7481901041666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_RepairOrder_SystemUser" >
+          <ConnectorPoint PointX="2.25" PointY="17.1250025" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="17.1250025" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="17.1250025" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.1250025" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="17.1250025" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="17.1250025" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="17.1250025" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="17.1250025" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="17.1250025" />
+          <ConnectorPoint PointX="8.625" PointY="17.1250025" />
+          <ConnectorPoint PointX="8.625" PointY="20" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_RepairOrder_Unit" >
+          <ConnectorPoint PointX="1.9062519999999998" PointY="21.875" />
+          <ConnectorPoint PointX="1.9062519999999998" PointY="20.859375" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.859375" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="20.859375" />
+          <ConnectorPoint PointX="3.2955691666666667" PointY="20.859375" />
+          <ConnectorPoint PointX="3.4622358333333336" PointY="20.859375" />
+          <ConnectorPoint PointX="3.7018191666666671" PointY="20.859375" />
+          <ConnectorPoint PointX="3.8684858333333341" PointY="20.859375" />
+          <ConnectorPoint PointX="4.1080691666666675" PointY="20.859375" />
+          <ConnectorPoint PointX="4.2747358333333336" PointY="20.859375" />
+          <ConnectorPoint PointX="4.68344451282051" PointY="20.859375" />
+          <ConnectorPoint PointX="4.8501111794871763" PointY="20.859375" />
+          <ConnectorPoint PointX="5.4244766666666671" PointY="20.859375" />
+          <ConnectorPoint PointX="5.5911433333333331" PointY="20.859375" />
+          <ConnectorPoint PointX="5.744791666666667" PointY="20.859375" />
+          <ConnectorPoint PointX="5.911458333333333" PointY="20.859375" />
+          <ConnectorPoint PointX="7.875" PointY="20.859375" />
+          <ConnectorPoint PointX="7.875" PointY="22.435126666616576" />
+          <ConnectorPoint PointX="8.25" PointY="22.435126666616576" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_RepairOrder" >
+          <ConnectorPoint PointX="8.25" PointY="20" />
+          <ConnectorPoint PointX="7.875" PointY="19.625" />
+          <ConnectorPoint PointX="7.875" PointY="7.1231901041666674" />
+          <ConnectorPoint PointX="8.25" PointY="6.7481901041666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_Tool" >
+          <ConnectorPoint PointX="2.25" PointY="8.7622393337339748" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="8.7622393337339748" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="8.7622393337339748" />
+          <ConnectorPoint PointX="2.75" PointY="8.7622393337339748" />
+          <ConnectorPoint PointX="2.75" PointY="7.75" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="7.75" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="7.75" />
+          <ConnectorPoint PointX="5.0090340169270826" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="5.1757006835937487" PointY="7.75" />
+          <ConnectorPoint PointX="5.4947922916666672" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="5.6614589583333332" PointY="7.75" />
+          <ConnectorPoint PointX="6.1119814791666665" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="6.2786481458333325" PointY="7.75" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.75" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="7.75" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="7.75" />
+          <ConnectorPoint PointX="9.406252" PointY="7.75" />
+          <ConnectorPoint PointX="9.406252" PointY="6.7481901041666674" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TMS.Model.Article" Width="1.5" PointX="10.375" PointY="0.75" Height="1.5879931640625031" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49067F71-54DC-4923-BA47-BD9B54AE5248}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarsMaintenance</RootNamespace>
+    <AssemblyName>CarsMaintenance</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ExecuteActionHelper.cs" />
+    <Compile Include="Common\SQLHelper.cs" />
+    <Compile Include="Common\SystemHelper.cs" />
+    <Compile Include="Common\Validation\DecimalValidator.cs" />
+    <Compile Include="Common\Validation\IntValidator.cs" />
+    <Compile Include="Common\Validation\ValidationManager.cs" />
+    <Compile Include="Common\Validation\RequiredValidator.cs" />
+    <Compile Include="Common\Validation\IValidator.cs" />
+    <Compile Include="Common\FormsManager.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\CreateInboundOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\CreateInboundOrderForm.Designer.cs">
+      <DependentUpon>CreateInboundOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\CreateOutboundOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\CreateOutboundOrderForm.Designer.cs">
+      <DependentUpon>CreateOutboundOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\CreatePurchaseOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\CreatePurchaseOrderForm.Designer.cs">
+      <DependentUpon>CreatePurchaseOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\CreateRepairOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\CreateRepairOrderForm.Designer.cs">
+      <DependentUpon>CreateRepairOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\CreateScrapOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\CreateScrapOrderForm.Designer.cs">
+      <DependentUpon>CreateScrapOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\ViewOutboundOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\ViewOutboundOrderForm.Designer.cs">
+      <DependentUpon>ViewOutboundOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\ViewRepairOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\ViewRepairOrderForm.Designer.cs">
+      <DependentUpon>ViewRepairOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement\ViewScrapOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderManagement\ViewScrapOrderForm.Designer.cs">
+      <DependentUpon>ViewScrapOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BarcodeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BarcodeReport.Designer.cs">
+      <DependentUpon>BarcodeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LandingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\LandingForm.Designer.cs">
+      <DependentUpon>LandingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutboundOrderDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutboundOrderDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutboundOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\OutboundOrderReport.Designer.cs">
+      <DependentUpon>OutboundOrderReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutboundSummaryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutboundSummaryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutboundSummaryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\OutboundSummaryReport.Designer.cs">
+      <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageArticleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageArticleForm.Designer.cs">
+      <DependentUpon>ManageArticleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolCategoryForm.Designer.cs">
+      <DependentUpon>ManageToolCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageSupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageSupplyForm.Designer.cs">
+      <DependentUpon>ManageSupplyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolForm.Designer.cs">
+      <DependentUpon>ManageToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageUnitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageUnitForm.Designer.cs">
+      <DependentUpon>ManageUnitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewArticleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewArticleForm.Designer.cs">
+      <DependentUpon>ViewArticleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolInventoryForm.Designer.cs">
+      <DependentUpon>ViewToolInventoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewSupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewSupplyForm.Designer.cs">
+      <DependentUpon>ViewSupplyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolCategoryForm.Designer.cs">
+      <DependentUpon>ViewToolCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewToolGroupForm.Designer.cs">
+      <DependentUpon>ViewToolGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ViewUnitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewUnitForm.Designer.cs">
+      <DependentUpon>ViewUnitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\ManageSystemUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\ManageSystemUserForm.Designer.cs">
+      <DependentUpon>ManageSystemUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\ViewSystemUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\ViewSystemUserForm.Designer.cs">
+      <DependentUpon>ViewSystemUserForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Common\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\CreateInboundOrderForm.resx">
+      <DependentUpon>CreateInboundOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\CreateOutboundOrderForm.resx">
+      <DependentUpon>CreateOutboundOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\CreatePurchaseOrderForm.resx">
+      <DependentUpon>CreatePurchaseOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\CreateRepairOrderForm.resx">
+      <DependentUpon>CreateRepairOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\CreateScrapOrderForm.resx">
+      <DependentUpon>CreateScrapOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\ViewOutboundOrderForm.resx">
+      <DependentUpon>ViewOutboundOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\ViewRepairOrderForm.resx">
+      <DependentUpon>ViewRepairOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderManagement\ViewScrapOrderForm.resx">
+      <DependentUpon>ViewScrapOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\BarcodeReport.rdlc" />
+    <EmbeddedResource Include="Reports\BarcodeReport.resx">
+      <DependentUpon>BarcodeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LandingForm.resx">
+      <DependentUpon>LandingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OutboundOrder.rdlc" />
+    <EmbeddedResource Include="Reports\OutboundOrderReport.resx">
+      <DependentUpon>OutboundOrderReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OutboundSummary.rdlc" />
+    <EmbeddedResource Include="Reports\OutboundSummaryReport.resx">
+      <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageArticleForm.resx">
+      <DependentUpon>ManageArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageToolCategoryForm.resx">
+      <DependentUpon>ManageToolCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageSupplyForm.resx">
+      <DependentUpon>ManageSupplyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageToolForm.resx">
+      <DependentUpon>ManageToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageUnitForm.resx">
+      <DependentUpon>ManageUnitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewArticleForm.resx">
+      <DependentUpon>ViewArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewToolInventoryForm.resx">
+      <DependentUpon>ViewToolInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewSupplyForm.resx">
+      <DependentUpon>ViewSupplyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewToolCategoryForm.resx">
+      <DependentUpon>ViewToolCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewToolGroupForm.resx">
+      <DependentUpon>ViewToolGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewUnitForm.resx">
+      <DependentUpon>ViewUnitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\ManageSystemUserForm.resx">
+      <DependentUpon>ManageSystemUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\ViewSystemUserForm.resx">
+      <DependentUpon>ViewSystemUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundOrderDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundSummaryDataSet.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.Article.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.OutboundOrder.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.RepairOrder.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.ScrapOrder.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.Supply.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.SystemUser.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.TMSEntities.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.Tool.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.ToolCategory.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.ToolInventory.datasource" />
+    <None Include="Properties\DataSources\TMS.Model.Unit.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Reports\OutboundOrderDataSet.xsc">
+      <DependentUpon>OutboundOrderDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutboundOrderDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OutboundOrderDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\OutboundOrderDataSet.xss">
+      <DependentUpon>OutboundOrderDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutboundSummaryDataSet.xsc">
+      <DependentUpon>OutboundSummaryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutboundSummaryDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OutboundSummaryDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\OutboundSummaryDataSet.xss">
+      <DependentUpon>OutboundSummaryDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMS.Model\TMS.Model.csproj">
+      <Project>{B312B188-91B8-42CF-B0A7-0F22109B1679}</Project>
+      <Name>TMS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.ico" />
+    <None Include="Images\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="Common\Validation\ClassDiagram.cd" />
+    <None Include="Common\ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

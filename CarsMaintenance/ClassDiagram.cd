@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CarsMaintenance.CreateCarsFleetSpotChecksMaintenanceForm" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AQBoAAAAACAACIAAAADgAAAGAYAAEAAAAAAQAAAAABA=</HashCode>
+      <FileName>CarMaintenanceManagement\CreateCarsFleetSpotChecksMaintenanceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ManageCarMaintenanceForm" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEABAAAACCAQAIAIAACgABCGAJAEAAAAAQAQIAQoABA=</HashCode>
+      <FileName>CarMaintenanceManagement\ManageCarMaintenanceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ViewCarMaintenancesForm" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AABAYACQASQYAACBAgGQAgACCDEgAEAERAghIAACQkQ=</HashCode>
+      <FileName>CarMaintenanceManagement\ViewCarMaintenancesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ManageCarForm" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QUABAABACCAQAIgAAACgQACGApCAAIQAAAAQIIAAABI=</HashCode>
+      <FileName>CarManagement\ManageCarForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ViewCarsDetailsForm" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>KICAAAGKACiQAABAQACRGABigSIARDAQiAAAAQUEAgQ=</HashCode>
+      <FileName>CarManagement\ViewCarsDetailsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.BaseForm" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAQAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BaseForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.MainForm" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAACCAAQAAAQCCEAACACAAAAAQAgABCgIAAAA=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.CarMaintenanceReportForm" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACgEAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\CarMaintenanceReportForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

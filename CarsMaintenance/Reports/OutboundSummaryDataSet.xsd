@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OutboundSummaryDataSet" targetNamespace="http://tempuri.org/OutboundSummaryDataSet.xsd" xmlns:mstns="http://tempuri.org/OutboundSummaryDataSet.xsd" xmlns="http://tempuri.org/OutboundSummaryDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QueryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QueryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CarsMaintenance.Properties.Settings.GlobalReference.Default.QueryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OutboundSummaryTableAdapter" GeneratorDataComponentClassName="OutboundSummaryTableAdapter" Name="OutboundSummary" UserDataComponentName="OutboundSummaryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select c.Name as CategroyName, t.Code, t.Name as ToolName, t.Dimensions, t.Unit, sum(i.Quantity) as Quantity from OutboundOrderDetail i
+inner join Tool t on i.ToolID = t.ToolID
+inner join ToolCategory c on SUBSTRING(t.Code, 1, 2) = c.Code and c.ParentCategoryID is null
+group by c.Name , t.Code, t.Name, t.Dimensions, t.Unit</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CategroyName" DataSetColumn="CategroyName" />
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="ToolName" DataSetColumn="ToolName" />
+              <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
+              <Mapping SourceColumn="Unit" DataSetColumn="Unit" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OutboundSummaryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OutboundSummaryDataSet" msprop:Generator_UserDSName="OutboundSummaryDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OutboundSummary" msprop:Generator_TableClassName="OutboundSummaryDataTable" msprop:Generator_TableVarName="tableOutboundSummary" msprop:Generator_TablePropName="OutboundSummary" msprop:Generator_RowDeletingName="OutboundSummaryRowDeleting" msprop:Generator_UserTableName="OutboundSummary" msprop:Generator_RowChangingName="OutboundSummaryRowChanging" msprop:Generator_RowEvHandlerName="OutboundSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="OutboundSummaryRowDeleted" msprop:Generator_RowEvArgName="OutboundSummaryRowChangeEvent" msprop:Generator_RowChangedName="OutboundSummaryRowChanged" msprop:Generator_RowClassName="OutboundSummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CategroyName" msprop:Generator_ColumnVarNameInTable="columnCategroyName" msprop:Generator_ColumnPropNameInRow="CategroyName" msprop:Generator_ColumnPropNameInTable="CategroyNameColumn" msprop:Generator_UserColumnName="CategroyName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:Generator_UserColumnName="Dimensions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
