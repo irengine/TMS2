@@ -1,3 +1,6 @@
+:r dbclean.sql
+print 'clean done'
+
 use tms
 go
 
@@ -5,11 +8,13 @@ go
 :r dbo.SystemUser.Table.sql
 
 :r dbo.Unit.Table.sql
+print 'system tables done'
 
 :r dbo.Supply.Table.sql
 
 :r dbo.ToolCategory.Table.sql
 :r dbo.Tool.Table.sql
+print 'tool tables done'
 
 :r dbo.Article.Table.sql
 
@@ -27,9 +32,11 @@ go
 
 :r dbo.RepairOrder.Table.sql
 :r dbo.RepairOrderDetail.Table.sql
+print 'order tables done'
 
 :r dbo.ToolInventory.Table.sql
 :r dbo.ToolInventoryHistory.Table.sql
+print 'inventory tables done'
 
 :r .\Seeddata\Unit.sql
 :r .\Seeddata\SystemRole.sql
@@ -40,3 +47,4 @@ go
 :r .\Seeddata\PurchaseOrder.sql
 :r .\Seeddata\ToolInventory.sql
 :r .\Seeddata\ToolInventoryHistory.sql
+print 'seeddata done'
