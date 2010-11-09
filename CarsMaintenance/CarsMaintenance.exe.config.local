@@ -6,10 +6,10 @@
     </sectionGroup>
   </configSections>
   <connectionStrings>
-    <add name="TMSEntities" connectionString="metadata=res://*/TMS.Entity.csdl|res://*/TMS.Entity.ssdl|res://*/TMS.Entity.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=.\SQLExpress;Initial Catalog=School;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True&quot;"
+    <add name="TMSEntities" connectionString="metadata=res://*/TMS.Entity.csdl|res://*/TMS.Entity.ssdl|res://*/TMS.Entity.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=.\SQLExpress;Initial Catalog=TMS;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True&quot;"
 			providerName="System.Data.EntityClient" />
     <add name="QueryConnectionString"
-			connectionString="Data Source=.\SQLExpress;Initial Catalog=School;Integrated Security=True;Pooling=False"
+			connectionString="Data Source=.\SQLExpress;Initial Catalog=TMS;Integrated Security=True;Pooling=False"
 			providerName="System.Data.SqlClient" />
   </connectionStrings>
   <startup>
