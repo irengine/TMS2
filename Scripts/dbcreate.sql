@@ -35,3 +35,8 @@ go
 :r .\Seeddata\SystemRole.sql
 :r .\Seeddata\SystemUser.sql
 :r .\Seeddata\ToolCategory.sql
+:r .\Seeddata\Supply.sql
+:r .\Seeddata\Tool.sql
+:r .\Seeddata\PurchaseOrder.sql
+:r .\Seeddata\ToolInventory.sql
+:r .\Seeddata\ToolInventoryHistory.sql
