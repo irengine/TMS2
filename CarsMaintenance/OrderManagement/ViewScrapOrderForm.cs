@@ -60,8 +60,13 @@ namespace CarsMaintenance.OrderManagement
                 {
                     LoadData();
                 }
+                else
+                {
+                    SystemHelper.RefreshOrder(form.CurrentOrder);
+                }
             }
         }
+
 
         private void Browse()
         {
@@ -73,6 +78,10 @@ namespace CarsMaintenance.OrderManagement
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+                }
+                else
+                {
+                    SystemHelper.RefreshOrder(form.CurrentOrder);
                 }
             }
         }
@@ -88,6 +97,10 @@ namespace CarsMaintenance.OrderManagement
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+                }
+                else
+                {
+                    SystemHelper.RefreshOrder(form.CurrentOrder);
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -23,6 +24,14 @@ namespace CarsMaintenance.Common
         {
             get;
             set;
+        }
+
+        public static void RefreshOrder(System.Data.Objects.DataClasses.EntityObject o)
+        {
+            if (o.EntityState == EntityState.Added)
+                SystemHelper.TMSContext.Detach(o);
+            else if (o.EntityState == EntityState.Modified)
+                SystemHelper.TMSContext.Refresh(System.Data.Objects.RefreshMode.StoreWins, o);
         }
 
         public static void BindComboxToSupply(ComboBox cbSupply)
