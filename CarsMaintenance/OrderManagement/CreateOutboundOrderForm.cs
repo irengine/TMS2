@@ -206,8 +206,6 @@ namespace CarsMaintenance.OrderManagement
                     }
                 }
 
-                //SystemHelper.TMSContext.
-
                 SystemHelper.TMSContext.SaveChanges();
 
                 DialogResult = DialogResult.OK;
@@ -218,13 +216,6 @@ namespace CarsMaintenance.OrderManagement
                 });
             });
         }
-
-        private void _cancelButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentOrder.EntityState == EntityState.Modified)
-                SystemHelper.TMSContext.Refresh(System.Data.Objects.RefreshMode.StoreWins, CurrentOrder);
-        }
-
 
         private void dataGridViewDetail_CellEnter(object sender, DataGridViewCellEventArgs e)
         {

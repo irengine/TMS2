@@ -58,16 +58,16 @@
             this.txtVersion = new System.Windows.Forms.TextBox();
             this.lblVersion = new System.Windows.Forms.Label();
             this.dataGridViewDetail = new System.Windows.Forms.DataGridView();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._operationsPanel = new System.Windows.Forms.Panel();
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.cbSystemUser = new System.Windows.Forms.ComboBox();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbJob.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
             this._operationsPanel.SuspendLayout();
@@ -350,6 +350,32 @@
             this.dataGridViewDetail.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetail_CellEnter);
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
             // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "工属具编码";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.Width = 120;
+            // 
+            // ItemQuantity
+            // 
+            this.ItemQuantity.HeaderText = "数量";
+            this.ItemQuantity.Name = "ItemQuantity";
+            this.ItemQuantity.Width = 120;
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "名称";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 120;
+            // 
+            // ItemDimensions
+            // 
+            this.ItemDimensions.HeaderText = "规格";
+            this.ItemDimensions.Name = "ItemDimensions";
+            this.ItemDimensions.ReadOnly = true;
+            this.ItemDimensions.Width = 120;
+            // 
             // _operationsPanel
             // 
             this._operationsPanel.Controls.Add(this._saveButton);
@@ -382,7 +408,6 @@
             this._cancelButton.Text = "取消";
             this._cancelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this._cancelButton.UseVisualStyleBackColor = true;
-            this._cancelButton.Click += new System.EventHandler(this._cancelButton_Click);
             // 
             // _errorProvider
             // 
@@ -405,32 +430,6 @@
             this.cbSystemUser.Size = new System.Drawing.Size(200, 20);
             this.cbSystemUser.TabIndex = 15;
             this.cbSystemUser.Validating += new System.ComponentModel.CancelEventHandler(this.cbSystemUser_Validating);
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "工属具编码";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.Width = 120;
-            // 
-            // ItemQuantity
-            // 
-            this.ItemQuantity.HeaderText = "数量";
-            this.ItemQuantity.Name = "ItemQuantity";
-            this.ItemQuantity.Width = 120;
-            // 
-            // ItemName
-            // 
-            this.ItemName.HeaderText = "名称";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 120;
-            // 
-            // ItemDimensions
-            // 
-            this.ItemDimensions.HeaderText = "规格";
-            this.ItemDimensions.Name = "ItemDimensions";
-            this.ItemDimensions.ReadOnly = true;
-            this.ItemDimensions.Width = 120;
             // 
             // CreateOutboundOrderForm
             // 
