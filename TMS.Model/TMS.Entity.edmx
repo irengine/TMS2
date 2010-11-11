@@ -144,6 +144,14 @@
             <End Role="Tool" EntitySet="Tool" />
             <End Role="ToolInventory" EntitySet="ToolInventory" />
           </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_InboundOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_InboundOrder">
+            <End Role="InboundOrder" EntitySet="InboundOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_InboundOrderDetail" Association="TMS.Model.Store.FK_ToolInventoryHistory_InboundOrderDetail">
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetail" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK_ToolInventoryHistory_OutboundOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_OutboundOrder">
             <End Role="OutboundOrder" EntitySet="OutboundOrder" />
             <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
@@ -154,6 +162,22 @@
           </AssociationSet>
           <AssociationSet Name="FK_ToolInventoryHistory_PurchaseOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_PurchaseOrder">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_RepairOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_RepairOrder">
+            <End Role="RepairOrder" EntitySet="RepairOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_RepairOrderDetail" Association="TMS.Model.Store.FK_ToolInventoryHistory_RepairOrderDetail">
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetail" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_ScrapOrder" Association="TMS.Model.Store.FK_ToolInventoryHistory_ScrapOrder">
+            <End Role="ScrapOrder" EntitySet="ScrapOrder" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_ScrapOrderDetail" Association="TMS.Model.Store.FK_ToolInventoryHistory_ScrapOrderDetail">
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetail" />
             <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_ToolInventoryHistory_Supply" Association="TMS.Model.Store.FK_ToolInventoryHistory_Supply">
@@ -201,6 +225,7 @@
           <Property Name="ToolID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="PrescrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="ScrapReason" Type="nvarchar" MaxLength="20" />
           <Property Name="TransferQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
@@ -214,6 +239,8 @@
           <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="Job" Type="varchar" MaxLength="50" />
+          <Property Name="JobPosition" Type="nvarchar" MaxLength="20" />
+          <Property Name="JobType" Type="nvarchar" MaxLength="20" />
           <Property Name="Berth" Type="varchar" MaxLength="50" />
           <Property Name="Machine" Type="varchar" MaxLength="50" />
           <Property Name="Ship" Type="varchar" MaxLength="50" />
@@ -372,6 +399,7 @@
           <Property Name="ToolID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="OutQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PrescrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="ScrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
@@ -384,6 +412,7 @@
           </Key>
           <Property Name="ToolInventoryHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ToolInventoryHistoryDate" Type="datetime2" Nullable="false" />
+          <Property Name="Account" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="ToolID" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
@@ -771,6 +800,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ToolInventoryHistory_InboundOrder">
+          <End Role="InboundOrder" Type="TMS.Model.Store.InboundOrder" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrder">
+              <PropertyRef Name="InboundOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="InboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_InboundOrderDetail">
+          <End Role="InboundOrderDetail" Type="TMS.Model.Store.InboundOrderDetail" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrderDetail">
+              <PropertyRef Name="InboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="InboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ToolInventoryHistory_OutboundOrder">
           <End Role="OutboundOrder" Type="TMS.Model.Store.OutboundOrder" Multiplicity="0..1" />
           <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
@@ -804,6 +857,54 @@
             </Principal>
             <Dependent Role="ToolInventoryHistory">
               <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_RepairOrder">
+          <End Role="RepairOrder" Type="TMS.Model.Store.RepairOrder" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrder">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_RepairOrderDetail">
+          <End Role="RepairOrderDetail" Type="TMS.Model.Store.RepairOrderDetail" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrderDetail">
+              <PropertyRef Name="RepairOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="RepairOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_ScrapOrder">
+          <End Role="ScrapOrder" Type="TMS.Model.Store.ScrapOrder" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrder">
+              <PropertyRef Name="ScrapOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ScrapOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_ScrapOrderDetail">
+          <End Role="ScrapOrderDetail" Type="TMS.Model.Store.ScrapOrderDetail" Multiplicity="0..1" />
+          <End Role="ToolInventoryHistory" Type="TMS.Model.Store.ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrderDetail">
+              <PropertyRef Name="ScrapOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ScrapOrderDetailID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1010,6 +1111,30 @@
             <End Role="RepairOrderDetail" EntitySet="RepairOrderDetails" />
           </AssociationSet>
           <EntitySet Name="Articles" EntityType="TMS.Model.Article" />
+          <AssociationSet Name="FK_ToolInventoryHistory_InboundOrder" Association="TMS.Model.FK_ToolInventoryHistory_InboundOrder">
+            <End Role="InboundOrder" EntitySet="InboundOrders" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_InboundOrderDetail" Association="TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail">
+            <End Role="InboundOrderDetail" EntitySet="InboundOrderDetails" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_RepairOrder" Association="TMS.Model.FK_ToolInventoryHistory_RepairOrder">
+            <End Role="RepairOrder" EntitySet="RepairOrders" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_RepairOrderDetail" Association="TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail">
+            <End Role="RepairOrderDetail" EntitySet="RepairOrderDetails" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_ScrapOrder" Association="TMS.Model.FK_ToolInventoryHistory_ScrapOrder">
+            <End Role="ScrapOrder" EntitySet="ScrapOrders" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToolInventoryHistory_ScrapOrderDetail" Association="TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail">
+            <End Role="ScrapOrderDetail" EntitySet="ScrapOrderDetails" />
+            <End Role="ToolInventoryHistory" EntitySet="ToolInventoryHistories" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="SystemUser">
           <Key>
@@ -1179,6 +1304,7 @@
           <Property Type="Decimal" Name="OutQuantity" Nullable="false" Precision="10" Scale="2" />
           <Property Type="Decimal" Name="ScrapQuantity" Nullable="false" Precision="10" Scale="2" />
           <Property Type="Decimal" Name="RepairingQuantity" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="PrescrapQuantity" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <Association Name="FK_ToolInventory_Supply">
           <End Type="TMS.Model.Supply" Role="Supply" Multiplicity="0..1" />
@@ -1250,6 +1376,13 @@
           <Property Type="Int32" Name="ScrapOrderDetailID" />
           <Property Type="Int32" Name="RepairOrderID" />
           <Property Type="Int32" Name="RepairOrderDetailID" />
+          <Property Type="String" Name="Account" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="InboundOrder" Relationship="TMS.Model.FK_ToolInventoryHistory_InboundOrder" FromRole="ToolInventoryHistory" ToRole="InboundOrder" />
+          <NavigationProperty Name="InboundOrderDetail" Relationship="TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail" FromRole="ToolInventoryHistory" ToRole="InboundOrderDetail" />
+          <NavigationProperty Name="RepairOrder" Relationship="TMS.Model.FK_ToolInventoryHistory_RepairOrder" FromRole="ToolInventoryHistory" ToRole="RepairOrder" />
+          <NavigationProperty Name="RepairOrderDetail" Relationship="TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail" FromRole="ToolInventoryHistory" ToRole="RepairOrderDetail" />
+          <NavigationProperty Name="ScrapOrder" Relationship="TMS.Model.FK_ToolInventoryHistory_ScrapOrder" FromRole="ToolInventoryHistory" ToRole="ScrapOrder" />
+          <NavigationProperty Name="ScrapOrderDetail" Relationship="TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail" FromRole="ToolInventoryHistory" ToRole="ScrapOrderDetail" />
         </EntityType>
         <Association Name="FK_ToolInventoryHistory_PurchaseOrder">
           <End Type="TMS.Model.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
@@ -1325,6 +1458,8 @@
           <NavigationProperty Name="InboundOrders" Relationship="TMS.Model.FK_InboundOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="InboundOrder" />
           <NavigationProperty Name="ScrapOrders" Relationship="TMS.Model.FK_ScrapOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="ScrapOrder" />
           <NavigationProperty Name="RepairOrders" Relationship="TMS.Model.FK_RepairOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="RepairOrder" />
+          <Property Type="String" Name="JobPosition" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JobType" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OutboundOrderDetail">
           <Key>
@@ -1443,6 +1578,7 @@
           <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_InboundOrder_SystemUser" FromRole="InboundOrder" ToRole="SystemUser" />
           <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_InboundOrder_Unit" FromRole="InboundOrder" ToRole="Unit" />
           <NavigationProperty Name="Items" Relationship="TMS.Model.FK_InboundOrderDetail_InboundOrder" FromRole="InboundOrder" ToRole="InboundOrderDetail" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_InboundOrder" FromRole="InboundOrder" ToRole="ToolInventoryHistory" />
         </EntityType>
         <EntityType Name="InboundOrderDetail">
           <Key>
@@ -1460,6 +1596,8 @@
           <NavigationProperty Name="InboundOrder" Relationship="TMS.Model.FK_InboundOrderDetail_InboundOrder" FromRole="InboundOrderDetail" ToRole="InboundOrder" />
           <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" FromRole="InboundOrderDetail" ToRole="OutboundOrderDetail" />
           <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_InboundOrderDetail_Tool" FromRole="InboundOrderDetail" ToRole="Tool" />
+          <Property Type="String" Name="ScrapReason" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail" FromRole="InboundOrderDetail" ToRole="ToolInventoryHistory" />
         </EntityType>
         <Association Name="FK_InboundOrder_OutboundOrder">
           <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="1" />
@@ -1549,6 +1687,7 @@
           <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_ScrapOrder_SystemUser" FromRole="ScrapOrder" ToRole="SystemUser" />
           <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_ScrapOrder_Unit" FromRole="ScrapOrder" ToRole="Unit" />
           <NavigationProperty Name="Items" Relationship="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" FromRole="ScrapOrder" ToRole="ScrapOrderDetail" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_ScrapOrder" FromRole="ScrapOrder" ToRole="ToolInventoryHistory" />
         </EntityType>
         <EntityType Name="ScrapOrderDetail">
           <Key>
@@ -1568,6 +1707,7 @@
           <NavigationProperty Name="ScrapOrder" Relationship="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" FromRole="ScrapOrderDetail" ToRole="ScrapOrder" />
           <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_ScrapOrderDetail_Tool" FromRole="ScrapOrderDetail" ToRole="Tool" />
           <Property Type="String" Name="ScrapReason" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail" FromRole="ScrapOrderDetail" ToRole="ToolInventoryHistory" />
         </EntityType>
         <Association Name="FK_ScrapOrder_OutboundOrder">
           <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
@@ -1657,6 +1797,7 @@
           <NavigationProperty Name="SystemUser" Relationship="TMS.Model.FK_RepairOrder_SystemUser" FromRole="RepairOrder" ToRole="SystemUser" />
           <NavigationProperty Name="Customer" Relationship="TMS.Model.FK_RepairOrder_Unit" FromRole="RepairOrder" ToRole="Unit" />
           <NavigationProperty Name="Items" Relationship="TMS.Model.FK_RepairOrderDetail_RepairOrder" FromRole="RepairOrder" ToRole="RepairOrderDetail" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_RepairOrder" FromRole="RepairOrder" ToRole="ToolInventoryHistory" />
         </EntityType>
         <EntityType Name="RepairOrderDetail">
           <Key>
@@ -1675,6 +1816,7 @@
           <NavigationProperty Name="OutboundOrderDetail" Relationship="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" FromRole="RepairOrderDetail" ToRole="OutboundOrderDetail" />
           <NavigationProperty Name="RepairOrder" Relationship="TMS.Model.FK_RepairOrderDetail_RepairOrder" FromRole="RepairOrderDetail" ToRole="RepairOrder" />
           <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_RepairOrderDetail_Tool" FromRole="RepairOrderDetail" ToRole="Tool" />
+          <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail" FromRole="RepairOrderDetail" ToRole="ToolInventoryHistory" />
         </EntityType>
         <Association Name="FK_RepairOrder_OutboundOrder">
           <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
@@ -1757,6 +1899,78 @@
           <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="Deleted" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ToolInventoryHistory_InboundOrder">
+          <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrder">
+              <PropertyRef Name="InboundOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="InboundOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_InboundOrderDetail">
+          <End Type="TMS.Model.InboundOrderDetail" Role="InboundOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InboundOrderDetail">
+              <PropertyRef Name="InboundOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="InboundOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_RepairOrder">
+          <End Type="TMS.Model.RepairOrder" Role="RepairOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrder">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_RepairOrderDetail">
+          <End Type="TMS.Model.RepairOrderDetail" Role="RepairOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairOrderDetail">
+              <PropertyRef Name="RepairOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="RepairOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_ScrapOrder">
+          <End Type="TMS.Model.ScrapOrder" Role="ScrapOrder" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrder">
+              <PropertyRef Name="ScrapOrderID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ScrapOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToolInventoryHistory_ScrapOrderDetail">
+          <End Type="TMS.Model.ScrapOrderDetail" Role="ScrapOrderDetail" Multiplicity="0..1" />
+          <End Type="TMS.Model.ToolInventoryHistory" Role="ToolInventoryHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScrapOrderDetail">
+              <PropertyRef Name="ScrapOrderDetailID" />
+            </Principal>
+            <Dependent Role="ToolInventoryHistory">
+              <PropertyRef Name="ScrapOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1848,6 +2062,7 @@
           <EntitySetMapping Name="ToolInventories">
             <EntityTypeMapping TypeName="TMS.Model.ToolInventory">
               <MappingFragment StoreEntitySet="ToolInventory">
+                <ScalarProperty Name="PrescrapQuantity" ColumnName="PrescrapQuantity" />
                 <ScalarProperty Name="RepairingQuantity" ColumnName="RepairingQuantity" />
                 <ScalarProperty Name="ScrapQuantity" ColumnName="ScrapQuantity" />
                 <ScalarProperty Name="OutQuantity" ColumnName="OutQuantity" />
@@ -1871,6 +2086,7 @@
           <EntitySetMapping Name="ToolInventoryHistories">
             <EntityTypeMapping TypeName="TMS.Model.ToolInventoryHistory">
               <MappingFragment StoreEntitySet="ToolInventoryHistory">
+                <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="RepairOrderDetailID" ColumnName="RepairOrderDetailID" />
                 <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
                 <ScalarProperty Name="ScrapOrderDetailID" ColumnName="ScrapOrderDetailID" />
@@ -1893,6 +2109,8 @@
           <EntitySetMapping Name="OutboundOrders">
             <EntityTypeMapping TypeName="TMS.Model.OutboundOrder">
               <MappingFragment StoreEntitySet="OutboundOrder">
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
                 <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
                 <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
                 <ScalarProperty Name="Process" ColumnName="Process" />
@@ -1940,6 +2158,7 @@
           <EntitySetMapping Name="InboundOrderDetails">
             <EntityTypeMapping TypeName="TMS.Model.InboundOrderDetail">
               <MappingFragment StoreEntitySet="InboundOrderDetail">
+                <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="TransferQuantity" ColumnName="TransferQuantity" />
                 <ScalarProperty Name="PrescrapQuantity" ColumnName="PrescrapQuantity" />
@@ -2043,7 +2262,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="TMS.Entity" ZoomLevel="74">
+      <Diagram Name="TMS.Entity" ZoomLevel="97">
         <EntityTypeShape EntityType="TMS.Model.SystemUser" Width="1.5" PointX="0.75" PointY="17" Height="2.9251310221354174" />
         <EntityTypeShape EntityType="TMS.Model.ToolCategory" Width="1.5" PointX="1.5" PointY="13.625" Height="2.5430916341145817" />
         <AssociationConnector Association="TMS.Model.FK_ChildCategory_ParentCategory" >
@@ -2065,17 +2284,17 @@
           <ConnectorPoint PointX="3" PointY="3.6465458170572909" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_PurchaseOrder_Tool" >
-          <ConnectorPoint PointX="2.25" PointY="7.5069220769230771" />
-          <ConnectorPoint PointX="2.4410744349011204" PointY="7.3158476420219554" />
-          <ConnectorPoint PointX="2.5589255650988791" PointY="7.197996511824198" />
-          <ConnectorPoint PointX="2.65625" PointY="7.1006720769230771" />
-          <ConnectorPoint PointX="2.65625" PointY="4.2486333681233717" />
-          <ConnectorPoint PointX="3" PointY="4.2486333681233717" />
+          <ConnectorPoint PointX="2.25" PointY="7.5" />
+          <ConnectorPoint PointX="2.4410744349011204" PointY="7.3089255650988783" />
+          <ConnectorPoint PointX="2.5589255650988791" PointY="7.1910744349011209" />
+          <ConnectorPoint PointX="2.625" PointY="7.125" />
+          <ConnectorPoint PointX="2.625" PointY="4.2188347915751123" />
+          <ConnectorPoint PointX="3" PointY="4.2188347915751123" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.ToolInventory" Width="1.5" PointX="6" PointY="8.375" Height="2.9251310221354174" IsExpanded="true" />
         <AssociationConnector Association="TMS.Model.FK_ToolInventory_Supply" >
-          <ConnectorPoint PointX="2.25" PointY="2.03125" />
-          <ConnectorPoint PointX="7.15625" PointY="2.03125" />
+          <ConnectorPoint PointX="2.25" PointY="1.9632577789573453" />
+          <ConnectorPoint PointX="7.15625" PointY="1.9632577789573453" />
           <ConnectorPoint PointX="7.15625" PointY="8.375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.SystemRole" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5879931640624996" />
@@ -2086,41 +2305,42 @@
           <ConnectorPoint PointX="1.7284615384615383" PointY="25.564209798177085" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ToolInventory_Tool" >
-          <ConnectorPoint PointX="2.25" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.9901718888835" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="5.6744794791666671" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="5.8411461458333331" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="7.15625" PointY="11.990171888883502" />
-          <ConnectorPoint PointX="7.15625" PointY="11.300131022135417" />
+          <ConnectorPoint PointX="2.25" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="3.5973260416666668" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="3.7639927083333338" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.014742576497401" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="5.5549378974358978" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="5.7216045641025639" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="7.15625" PointY="12.014742576497403" />
+          <ConnectorPoint PointX="7.15625" PointY="11.491150716145834" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.ToolInventoryHistory" Width="1.5" PointX="5.25" PointY="2.375" Height="4.45328857421875" />
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_PurchaseOrder" >
-          <ConnectorPoint PointX="4.5" PointY="5.7079270426432283" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="5.7079270426432274" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="5.7079270426432283" />
-          <ConnectorPoint PointX="5.25" PointY="5.7079270426432283" />
+          <ConnectorPoint PointX="4.5" PointY="5.2729760399373351" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.2729760399373342" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="5.2729760399373351" />
+          <ConnectorPoint PointX="5.25" PointY="5.2729760399373351" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Supply" >
           <ConnectorPoint PointX="2.25" PointY="2.65625" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="2.6562499999999991" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="2.65625" />
           <ConnectorPoint PointX="5.25" PointY="2.65625" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Tool" >
-          <ConnectorPoint PointX="2.25" PointY="7.525383615384615" />
-          <ConnectorPoint PointX="2.4410744349011204" PointY="7.3343091804834941" />
-          <ConnectorPoint PointX="2.5589255650988791" PointY="7.2164580502857367" />
-          <ConnectorPoint PointX="2.875" PointY="6.9003836153846159" />
-          <ConnectorPoint PointX="2.875" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="4.5754521625600981" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="4.7421188292267642" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="4.75" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="4.8160744349011209" PointY="8.0262929153592939" />
-          <ConnectorPoint PointX="4.9339255650988791" PointY="7.9084417851615365" />
-          <ConnectorPoint PointX="5.25" PointY="7.5923673502604156" />
+          <ConnectorPoint PointX="2.25" PointY="7.7812525000000008" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="7.7812525" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="7.7812525000000008" />
+          <ConnectorPoint PointX="4.0729186666666672" PointY="7.7812525" />
+          <ConnectorPoint PointX="4.2395853333333333" PointY="7.7812525000000008" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="7.7812525" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="7.7812525000000008" />
+          <ConnectorPoint PointX="5.25" PointY="7.7812525000000008" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_PurchaseOrder_SystemUser" >
           <ConnectorPoint PointX="1.3909620384615384" PointY="17" />
@@ -2128,25 +2348,25 @@
           <ConnectorPoint PointX="3.25" PointY="16.433716634114582" />
           <ConnectorPoint PointX="3.25" PointY="12.77634765625" />
           <ConnectorPoint PointX="2.5" PointY="12.77634765625" />
-          <ConnectorPoint PointX="2.5" PointY="5.500173583150227" />
-          <ConnectorPoint PointX="2.5729166666666665" PointY="5.5001735831502261" />
-          <ConnectorPoint PointX="2.7395833333333335" PointY="5.500173583150227" />
-          <ConnectorPoint PointX="3" PointY="5.500173583150227" />
+          <ConnectorPoint PointX="2.5" PointY="5.4852742948760973" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.4852742948760964" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.4852742948760973" />
+          <ConnectorPoint PointX="3" PointY="5.4852742948760973" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.OutboundOrder" Width="1.5" PointX="3" PointY="21.125" Height="5.026347656249996" />
         <EntityTypeShape EntityType="TMS.Model.OutboundOrderDetail" Width="1.5" PointX="3" PointY="8.25" Height="3.3071704101562496" />
         <AssociationConnector Association="TMS.Model.FK_OutboundOrder_SystemUser" >
-          <ConnectorPoint PointX="2.25" PointY="18.582580743199038" />
-          <ConnectorPoint PointX="3.3789025" PointY="18.582580743199038" />
-          <ConnectorPoint PointX="3.3789025" PointY="21.125" />
+          <ConnectorPoint PointX="2.25" PointY="18.56139597944982" />
+          <ConnectorPoint PointX="3.3613237500000004" PointY="18.56139597944982" />
+          <ConnectorPoint PointX="3.3613237500000004" PointY="21.125" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_OutboundOrder_Unit" >
-          <ConnectorPoint PointX="2.25" PointY="24.656652425130211" />
-          <ConnectorPoint PointX="3" PointY="24.656652425130211" />
+          <ConnectorPoint PointX="2.25" PointY="22.84014464763986" />
+          <ConnectorPoint PointX="3" PointY="22.84014464763986" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_OutboundOrderDetail_OutboundOrder" >
-          <ConnectorPoint PointX="4.1914025000000006" PointY="21.125" />
-          <ConnectorPoint PointX="4.1914025000000006" PointY="11.748190104166666" />
+          <ConnectorPoint PointX="4.17382375" PointY="21.125" />
+          <ConnectorPoint PointX="4.17382375" PointY="11.748190104166666" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_OutboundOrderDetail_Tool" >
           <ConnectorPoint PointX="2.25" PointY="9.9990950520833337" />
@@ -2157,173 +2377,161 @@
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrder" >
           <ConnectorPoint PointX="4.5" PointY="21.126152846153843" />
           <ConnectorPoint PointX="4.875" PointY="20.751152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="4.1820885213216137" />
-          <ConnectorPoint PointX="5.25" PointY="4.1820885213216137" />
+          <ConnectorPoint PointX="4.875" PointY="3.9646130199686676" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="3.9646130199686667" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="3.9646130199686676" />
+          <ConnectorPoint PointX="5.25" PointY="3.9646130199686676" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_OutboundOrderDetail" >
-          <ConnectorPoint PointX="4.5" PointY="11.650737990586761" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.650737990586759" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="11.650737990586761" />
-          <ConnectorPoint PointX="5.578125625" PointY="11.650737990586761" />
-          <ConnectorPoint PointX="5.578125625" PointY="7.5923673502604156" />
+          <ConnectorPoint PointX="4.5" PointY="8.5897526041666659" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="8.5897526041666641" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="8.5897526041666659" />
+          <ConnectorPoint PointX="5.25" PointY="8.5897526041666659" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_Unit" >
-          <ConnectorPoint PointX="2.25" PointY="23.855176049798281" />
-          <ConnectorPoint PointX="2.75" PointY="23.855176049798281" />
-          <ConnectorPoint PointX="2.75" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="3.2955691666666667" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="3.4622358333333336" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="3.7018191666666671" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="3.8684858333333341" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="5" PointY="20.616150716145832" />
-          <ConnectorPoint PointX="5" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="5.4947922916666672" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="5.6614589583333332" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="6.1953148124999995" PointY="8.0923673502604156" />
-          <ConnectorPoint PointX="6.1953148124999995" PointY="7.5923673502604156" />
+          <ConnectorPoint PointX="0.99218499999999987" PointY="21.875" />
+          <ConnectorPoint PointX="0.99218499999999987" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="3.2779904166666669" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="3.4446570833333339" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="4.9375" PointY="20.366150716145839" />
+          <ConnectorPoint PointX="4.9375" PointY="6.1373454190572021" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="6.1373454190572012" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="6.1373454190572021" />
+          <ConnectorPoint PointX="5.25" PointY="6.1373454190572021" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.InboundOrder" Width="1.5" PointX="6" PointY="17.25" Height="3.1161507161458317" />
         <EntityTypeShape EntityType="TMS.Model.InboundOrderDetail" Width="1.5" PointX="8.25" PointY="8.25" Height="3.3071704101562496" />
         <AssociationConnector Association="TMS.Model.FK_InboundOrder_OutboundOrder" >
-          <ConnectorPoint PointX="3.7851525000000006" PointY="21.125" />
-          <ConnectorPoint PointX="3.7851525000000006" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="5.4244766666666671" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="5.5911433333333331" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="17.916290371599519" />
-          <ConnectorPoint PointX="6" PointY="17.916290371599519" />
+          <ConnectorPoint PointX="4.5" PointY="25.984538574218753" />
+          <ConnectorPoint PointX="7.15625" PointY="25.984538574218753" />
+          <ConnectorPoint PointX="7.15625" PointY="20.55717041015625" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_InboundOrder_SystemUser" >
-          <ConnectorPoint PointX="2.25" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="3.2955691666666667" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="3.4622358333333336" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="3.7018191666666671" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="3.8684858333333341" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="5.4244766666666671" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="5.5911433333333331" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="19.206501587300117" />
-          <ConnectorPoint PointX="6" PointY="19.206501587300117" />
+          <ConnectorPoint PointX="2.25" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="5.4029916666666669" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="5.5696583333333329" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="5.6910791666666674" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="5.8577458333333334" PointY="17.84319798972491" />
+          <ConnectorPoint PointX="6" PointY="17.84319798972491" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_InboundOrder_Unit" >
           <ConnectorPoint PointX="2.25" PointY="21.876152846153843" />
           <ConnectorPoint PointX="2.625" PointY="21.501152846153843" />
-          <ConnectorPoint PointX="2.625" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="3.2955691666666667" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="3.4622358333333336" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="3.7018191666666671" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="3.8684858333333341" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="5.4244766666666671" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="5.5911433333333331" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="19.817578151722977" />
-          <ConnectorPoint PointX="6" PointY="19.817578151722977" />
+          <ConnectorPoint PointX="2.625" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="3.2779904166666669" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="3.4446570833333339" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="5.4029916666666669" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="5.5696583333333329" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="5.6910791666666674" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="5.8577458333333334" PointY="19.463773347797829" />
+          <ConnectorPoint PointX="6" PointY="19.463773347797829" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_InboundOrder" >
-          <ConnectorPoint PointX="7.5" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="9" PointY="18.808075358072916" />
-          <ConnectorPoint PointX="9" PointY="11.55717041015625" />
+          <ConnectorPoint PointX="7.5" PointY="17.251152846153843" />
+          <ConnectorPoint PointX="7.875" PointY="16.876152846153843" />
+          <ConnectorPoint PointX="7.875" PointY="10.110229399088542" />
+          <ConnectorPoint PointX="8.25" PointY="10.110229399088542" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" >
-          <ConnectorPoint PointX="4.5" PointY="8.28125" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="8.2812499999999982" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="8.28125" />
-          <ConnectorPoint PointX="5.4947922916666672" PointY="8.28125" />
-          <ConnectorPoint PointX="5.6614589583333332" PointY="8.28125" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="8.28125" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="8.28125" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="8.28125" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="8.28125" />
-          <ConnectorPoint PointX="8.25" PointY="8.28125" />
+          <ConnectorPoint PointX="3.75" PointY="8.25" />
+          <ConnectorPoint PointX="3.75" PointY="8.125" />
+          <ConnectorPoint PointX="4.0729186666666672" PointY="8.125" />
+          <ConnectorPoint PointX="4.2395853333333333" PointY="8.125" />
+          <ConnectorPoint PointX="4.75" PointY="8.125" />
+          <ConnectorPoint PointX="4.75" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.74115071614583" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="5.5549378974358978" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="5.7216045641025639" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="7.75" PointY="11.741150716145832" />
+          <ConnectorPoint PointX="7.75" PointY="9.1488626995442779" />
+          <ConnectorPoint PointX="7.822916666666667" PointY="9.1488626995442779" />
+          <ConnectorPoint PointX="8.0208333333333339" PointY="9.1488626995442779" />
+          <ConnectorPoint PointX="8.25" PointY="9.1488626995442779" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_InboundOrderDetail_Tool" >
-          <ConnectorPoint PointX="2.25" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.869178496525082" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="5.6744794791666671" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="5.8411461458333331" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="8.5937475" PointY="11.869178496525084" />
-          <ConnectorPoint PointX="8.5937475" PointY="11.55717041015625" />
+          <ConnectorPoint PointX="2.25" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="3.5973260416666668" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="3.7639927083333338" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.902680257161455" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="5.5549378974358978" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="5.7216045641025639" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="8.0208333333333339" PointY="11.902680257161457" />
+          <ConnectorPoint PointX="8.25" PointY="11.902680257161457" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.ScrapOrder" Width="1.5" PointX="5.25" PointY="21.875" Height="3.3071704101562531" />
         <EntityTypeShape EntityType="TMS.Model.ScrapOrderDetail" Width="1.5" PointX="5.25" PointY="12.125" Height="3.4981901041666674" />
         <AssociationConnector Association="TMS.Model.FK_ScrapOrder_OutboundOrder" >
-          <ConnectorPoint PointX="4.5" PointY="23.988855506347662" />
-          <ConnectorPoint PointX="5.25" PointY="23.988855506347662" />
+          <ConnectorPoint PointX="4.5" PointY="24.228199822499597" />
+          <ConnectorPoint PointX="5.25" PointY="24.228199822499597" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail" >
-          <ConnectorPoint PointX="4.5" PointY="11.475432006361089" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.475432006361087" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="11.475432006361089" />
-          <ConnectorPoint PointX="5.4947922916666672" PointY="11.475432006361089" />
-          <ConnectorPoint PointX="5.6614589583333332" PointY="11.475432006361089" />
-          <ConnectorPoint PointX="5.7578128125" PointY="11.475432006361089" />
-          <ConnectorPoint PointX="5.7578128125" PointY="12.125" />
+          <ConnectorPoint PointX="3.6806593750000003" PointY="11.748190104166666" />
+          <ConnectorPoint PointX="3.6806593750000003" PointY="14.39078857421875" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="14.39078857421875" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="14.39078857421875" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="14.390788574218748" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="14.39078857421875" />
+          <ConnectorPoint PointX="5.25" PointY="14.39078857421875" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ScrapOrder_SystemUser" >
-          <ConnectorPoint PointX="2.25" PointY="17.09375" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="17.09375" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="17.09375" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="17.09375" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="17.09375" />
-          <ConnectorPoint PointX="5.50781" PointY="17.09375" />
-          <ConnectorPoint PointX="5.50781" PointY="21.875" />
+          <ConnectorPoint PointX="2.25" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="5.486325" PointY="17.043768835674033" />
+          <ConnectorPoint PointX="5.486325" PointY="21.875" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ScrapOrder_Unit" >
-          <ConnectorPoint PointX="1.5" PointY="21.875" />
-          <ConnectorPoint PointX="1.5" PointY="20.875" />
+          <ConnectorPoint PointX="1.3984369999999997" PointY="21.875" />
+          <ConnectorPoint PointX="1.3984369999999997" PointY="20.875" />
           <ConnectorPoint PointX="2.5416666666666665" PointY="20.875" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="20.875" />
-          <ConnectorPoint PointX="3.2955691666666667" PointY="20.875" />
-          <ConnectorPoint PointX="3.4622358333333336" PointY="20.875" />
-          <ConnectorPoint PointX="3.7018191666666671" PointY="20.875" />
-          <ConnectorPoint PointX="3.8684858333333341" PointY="20.875" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="20.875" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="20.875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="20.875" />
+          <ConnectorPoint PointX="3.2779904166666669" PointY="20.875" />
+          <ConnectorPoint PointX="3.4446570833333339" PointY="20.875" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="20.875" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="20.875" />
           <ConnectorPoint PointX="4.66781951282051" PointY="20.875" />
           <ConnectorPoint PointX="4.8344861794871763" PointY="20.875" />
           <ConnectorPoint PointX="4.9375" PointY="20.875" />
-          <ConnectorPoint PointX="4.9375" PointY="22.900675753173836" />
-          <ConnectorPoint PointX="5.25" PointY="22.900675753173836" />
+          <ConnectorPoint PointX="4.9375" PointY="23.020347911249807" />
+          <ConnectorPoint PointX="5.25" PointY="23.020347911249807" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_ScrapOrder" >
-          <ConnectorPoint PointX="5.828125" PointY="21.875" />
-          <ConnectorPoint PointX="5.828125" PointY="15.814209798177084" />
+          <ConnectorPoint PointX="5.7744125" PointY="21.875" />
+          <ConnectorPoint PointX="5.7744125" PointY="16.0052294921875" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_ScrapOrderDetail_Tool" >
           <ConnectorPoint PointX="2.25" PointY="12.325673828125" />
           <ConnectorPoint PointX="2.4166666666666665" PointY="12.325673828125" />
           <ConnectorPoint PointX="2.5833333333333335" PointY="12.325673828125" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="12.325673828125" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="12.325673828125" />
+          <ConnectorPoint PointX="3.5973260416666668" PointY="12.325673828125" />
+          <ConnectorPoint PointX="3.7639927083333338" PointY="12.325673828125" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="12.325673828125" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="12.325673828125" />
           <ConnectorPoint PointX="4.791666666666667" PointY="12.325673828124998" />
           <ConnectorPoint PointX="5.083333333333333" PointY="12.325673828125" />
           <ConnectorPoint PointX="5.25" PointY="12.325673828125" />
@@ -2334,96 +2542,136 @@
           <ConnectorPoint PointX="4.5" PointY="21.500578923076915" />
           <ConnectorPoint PointX="4.854166666666667" PointY="21.500578923076915" />
           <ConnectorPoint PointX="5.020833333333333" PointY="21.500578923076915" />
-          <ConnectorPoint PointX="5.4244766666666671" PointY="21.500578923076915" />
-          <ConnectorPoint PointX="5.5911433333333331" PointY="21.500578923076915" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="21.500578923076915" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.4029916666666669" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.5696583333333329" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.6910791666666674" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="5.8577458333333334" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="21.500578923076915" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="21.500578923076915" />
           <ConnectorPoint PointX="7.791666666666667" PointY="21.500578923076915" />
           <ConnectorPoint PointX="7.958333333333333" PointY="21.500578923076915" />
           <ConnectorPoint PointX="8.25" PointY="21.500578923076915" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" >
-          <ConnectorPoint PointX="4.5" PointY="8.2511528461538468" />
-          <ConnectorPoint PointX="4.8761528461538468" PointY="7.875" />
-          <ConnectorPoint PointX="4.8840340169270826" PointY="7.8749999999999991" />
-          <ConnectorPoint PointX="5.0507006835937487" PointY="7.875" />
-          <ConnectorPoint PointX="5.4947922916666672" PointY="7.8749999999999991" />
-          <ConnectorPoint PointX="5.6614589583333332" PointY="7.875" />
-          <ConnectorPoint PointX="6.1119814791666665" PointY="7.8749999999999991" />
-          <ConnectorPoint PointX="6.2786481458333325" PointY="7.875" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="7.8749999999999991" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="7.875" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="7.8749999999999991" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="7.875" />
-          <ConnectorPoint PointX="9" PointY="7.875" />
-          <ConnectorPoint PointX="9" PointY="6.7481901041666674" />
+          <ConnectorPoint PointX="4.156252" PointY="8.25" />
+          <ConnectorPoint PointX="4.156252" PointY="6.9392097981770817" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="6.9392097981770808" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="6.9392097981770817" />
+          <ConnectorPoint PointX="5" PointY="6.9392097981770817" />
+          <ConnectorPoint PointX="5" PointY="2.125" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="2.1249999999999996" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="2.125" />
+          <ConnectorPoint PointX="7.5" PointY="2.125" />
+          <ConnectorPoint PointX="7.5" PointY="5.0155979755859441" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="5.0155979755859432" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="5.0155979755859441" />
+          <ConnectorPoint PointX="8.25" PointY="5.0155979755859441" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_RepairOrder_SystemUser" >
-          <ConnectorPoint PointX="2.25" PointY="17.1250025" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="17.1250025" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="17.1250025" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="17.1250025" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="17.1250025" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="17.1250025" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="17.1250025" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="17.1250025" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="17.1250025" />
-          <ConnectorPoint PointX="8.625" PointY="17.1250025" />
-          <ConnectorPoint PointX="8.625" PointY="20" />
+          <ConnectorPoint PointX="2.25" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="5.4029916666666669" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="5.5696583333333329" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="5.6910791666666674" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="5.9845288508352477" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="7.5177768414724424" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="7.6844435081391085" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="7.822916666666667" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="8.0208333333333339" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="9.0624058461538457" PointY="17.150042671348068" />
+          <ConnectorPoint PointX="9.0624058461538457" PointY="20" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_RepairOrder_Unit" >
-          <ConnectorPoint PointX="1.9062519999999998" PointY="21.875" />
-          <ConnectorPoint PointX="1.9062519999999998" PointY="20.859375" />
+          <ConnectorPoint PointX="1.8046889999999998" PointY="21.875" />
+          <ConnectorPoint PointX="1.8046889999999998" PointY="20.859375" />
           <ConnectorPoint PointX="2.5416666666666665" PointY="20.859375" />
-          <ConnectorPoint PointX="2.8333333333333335" PointY="20.859375" />
-          <ConnectorPoint PointX="3.2955691666666667" PointY="20.859375" />
-          <ConnectorPoint PointX="3.4622358333333336" PointY="20.859375" />
-          <ConnectorPoint PointX="3.7018191666666671" PointY="20.859375" />
-          <ConnectorPoint PointX="3.8684858333333341" PointY="20.859375" />
-          <ConnectorPoint PointX="4.1080691666666675" PointY="20.859375" />
-          <ConnectorPoint PointX="4.2747358333333336" PointY="20.859375" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="20.859375" />
+          <ConnectorPoint PointX="3.2779904166666669" PointY="20.859375" />
+          <ConnectorPoint PointX="3.4446570833333339" PointY="20.859375" />
+          <ConnectorPoint PointX="4.0904904166666674" PointY="20.859375" />
+          <ConnectorPoint PointX="4.2571570833333334" PointY="20.859375" />
           <ConnectorPoint PointX="4.68344451282051" PointY="20.859375" />
-          <ConnectorPoint PointX="4.8501111794871763" PointY="20.859375" />
-          <ConnectorPoint PointX="5.4244766666666671" PointY="20.859375" />
-          <ConnectorPoint PointX="5.5911433333333331" PointY="20.859375" />
-          <ConnectorPoint PointX="5.744791666666667" PointY="20.859375" />
-          <ConnectorPoint PointX="5.911458333333333" PointY="20.859375" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="20.859375" />
+          <ConnectorPoint PointX="5.4029916666666669" PointY="20.859375" />
+          <ConnectorPoint PointX="5.5696583333333329" PointY="20.859375" />
+          <ConnectorPoint PointX="5.6910791666666674" PointY="20.859375" />
+          <ConnectorPoint PointX="5.8577458333333334" PointY="20.859375" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="20.859375" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="20.859375" />
           <ConnectorPoint PointX="7.875" PointY="20.859375" />
-          <ConnectorPoint PointX="7.875" PointY="22.435126666616576" />
-          <ConnectorPoint PointX="8.25" PointY="22.435126666616576" />
+          <ConnectorPoint PointX="7.875" PointY="22.530636513621786" />
+          <ConnectorPoint PointX="8.25" PointY="22.530636513621786" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_RepairOrder" >
-          <ConnectorPoint PointX="8.25" PointY="20" />
-          <ConnectorPoint PointX="7.875" PointY="19.625" />
-          <ConnectorPoint PointX="7.875" PointY="7.1231901041666674" />
-          <ConnectorPoint PointX="8.25" PointY="6.7481901041666674" />
+          <ConnectorPoint PointX="8.2753836153846159" PointY="20" />
+          <ConnectorPoint PointX="7.9375" PointY="19.662116384615384" />
+          <ConnectorPoint PointX="7.9375" PointY="7.2517097981770817" />
+          <ConnectorPoint PointX="8.25" PointY="6.9392097981770817" />
         </AssociationConnector>
         <AssociationConnector Association="TMS.Model.FK_RepairOrderDetail_Tool" >
-          <ConnectorPoint PointX="2.25" PointY="8.7622393337339748" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="8.7622393337339748" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="8.7622393337339748" />
-          <ConnectorPoint PointX="2.75" PointY="8.7622393337339748" />
-          <ConnectorPoint PointX="2.75" PointY="7.75" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="7.75" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="7.75" />
-          <ConnectorPoint PointX="5.0090340169270826" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="5.1757006835937487" PointY="7.75" />
-          <ConnectorPoint PointX="5.4947922916666672" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="5.6614589583333332" PointY="7.75" />
-          <ConnectorPoint PointX="6.1119814791666665" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="6.2786481458333325" PointY="7.75" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="7.75" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="7.75" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="7.75" />
-          <ConnectorPoint PointX="9.406252" PointY="7.75" />
-          <ConnectorPoint PointX="9.406252" PointY="6.7481901041666674" />
+          <ConnectorPoint PointX="1.4687480000000002" PointY="7.5" />
+          <ConnectorPoint PointX="1.4687480000000002" PointY="7.0017097981770817" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="7.0017097981770808" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="7.0017097981770817" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="7.0017097981770808" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="7.0017097981770817" />
+          <ConnectorPoint PointX="5.03125" PointY="7.0017097981770817" />
+          <ConnectorPoint PointX="5.03125" PointY="2.25" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="2.2499999999999996" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="2.25" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="2.2499999999999996" />
+          <ConnectorPoint PointX="7.583333333333333" PointY="2.25" />
+          <ConnectorPoint PointX="7.625" PointY="2.25" />
+          <ConnectorPoint PointX="7.625" PointY="5.9774038868815129" />
+          <ConnectorPoint PointX="8.25" PointY="5.9774038868815129" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TMS.Model.Article" Width="1.5" PointX="10.375" PointY="0.75" Height="1.5879931640625031" />
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_InboundOrder" >
+          <ConnectorPoint PointX="6.0011528461538459" PointY="17.25" />
+          <ConnectorPoint PointX="5.8333380650988795" PointY="17.082185218945032" />
+          <ConnectorPoint PointX="5.7154869349011213" PointY="16.964334088747275" />
+          <ConnectorPoint PointX="5.3761528461538468" PointY="16.625" />
+          <ConnectorPoint PointX="5" PointY="16.625" />
+          <ConnectorPoint PointX="5" PointY="9.1552744391025644" />
+          <ConnectorPoint PointX="5.25" PointY="8.9052744391025644" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail" >
+          <ConnectorPoint PointX="8.25" PointY="8.28125" />
+          <ConnectorPoint PointX="8.0208333333333339" PointY="8.28125" />
+          <ConnectorPoint PointX="7.822916666666667" PointY="8.28125" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="8.28125" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="8.28125" />
+          <ConnectorPoint PointX="6.75" PointY="8.28125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_RepairOrder" >
+          <ConnectorPoint PointX="8.2569220769230771" PointY="20" />
+          <ConnectorPoint PointX="7.90625" PointY="19.649327923076925" />
+          <ConnectorPoint PointX="7.90625" PointY="7.0980744434407566" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.0980744434407557" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.0980744434407566" />
+          <ConnectorPoint PointX="6.75" PointY="7.0980744434407566" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail" >
+          <ConnectorPoint PointX="8.25" PointY="4.0702989877929721" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="4.0702989877929712" />
+          <ConnectorPoint PointX="7.416666666666667" PointY="4.0702989877929721" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="4.0702989877929712" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="4.0702989877929721" />
+          <ConnectorPoint PointX="6.75" PointY="4.0702989877929721" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_ScrapOrder" >
+          <ConnectorPoint PointX="5.2823066923076922" PointY="21.875" />
+          <ConnectorPoint PointX="4.90625" PointY="21.498943307692308" />
+          <ConnectorPoint PointX="4.90625" PointY="9.2997926698717954" />
+          <ConnectorPoint PointX="5.2765374615384619" PointY="8.9295052083333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail" >
+          <ConnectorPoint PointX="5.6382712307692309" PointY="12.125" />
+          <ConnectorPoint PointX="5.6382712307692309" PointY="8.9295052083333335" />
+        </AssociationConnector>
         </Diagram>
     </Diagrams>
   </Designer>

@@ -44,13 +44,13 @@
             this.dataGridViewDetail = new System.Windows.Forms.DataGridView();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrescrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RepairQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RepairingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScrapReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScrapReason = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this._operationsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
@@ -97,7 +97,7 @@
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._operationsPanel.Location = new System.Drawing.Point(0, 272);
             this._operationsPanel.Name = "_operationsPanel";
-            this._operationsPanel.Size = new System.Drawing.Size(741, 39);
+            this._operationsPanel.Size = new System.Drawing.Size(799, 39);
             this._operationsPanel.TabIndex = 20;
             // 
             // _cancelButton
@@ -171,18 +171,18 @@
             this.dataGridViewDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
             this.ItemCode,
-            this.ItemQuantity,
+            this.PrescrapQuantity,
             this.ItemName,
             this.ItemDimensions,
             this.Quantity,
-            this.RepairQuantity,
+            this.RepairingQuantity,
             this.ScrapQuantity,
             this.ScrapReason});
             this.dataGridViewDetail.Location = new System.Drawing.Point(25, 79);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";
             this.dataGridViewDetail.RowTemplate.Height = 23;
-            this.dataGridViewDetail.Size = new System.Drawing.Size(692, 181);
+            this.dataGridViewDetail.Size = new System.Drawing.Size(748, 181);
             this.dataGridViewDetail.TabIndex = 19;
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
             // 
@@ -199,12 +199,12 @@
             this.ItemCode.ReadOnly = true;
             this.ItemCode.Width = 90;
             // 
-            // ItemQuantity
+            // PrescrapQuantity
             // 
-            this.ItemQuantity.HeaderText = "预报废数量";
-            this.ItemQuantity.Name = "ItemQuantity";
-            this.ItemQuantity.ReadOnly = true;
-            this.ItemQuantity.Width = 90;
+            this.PrescrapQuantity.HeaderText = "预报废数量";
+            this.PrescrapQuantity.Name = "PrescrapQuantity";
+            this.PrescrapQuantity.ReadOnly = true;
+            this.PrescrapQuantity.Width = 90;
             // 
             // ItemName
             // 
@@ -226,11 +226,11 @@
             this.Quantity.Name = "Quantity";
             this.Quantity.Width = 72;
             // 
-            // RepairQuantity
+            // RepairingQuantity
             // 
-            this.RepairQuantity.HeaderText = "修理数";
-            this.RepairQuantity.Name = "RepairQuantity";
-            this.RepairQuantity.Width = 96;
+            this.RepairingQuantity.HeaderText = "修理数";
+            this.RepairingQuantity.Name = "RepairingQuantity";
+            this.RepairingQuantity.Width = 96;
             // 
             // ScrapQuantity
             // 
@@ -242,12 +242,14 @@
             // 
             this.ScrapReason.HeaderText = "报废原因";
             this.ScrapReason.Name = "ScrapReason";
+            this.ScrapReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapReason.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CreateScrapOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 311);
+            this.ClientSize = new System.Drawing.Size(799, 311);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.cbCustomer);
             this.Controls.Add(this._operationsPanel);
@@ -287,12 +289,12 @@
         private System.Windows.Forms.DataGridView dataGridViewDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrescrapQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RepairQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RepairingQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScrapQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScrapReason;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ScrapReason;
     }
 }

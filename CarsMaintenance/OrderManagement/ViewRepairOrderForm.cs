@@ -22,7 +22,13 @@ namespace CarsMaintenance.OrderManagement
         {
             var query = from o in SystemHelper.TMSContext.RepairOrders
                         orderby o.RepairDate
-                        select o;
+                        select new
+                        {
+                            o.RepairOrderID,
+                            o.RepairDate,
+                            o.Code,
+                            Status = (o.Status == 0 ? "待修理" : "已修理")
+                        };
 
             dataGridViewRepairOrder.DataSource = query;
         }
@@ -54,6 +60,13 @@ namespace CarsMaintenance.OrderManagement
             using (CreateRepairOrderForm form = new CreateRepairOrderForm())
             {
                 form.CurrentOrder = GetSelectedOrder();
+
+                if (form.CurrentOrder.Status == 1)
+                {
+                    MessageBox.Show("已处理，请重新选择修理单!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+
                 form.CurrentMode = CreateRepairOrderForm.MODE_CREATE;
 
                 if (form.ShowDialog() == DialogResult.OK)
@@ -131,7 +144,13 @@ namespace CarsMaintenance.OrderManagement
             var query = from o in SystemHelper.TMSContext.RepairOrders
                         where o.RepairDate >= beginDate && o.RepairDate <= endDate
                         orderby o.RepairDate
-                        select o;
+                        select new
+                        {
+                            o.RepairOrderID,
+                            o.RepairDate,
+                            o.Code,
+                            Status = (o.Status == 0 ? "待修理" : "已修理")
+                        };
 
             dataGridViewRepairOrder.DataSource = query;
         }

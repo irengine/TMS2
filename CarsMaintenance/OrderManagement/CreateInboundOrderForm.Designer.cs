@@ -37,8 +37,9 @@
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrescrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransferQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrescrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScrapReason = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this._cancelButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbCustomer = new System.Windows.Forms.ComboBox();
@@ -77,13 +78,14 @@
             this.ItemName,
             this.ItemDimensions,
             this.Quantity,
+            this.TransferQuantity,
             this.PrescrapQuantity,
-            this.TransferQuantity});
-            this.dataGridViewDetail.Location = new System.Drawing.Point(25, 83);
+            this.ScrapReason});
+            this.dataGridViewDetail.Location = new System.Drawing.Point(12, 83);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";
             this.dataGridViewDetail.RowTemplate.Height = 23;
-            this.dataGridViewDetail.Size = new System.Drawing.Size(692, 181);
+            this.dataGridViewDetail.Size = new System.Drawing.Size(754, 181);
             this.dataGridViewDetail.TabIndex = 8;
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
             // 
@@ -127,17 +129,22 @@
             this.Quantity.Name = "Quantity";
             this.Quantity.Width = 72;
             // 
+            // TransferQuantity
+            // 
+            this.TransferQuantity.HeaderText = "转借数";
+            this.TransferQuantity.Name = "TransferQuantity";
+            this.TransferQuantity.Width = 72;
+            // 
             // PrescrapQuantity
             // 
             this.PrescrapQuantity.HeaderText = "预报废数";
             this.PrescrapQuantity.Name = "PrescrapQuantity";
             this.PrescrapQuantity.Width = 96;
             // 
-            // TransferQuantity
+            // ScrapReason
             // 
-            this.TransferQuantity.HeaderText = "转借数";
-            this.TransferQuantity.Name = "TransferQuantity";
-            this.TransferQuantity.Width = 72;
+            this.ScrapReason.HeaderText = "报废原因";
+            this.ScrapReason.Name = "ScrapReason";
             // 
             // _cancelButton
             // 
@@ -183,7 +190,7 @@
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._operationsPanel.Location = new System.Drawing.Point(0, 272);
             this._operationsPanel.Name = "_operationsPanel";
-            this._operationsPanel.Size = new System.Drawing.Size(741, 39);
+            this._operationsPanel.Size = new System.Drawing.Size(777, 39);
             this._operationsPanel.TabIndex = 9;
             // 
             // lblCustomer
@@ -239,7 +246,7 @@
             // 
             // btnTransfer
             // 
-            this.btnTransfer.Location = new System.Drawing.Point(642, 54);
+            this.btnTransfer.Location = new System.Drawing.Point(690, 54);
             this.btnTransfer.Name = "btnTransfer";
             this.btnTransfer.Size = new System.Drawing.Size(75, 23);
             this.btnTransfer.TabIndex = 10;
@@ -252,7 +259,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._cancelButton;
-            this.ClientSize = new System.Drawing.Size(741, 311);
+            this.ClientSize = new System.Drawing.Size(777, 311);
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.dataGridViewDetail);
@@ -291,15 +298,16 @@
         private System.Windows.Forms.DateTimePicker dtInboundDate;
         private System.Windows.Forms.Label lblInboundDate;
         private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Button btnTransfer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrescrapQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransferQuantity;
-        private System.Windows.Forms.Button btnTransfer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrescrapQuantity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ScrapReason;
 
     }
 }

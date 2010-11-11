@@ -37,8 +37,12 @@
             this.rbDay = new System.Windows.Forms.RadioButton();
             this.rbNight = new System.Windows.Forms.RadioButton();
             this.gbJob = new System.Windows.Forms.GroupBox();
+            this.cbJobType = new System.Windows.Forms.ComboBox();
+            this.cbJobPosition = new System.Windows.Forms.ComboBox();
             this.txtProcess = new System.Windows.Forms.TextBox();
+            this.lblJobType = new System.Windows.Forms.Label();
             this.lblProcess = new System.Windows.Forms.Label();
+            this.lblJobPosition = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.txtCargo = new System.Windows.Forms.TextBox();
@@ -77,42 +81,42 @@
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(23, 19);
+            this.lblCode.Location = new System.Drawing.Point(23, 21);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(53, 12);
+            this.lblCode.Size = new System.Drawing.Size(55, 13);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "借用单号";
             // 
             // txtCode
             // 
             this.txtCode.Enabled = false;
-            this.txtCode.Location = new System.Drawing.Point(91, 16);
+            this.txtCode.Location = new System.Drawing.Point(91, 17);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(200, 21);
+            this.txtCode.Size = new System.Drawing.Size(200, 20);
             this.txtCode.TabIndex = 1;
             // 
             // lblOutboundDate
             // 
             this.lblOutboundDate.AutoSize = true;
-            this.lblOutboundDate.Location = new System.Drawing.Point(23, 48);
+            this.lblOutboundDate.Location = new System.Drawing.Point(23, 52);
             this.lblOutboundDate.Name = "lblOutboundDate";
-            this.lblOutboundDate.Size = new System.Drawing.Size(29, 12);
+            this.lblOutboundDate.Size = new System.Drawing.Size(31, 13);
             this.lblOutboundDate.TabIndex = 4;
             this.lblOutboundDate.Text = "日期";
             // 
             // dtOutboundDate
             // 
-            this.dtOutboundDate.Location = new System.Drawing.Point(91, 42);
+            this.dtOutboundDate.Location = new System.Drawing.Point(91, 46);
             this.dtOutboundDate.Name = "dtOutboundDate";
-            this.dtOutboundDate.Size = new System.Drawing.Size(200, 21);
+            this.dtOutboundDate.Size = new System.Drawing.Size(200, 20);
             this.dtOutboundDate.TabIndex = 5;
             // 
             // lblGroup
             // 
             this.lblGroup.AutoSize = true;
-            this.lblGroup.Location = new System.Drawing.Point(366, 48);
+            this.lblGroup.Location = new System.Drawing.Point(366, 52);
             this.lblGroup.Name = "lblGroup";
-            this.lblGroup.Size = new System.Drawing.Size(29, 12);
+            this.lblGroup.Size = new System.Drawing.Size(31, 13);
             this.lblGroup.TabIndex = 6;
             this.lblGroup.Text = "班别";
             // 
@@ -121,9 +125,9 @@
             this.rbDay.AutoSize = true;
             this.rbDay.Checked = true;
             this.rbDay.Enabled = false;
-            this.rbDay.Location = new System.Drawing.Point(414, 48);
+            this.rbDay.Location = new System.Drawing.Point(414, 52);
             this.rbDay.Name = "rbDay";
-            this.rbDay.Size = new System.Drawing.Size(47, 16);
+            this.rbDay.Size = new System.Drawing.Size(49, 17);
             this.rbDay.TabIndex = 7;
             this.rbDay.TabStop = true;
             this.rbDay.Text = "日班";
@@ -133,17 +137,21 @@
             // 
             this.rbNight.AutoSize = true;
             this.rbNight.Enabled = false;
-            this.rbNight.Location = new System.Drawing.Point(483, 48);
+            this.rbNight.Location = new System.Drawing.Point(483, 52);
             this.rbNight.Name = "rbNight";
-            this.rbNight.Size = new System.Drawing.Size(47, 16);
+            this.rbNight.Size = new System.Drawing.Size(49, 17);
             this.rbNight.TabIndex = 8;
             this.rbNight.Text = "夜班";
             this.rbNight.UseVisualStyleBackColor = true;
             // 
             // gbJob
             // 
+            this.gbJob.Controls.Add(this.cbJobType);
+            this.gbJob.Controls.Add(this.cbJobPosition);
             this.gbJob.Controls.Add(this.txtProcess);
+            this.gbJob.Controls.Add(this.lblJobType);
             this.gbJob.Controls.Add(this.lblProcess);
+            this.gbJob.Controls.Add(this.lblJobPosition);
             this.gbJob.Controls.Add(this.txtQuantity);
             this.gbJob.Controls.Add(this.lblQuantity);
             this.gbJob.Controls.Add(this.txtCargo);
@@ -156,180 +164,217 @@
             this.gbJob.Controls.Add(this.lblMachine);
             this.gbJob.Controls.Add(this.txtBerth);
             this.gbJob.Controls.Add(this.lblBerth);
-            this.gbJob.Location = new System.Drawing.Point(12, 105);
+            this.gbJob.Location = new System.Drawing.Point(12, 114);
             this.gbJob.Name = "gbJob";
-            this.gbJob.Size = new System.Drawing.Size(634, 131);
+            this.gbJob.Size = new System.Drawing.Size(634, 168);
             this.gbJob.TabIndex = 11;
             this.gbJob.TabStop = false;
             this.gbJob.Text = "作业信息";
             // 
+            // cbJobType
+            // 
+            this.cbJobType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbJobType.FormattingEnabled = true;
+            this.cbJobType.Location = new System.Drawing.Point(403, 22);
+            this.cbJobType.Name = "cbJobType";
+            this.cbJobType.Size = new System.Drawing.Size(200, 21);
+            this.cbJobType.TabIndex = 3;
+            this.cbJobType.Validating += new System.ComponentModel.CancelEventHandler(this.cbJobType_Validating);
+            // 
+            // cbJobPosition
+            // 
+            this.cbJobPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbJobPosition.FormattingEnabled = true;
+            this.cbJobPosition.Location = new System.Drawing.Point(79, 19);
+            this.cbJobPosition.Name = "cbJobPosition";
+            this.cbJobPosition.Size = new System.Drawing.Size(200, 21);
+            this.cbJobPosition.TabIndex = 1;
+            // 
             // txtProcess
             // 
             this.txtProcess.Enabled = false;
-            this.txtProcess.Location = new System.Drawing.Point(79, 101);
+            this.txtProcess.Location = new System.Drawing.Point(79, 136);
             this.txtProcess.Name = "txtProcess";
-            this.txtProcess.Size = new System.Drawing.Size(200, 21);
-            this.txtProcess.TabIndex = 13;
+            this.txtProcess.Size = new System.Drawing.Size(200, 20);
+            this.txtProcess.TabIndex = 17;
+            // 
+            // lblJobType
+            // 
+            this.lblJobType.AutoSize = true;
+            this.lblJobType.Location = new System.Drawing.Point(334, 25);
+            this.lblJobType.Name = "lblJobType";
+            this.lblJobType.Size = new System.Drawing.Size(31, 13);
+            this.lblJobType.TabIndex = 2;
+            this.lblJobType.Text = "类型";
             // 
             // lblProcess
             // 
             this.lblProcess.AutoSize = true;
-            this.lblProcess.Location = new System.Drawing.Point(11, 104);
+            this.lblProcess.Location = new System.Drawing.Point(11, 140);
             this.lblProcess.Name = "lblProcess";
-            this.lblProcess.Size = new System.Drawing.Size(53, 12);
-            this.lblProcess.TabIndex = 12;
+            this.lblProcess.Size = new System.Drawing.Size(55, 13);
+            this.lblProcess.TabIndex = 16;
             this.lblProcess.Text = "操作过程";
+            // 
+            // lblJobPosition
+            // 
+            this.lblJobPosition.AutoSize = true;
+            this.lblJobPosition.Location = new System.Drawing.Point(11, 22);
+            this.lblJobPosition.Name = "lblJobPosition";
+            this.lblJobPosition.Size = new System.Drawing.Size(55, 13);
+            this.lblJobPosition.TabIndex = 0;
+            this.lblJobPosition.Text = "作业位置";
             // 
             // txtQuantity
             // 
             this.txtQuantity.Enabled = false;
-            this.txtQuantity.Location = new System.Drawing.Point(402, 77);
+            this.txtQuantity.Location = new System.Drawing.Point(402, 110);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(200, 21);
-            this.txtQuantity.TabIndex = 11;
+            this.txtQuantity.Size = new System.Drawing.Size(200, 20);
+            this.txtQuantity.TabIndex = 15;
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(334, 80);
+            this.lblQuantity.Location = new System.Drawing.Point(334, 114);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(29, 12);
-            this.lblQuantity.TabIndex = 10;
+            this.lblQuantity.Size = new System.Drawing.Size(31, 13);
+            this.lblQuantity.TabIndex = 14;
             this.lblQuantity.Text = "数量";
             // 
             // txtCargo
             // 
             this.txtCargo.Enabled = false;
-            this.txtCargo.Location = new System.Drawing.Point(79, 74);
+            this.txtCargo.Location = new System.Drawing.Point(79, 107);
             this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(200, 21);
-            this.txtCargo.TabIndex = 9;
+            this.txtCargo.Size = new System.Drawing.Size(200, 20);
+            this.txtCargo.TabIndex = 13;
             // 
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(11, 77);
+            this.lblCargo.Location = new System.Drawing.Point(11, 110);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(29, 12);
-            this.lblCargo.TabIndex = 8;
+            this.lblCargo.Size = new System.Drawing.Size(31, 13);
+            this.lblCargo.TabIndex = 12;
             this.lblCargo.Text = "货种";
             // 
             // txtHatch
             // 
             this.txtHatch.Enabled = false;
-            this.txtHatch.Location = new System.Drawing.Point(402, 50);
+            this.txtHatch.Location = new System.Drawing.Point(402, 81);
             this.txtHatch.Name = "txtHatch";
-            this.txtHatch.Size = new System.Drawing.Size(200, 21);
-            this.txtHatch.TabIndex = 7;
+            this.txtHatch.Size = new System.Drawing.Size(200, 20);
+            this.txtHatch.TabIndex = 11;
             // 
             // lblHatch
             // 
             this.lblHatch.AutoSize = true;
-            this.lblHatch.Location = new System.Drawing.Point(334, 53);
+            this.lblHatch.Location = new System.Drawing.Point(334, 84);
             this.lblHatch.Name = "lblHatch";
-            this.lblHatch.Size = new System.Drawing.Size(29, 12);
-            this.lblHatch.TabIndex = 6;
+            this.lblHatch.Size = new System.Drawing.Size(31, 13);
+            this.lblHatch.TabIndex = 10;
             this.lblHatch.Text = "舱口";
             // 
             // txtShip
             // 
             this.txtShip.Enabled = false;
-            this.txtShip.Location = new System.Drawing.Point(79, 47);
+            this.txtShip.Location = new System.Drawing.Point(79, 78);
             this.txtShip.Name = "txtShip";
-            this.txtShip.Size = new System.Drawing.Size(200, 21);
-            this.txtShip.TabIndex = 5;
+            this.txtShip.Size = new System.Drawing.Size(200, 20);
+            this.txtShip.TabIndex = 9;
             // 
             // lblShip
             // 
             this.lblShip.AutoSize = true;
-            this.lblShip.Location = new System.Drawing.Point(11, 50);
+            this.lblShip.Location = new System.Drawing.Point(11, 81);
             this.lblShip.Name = "lblShip";
-            this.lblShip.Size = new System.Drawing.Size(29, 12);
-            this.lblShip.TabIndex = 4;
+            this.lblShip.Size = new System.Drawing.Size(31, 13);
+            this.lblShip.TabIndex = 8;
             this.lblShip.Text = "船名";
             // 
             // txtMachine
             // 
             this.txtMachine.Enabled = false;
-            this.txtMachine.Location = new System.Drawing.Point(402, 23);
+            this.txtMachine.Location = new System.Drawing.Point(402, 52);
             this.txtMachine.Name = "txtMachine";
-            this.txtMachine.Size = new System.Drawing.Size(200, 21);
-            this.txtMachine.TabIndex = 3;
+            this.txtMachine.Size = new System.Drawing.Size(200, 20);
+            this.txtMachine.TabIndex = 7;
             // 
             // lblMachine
             // 
             this.lblMachine.AutoSize = true;
-            this.lblMachine.Location = new System.Drawing.Point(334, 26);
+            this.lblMachine.Location = new System.Drawing.Point(334, 55);
             this.lblMachine.Name = "lblMachine";
-            this.lblMachine.Size = new System.Drawing.Size(53, 12);
-            this.lblMachine.TabIndex = 2;
+            this.lblMachine.Size = new System.Drawing.Size(55, 13);
+            this.lblMachine.TabIndex = 6;
             this.lblMachine.Text = "使用机械";
             // 
             // txtBerth
             // 
             this.txtBerth.Enabled = false;
-            this.txtBerth.Location = new System.Drawing.Point(79, 20);
+            this.txtBerth.Location = new System.Drawing.Point(79, 49);
             this.txtBerth.Name = "txtBerth";
-            this.txtBerth.Size = new System.Drawing.Size(200, 21);
-            this.txtBerth.TabIndex = 1;
+            this.txtBerth.Size = new System.Drawing.Size(200, 20);
+            this.txtBerth.TabIndex = 5;
             // 
             // lblBerth
             // 
             this.lblBerth.AutoSize = true;
-            this.lblBerth.Location = new System.Drawing.Point(11, 23);
+            this.lblBerth.Location = new System.Drawing.Point(11, 52);
             this.lblBerth.Name = "lblBerth";
-            this.lblBerth.Size = new System.Drawing.Size(53, 12);
-            this.lblBerth.TabIndex = 0;
+            this.lblBerth.Size = new System.Drawing.Size(55, 13);
+            this.lblBerth.TabIndex = 4;
             this.lblBerth.Text = "码头泊位";
             // 
             // txtJob
             // 
-            this.txtJob.Location = new System.Drawing.Point(91, 69);
+            this.txtJob.Location = new System.Drawing.Point(91, 75);
             this.txtJob.Name = "txtJob";
-            this.txtJob.Size = new System.Drawing.Size(200, 21);
+            this.txtJob.Size = new System.Drawing.Size(200, 20);
             this.txtJob.TabIndex = 10;
             // 
             // lblJob
             // 
             this.lblJob.AutoSize = true;
-            this.lblJob.Location = new System.Drawing.Point(23, 72);
+            this.lblJob.Location = new System.Drawing.Point(23, 78);
             this.lblJob.Name = "lblJob";
-            this.lblJob.Size = new System.Drawing.Size(65, 12);
+            this.lblJob.Size = new System.Drawing.Size(67, 13);
             this.lblJob.TabIndex = 9;
             this.lblJob.Text = "作业工单号";
             // 
             // lblSystemUser
             // 
             this.lblSystemUser.AutoSize = true;
-            this.lblSystemUser.Location = new System.Drawing.Point(366, 253);
+            this.lblSystemUser.Location = new System.Drawing.Point(366, 293);
             this.lblSystemUser.Name = "lblSystemUser";
-            this.lblSystemUser.Size = new System.Drawing.Size(41, 12);
+            this.lblSystemUser.Size = new System.Drawing.Size(43, 13);
             this.lblSystemUser.TabIndex = 14;
             this.lblSystemUser.Text = "收发工";
             // 
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Location = new System.Drawing.Point(23, 253);
+            this.lblCustomer.Location = new System.Drawing.Point(23, 293);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(41, 12);
+            this.lblCustomer.Size = new System.Drawing.Size(43, 13);
             this.lblCustomer.TabIndex = 12;
             this.lblCustomer.Text = "装卸组";
             // 
             // txtVersion
             // 
             this.txtVersion.Enabled = false;
-            this.txtVersion.Location = new System.Drawing.Point(437, 16);
+            this.txtVersion.Location = new System.Drawing.Point(437, 17);
             this.txtVersion.Name = "txtVersion";
-            this.txtVersion.Size = new System.Drawing.Size(200, 21);
+            this.txtVersion.Size = new System.Drawing.Size(200, 20);
             this.txtVersion.TabIndex = 3;
             // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(369, 19);
+            this.lblVersion.Location = new System.Drawing.Point(369, 21);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(53, 12);
+            this.lblVersion.Size = new System.Drawing.Size(55, 13);
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "补借次数";
             // 
@@ -341,11 +386,11 @@
             this.ItemQuantity,
             this.ItemName,
             this.ItemDimensions});
-            this.dataGridViewDetail.Location = new System.Drawing.Point(25, 297);
+            this.dataGridViewDetail.Location = new System.Drawing.Point(20, 328);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";
             this.dataGridViewDetail.RowTemplate.Height = 23;
-            this.dataGridViewDetail.Size = new System.Drawing.Size(612, 181);
+            this.dataGridViewDetail.Size = new System.Drawing.Size(612, 196);
             this.dataGridViewDetail.TabIndex = 16;
             this.dataGridViewDetail.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetail_CellEnter);
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
@@ -381,16 +426,16 @@
             this._operationsPanel.Controls.Add(this._saveButton);
             this._operationsPanel.Controls.Add(this._cancelButton);
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._operationsPanel.Location = new System.Drawing.Point(0, 480);
+            this._operationsPanel.Location = new System.Drawing.Point(0, 537);
             this._operationsPanel.Name = "_operationsPanel";
-            this._operationsPanel.Size = new System.Drawing.Size(658, 39);
+            this._operationsPanel.Size = new System.Drawing.Size(657, 42);
             this._operationsPanel.TabIndex = 17;
             // 
             // _saveButton
             // 
             this._saveButton.Location = new System.Drawing.Point(476, 3);
             this._saveButton.Name = "_saveButton";
-            this._saveButton.Size = new System.Drawing.Size(75, 33);
+            this._saveButton.Size = new System.Drawing.Size(75, 36);
             this._saveButton.TabIndex = 0;
             this._saveButton.Text = "保存";
             this._saveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -403,7 +448,7 @@
             this._cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._cancelButton.Location = new System.Drawing.Point(557, 3);
             this._cancelButton.Name = "_cancelButton";
-            this._cancelButton.Size = new System.Drawing.Size(75, 33);
+            this._cancelButton.Size = new System.Drawing.Size(75, 36);
             this._cancelButton.TabIndex = 1;
             this._cancelButton.Text = "取消";
             this._cancelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -416,27 +461,27 @@
             // cbCustomer
             // 
             this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(91, 251);
+            this.cbCustomer.Location = new System.Drawing.Point(91, 291);
             this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(200, 20);
+            this.cbCustomer.Size = new System.Drawing.Size(200, 21);
             this.cbCustomer.TabIndex = 13;
             this.cbCustomer.Validating += new System.ComponentModel.CancelEventHandler(this.cbCustomer_Validating);
             // 
             // cbSystemUser
             // 
             this.cbSystemUser.FormattingEnabled = true;
-            this.cbSystemUser.Location = new System.Drawing.Point(414, 250);
+            this.cbSystemUser.Location = new System.Drawing.Point(414, 290);
             this.cbSystemUser.Name = "cbSystemUser";
-            this.cbSystemUser.Size = new System.Drawing.Size(200, 20);
+            this.cbSystemUser.Size = new System.Drawing.Size(200, 21);
             this.cbSystemUser.TabIndex = 15;
             this.cbSystemUser.Validating += new System.ComponentModel.CancelEventHandler(this.cbSystemUser_Validating);
             // 
             // CreateOutboundOrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._cancelButton;
-            this.ClientSize = new System.Drawing.Size(658, 519);
+            this.ClientSize = new System.Drawing.Size(657, 579);
             this.Controls.Add(this.cbSystemUser);
             this.Controls.Add(this.cbCustomer);
             this.Controls.Add(this._operationsPanel);
@@ -510,5 +555,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
+        private System.Windows.Forms.ComboBox cbJobType;
+        private System.Windows.Forms.ComboBox cbJobPosition;
+        private System.Windows.Forms.Label lblJobType;
+        private System.Windows.Forms.Label lblJobPosition;
     }
 }

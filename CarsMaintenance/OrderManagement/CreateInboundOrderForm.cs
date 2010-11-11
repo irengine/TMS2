@@ -48,13 +48,11 @@ namespace CarsMaintenance.OrderManagement
         {
             SystemHelper.BindComboxToCustomer(cbCustomer);
             SystemHelper.BindComboxToSystemUser(cbSystemUser);
+            SystemHelper.BindComboBoxToScrapReason(dataGridViewDetail.Columns["ScrapReason"] as DataGridViewComboBoxColumn);
 
             // Set data object value
-            if (CurrentOrder == null)
-            {
-                CurrentOrder = new InboundOrder();
+            if (CurrentOrder.SystemUser == null)
                 CurrentOrder.SystemUser = SystemHelper.CurrentUser;
-            }
 
             txtCode.Text = CurrentOrder.Code;
             dtInboundDate.Value = CurrentOrder.InboundDate;
@@ -95,7 +93,7 @@ namespace CarsMaintenance.OrderManagement
                 if (CurrentOrder.EntityKey == null)
                     SystemHelper.TMSContext.AddToInboundOrders(CurrentOrder);
 
-                CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                //CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.LastUpdateTime = System.DateTime.Now;
 
                 ScrapOrder scrapOrder = new ScrapOrder();
@@ -131,24 +129,13 @@ namespace CarsMaintenance.OrderManagement
                         item.Tool = referenceItem.Tool;
                         item.UnitPrice = referenceItem.UnitPrice;
                         item.Quantity = quantity;
-                        item.PrescrapQuantity = prescrapQuantity;
                         item.TransferQuantity = transferQuantity;
+                        item.PrescrapQuantity = prescrapQuantity;
+                        item.ScrapReason = dgvr.Cells["ScrapReason"].Value as string;
 
                         CurrentOrder.Items.Add(item);
 
-                        // for inventory and inventory history
-                        ToolInventory inventory = SystemHelper.TMSContext.ToolInventories.FirstOrDefault(ti => ti.ToolID == item.ToolID);
-                        inventory.Tool = item.Tool;
-                        inventory.OutQuantity = inventory.OutQuantity - item.Quantity - item.TransferQuantity;
-
-                        ToolInventoryHistory inventoryHistory = SystemHelper.TMSContext.ToolInventoryHistories.CreateObject();
-                        inventoryHistory.Customer = CurrentOrder.Customer;
-                        inventoryHistory.ToolInventoryHistoryDate = CurrentOrder.InboundDate;
-                        inventoryHistory.Tool = item.Tool;
-                        inventoryHistory.Quantity = item.Quantity + item.TransferQuantity;
-                        inventoryHistory.UnitPrice = item.UnitPrice;
-                        inventoryHistory.OutboundOrder = ReferenceOrder;
-                        inventoryHistory.OutboundOrderDetail = referenceItem;
+                        OrderManager.Return(CurrentOrder, item);
 
                         // for prescrap order
                         if (item.PrescrapQuantity != 0)
@@ -159,6 +146,7 @@ namespace CarsMaintenance.OrderManagement
                             scrapItem.ScrapDate = item.InboundDate;
                             scrapItem.PrescrapQuantity = item.PrescrapQuantity;
                             scrapItem.UnitPrice = item.UnitPrice;
+                            scrapItem.ScrapReason = item.ScrapReason;
 
                             scrapOrder.Items.Add(scrapItem);
                         }
@@ -219,6 +207,10 @@ namespace CarsMaintenance.OrderManagement
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+                }
+                else
+                {
+                    SystemHelper.RefreshOrder(form.CurrentOrder);
                 }
             }
         }

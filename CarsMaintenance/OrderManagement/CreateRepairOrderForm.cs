@@ -25,6 +25,7 @@ namespace CarsMaintenance.OrderManagement
         public CreateRepairOrderForm()
         {
             InitializeComponent();
+            RegisterControlsForValidation();
         }
 
         public CreateRepairOrderForm(string Mode)
@@ -50,6 +51,7 @@ namespace CarsMaintenance.OrderManagement
         {
             SystemHelper.BindComboxToCustomer(cbCustomer);
             SystemHelper.BindComboxToSystemUser(cbSystemUser);
+            SystemHelper.BindComboBoxToScrapReason(dataGridViewDetail.Columns["ScrapReason"] as DataGridViewComboBoxColumn);
 
             // Set data object value
             if (CurrentOrder == null)
@@ -73,7 +75,7 @@ namespace CarsMaintenance.OrderManagement
             foreach (RepairOrderDetail item in CurrentOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.RepairOrderDetailID, item.Tool.Code, item.RepairingQuantity, item.Tool.Name, item.Tool.Dimensions, item.Quantity, item.Quantity, item.ScrapQuantity, item.ScrapReason };
+                object[] row = { item.RepairOrderDetailID, item.Tool.Code, item.Tool.Name, item.Tool.Dimensions, item.RepairingQuantity, item.Quantity, item.ScrapQuantity, item.ScrapReason };
                 dataGridViewDetail.Rows.Add(row);
             }
         }
@@ -129,7 +131,7 @@ namespace CarsMaintenance.OrderManagement
                 if (CurrentOrder.EntityKey == null)
                     SystemHelper.TMSContext.AddToRepairOrders(CurrentOrder);
 
-                CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                //CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.LastUpdateTime = System.DateTime.Now;
 
                 // Iterate all rows
@@ -177,24 +179,8 @@ namespace CarsMaintenance.OrderManagement
                             item.RepairDate = CurrentOrder.LastUpdateTime;
                         }
 
-
                         // for inventory and inventory history
-                        //ToolInventory inventory = SystemHelper.TMSContext.ToolInventories.FirstOrDefault(ti => ti.ToolID == item.ToolID);
-                        //inventory.Tool = item.Tool;
-                        //inventory.ScrapQuantity = inventory.ScrapQuantity + item.ScrapQuantity;
-
-                        //ToolInventoryHistory inventoryHistory = SystemHelper.TMSContext.ToolInventoryHistories.CreateObject();
-                        //inventoryHistory.Customer = CurrentOrder.Customer;
-                        //inventoryHistory.ToolInventoryHistoryDate = CurrentOrder.ScrapDate;
-                        //inventoryHistory.Tool = item.Tool;
-                        //inventoryHistory.Quantity = item.ScrapQuantity;
-                        //inventoryHistory.UnitPrice = item.UnitPrice;
-
-                        // TODO: add history
-                        //inventoryHistory.OutboundOrder = CurrentOrder;
-                        //inventoryHistory.OutboundOrderDetail = item;
-                        //inventoryHistory.ScrapOrder = CurrentOrder;
-                        //inventoryHistory.ScrapOrderDetail = item;
+                        OrderManager.Repair(CurrentOrder, item);
                     }
                 }
 
@@ -226,12 +212,12 @@ namespace CarsMaintenance.OrderManagement
                         dataGridViewDetail.Rows[e.RowIndex].Cells["ItemDimensions"].Value = t.Dimensions;
                     }
                     break;
-                // TODO: add other columns to verify decimal
-                case 7:
-                    decimal quantity = 0;
-                    if (!decimal.TryParse(e.FormattedValue.ToString(), out quantity))
-                        e.Cancel = true;
-                    break;
+                //// TODO: add other columns to verify decimal
+                //case 7:
+                //    decimal quantity = 0;
+                //    if (!decimal.TryParse(e.FormattedValue.ToString(), out quantity))
+                //        e.Cancel = true;
+                //    break;
 
             }
         }

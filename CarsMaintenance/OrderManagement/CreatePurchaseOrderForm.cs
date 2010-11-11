@@ -118,12 +118,14 @@ namespace CarsMaintenance.OrderManagement
                 inventory.Tool = CurrentOrder.Tool;
                 inventory.Supply = CurrentOrder.Supply;
                 inventory.LastInboundDate = CurrentOrder.PurchaseDate;
-                inventory.UnitPrice = (inventory.Quantity * inventory.UnitPrice + CurrentOrder.Quantity * CurrentOrder.UnitPrice) / (inventory.Quantity + CurrentOrder.Quantity);
+                // fix total count for evaluating unit price
+                inventory.UnitPrice = ((inventory.Quantity + inventory.OutQuantity + inventory.RepairingQuantity) * inventory.UnitPrice + CurrentOrder.Quantity * CurrentOrder.UnitPrice) / (inventory.Quantity + inventory.OutQuantity + inventory.RepairingQuantity + CurrentOrder.Quantity);
                 inventory.Quantity = inventory.Quantity + CurrentOrder.Quantity;
 
                 if (CurrentOrder.ToolInventoryHistories == null || CurrentOrder.ToolInventoryHistories.Count == 0)
                 {
                     ToolInventoryHistory inventoryHistory = SystemHelper.TMSContext.ToolInventoryHistories.CreateObject();
+                    inventoryHistory.Account = "1000";
                     inventoryHistory.PurchaseOrder = CurrentOrder;
                     inventoryHistory.ToolInventoryHistoryDate = CurrentOrder.PurchaseDate;
                     inventoryHistory.Supply = CurrentOrder.Supply;

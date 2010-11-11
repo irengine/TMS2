@@ -105,14 +105,18 @@ namespace CarsMaintenance.OrderManagement
 
         private void Return()
         {
-            // TODO: make more test.
             using (CreateInboundOrderForm form = new CreateInboundOrderForm())
             {
+                form.CurrentOrder = new InboundOrder();
                 form.ReferenceOrder = GetSelectedOrder();
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
+                }
+                else
+                {
+                    SystemHelper.RefreshOrder(form.CurrentOrder);
                 }
             }
         }

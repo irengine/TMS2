@@ -61,6 +61,11 @@ namespace CarsMaintenance.OrderManagement
             });
             _validationManager.Validators.Add(new RequiredValidator()
             {
+                Control = cbJobPosition,
+                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblJobPosition.Text)
+            });
+            _validationManager.Validators.Add(new RequiredValidator()
+            {
                 Control = cbCustomer,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblCustomer.Text)
             });
@@ -70,6 +75,8 @@ namespace CarsMaintenance.OrderManagement
         {
             SystemHelper.BindComboxToCustomer(cbCustomer);
             SystemHelper.BindComboxToSystemUser(cbSystemUser);
+            SystemHelper.BindComboxToJobPosition(cbJobPosition);
+            SystemHelper.BindComboxToJobType(cbJobType);
 
             // Set data object value
             if (CurrentOrder == null)
@@ -99,6 +106,8 @@ namespace CarsMaintenance.OrderManagement
             dtOutboundDate.Value = CurrentOrder.OutboundDate;
             txtVersion.Text = CurrentOrder.Version.ToString();
             txtJob.Text = CurrentOrder.Job;
+            cbJobPosition.Text = CurrentOrder.JobPosition;
+            cbJobType.Text = CurrentOrder.JobType;
 
             txtBerth.Text = CurrentOrder.Berth;
             txtMachine.Text = CurrentOrder.Machine;
@@ -152,6 +161,8 @@ namespace CarsMaintenance.OrderManagement
                 CurrentOrder.Version = version;
 
                 CurrentOrder.Job = txtJob.Text;
+                CurrentOrder.JobPosition = cbJobPosition.Text;
+                CurrentOrder.JobType = cbJobType.Text;
                 CurrentOrder.Berth = txtBerth.Text;
                 CurrentOrder.Machine = txtMachine.Text;
                 CurrentOrder.Ship = txtShip.Text;
@@ -166,7 +177,8 @@ namespace CarsMaintenance.OrderManagement
                 if (CurrentOrder.EntityKey == null)
                     SystemHelper.TMSContext.AddToOutboundOrders(CurrentOrder);
 
-                CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                // Don't set current user because user may change it.
+                // CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.LastUpdateTime = System.DateTime.Now;
 
                 // Iterate all rows
@@ -190,19 +202,7 @@ namespace CarsMaintenance.OrderManagement
 
                         CurrentOrder.Items.Add(item);
 
-                        // for inventory and inventory history
-                        ToolInventory inventory = SystemHelper.TMSContext.ToolInventories.FirstOrDefault(ti => ti.ToolID == item.ToolID);
-                        inventory.Tool = item.Tool;
-                        inventory.OutQuantity = inventory.OutQuantity + item.Quantity;
-
-                        ToolInventoryHistory inventoryHistory = SystemHelper.TMSContext.ToolInventoryHistories.CreateObject();
-                        inventoryHistory.Customer = CurrentOrder.Customer;
-                        inventoryHistory.ToolInventoryHistoryDate = CurrentOrder.OutboundDate;
-                        inventoryHistory.Tool = item.Tool;
-                        inventoryHistory.Quantity = item.Quantity;
-                        inventoryHistory.UnitPrice = item.UnitPrice;
-                        inventoryHistory.OutboundOrder = CurrentOrder;
-                        inventoryHistory.OutboundOrderDetail = item;
+                        OrderManager.Lend(CurrentOrder, item);
                     }
                 }
 
@@ -260,6 +260,12 @@ namespace CarsMaintenance.OrderManagement
         private void cbSystemUser_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
+        }
+
+        private void cbJobType_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbJobPosition.Text == "船舶" && cbJobType.Text == "")
+                e.Cancel = true;
         }
     }
 }

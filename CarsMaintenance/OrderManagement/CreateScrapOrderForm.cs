@@ -76,6 +76,7 @@ namespace CarsMaintenance.OrderManagement
         {
             SystemHelper.BindComboxToCustomer(cbCustomer);
             SystemHelper.BindComboxToSystemUser(cbSystemUser);
+            SystemHelper.BindComboBoxToScrapReason(dataGridViewDetail.Columns["ScrapReason"] as DataGridViewComboBoxColumn);
 
             // Set data object value
             if (CurrentOrder == null)
@@ -134,8 +135,10 @@ namespace CarsMaintenance.OrderManagement
                 if (CurrentOrder.EntityKey == null)
                     SystemHelper.TMSContext.AddToScrapOrders(CurrentOrder);
 
-                CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                //CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.LastUpdateTime = System.DateTime.Now;
+
+                RepairOrder repairOrder = new RepairOrder();
 
                 // Iterate all rows
                 foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
@@ -164,33 +167,55 @@ namespace CarsMaintenance.OrderManagement
                         }
                         else
                         {
+                            decimal quantity = 0;
+                            if (dgvr.Cells["Quantity"].Value != null)
+                                decimal.TryParse(dgvr.Cells["Quantity"].Value.ToString(), out quantity);
+
+                            decimal prescrapQuantity = 0;
+                            if (dgvr.Cells["PrescrapQuantity"].Value != null)
+                                decimal.TryParse(dgvr.Cells["PrescrapQuantity"].Value.ToString(), out prescrapQuantity);
+
+                            decimal repairingQuantity = 0;
+                            if (dgvr.Cells["RepairingQuantity"].Value != null)
+                                decimal.TryParse(dgvr.Cells["RepairingQuantity"].Value.ToString(), out repairingQuantity); 
+                            
                             int itemID = 0;
                             int.TryParse(dgvr.Cells["ItemID"].Value.ToString(), out itemID);
                             item = SystemHelper.TMSContext.ScrapOrderDetails.FirstOrDefault(s => s.ScrapOrderDetailID == itemID);
+                            item.PrescrapQuantity = prescrapQuantity;
                             item.ScrapQuantity = scrapQuantity;
+                            item.Quantity = quantity;
+                            item.RepairingQuantity = repairingQuantity;
                             item.ScrapReason = dgvr.Cells["ScrapReason"].Value as string;
                             item.ScrapDate = CurrentOrder.LastUpdateTime;
                         }
 
-
                         // for inventory and inventory history
-                        ToolInventory inventory = SystemHelper.TMSContext.ToolInventories.FirstOrDefault(ti => ti.ToolID == item.ToolID);
-                        inventory.Tool = item.Tool;
-                        inventory.ScrapQuantity = inventory.ScrapQuantity + item.ScrapQuantity;
+                        OrderManager.Scrap(CurrentOrder, item);
 
-                        ToolInventoryHistory inventoryHistory = SystemHelper.TMSContext.ToolInventoryHistories.CreateObject();
-                        inventoryHistory.Customer = CurrentOrder.Customer;
-                        inventoryHistory.ToolInventoryHistoryDate = CurrentOrder.ScrapDate;
-                        inventoryHistory.Tool = item.Tool;
-                        inventoryHistory.Quantity = item.ScrapQuantity;
-                        inventoryHistory.UnitPrice = item.UnitPrice;
+                        // for prescrap order
+                        if (item.RepairingQuantity != 0)
+                        {
+                            RepairOrderDetail repairItem = new RepairOrderDetail();
+                            repairItem.Tool = item.Tool;
+                            repairItem.OutboundOrderDetail = item.OutboundOrderDetail;
+                            repairItem.RepairDate = item.ScrapDate;
+                            repairItem.RepairingQuantity = item.RepairingQuantity;
+                            repairItem.UnitPrice = item.UnitPrice;
 
-                        // TODO: add history
-                        //inventoryHistory.OutboundOrder = CurrentOrder;
-                        //inventoryHistory.OutboundOrderDetail = item;
-                        //inventoryHistory.ScrapOrder = CurrentOrder;
-                        //inventoryHistory.ScrapOrderDetail = item;
+                            repairOrder.Items.Add(repairItem);
+                        }
                     }
+                }
+
+                if (repairOrder.Items.Count > 0)
+                {
+                    repairOrder.OutboundOrder = CurrentOrder.OutboundOrder;
+                    repairOrder.RepairDate = CurrentOrder.ScrapDate;
+                    repairOrder.Customer = CurrentOrder.Customer;
+                    repairOrder.SystemUser = CurrentOrder.SystemUser;
+                    repairOrder.LastUpdateTime = CurrentOrder.LastUpdateTime;
+                    SystemHelper.TMSContext.AddToRepairOrders(repairOrder);
                 }
 
                 CurrentOrder.Status = 1;
@@ -222,11 +247,11 @@ namespace CarsMaintenance.OrderManagement
                     }
                     break;
                     // TODO: add other columns to verify decimal
-                case 7:
-                    decimal quantity = 0;
-                    if (!decimal.TryParse(e.FormattedValue.ToString(), out quantity))
-                        e.Cancel = true;
-                    break;
+                //case 7:
+                //    decimal quantity = 0;
+                //    if (!decimal.TryParse(e.FormattedValue.ToString(), out quantity))
+                //        e.Cancel = true;
+                //    break;
 
             }
         }

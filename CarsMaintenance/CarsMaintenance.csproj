@@ -140,6 +140,7 @@
     <Compile Include="OrderManagement\CreateScrapOrderForm.Designer.cs">
       <DependentUpon>CreateScrapOrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderManagement\OrderManager.cs" />
     <Compile Include="OrderManagement\ViewOutboundOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>

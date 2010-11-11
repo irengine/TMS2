@@ -34,6 +34,27 @@ namespace CarsMaintenance.Common
                 SystemHelper.TMSContext.Refresh(System.Data.Objects.RefreshMode.StoreWins, o);
         }
 
+        public static void BindComboBoxToScrapReason(DataGridViewComboBoxColumn col)
+        {
+            string[] reason = { "边缘断裂", "变形", "大圈变形", "断层", "断股", "断裂", 
+                                  "断丝", "断丝超标", "割断", "横销坏", "横销遗失", "滑牙", 
+                                  "开口变形", "开裂", "磨损", "其他", "散股", "散股断丝", "损坏" };
+
+            col.DataSource = reason;
+        }
+
+        public static void BindComboxToJobPosition(ComboBox cbJobPosition)
+        {
+            string[] jobPostion = { "船舶", "驳船", "库内", "902库", "火车", "车提", "转栈" };
+            cbJobPosition.DataSource = jobPostion;
+        }
+        
+        public static void BindComboxToJobType(ComboBox cbJobType)
+        {
+            string[] jobType = {"", "内贸", "外贸"};
+            cbJobType.DataSource = jobType;
+        }
+
         public static void BindComboxToSupply(ComboBox cbSupply)
         {
             var querySupply = from s in SystemHelper.TMSContext.Supplies

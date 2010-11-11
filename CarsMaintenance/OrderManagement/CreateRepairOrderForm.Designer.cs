@@ -49,7 +49,7 @@
             this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScrapReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScrapReason = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this._operationsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
@@ -62,7 +62,7 @@
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(53, 12);
             this.lblCode.TabIndex = 11;
-            this.lblCode.Text = "归还单号";
+            this.lblCode.Text = "修理单号";
             // 
             // _saveButton
             // 
@@ -233,6 +233,8 @@
             // 
             this.ScrapReason.HeaderText = "报废原因";
             this.ScrapReason.Name = "ScrapReason";
+            this.ScrapReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ScrapReason.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CreateRepairOrderForm
             // 
@@ -283,6 +285,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScrapQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScrapReason;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ScrapReason;
     }
 }

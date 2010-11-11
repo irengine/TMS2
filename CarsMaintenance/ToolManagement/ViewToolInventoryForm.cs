@@ -55,6 +55,11 @@ namespace CarsMaintenance.ToolManagement
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "PrescrapQuantity";
+            column.Name = "预报废数";
+            dataGridViewToolInventory.Columns.Add(column);
+
+            column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "ScrapQuantity";
             column.Name = "报废数";
             dataGridViewToolInventory.Columns.Add(column);
@@ -100,6 +105,7 @@ namespace CarsMaintenance.ToolManagement
                             Dimensions = t.Dimensions,
                             Quantity = ti.Quantity,
                             OutQuantity = ti.OutQuantity,
+                            PrescrapQuantity = ti.PrescrapQuantity,
                             ScrapQuantity = ti.ScrapQuantity,
                             RepairingQuantity = ti.RepairingQuantity,
                             Unit = t.Unit,
@@ -145,6 +151,7 @@ namespace CarsMaintenance.ToolManagement
                             Dimensions = t.Dimensions,
                             Quantity = ti.Quantity,
                             OutQuantity = ti.OutQuantity,
+                            PrescrapQuantity = ti.PrescrapQuantity,
                             ScrapQuantity = ti.ScrapQuantity,
                             RepairingQuantity = ti.RepairingQuantity,
                             Unit = t.Unit,

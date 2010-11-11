@@ -23,7 +23,7 @@ namespace CarsMaintenance
             if (txtUser.Text == "sysAdmin" && txtPassword.Text == "P@ssword")
             {
                 SystemHelper.CurrentUser = SystemHelper.TMSContext.SystemUsers.First();
-                this.Close();
+                //this.Close();
                 DialogResult = DialogResult.OK;
                 return;
             }
@@ -34,7 +34,7 @@ namespace CarsMaintenance
             if (u != null)
             {
                 SystemHelper.CurrentUser = u;
-                this.Close();
+                //this.Close();
                 DialogResult = DialogResult.OK;
             }
             else

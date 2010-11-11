@@ -54,6 +54,12 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_RepairOrder_Unit", "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.Unit), "RepairOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.RepairOrder), true)]
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_RepairOrderDetail_RepairOrder", "RepairOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMS.Model.RepairOrder), "RepairOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.RepairOrderDetail), true)]
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_RepairOrderDetail_Tool", "Tool", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMS.Model.Tool), "RepairOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.RepairOrderDetail), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrder", "InboundOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.InboundOrder), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.InboundOrderDetail), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrder", "RepairOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.RepairOrder), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.RepairOrderDetail), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.ScrapOrder), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.ScrapOrderDetail), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
 
 #endregion
 
@@ -1025,6 +1031,28 @@ namespace TMS.Model
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrder", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "ToolInventoryHistory", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1287,6 +1315,30 @@ namespace TMS.Model
         private global::System.Decimal _UnitPrice;
         partial void OnUnitPriceChanging(global::System.Decimal value);
         partial void OnUnitPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ScrapReason
+        {
+            get
+            {
+                return _ScrapReason;
+            }
+            set
+            {
+                OnScrapReasonChanging(value);
+                ReportPropertyChanging("ScrapReason");
+                _ScrapReason = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ScrapReason");
+                OnScrapReasonChanged();
+            }
+        }
+        private global::System.String _ScrapReason;
+        partial void OnScrapReasonChanging(global::System.String value);
+        partial void OnScrapReasonChanged();
 
         #endregion
     
@@ -1402,6 +1454,28 @@ namespace TMS.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tool>("TMS.Model.FK_InboundOrderDetail_Tool", "Tool", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrderDetail", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "ToolInventoryHistory", value);
                 }
             }
         }
@@ -1807,6 +1881,54 @@ namespace TMS.Model
         private global::System.DateTime _LastUpdateTime;
         partial void OnLastUpdateTimeChanging(global::System.DateTime value);
         partial void OnLastUpdateTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String JobPosition
+        {
+            get
+            {
+                return _JobPosition;
+            }
+            set
+            {
+                OnJobPositionChanging(value);
+                ReportPropertyChanging("JobPosition");
+                _JobPosition = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("JobPosition");
+                OnJobPositionChanged();
+            }
+        }
+        private global::System.String _JobPosition;
+        partial void OnJobPositionChanging(global::System.String value);
+        partial void OnJobPositionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String JobType
+        {
+            get
+            {
+                return _JobType;
+            }
+            set
+            {
+                OnJobTypeChanging(value);
+                ReportPropertyChanging("JobType");
+                _JobType = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("JobType");
+                OnJobTypeChanged();
+            }
+        }
+        private global::System.String _JobType;
+        partial void OnJobTypeChanging(global::System.String value);
+        partial void OnJobTypeChanged();
 
         #endregion
     
@@ -3173,6 +3295,28 @@ namespace TMS.Model
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrder", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "ToolInventoryHistory", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -3575,6 +3719,28 @@ namespace TMS.Model
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrderDetail", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "ToolInventoryHistory", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -3944,6 +4110,28 @@ namespace TMS.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ScrapOrderDetail>("TMS.Model.FK_ScrapOrderDetail_ScrapOrder", "ScrapOrderDetail", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrder", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ToolInventoryHistory", value);
                 }
             }
         }
@@ -4372,6 +4560,28 @@ namespace TMS.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tool>("TMS.Model.FK_ScrapOrderDetail_Tool", "Tool", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrderDetail", "ToolInventoryHistory")]
+        public EntityCollection<ToolInventoryHistory> ToolInventoryHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ToolInventoryHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolInventoryHistory>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ToolInventoryHistory", value);
                 }
             }
         }
@@ -5839,7 +6049,8 @@ namespace TMS.Model
         /// <param name="outQuantity">Initial value of the OutQuantity property.</param>
         /// <param name="scrapQuantity">Initial value of the ScrapQuantity property.</param>
         /// <param name="repairingQuantity">Initial value of the RepairingQuantity property.</param>
-        public static ToolInventory CreateToolInventory(global::System.Decimal quantity, global::System.Decimal unitPrice, global::System.Int32 toolID, global::System.Decimal outQuantity, global::System.Decimal scrapQuantity, global::System.Decimal repairingQuantity)
+        /// <param name="prescrapQuantity">Initial value of the PrescrapQuantity property.</param>
+        public static ToolInventory CreateToolInventory(global::System.Decimal quantity, global::System.Decimal unitPrice, global::System.Int32 toolID, global::System.Decimal outQuantity, global::System.Decimal scrapQuantity, global::System.Decimal repairingQuantity, global::System.Decimal prescrapQuantity)
         {
             ToolInventory toolInventory = new ToolInventory();
             toolInventory.Quantity = quantity;
@@ -5848,6 +6059,7 @@ namespace TMS.Model
             toolInventory.OutQuantity = outQuantity;
             toolInventory.ScrapQuantity = scrapQuantity;
             toolInventory.RepairingQuantity = repairingQuantity;
+            toolInventory.PrescrapQuantity = prescrapQuantity;
             return toolInventory;
         }
 
@@ -6048,6 +6260,30 @@ namespace TMS.Model
         private global::System.Decimal _RepairingQuantity;
         partial void OnRepairingQuantityChanging(global::System.Decimal value);
         partial void OnRepairingQuantityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal PrescrapQuantity
+        {
+            get
+            {
+                return _PrescrapQuantity;
+            }
+            set
+            {
+                OnPrescrapQuantityChanging(value);
+                ReportPropertyChanging("PrescrapQuantity");
+                _PrescrapQuantity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PrescrapQuantity");
+                OnPrescrapQuantityChanged();
+            }
+        }
+        private global::System.Decimal _PrescrapQuantity;
+        partial void OnPrescrapQuantityChanging(global::System.Decimal value);
+        partial void OnPrescrapQuantityChanged();
 
         #endregion
     
@@ -6150,7 +6386,8 @@ namespace TMS.Model
         /// <param name="unitPrice">Initial value of the UnitPrice property.</param>
         /// <param name="quantity">Initial value of the Quantity property.</param>
         /// <param name="toolInventoryHistoryDate">Initial value of the ToolInventoryHistoryDate property.</param>
-        public static ToolInventoryHistory CreateToolInventoryHistory(global::System.Int32 toolInventoryHistoryID, global::System.Int32 toolID, global::System.Decimal unitPrice, global::System.Decimal quantity, global::System.DateTime toolInventoryHistoryDate)
+        /// <param name="account">Initial value of the Account property.</param>
+        public static ToolInventoryHistory CreateToolInventoryHistory(global::System.Int32 toolInventoryHistoryID, global::System.Int32 toolID, global::System.Decimal unitPrice, global::System.Decimal quantity, global::System.DateTime toolInventoryHistoryDate, global::System.String account)
         {
             ToolInventoryHistory toolInventoryHistory = new ToolInventoryHistory();
             toolInventoryHistory.ToolInventoryHistoryID = toolInventoryHistoryID;
@@ -6158,6 +6395,7 @@ namespace TMS.Model
             toolInventoryHistory.UnitPrice = unitPrice;
             toolInventoryHistory.Quantity = quantity;
             toolInventoryHistory.ToolInventoryHistoryDate = toolInventoryHistoryDate;
+            toolInventoryHistory.Account = account;
             return toolInventoryHistory;
         }
 
@@ -6550,6 +6788,30 @@ namespace TMS.Model
         private Nullable<global::System.Int32> _RepairOrderDetailID;
         partial void OnRepairOrderDetailIDChanging(Nullable<global::System.Int32> value);
         partial void OnRepairOrderDetailIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Account
+        {
+            get
+            {
+                return _Account;
+            }
+            set
+            {
+                OnAccountChanging(value);
+                ReportPropertyChanging("Account");
+                _Account = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Account");
+                OnAccountChanged();
+            }
+        }
+        private global::System.String _Account;
+        partial void OnAccountChanging(global::System.String value);
+        partial void OnAccountChanged();
 
         #endregion
     
@@ -6779,6 +7041,234 @@ namespace TMS.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Unit>("TMS.Model.FK_ToolInventoryHistory_Unit", "Unit", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrder", "InboundOrder")]
+        public InboundOrder InboundOrder
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrder>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "InboundOrder").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrder>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "InboundOrder").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<InboundOrder> InboundOrderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrder>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "InboundOrder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<InboundOrder>("TMS.Model.FK_ToolInventoryHistory_InboundOrder", "InboundOrder", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail")]
+        public InboundOrderDetail InboundOrderDetail
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrderDetail>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrderDetail>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<InboundOrderDetail> InboundOrderDetailReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<InboundOrderDetail>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<InboundOrderDetail>("TMS.Model.FK_ToolInventoryHistory_InboundOrderDetail", "InboundOrderDetail", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrder", "RepairOrder")]
+        public RepairOrder RepairOrder
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrder>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "RepairOrder").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrder>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "RepairOrder").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<RepairOrder> RepairOrderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrder>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "RepairOrder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RepairOrder>("TMS.Model.FK_ToolInventoryHistory_RepairOrder", "RepairOrder", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail")]
+        public RepairOrderDetail RepairOrderDetail
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrderDetail>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrderDetail>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<RepairOrderDetail> RepairOrderDetailReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RepairOrderDetail>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RepairOrderDetail>("TMS.Model.FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder")]
+        public ScrapOrder ScrapOrder
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrder>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrder>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ScrapOrder> ScrapOrderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrder>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ScrapOrder>("TMS.Model.FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail")]
+        public ScrapOrderDetail ScrapOrderDetail
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrderDetail>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrderDetail>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ScrapOrderDetail> ScrapOrderDetailReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ScrapOrderDetail>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ScrapOrderDetail>("TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail", value);
                 }
             }
         }

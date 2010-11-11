@@ -21,8 +21,22 @@ namespace CarsMaintenance.OrderManagement
         protected void LoadData()
         {
             var query = from o in SystemHelper.TMSContext.ScrapOrders
+                        join it in SystemHelper.TMSContext.ScrapOrderDetails on o.ScrapOrderID equals it.ScrapOrderID
+                        join t in SystemHelper.TMSContext.Tools on it.ToolID equals t.ToolID
                         orderby o.ScrapDate
-                        select o;
+                        select new
+                        {
+                            o.ScrapOrderID,
+                            o.ScrapDate,
+                            ItemName = t.Name,
+                            t.Dimensions,
+                            it.PrescrapQuantity,
+                            it.ScrapReason,
+                            it.ScrapQuantity,
+                            it.Quantity,
+                            it.RepairingQuantity,
+                            Status = (o.Status == 0 ? "预报废" : "报废")
+                        };
 
             dataGridViewScrapOrder.DataSource = query;
         }
@@ -55,6 +69,12 @@ namespace CarsMaintenance.OrderManagement
             {
                 form.CurrentOrder = GetSelectedOrder();
                 form.CurrentMode = CreateScrapOrderForm.MODE_CREATE;
+
+                if (form.CurrentOrder.Status == 1)
+                {
+                    MessageBox.Show("已处理，请重新选择报废单!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -130,9 +150,22 @@ namespace CarsMaintenance.OrderManagement
             DateTime beginDate = dtBeginDate.Value.Date;
             DateTime endDate = dtEndDate.Value.Date.AddDays(1);
             var query = from o in SystemHelper.TMSContext.ScrapOrders
+                        join it in SystemHelper.TMSContext.ScrapOrderDetails on o.ScrapOrderID equals it.ScrapOrderID
+                        join t in SystemHelper.TMSContext.Tools on it.ToolID equals t.ToolID
                         where o.ScrapDate >= beginDate && o.ScrapDate <= endDate
                         orderby o.ScrapDate
-                        select o;
+                        select new {
+                            o.ScrapOrderID,
+                            o.ScrapDate,
+                            ItemName = t.Name,
+                            t.Dimensions,
+                            it.PrescrapQuantity,
+                            it.ScrapReason,
+                            it.ScrapQuantity,
+                            it.Quantity,
+                            it.RepairingQuantity,
+                            Status = (o.Status == 0 ? "待报废" : "已报废")
+                        };
 
             dataGridViewScrapOrder.DataSource = query;
         }
