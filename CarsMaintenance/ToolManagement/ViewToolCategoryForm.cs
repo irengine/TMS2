@@ -157,7 +157,7 @@ namespace CarsMaintenance.ToolManagement
             return SystemHelper.TMSContext.Tools.First(u => u.ToolID == id);
         }
 
-        private void Add2()
+        private void AddTool()
         {
             using (ManageToolForm form = new ManageToolForm())
             {
@@ -171,16 +171,55 @@ namespace CarsMaintenance.ToolManagement
             }
         }
 
-        private void Edit2()
+        private ToolCategory GetToolGroupCategory()
         {
-            using (ManageToolForm form = new ManageToolForm())
+            string toolGroupCode = CarsMaintenance.Properties.Settings.Default.ToolGroupCode;
+
+            return SystemHelper.TMSContext.ToolCategories.FirstOrDefault(c => c.Code == toolGroupCode);
+        }
+
+        private void AddToolGroup()
+        {
+            using (ManageToolGroupForm form = new ManageToolGroupForm())
             {
-                form.CurrentTool = GetSelectedTool();
-                form.CurrentCategory = GetSelectedCategory();
+                form.CurrentTool = new Tool();
+                form.CurrentCategory = GetToolGroupCategory();
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    //LoadData();
+                    LoadData();
+                }
+            }
+        }
+
+        private void Edit2()
+        {
+            ToolCategory tc = GetSelectedCategory();
+
+            if (tc.Code.PadLeft(2) != CarsMaintenance.Properties.Settings.Default.ToolGroupCode)
+            {
+                using (ManageToolForm form = new ManageToolForm())
+                {
+                    form.CurrentTool = GetSelectedTool();
+                    form.CurrentCategory = GetSelectedCategory();
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        //LoadData();
+                    }
+                }
+            }
+            else
+            {
+                using (ManageToolGroupForm form = new ManageToolGroupForm())
+                {
+                    form.CurrentTool = GetSelectedTool();
+                    form.CurrentCategory = GetSelectedCategory();
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        //LoadData();
+                    }
                 }
             }
         }
@@ -227,9 +266,14 @@ namespace CarsMaintenance.ToolManagement
             ExecuteActionHelper.ExecuteAction(Edit2);
         }
 
-        private void add2ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Add2);
+            ExecuteActionHelper.ExecuteAction(AddTool);
+        }
+
+        private void AddToolGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(AddToolGroup);
         }
 
         private void edit2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -243,7 +287,5 @@ namespace CarsMaintenance.ToolManagement
         }
 
         #endregion
-
-
     }
 }

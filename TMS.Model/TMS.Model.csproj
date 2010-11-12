@@ -71,7 +71,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="TMS.Entity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TMS.Entity.Designer.cs</LastGenOutput>

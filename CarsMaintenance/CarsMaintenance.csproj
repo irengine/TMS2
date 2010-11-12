@@ -93,6 +93,7 @@
     <Compile Include="Common\SQLHelper.cs" />
     <Compile Include="Common\SystemHelper.cs" />
     <Compile Include="Common\Validation\DecimalValidator.cs" />
+    <Compile Include="Common\Validation\GridEmptyVaildator.cs" />
     <Compile Include="Common\Validation\IntValidator.cs" />
     <Compile Include="Common\Validation\ValidationManager.cs" />
     <Compile Include="Common\Validation\RequiredValidator.cs" />
@@ -195,6 +196,17 @@
     <Compile Include="Reports\OutboundSummaryReport.Designer.cs">
       <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ScrapDetailDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapDetailReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ScrapDetailReport.Designer.cs">
+      <DependentUpon>ScrapDetailReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToolManagement\ManageArticleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +230,12 @@
     </Compile>
     <Compile Include="ToolManagement\ManageToolForm.Designer.cs">
       <DependentUpon>ManageToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ManageToolGroupForm.Designer.cs">
+      <DependentUpon>ManageToolGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ToolManagement\ManageUnitForm.cs">
       <SubType>Form</SubType>
@@ -248,12 +266,6 @@
     </Compile>
     <Compile Include="ToolManagement\ViewToolCategoryForm.Designer.cs">
       <DependentUpon>ViewToolCategoryForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToolManagement\ViewToolGroupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ToolManagement\ViewToolGroupForm.Designer.cs">
-      <DependentUpon>ViewToolGroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ToolManagement\ViewUnitForm.cs">
       <SubType>Form</SubType>
@@ -333,6 +345,10 @@
     <EmbeddedResource Include="Reports\OutboundSummaryReport.resx">
       <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ScrapDetailReport.rdlc" />
+    <EmbeddedResource Include="Reports\ScrapDetailReport.resx">
+      <DependentUpon>ScrapDetailReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ManageArticleForm.resx">
       <DependentUpon>ManageArticleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ManageToolForm.resx">
       <DependentUpon>ManageToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ManageToolGroupForm.resx">
+      <DependentUpon>ManageToolGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ManageUnitForm.resx">
       <DependentUpon>ManageUnitForm.cs</DependentUpon>
@@ -360,9 +379,6 @@
     <EmbeddedResource Include="ToolManagement\ViewToolCategoryForm.resx">
       <DependentUpon>ViewToolCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToolManagement\ViewToolGroupForm.resx">
-      <DependentUpon>ViewToolGroupForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ViewUnitForm.resx">
       <DependentUpon>ViewUnitForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +391,7 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundOrderDataSet.datasource" />
     <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundSummaryDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ScrapDetailDataSet.datasource" />
     <None Include="Properties\DataSources\TMS.Model.Article.datasource" />
     <None Include="Properties\DataSources\TMS.Model.OutboundOrder.datasource" />
     <None Include="Properties\DataSources\TMS.Model.RepairOrder.datasource" />
@@ -416,6 +433,17 @@
     </None>
     <None Include="Reports\OutboundSummaryDataSet.xss">
       <DependentUpon>OutboundSummaryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapDetailDataSet.xsc">
+      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapDetailDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScrapDetailDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ScrapDetailDataSet.xss">
+      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

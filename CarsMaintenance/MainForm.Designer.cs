@@ -58,12 +58,13 @@
             this.reportStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BarcodeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.OrderSummaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._openedFormsToolStrip = new System.Windows.Forms.ToolStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.OrderSummaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this._operationsTableLayoutPanel.SuspendLayout();
             this._mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -323,7 +324,8 @@
             this.viewInventoryToolStripMenuItem,
             this.BarcodeReportToolStripMenuItem,
             this.toolStripSeparator3,
-            this.OrderSummaryReportToolStripMenuItem});
+            this.OrderSummaryReportToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.reportStripMenuItem.Name = "reportStripMenuItem";
             this.reportStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.reportStripMenuItem.Text = "报表";
@@ -341,6 +343,18 @@
             this.BarcodeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.BarcodeReportToolStripMenuItem.Text = "条码本";
             this.BarcodeReportToolStripMenuItem.Click += new System.EventHandler(this.BarcodeReportToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // OrderSummaryReportToolStripMenuItem
+            // 
+            this.OrderSummaryReportToolStripMenuItem.Name = "OrderSummaryReportToolStripMenuItem";
+            this.OrderSummaryReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OrderSummaryReportToolStripMenuItem.Text = "工属具借用表";
+            this.OrderSummaryReportToolStripMenuItem.Click += new System.EventHandler(this.OrderSummaryReportToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -373,17 +387,12 @@
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStripMain";
             // 
-            // toolStripSeparator3
+            // toolStripMenuItem1
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // OrderSummaryReportToolStripMenuItem
-            // 
-            this.OrderSummaryReportToolStripMenuItem.Name = "OrderSummaryReportToolStripMenuItem";
-            this.OrderSummaryReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.OrderSummaryReportToolStripMenuItem.Text = "工属具借用表";
-            this.OrderSummaryReportToolStripMenuItem.Click += new System.EventHandler(this.OrderSummaryReportToolStripMenuItem_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "工属具组合";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -446,6 +455,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem OrderSummaryReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 	}
 }
 

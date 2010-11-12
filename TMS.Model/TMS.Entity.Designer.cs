@@ -60,6 +60,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_RepairOrderDetail", "RepairOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.RepairOrderDetail), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrder", "ScrapOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.ScrapOrder), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
 [assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolInventoryHistory_ScrapOrderDetail", "ScrapOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMS.Model.ScrapOrderDetail), "ToolInventoryHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolInventoryHistory), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolGroup_Tool", "Tool", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMS.Model.Tool), "ToolGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolGroup), true)]
+[assembly: EdmRelationshipAttribute("TMS.Model", "FK_ToolGroup_Tool2", "Tool", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMS.Model.Tool), "ToolGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMS.Model.ToolGroup), true)]
 
 #endregion
 
@@ -398,6 +400,22 @@ namespace TMS.Model
             }
         }
         private ObjectSet<Article> _Articles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ToolGroup> ToolGroups
+        {
+            get
+            {
+                if ((_ToolGroups == null))
+                {
+                    _ToolGroups = base.CreateObjectSet<ToolGroup>("ToolGroups");
+                }
+                return _ToolGroups;
+            }
+        }
+        private ObjectSet<ToolGroup> _ToolGroups;
 
         #endregion
         #region AddTo Methods
@@ -544,6 +562,14 @@ namespace TMS.Model
         public void AddToArticles(Article article)
         {
             base.AddObject("Articles", article);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ToolGroups EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToToolGroups(ToolGroup toolGroup)
+        {
+            base.AddObject("ToolGroups", toolGroup);
         }
 
         #endregion
@@ -5784,6 +5810,50 @@ namespace TMS.Model
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolGroup_Tool", "ToolGroup")]
+        public EntityCollection<ToolGroup> Groups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolGroup>("TMS.Model.FK_ToolGroup_Tool", "ToolGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolGroup>("TMS.Model.FK_ToolGroup_Tool", "ToolGroup", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolGroup_Tool2", "ToolGroup")]
+        public EntityCollection<ToolGroup> Items
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ToolGroup>("TMS.Model.FK_ToolGroup_Tool2", "ToolGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ToolGroup>("TMS.Model.FK_ToolGroup_Tool2", "ToolGroup", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -6023,6 +6093,195 @@ namespace TMS.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Tool>("TMS.Model.FK_Tool_ToolCategory", "Tool", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TMS.Model", Name="ToolGroup")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ToolGroup : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ToolGroup object.
+        /// </summary>
+        /// <param name="toolGroupID">Initial value of the ToolGroupID property.</param>
+        /// <param name="toolID">Initial value of the ToolID property.</param>
+        /// <param name="quantity">Initial value of the Quantity property.</param>
+        public static ToolGroup CreateToolGroup(global::System.Int32 toolGroupID, global::System.Int32 toolID, global::System.Int32 quantity)
+        {
+            ToolGroup toolGroup = new ToolGroup();
+            toolGroup.ToolGroupID = toolGroupID;
+            toolGroup.ToolID = toolID;
+            toolGroup.Quantity = quantity;
+            return toolGroup;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ToolGroupID
+        {
+            get
+            {
+                return _ToolGroupID;
+            }
+            set
+            {
+                if (_ToolGroupID != value)
+                {
+                    OnToolGroupIDChanging(value);
+                    ReportPropertyChanging("ToolGroupID");
+                    _ToolGroupID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ToolGroupID");
+                    OnToolGroupIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ToolGroupID;
+        partial void OnToolGroupIDChanging(global::System.Int32 value);
+        partial void OnToolGroupIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ToolID
+        {
+            get
+            {
+                return _ToolID;
+            }
+            set
+            {
+                if (_ToolID != value)
+                {
+                    OnToolIDChanging(value);
+                    ReportPropertyChanging("ToolID");
+                    _ToolID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ToolID");
+                    OnToolIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ToolID;
+        partial void OnToolIDChanging(global::System.Int32 value);
+        partial void OnToolIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Quantity
+        {
+            get
+            {
+                return _Quantity;
+            }
+            set
+            {
+                OnQuantityChanging(value);
+                ReportPropertyChanging("Quantity");
+                _Quantity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Quantity");
+                OnQuantityChanged();
+            }
+        }
+        private global::System.Int32 _Quantity;
+        partial void OnQuantityChanging(global::System.Int32 value);
+        partial void OnQuantityChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolGroup_Tool", "Tool")]
+        public Tool Group
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool", "Tool").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool", "Tool").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tool> GroupReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool", "Tool");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool", "Tool", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TMS.Model", "FK_ToolGroup_Tool2", "Tool")]
+        public Tool Tool
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool2", "Tool").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool2", "Tool").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tool> ToolReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool2", "Tool");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tool>("TMS.Model.FK_ToolGroup_Tool2", "Tool", value);
                 }
             }
         }

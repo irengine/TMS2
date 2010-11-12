@@ -112,10 +112,10 @@ namespace CarsMaintenance
 
 		private void toolGroupToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ExecuteActionHelper.ExecuteAction(delegate()
-			{
-				FormsManager.OpenForm(typeof(CarsMaintenance.ToolManagement.ViewToolGroupForm), null);
-			});
+            //ExecuteActionHelper.ExecuteAction(delegate()
+            //{
+            //    FormsManager.OpenForm(typeof(CarsMaintenance.ToolManagement.ViewToolGroupForm), null);
+            //});
 		}
 
 		private void purchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -254,6 +254,14 @@ namespace CarsMaintenance
             ExecuteActionHelper.ExecuteAction(delegate()
             {
                 FormsManager.OpenForm(typeof(CarsMaintenance.Reports.OutboundSummaryReport), null);
+            });
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapDetailReport), null);
             });
         }
 

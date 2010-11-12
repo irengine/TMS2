@@ -35,11 +35,20 @@ namespace CarsMaintenance.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLExpress;Initial Catalog=School;Integrated Security=True;Pooling=" +
-            "False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLExpress;Initial Catalog=TMS;Integrated Security=True;Pooling=Fal" +
+            "se")]
         public string QueryConnectionString {
             get {
                 return ((string)(this["QueryConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G9")]
+        public string ToolGroupCode {
+            get {
+                return ((string)(this["ToolGroupCode"]));
             }
         }
     }

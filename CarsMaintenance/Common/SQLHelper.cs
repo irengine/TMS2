@@ -83,5 +83,32 @@ namespace CarsMaintenance.Common
             }
             return dataSet;
         }
+
+        private static string sql2 = "select tool.*, toolgroup.* from tool inner join toolgroup on tool.id = toolgroup.toolid";
+
+        public static DataSet QueryToolGroup()
+        {
+            DataSet dataSet = new CarsMaintenance.Reports.ScrapDetailDataSet();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[CONNECTION_NAME].ConnectionString))
+            {
+                try
+                {
+
+                    conn.Open();
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(sql2, conn);
+                    dataAdapter.Fill(dataSet.Tables[0]);
+                }
+                //catch (Exception e)
+                //{
+                //}
+                finally
+                {
+                    conn.Close();
+                }
+
+            }
+            return dataSet;
+        }
     }
 }

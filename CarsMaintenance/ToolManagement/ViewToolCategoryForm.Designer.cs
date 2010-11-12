@@ -39,11 +39,12 @@
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Add2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddToolGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Edit2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Delete2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTool = new System.Windows.Forms.DataGridView();
-            this.treeViewToolCategory = new System.Windows.Forms.TreeView();
             this.toolIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +55,7 @@
             this.RatedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.treeViewToolCategory = new System.Windows.Forms.TreeView();
             this.contextMenuStripToolCategory.SuspendLayout();
             this.contextMenuStripTool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toolBindingSource)).BeginInit();
@@ -129,10 +131,26 @@
             // 
             // Add2ToolStripMenuItem
             // 
+            this.Add2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddToolToolStripMenuItem,
+            this.AddToolGroupToolStripMenuItem});
             this.Add2ToolStripMenuItem.Name = "Add2ToolStripMenuItem";
             this.Add2ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.Add2ToolStripMenuItem.Text = "添加";
-            this.Add2ToolStripMenuItem.Click += new System.EventHandler(this.add2ToolStripMenuItem_Click);
+            // 
+            // AddToolToolStripMenuItem
+            // 
+            this.AddToolToolStripMenuItem.Name = "AddToolToolStripMenuItem";
+            this.AddToolToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolToolStripMenuItem.Text = "工属具";
+            this.AddToolToolStripMenuItem.Click += new System.EventHandler(this.AddToolToolStripMenuItem_Click);
+            // 
+            // AddToolGroupToolStripMenuItem
+            // 
+            this.AddToolGroupToolStripMenuItem.Name = "AddToolGroupToolStripMenuItem";
+            this.AddToolGroupToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolGroupToolStripMenuItem.Text = "工属具组合";
+            this.AddToolGroupToolStripMenuItem.Click += new System.EventHandler(this.AddToolGroupToolStripMenuItem_Click);
             // 
             // Edit2ToolStripMenuItem
             // 
@@ -156,6 +174,7 @@
             // 
             this.dataGridViewTool.AllowUserToAddRows = false;
             this.dataGridViewTool.AllowUserToDeleteRows = false;
+            this.dataGridViewTool.AllowUserToOrderColumns = true;
             this.dataGridViewTool.AutoGenerateColumns = false;
             this.dataGridViewTool.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewTool.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -182,16 +201,6 @@
             this.dataGridViewTool.Size = new System.Drawing.Size(366, 373);
             this.dataGridViewTool.TabIndex = 1;
             this.dataGridViewTool.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTool_CellDoubleClick);
-            // 
-            // treeViewToolCategory
-            // 
-            this.treeViewToolCategory.ContextMenuStrip = this.contextMenuStripToolCategory;
-            this.treeViewToolCategory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeViewToolCategory.Location = new System.Drawing.Point(0, 0);
-            this.treeViewToolCategory.Name = "treeViewToolCategory";
-            this.treeViewToolCategory.Size = new System.Drawing.Size(200, 373);
-            this.treeViewToolCategory.TabIndex = 0;
-            this.treeViewToolCategory.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewToolCategory_AfterSelect);
             // 
             // toolIDDataGridViewTextBoxColumn
             // 
@@ -263,6 +272,16 @@
             this.commentDataGridViewTextBoxColumn.Name = "commentDataGridViewTextBoxColumn";
             this.commentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // treeViewToolCategory
+            // 
+            this.treeViewToolCategory.ContextMenuStrip = this.contextMenuStripToolCategory;
+            this.treeViewToolCategory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeViewToolCategory.Location = new System.Drawing.Point(0, 0);
+            this.treeViewToolCategory.Name = "treeViewToolCategory";
+            this.treeViewToolCategory.Size = new System.Drawing.Size(200, 373);
+            this.treeViewToolCategory.TabIndex = 0;
+            this.treeViewToolCategory.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewToolCategory_AfterSelect);
+            // 
             // ViewToolCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -310,5 +329,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RatedQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem AddToolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddToolGroupToolStripMenuItem;
     }
 }
