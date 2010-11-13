@@ -271,6 +271,7 @@
           <Property Name="ToolID" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Balance" Type="numeric" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -1531,6 +1532,7 @@
           <NavigationProperty Name="InboundOrderDetails" Relationship="TMS.Model.FK_InboundOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="InboundOrderDetail" />
           <NavigationProperty Name="ScrapOrderDetails" Relationship="TMS.Model.FK_ScrapOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="ScrapOrderDetail" />
           <NavigationProperty Name="RepairOrderDetails" Relationship="TMS.Model.FK_RepairOrderDetail_OutboundOrderDetail" FromRole="OutboundOrderDetail" ToRole="RepairOrderDetail" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <Association Name="FK_OutboundOrder_SystemUser">
           <End Type="TMS.Model.SystemUser" Role="SystemUser" Multiplicity="1" />
@@ -2220,6 +2222,7 @@
           <EntitySetMapping Name="OutboundOrderDetails">
             <EntityTypeMapping TypeName="TMS.Model.OutboundOrderDetail">
               <MappingFragment StoreEntitySet="OutboundOrderDetail">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="OutboundDate" ColumnName="OutboundDate" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />

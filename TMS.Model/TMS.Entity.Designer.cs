@@ -2169,7 +2169,8 @@ namespace TMS.Model
         /// <param name="unitPrice">Initial value of the UnitPrice property.</param>
         /// <param name="quantity">Initial value of the Quantity property.</param>
         /// <param name="outboundDate">Initial value of the OutboundDate property.</param>
-        public static OutboundOrderDetail CreateOutboundOrderDetail(global::System.Int32 outboundOrderDetailID, global::System.Int32 outboundOrderID, global::System.Int32 version, global::System.Int32 toolID, global::System.Decimal unitPrice, global::System.Decimal quantity, global::System.DateTime outboundDate)
+        /// <param name="balance">Initial value of the Balance property.</param>
+        public static OutboundOrderDetail CreateOutboundOrderDetail(global::System.Int32 outboundOrderDetailID, global::System.Int32 outboundOrderID, global::System.Int32 version, global::System.Int32 toolID, global::System.Decimal unitPrice, global::System.Decimal quantity, global::System.DateTime outboundDate, global::System.Decimal balance)
         {
             OutboundOrderDetail outboundOrderDetail = new OutboundOrderDetail();
             outboundOrderDetail.OutboundOrderDetailID = outboundOrderDetailID;
@@ -2179,6 +2180,7 @@ namespace TMS.Model
             outboundOrderDetail.UnitPrice = unitPrice;
             outboundOrderDetail.Quantity = quantity;
             outboundOrderDetail.OutboundDate = outboundDate;
+            outboundOrderDetail.Balance = balance;
             return outboundOrderDetail;
         }
 
@@ -2355,6 +2357,30 @@ namespace TMS.Model
         private global::System.DateTime _OutboundDate;
         partial void OnOutboundDateChanging(global::System.DateTime value);
         partial void OnOutboundDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Balance
+        {
+            get
+            {
+                return _Balance;
+            }
+            set
+            {
+                OnBalanceChanging(value);
+                ReportPropertyChanging("Balance");
+                _Balance = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Balance");
+                OnBalanceChanged();
+            }
+        }
+        private global::System.Decimal _Balance;
+        partial void OnBalanceChanging(global::System.Decimal value);
+        partial void OnBalanceChanged();
 
         #endregion
     

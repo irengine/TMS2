@@ -14,6 +14,7 @@ print 'system tables done'
 
 :r dbo.ToolCategory.Table.sql
 :r dbo.Tool.Table.sql
+:r dbo.ToolGroup.Table.sql
 print 'tool tables done'
 
 :r dbo.Article.Table.sql
