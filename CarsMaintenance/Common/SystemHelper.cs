@@ -29,14 +29,17 @@ namespace CarsMaintenance.Common
         public static void RefreshOrder(System.Data.Objects.DataClasses.EntityObject o)
         {
             if (o.EntityState == EntityState.Added)
+            {
                 SystemHelper.TMSContext.Detach(o);
+                o = null;
+            }
             else if (o.EntityState == EntityState.Modified)
                 SystemHelper.TMSContext.Refresh(System.Data.Objects.RefreshMode.StoreWins, o);
         }
 
         public static void BindComboBoxToScrapReason(DataGridViewComboBoxColumn col)
         {
-            string[] reason = { "边缘断裂", "变形", "大圈变形", "断层", "断股", "断裂", 
+            string[] reason = { "", "边缘断裂", "变形", "大圈变形", "断层", "断股", "断裂", 
                                   "断丝", "断丝超标", "割断", "横销坏", "横销遗失", "滑牙", 
                                   "开口变形", "开裂", "磨损", "其他", "散股", "散股断丝", "损坏" };
 

@@ -63,7 +63,7 @@ namespace CarsMaintenance.OrderManagement
             foreach (OutboundOrderDetail item in ReferenceOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.OutboundOrderDetailID, item.Tool.Code, item.Quantity, item.Tool.Name, item.Tool.Dimensions };
+                object[] row = { item.OutboundOrderDetailID, item.Tool.Code, item.Quantity, item.Tool.Name, item.Tool.Dimensions, item.Balance, item.UnitPrice };
                 dataGridViewDetail.Rows.Add(row);
             }
         }
@@ -77,6 +77,9 @@ namespace CarsMaintenance.OrderManagement
         {
             ExecuteActionHelper.ExecuteAction(delegate()
             {
+                if (!ValidateTransferOrder())
+                    return;
+
                 if (!_validationManager.Validate())
                 {
                     return;
@@ -133,6 +136,8 @@ namespace CarsMaintenance.OrderManagement
                         item.PrescrapQuantity = prescrapQuantity;
                         item.ScrapReason = dgvr.Cells["ScrapReason"].Value as string;
 
+                        referenceItem.Balance -= item.Quantity + item.TransferQuantity + item.PrescrapQuantity;
+
                         CurrentOrder.Items.Add(item);
 
                         OrderManager.Return(CurrentOrder, item);
@@ -174,16 +179,16 @@ namespace CarsMaintenance.OrderManagement
             if (e.FormattedValue == null || e.FormattedValue.ToString().Length == 0)
                 return;
 
+            // add new column item balance, so column index should be plus 1.
             switch (e.ColumnIndex)
             {
-                case 5:
-                case 6:
                 case 7:
+                case 8:
+                case 9:
                     decimal quantity = 0;
                     if (!decimal.TryParse(e.FormattedValue.ToString(), out quantity))
                         e.Cancel = true;
                     break;
-
             }
         }
 
@@ -197,20 +202,180 @@ namespace CarsMaintenance.OrderManagement
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
         }
 
-        private void btnTransfer_Click(object sender, EventArgs e)
+         private void TransferOrderDetail(OutboundOrder transferOrder)
         {
-            using (CreateOutboundOrderForm form = new CreateOutboundOrderForm())
+            if (transferOrder.Items.Count == 0)
             {
-                form.CurrentOrder = new OutboundOrder();
-                form.CurrentMode = CreateOutboundOrderForm.MODE_CREATE;
+                foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
+                {
+                    if (!dgvr.IsNewRow)
+                    {
+                        decimal transferQuantity = ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
+                        if (transferQuantity > 0)
+                        {
+                            OutboundOrderDetail item = new OutboundOrderDetail();
 
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    LoadData();
+                            decimal unitPrice = ConvertToNumber(dgvr.Cells["ItemUnitPrice"].Value);
+
+                            string code = dgvr.Cells["ItemCode"].Value.ToString();
+                            Tool t = SystemHelper.TMSContext.Tools.FirstOrDefault(s => s.Code == code);
+                            item.Tool = t;
+                            item.Quantity = transferQuantity;
+                            item.Balance = transferQuantity;
+                            item.UnitPrice = unitPrice;
+                            item.OutboundDate = CurrentOrder.InboundDate;
+
+                            transferOrder.Items.Add(item);
+                        }
+                    }
                 }
-                else
+            }
+        }
+
+        // determine if transfer quantity in inbound order is more than 0.
+        private bool IsExistsTransferItems()
+        {
+            foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
+            {
+                if (!dgvr.IsNewRow)
                 {
-                    SystemHelper.RefreshOrder(form.CurrentOrder);
+                    decimal transferQuantity = ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
+                    if (transferQuantity > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool ValidateTransferOrder()
+        {
+            if (IsExistsTransferItems())
+            {
+                using (CreateOutboundOrderForm form = new CreateOutboundOrderForm())
+                {
+                    OutboundOrder transferOrder = new OutboundOrder();
+                    TransferOrderDetail(transferOrder);
+
+                    form.CurrentOrder = transferOrder;
+                    form.CurrentMode = CreateOutboundOrderForm.MODE_TRANSFER;
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // deep detach outbound order object.
+                        List<OutboundOrderDetail> lt = new List<OutboundOrderDetail>();
+                        foreach (OutboundOrderDetail item in transferOrder.Items)
+                        {
+                            lt.Add(item);
+                        }
+                        foreach (OutboundOrderDetail item in lt)
+                        {
+                            SystemHelper.RefreshOrder(item);
+                        }
+                        transferOrder.Items.Clear();
+                        SystemHelper.RefreshOrder(transferOrder);
+                        //transferOrder = null;
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void dataGridViewDetail_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            DataGridViewRow row = dataGridViewDetail.Rows[e.RowIndex];
+            e.Cancel = !(IsLessThanBalance(row) && IsIncludeReason(row));
+        }
+
+        private bool IsLessThanBalance(DataGridViewRow row)
+        {
+            // validate row value, quantity + transfer quantity + prescrap quantity <= balance
+            decimal balance = ConvertToNumber(row.Cells["ItemBalance"].Value);
+            decimal quantity = ConvertToNumber(row.Cells["Quantity"].Value);
+            decimal transferQuantity = ConvertToNumber(row.Cells["TransferQuantity"].Value);
+            decimal prescrapQuantity = ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
+
+            if (balance >= (quantity + transferQuantity + prescrapQuantity))
+            {
+                row.ErrorText = "";
+                return true;
+            }
+            else
+            {
+                row.ErrorText = "归还数、转借数和预报废数大于未归还数.";
+                return false;
+            }
+        }
+
+        private bool IsIncludeReason(DataGridViewRow row)
+        {
+            decimal prescrapQuantity = ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
+
+            if (prescrapQuantity == 0)
+            {
+                row.ErrorText = "";
+                return true;
+            }
+            else if (row.Cells["ScrapReason"].Value != null && row.Cells["ScrapReason"].Value.ToString().Length > 0)
+            {
+                row.ErrorText = "";
+                return true;
+            }
+            else
+            {
+                row.ErrorText = "缺少报废原因.";
+                return false;
+            }
+        }
+
+        private decimal ConvertToNumber(object o)
+        {
+            if (o == null || o.ToString().Length == 0)
+                return 0;
+
+            decimal i;
+            if (decimal.TryParse(o.ToString(), out i))
+                return i;
+            else
+                return 0;
+        }
+
+        private void btnReturnAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
+            {
+                if (!dgvr.IsNewRow)
+                {
+                    decimal balance = ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
+                    dgvr.Cells["Quantity"].Value = balance;
+                    dgvr.Cells["TransferQuantity"].Value = null;
+                    dgvr.Cells["PrescrapQuantity"].Value = null;
+                    dgvr.Cells["ScrapReason"].Value = null;
+                }
+            }
+        }
+
+        private void btnTransferAll_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
+            {
+                if (!dgvr.IsNewRow)
+                {
+                    decimal balance = ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
+                    dgvr.Cells["Quantity"].Value = null;
+                    dgvr.Cells["TransferQuantity"].Value = balance;
+                    dgvr.Cells["PrescrapQuantity"].Value = null;
+                    dgvr.Cells["ScrapReason"].Value = null;
                 }
             }
         }

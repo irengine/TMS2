@@ -21,6 +21,7 @@ namespace CarsMaintenance.OrderManagement
         public static string MODE_BROWSE = "BROWSE";
         public static string MODE_CREATE = "CREATE";
         public static string MODE_APPEND = "APPEND";
+        public static string MODE_TRANSFER = "TRANSFER";
 
         public CreateOutboundOrderForm()
         {
@@ -101,6 +102,12 @@ namespace CarsMaintenance.OrderManagement
             {
                 ItemCount = CurrentOrder.Items.Count;
             }
+            else if (CurrentMode == MODE_TRANSFER)
+            {
+                CurrentOrder.Version = 0;
+                CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                ItemCount = CurrentOrder.Items.Count;
+            }
 
             txtCode.Text = CurrentOrder.Code;
             dtOutboundDate.Value = CurrentOrder.OutboundDate;
@@ -123,10 +130,6 @@ namespace CarsMaintenance.OrderManagement
             foreach (OutboundOrderDetail item in CurrentOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                //dgvr.Cells["ItemCode"].Value = item.Tool.Code;
-                //dgvr.Cells["ItemQuantity"].Value = item.Quantity;
-                //dgvr.Cells["ItemName"].Value = item.Tool.Name;
-                //dgvr.Cells["ItemDimensions"].Value = item.Tool.Dimensions;
                 object[] row = { item.Tool.Code, item.Quantity, item.Tool.Name, item.Tool.Dimensions };
                 dataGridViewDetail.Rows.Add(row);
             }
@@ -197,6 +200,7 @@ namespace CarsMaintenance.OrderManagement
                         item.Version = CurrentOrder.Version;
                         item.Tool = t;
                         item.Quantity = quantity;
+                        item.Balance = quantity;
                         item.UnitPrice = t.ToolInventory.UnitPrice;
                         item.OutboundDate = CurrentOrder.LastUpdateTime;
 
@@ -206,14 +210,20 @@ namespace CarsMaintenance.OrderManagement
                     }
                 }
 
-                SystemHelper.TMSContext.SaveChanges();
+                if (CurrentMode == MODE_TRANSFER)
+                {
+                    foreach (OutboundOrderDetail item in CurrentOrder.Items)
+                    {
+                        OrderManager.Lend(CurrentOrder, item);
+                    }
+                }
+                else // if the order is transfer order, do not save order, it would be saved at origin inbound order.
+                {
+                    SystemHelper.TMSContext.SaveChanges();
+                    FormsManager.OpenForm(typeof(CarsMaintenance.Reports.OutboundOrderReport), new object[] { "ID", CurrentOrder.OutboundOrderID });
+                }
 
                 DialogResult = DialogResult.OK;
-
-                ExecuteActionHelper.ExecuteAction(delegate()
-                {
-                    FormsManager.OpenForm(typeof(CarsMaintenance.Reports.OutboundOrderReport), new object[] { "ID", CurrentOrder.OutboundOrderID });
-                });
             });
         }
 
