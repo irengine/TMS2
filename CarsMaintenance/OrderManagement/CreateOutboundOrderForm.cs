@@ -39,6 +39,9 @@ namespace CarsMaintenance.OrderManagement
             txtCargo.Enabled = true;
             txtQuantity.Enabled = true;
             txtProcess.Enabled = true;
+
+            rbDay.Enabled = true;
+            rbNight.Enabled = true;
         }
 
         private ValidationManager _validationManager;
@@ -90,6 +93,7 @@ namespace CarsMaintenance.OrderManagement
             {
                 CurrentOrder.Version = 0;
                 CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                CurrentOrder.ClassType = GetCurrentClassType();
                 ItemCount = 0;
             }
             else if (CurrentMode == MODE_APPEND)
@@ -106,6 +110,7 @@ namespace CarsMaintenance.OrderManagement
             {
                 CurrentOrder.Version = 0;
                 CurrentOrder.SystemUser = SystemHelper.CurrentUser;
+                CurrentOrder.ClassType = GetCurrentClassType();
                 ItemCount = CurrentOrder.Items.Count;
             }
 
@@ -124,6 +129,18 @@ namespace CarsMaintenance.OrderManagement
             txtQuantity.Text = CurrentOrder.Quantity;
             txtProcess.Text = CurrentOrder.Process;
 
+            if (CurrentOrder.ClassType == 1)
+            {
+                rbDay.Checked = true;
+                rbNight.Checked = false;
+            }
+            else if (CurrentOrder.ClassType == 2)
+            {
+                rbDay.Checked = false;
+                rbNight.Checked = true;
+            }
+
+
             cbCustomer.SelectedItem = CurrentOrder.Customer;
             cbSystemUser.SelectedItem = CurrentOrder.SystemUser;
 
@@ -133,6 +150,14 @@ namespace CarsMaintenance.OrderManagement
                 object[] row = { item.Tool.Code, item.Quantity, item.Tool.Name, item.Tool.Dimensions };
                 dataGridViewDetail.Rows.Add(row);
             }
+        }
+
+        private int GetCurrentClassType()
+        {
+            if (System.DateTime.Now.Hour >= 8 && System.DateTime.Now.Hour < 17)
+                return 1;
+            else
+                return 2;
         }
 
         private void EnableForm()
@@ -173,6 +198,11 @@ namespace CarsMaintenance.OrderManagement
                 CurrentOrder.Cargo = txtCargo.Text;
                 CurrentOrder.Quantity = txtQuantity.Text;
                 CurrentOrder.Process = txtProcess.Text;
+
+                if (rbDay.Checked)
+                    CurrentOrder.ClassType = 1;
+                else if (rbNight.Checked)
+                    CurrentOrder.ClassType = 2;
 
                 CurrentOrder.Customer = cbCustomer.SelectedItem as Unit;
                 CurrentOrder.SystemUser = cbSystemUser.SelectedItem as SystemUser;
