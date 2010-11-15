@@ -244,6 +244,7 @@
           </Key>
           <Property Name="OutboundOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OutboundDate" Type="datetime2" Nullable="false" />
+          <Property Name="ClassType" Type="int" Nullable="false" />
           <Property Name="Version" Type="int" Nullable="false" />
           <Property Name="Code" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
@@ -344,6 +345,7 @@
           <Property Name="ScrapReason" Type="varchar" MaxLength="50" />
           <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsAbnormal" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Supply">
           <Key>
@@ -1514,6 +1516,7 @@
           <NavigationProperty Name="RepairOrders" Relationship="TMS.Model.FK_RepairOrder_OutboundOrder" FromRole="OutboundOrder" ToRole="RepairOrder" />
           <Property Type="String" Name="JobPosition" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="JobType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ClassType" Nullable="false" />
         </EntityType>
         <EntityType Name="OutboundOrderDetail">
           <Key>
@@ -1763,6 +1766,7 @@
           <NavigationProperty Name="Tool" Relationship="TMS.Model.FK_ScrapOrderDetail_Tool" FromRole="ScrapOrderDetail" ToRole="Tool" />
           <Property Type="String" Name="ScrapReason" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ToolInventoryHistories" Relationship="TMS.Model.FK_ToolInventoryHistory_ScrapOrderDetail" FromRole="ScrapOrderDetail" ToRole="ToolInventoryHistory" />
+          <Property Type="Boolean" Name="IsAbnormal" Nullable="false" />
         </EntityType>
         <Association Name="FK_ScrapOrder_OutboundOrder">
           <End Type="TMS.Model.OutboundOrder" Role="OutboundOrder" Multiplicity="0..1" />
@@ -2199,6 +2203,7 @@
           <EntitySetMapping Name="OutboundOrders">
             <EntityTypeMapping TypeName="TMS.Model.OutboundOrder">
               <MappingFragment StoreEntitySet="OutboundOrder">
+                <ScalarProperty Name="ClassType" ColumnName="ClassType" />
                 <ScalarProperty Name="JobType" ColumnName="JobType" />
                 <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
                 <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
@@ -2279,6 +2284,7 @@
           <EntitySetMapping Name="ScrapOrderDetails">
             <EntityTypeMapping TypeName="TMS.Model.ScrapOrderDetail">
               <MappingFragment StoreEntitySet="ScrapOrderDetail">
+                <ScalarProperty Name="IsAbnormal" ColumnName="IsAbnormal" />
                 <ScalarProperty Name="ScrapReason" ColumnName="ScrapReason" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="RepairingQuantity" ColumnName="RepairingQuantity" />

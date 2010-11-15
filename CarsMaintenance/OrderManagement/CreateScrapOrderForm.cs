@@ -100,7 +100,7 @@ namespace CarsMaintenance.OrderManagement
             foreach (ScrapOrderDetail item in CurrentOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.ScrapOrderDetailID, item.Tool.Code, item.PrescrapQuantity, item.Tool.Name, item.Tool.Dimensions, item.Quantity, item.RepairingQuantity, item.ScrapQuantity, item.ScrapReason };
+                object[] row = { item.ScrapOrderDetailID, item.Tool.Code, item.PrescrapQuantity, item.Tool.Name, item.Tool.Dimensions, item.Quantity, item.RepairingQuantity, item.ScrapQuantity, item.ScrapReason, item.IsAbnormal };
                 dataGridViewDetail.Rows.Add(row);
             }
         }
@@ -162,6 +162,7 @@ namespace CarsMaintenance.OrderManagement
                             item.ScrapQuantity = scrapQuantity;
                             item.ScrapReason = dgvr.Cells["ScrapReason"].Value as string;
                             item.ScrapDate = CurrentOrder.LastUpdateTime;
+                            item.IsAbnormal = (bool)dgvr.Cells["IsAbnormal"].Value;
 
                             CurrentOrder.Items.Add(item);
                         }
@@ -188,6 +189,7 @@ namespace CarsMaintenance.OrderManagement
                             item.RepairingQuantity = repairingQuantity;
                             item.ScrapReason = dgvr.Cells["ScrapReason"].Value as string;
                             item.ScrapDate = CurrentOrder.LastUpdateTime;
+                            item.IsAbnormal = (bool)dgvr.Cells["IsAbnormal"].Value;
                         }
 
                         // for inventory and inventory history

@@ -1529,7 +1529,8 @@ namespace TMS.Model
         /// <param name="customerID">Initial value of the CustomerID property.</param>
         /// <param name="lastUpdatedBy">Initial value of the LastUpdatedBy property.</param>
         /// <param name="lastUpdateTime">Initial value of the LastUpdateTime property.</param>
-        public static OutboundOrder CreateOutboundOrder(global::System.Int32 outboundOrderID, global::System.DateTime outboundDate, global::System.Int32 version, global::System.String code, global::System.Int32 customerID, global::System.Int32 lastUpdatedBy, global::System.DateTime lastUpdateTime)
+        /// <param name="classType">Initial value of the ClassType property.</param>
+        public static OutboundOrder CreateOutboundOrder(global::System.Int32 outboundOrderID, global::System.DateTime outboundDate, global::System.Int32 version, global::System.String code, global::System.Int32 customerID, global::System.Int32 lastUpdatedBy, global::System.DateTime lastUpdateTime, global::System.Int32 classType)
         {
             OutboundOrder outboundOrder = new OutboundOrder();
             outboundOrder.OutboundOrderID = outboundOrderID;
@@ -1539,6 +1540,7 @@ namespace TMS.Model
             outboundOrder.CustomerID = customerID;
             outboundOrder.LastUpdatedBy = lastUpdatedBy;
             outboundOrder.LastUpdateTime = lastUpdateTime;
+            outboundOrder.ClassType = classType;
             return outboundOrder;
         }
 
@@ -1955,6 +1957,30 @@ namespace TMS.Model
         private global::System.String _JobType;
         partial void OnJobTypeChanging(global::System.String value);
         partial void OnJobTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ClassType
+        {
+            get
+            {
+                return _ClassType;
+            }
+            set
+            {
+                OnClassTypeChanging(value);
+                ReportPropertyChanging("ClassType");
+                _ClassType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ClassType");
+                OnClassTypeChanged();
+            }
+        }
+        private global::System.Int32 _ClassType;
+        partial void OnClassTypeChanging(global::System.Int32 value);
+        partial void OnClassTypeChanged();
 
         #endregion
     
@@ -4213,7 +4239,8 @@ namespace TMS.Model
         /// <param name="scrapQuantity">Initial value of the ScrapQuantity property.</param>
         /// <param name="repairingQuantity">Initial value of the RepairingQuantity property.</param>
         /// <param name="unitPrice">Initial value of the UnitPrice property.</param>
-        public static ScrapOrderDetail CreateScrapOrderDetail(global::System.Int32 scrapOrderDetailID, global::System.Int32 scrapOrderID, global::System.DateTime scrapDate, global::System.Int32 toolID, global::System.Decimal prescrapQuantity, global::System.Decimal quantity, global::System.Decimal scrapQuantity, global::System.Decimal repairingQuantity, global::System.Decimal unitPrice)
+        /// <param name="isAbnormal">Initial value of the IsAbnormal property.</param>
+        public static ScrapOrderDetail CreateScrapOrderDetail(global::System.Int32 scrapOrderDetailID, global::System.Int32 scrapOrderID, global::System.DateTime scrapDate, global::System.Int32 toolID, global::System.Decimal prescrapQuantity, global::System.Decimal quantity, global::System.Decimal scrapQuantity, global::System.Decimal repairingQuantity, global::System.Decimal unitPrice, global::System.Boolean isAbnormal)
         {
             ScrapOrderDetail scrapOrderDetail = new ScrapOrderDetail();
             scrapOrderDetail.ScrapOrderDetailID = scrapOrderDetailID;
@@ -4225,6 +4252,7 @@ namespace TMS.Model
             scrapOrderDetail.ScrapQuantity = scrapQuantity;
             scrapOrderDetail.RepairingQuantity = repairingQuantity;
             scrapOrderDetail.UnitPrice = unitPrice;
+            scrapOrderDetail.IsAbnormal = isAbnormal;
             return scrapOrderDetail;
         }
 
@@ -4497,6 +4525,30 @@ namespace TMS.Model
         private global::System.String _ScrapReason;
         partial void OnScrapReasonChanging(global::System.String value);
         partial void OnScrapReasonChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsAbnormal
+        {
+            get
+            {
+                return _IsAbnormal;
+            }
+            set
+            {
+                OnIsAbnormalChanging(value);
+                ReportPropertyChanging("IsAbnormal");
+                _IsAbnormal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsAbnormal");
+                OnIsAbnormalChanged();
+            }
+        }
+        private global::System.Boolean _IsAbnormal;
+        partial void OnIsAbnormalChanging(global::System.Boolean value);
+        partial void OnIsAbnormalChanged();
 
         #endregion
     

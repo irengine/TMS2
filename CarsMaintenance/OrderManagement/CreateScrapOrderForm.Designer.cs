@@ -51,6 +51,7 @@
             this.RepairingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScrapQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScrapReason = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.IsAbnormal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this._operationsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
@@ -97,7 +98,7 @@
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._operationsPanel.Location = new System.Drawing.Point(0, 272);
             this._operationsPanel.Name = "_operationsPanel";
-            this._operationsPanel.Size = new System.Drawing.Size(799, 39);
+            this._operationsPanel.Size = new System.Drawing.Size(883, 39);
             this._operationsPanel.TabIndex = 20;
             // 
             // _cancelButton
@@ -177,12 +178,13 @@
             this.Quantity,
             this.RepairingQuantity,
             this.ScrapQuantity,
-            this.ScrapReason});
+            this.ScrapReason,
+            this.IsAbnormal});
             this.dataGridViewDetail.Location = new System.Drawing.Point(25, 79);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";
             this.dataGridViewDetail.RowTemplate.Height = 23;
-            this.dataGridViewDetail.Size = new System.Drawing.Size(748, 181);
+            this.dataGridViewDetail.Size = new System.Drawing.Size(833, 181);
             this.dataGridViewDetail.TabIndex = 19;
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
             // 
@@ -245,11 +247,18 @@
             this.ScrapReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ScrapReason.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // IsAbnormal
+            // 
+            this.IsAbnormal.HeaderText = "异损";
+            this.IsAbnormal.Name = "IsAbnormal";
+            this.IsAbnormal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAbnormal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // CreateScrapOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 311);
+            this.ClientSize = new System.Drawing.Size(883, 311);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.cbCustomer);
             this.Controls.Add(this._operationsPanel);
@@ -296,5 +305,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RepairingQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScrapQuantity;
         private System.Windows.Forms.DataGridViewComboBoxColumn ScrapReason;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAbnormal;
     }
 }
