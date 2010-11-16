@@ -61,6 +61,7 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.Enabled = false;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(98, 12);
             this.cbCategory.Name = "cbCategory";
