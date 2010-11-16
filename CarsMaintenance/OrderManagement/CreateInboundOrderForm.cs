@@ -14,6 +14,7 @@ namespace CarsMaintenance.OrderManagement
 {
     public partial class CreateInboundOrderForm : BaseForm
     {
+        public OutboundOrder TransferOrder { get; set; }
         public OutboundOrder ReferenceOrder { get; set; }
         public InboundOrder CurrentOrder { get; set; }
 
@@ -169,6 +170,8 @@ namespace CarsMaintenance.OrderManagement
                 }
 
                 SystemHelper.TMSContext.SaveChanges();
+                if (TransferOrder != null)
+                    FormsManager.OpenForm(typeof(CarsMaintenance.Reports.OutboundOrderReport), new object[] { "ID", TransferOrder.OutboundOrderID });
 
                 DialogResult = DialogResult.OK;
             });
@@ -256,10 +259,10 @@ namespace CarsMaintenance.OrderManagement
             {
                 using (CreateOutboundOrderForm form = new CreateOutboundOrderForm())
                 {
-                    OutboundOrder transferOrder = new OutboundOrder();
-                    TransferOrderDetail(transferOrder);
+                    TransferOrder = new OutboundOrder();
+                    TransferOrderDetail(TransferOrder);
 
-                    form.CurrentOrder = transferOrder;
+                    form.CurrentOrder = TransferOrder;
                     form.CurrentMode = CreateOutboundOrderForm.MODE_TRANSFER;
 
                     if (form.ShowDialog() == DialogResult.OK)
@@ -270,7 +273,7 @@ namespace CarsMaintenance.OrderManagement
                     {
                         // deep detach outbound order object.
                         List<OutboundOrderDetail> lt = new List<OutboundOrderDetail>();
-                        foreach (OutboundOrderDetail item in transferOrder.Items)
+                        foreach (OutboundOrderDetail item in TransferOrder.Items)
                         {
                             lt.Add(item);
                         }
@@ -278,9 +281,9 @@ namespace CarsMaintenance.OrderManagement
                         {
                             SystemHelper.RefreshOrder(item);
                         }
-                        transferOrder.Items.Clear();
-                        SystemHelper.RefreshOrder(transferOrder);
-                        //transferOrder = null;
+                        TransferOrder.Items.Clear();
+                        SystemHelper.RefreshOrder(TransferOrder);
+                        TransferOrder = null;
                         return false;
                     }
                 }
