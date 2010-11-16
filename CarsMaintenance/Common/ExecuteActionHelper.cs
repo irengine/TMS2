@@ -7,13 +7,16 @@ using System.Collections;
 using System.IO;
 using System.Windows.Forms;
 using System.Reflection;
+using Common.Logging;
 
 namespace CarsMaintenance.Common
 {
 	public delegate void ExecuteActionDelegate();
 
 	public static class ExecuteActionHelper
-	{       
+	{
+        private static ILog log = LogManager.GetCurrentClassLogger();
+
 		public static void ExecuteAction(ExecuteActionDelegate action)
 		{
 			try
@@ -26,7 +29,8 @@ namespace CarsMaintenance.Common
 			}
 			catch (Exception exception)
 			{
-				MessageBox.Show(exception.ToString(), "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.Error(exception);
+				MessageBox.Show("程序异常中止，请与开发人员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Application.Exit();
 			}
 		}
