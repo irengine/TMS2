@@ -30,7 +30,13 @@ namespace CarsMaintenance.OrderManagement
                             Status = (o.Status == 0 ? "待修理" : "已修理")
                         };
 
-            dataGridViewRepairOrder.DataSource = query;
+            CarsMaintenance.Common.Sorting.SortableBindingList<object> repairOrders = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+            foreach (object o in query)
+            {
+                repairOrders.Add(o);
+            }
+
+            dataGridViewRepairOrder.DataSource = repairOrders;
         }
 
         private void FormLoad(object sender, EventArgs e)

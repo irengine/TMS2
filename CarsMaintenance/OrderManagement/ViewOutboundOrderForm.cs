@@ -24,7 +24,13 @@ namespace CarsMaintenance.OrderManagement
                         orderby o.OutboundDate
                         select o;
 
-            dataGridViewOutboundOrder.DataSource = query;
+            CarsMaintenance.Common.Sorting.SortableBindingList<object> outboundOrders = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+            foreach (object o in query)
+            {
+                outboundOrders.Add(o);
+            }
+
+            dataGridViewOutboundOrder.DataSource = outboundOrders;
         }
 
         private void FormLoad(object sender, EventArgs e)

@@ -38,7 +38,13 @@ namespace CarsMaintenance.OrderManagement
                             Status = (o.Status == 0 ? "预报废" : "报废")
                         };
 
-            dataGridViewScrapOrder.DataSource = query;
+            CarsMaintenance.Common.Sorting.SortableBindingList<object> scrapOrders = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+            foreach (object o in query)
+            {
+                scrapOrders.Add(o);
+            }
+
+            dataGridViewScrapOrder.DataSource = scrapOrders;
         }
 
         private void FormLoad(object sender, EventArgs e)
