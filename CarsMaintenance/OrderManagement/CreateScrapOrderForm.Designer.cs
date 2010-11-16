@@ -168,6 +168,7 @@
             // 
             this.dataGridViewDetail.AllowUserToAddRows = false;
             this.dataGridViewDetail.AllowUserToDeleteRows = false;
+            this.dataGridViewDetail.AllowUserToOrderColumns = true;
             this.dataGridViewDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
@@ -180,6 +181,7 @@
             this.ScrapQuantity,
             this.ScrapReason,
             this.IsAbnormal});
+            this.dataGridViewDetail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewDetail.Location = new System.Drawing.Point(25, 79);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";

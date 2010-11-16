@@ -168,6 +168,9 @@ namespace CarsMaintenance.OrderManagement
                         }
                         else
                         {
+                            if (!(ValidateRow(dgvr.Index)))
+                                return;
+
                             decimal quantity = 0;
                             if (dgvr.Cells["Quantity"].Value != null)
                                 decimal.TryParse(dgvr.Cells["Quantity"].Value.ToString(), out quantity);
@@ -266,6 +269,28 @@ namespace CarsMaintenance.OrderManagement
         private void cbSystemUser_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
+        }
+
+        private bool ValidateRow(int row)
+        {
+            decimal quantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["Quantity"].Value);
+
+            decimal prescrapQuantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["PrescrapQuantity"].Value);
+
+            decimal repairingQuantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["RepairingQuantity"].Value);
+
+            decimal scrapQuantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["ScrapQuantity"].Value);
+
+            if (prescrapQuantity != (quantity + repairingQuantity + scrapQuantity))
+            {
+                dataGridViewDetail.Rows[row].ErrorText = "归还数、修理数和报废数之和必须等于未归还数.";
+                return false;
+            }
+            else
+            {
+                dataGridViewDetail.Rows[row].ErrorText = "";
+                return true;
+            }
         }
     }
 }
