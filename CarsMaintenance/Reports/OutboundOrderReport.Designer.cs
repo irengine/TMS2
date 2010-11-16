@@ -30,10 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.OutboundOrderDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.OutboundOrderDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // OutboundOrderDataSetBindingSource
+            // 
+            this.OutboundOrderDataSetBindingSource.DataMember = "OutboundOrder";
+            this.OutboundOrderDataSetBindingSource.DataSource = typeof(CarsMaintenance.Reports.OutboundOrderDataSet);
             // 
             // reportViewer1
             // 
@@ -43,14 +48,10 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CarsMaintenance.Reports.OutboundOrder.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(1);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(284, 262);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // OutboundOrderDataSetBindingSource
-            // 
-            this.OutboundOrderDataSetBindingSource.DataMember = "OutboundOrder";
-            this.OutboundOrderDataSetBindingSource.DataSource = typeof(CarsMaintenance.Reports.OutboundOrderDataSet);
             // 
             // OutboundOrderReport
             // 
