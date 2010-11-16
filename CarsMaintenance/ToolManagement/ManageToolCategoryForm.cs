@@ -20,7 +20,6 @@ namespace CarsMaintenance.ToolManagement
         public ManageToolCategoryForm()
         {
             InitializeComponent();
-            RegisterControlsForValidation();
         }
 
         private ValidationManager _validationManager;
@@ -41,6 +40,12 @@ namespace CarsMaintenance.ToolManagement
                 Control = txtName,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblName.Text)
             });
+            _validationManager.Validators.Add(new ParentCodeValidator()
+            {
+                Control = txtCode,
+                ParentCode = ParentCategory.Code,
+                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.ParentCodeErrorMessage, lblCode.Text)
+            });
         }
 
         private void LoadData()
@@ -49,6 +54,12 @@ namespace CarsMaintenance.ToolManagement
                 CurrentCategory = new ToolCategory();
             else
                 ParentCategory = CurrentCategory.ParentCategory;
+
+            // if the category is top level, disable code text box
+            if (ParentCategory == null)
+                txtCode.Enabled = false;
+            else
+                txtCode.Enabled = true;
 
             txtCode.Text = CurrentCategory.Code;
             txtName.Text = CurrentCategory.Name;
@@ -59,6 +70,7 @@ namespace CarsMaintenance.ToolManagement
         private void ManageToolCategoryForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            RegisterControlsForValidation();
         }
 
         private void _saveButton_Click(object sender, EventArgs e)

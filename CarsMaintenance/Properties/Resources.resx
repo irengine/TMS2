@@ -120,6 +120,9 @@
   <data name="DigitalErrorMessage" xml:space="preserve">
     <value>{0} 必须是数字.</value>
   </data>
+  <data name="ParentCodeErrorMessage" xml:space="preserve">
+    <value>{0} 必须与以上级代码开头.</value>
+  </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
     <value>{0} 必须填.</value>
   </data>

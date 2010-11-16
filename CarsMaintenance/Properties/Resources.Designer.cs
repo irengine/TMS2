@@ -70,6 +70,15 @@ namespace CarsMaintenance.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} 必须与以上级代码开头..
+        /// </summary>
+        internal static string ParentCodeErrorMessage {
+            get {
+                return ResourceManager.GetString("ParentCodeErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} 必须填..
         /// </summary>
         internal static string RequiredErrorMessage {

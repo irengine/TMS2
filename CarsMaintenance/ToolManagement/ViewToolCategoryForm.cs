@@ -82,6 +82,11 @@ namespace CarsMaintenance.ToolManagement
 
         private string GetSelectedCategoryCode()
         {
+            if (treeViewToolCategory.SelectedNode == null)
+            {
+                MessageBox.Show("请选择上级工属具类别!", "警告", MessageBoxButtons.OK);
+                return null;
+            }
             string categoryCode = treeViewToolCategory.SelectedNode.Text;
             categoryCode = categoryCode.Substring(0, categoryCode.IndexOf('-'));
 
@@ -92,6 +97,9 @@ namespace CarsMaintenance.ToolManagement
         {
             string categoryCode = GetSelectedCategoryCode();
 
+            if (categoryCode == null)
+                return null;
+
             return SystemHelper.TMSContext.ToolCategories.First(u => u.Code == categoryCode);
         }
 
@@ -99,7 +107,12 @@ namespace CarsMaintenance.ToolManagement
         {
             using (ManageToolCategoryForm form = new ManageToolCategoryForm())
             {
-                form.ParentCategory = GetSelectedCategory();
+                ToolCategory category = GetSelectedCategory();
+
+                if (category == null)
+                    return;
+
+                form.ParentCategory = category;
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -112,7 +125,12 @@ namespace CarsMaintenance.ToolManagement
         {
             using (ManageToolCategoryForm form = new ManageToolCategoryForm())
             {
-                form.CurrentCategory = GetSelectedCategory();
+                ToolCategory category = GetSelectedCategory();
+
+                if (category == null)
+                    return;
+
+                form.CurrentCategory = category;
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -123,17 +141,20 @@ namespace CarsMaintenance.ToolManagement
 
         private void Delete()
         {
-            ToolCategory u = GetSelectedCategory();
+            ToolCategory category = GetSelectedCategory();
 
-            if (u != null && MessageBox.Show("请确定是否删除工属具类别?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (category == null)
+                return;
+
+            if (category != null && MessageBox.Show("请确定是否删除工属具类别?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (CarsMaintenance.Properties.Settings.Default.DeleteFlag)
                 {
-                    SystemHelper.TMSContext.DeleteObject(u);
+                    SystemHelper.TMSContext.DeleteObject(category);
                 }
                 else
                 {
-                    u.Deleted = true;
+                    category.Deleted = true;
                 }
                 SystemHelper.TMSContext.SaveChanges();
 
