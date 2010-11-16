@@ -67,7 +67,10 @@ namespace CarsMaintenance.ToolManagement
 
                 CurrentArticle.Subject = txtSubject.Text;
                 CurrentArticle.Content = txtContent.Text;
-
+                if (this.Ch_Up.Checked)
+                {
+                    CurrentArticle.IsTop = true;
+                }
                 if (CurrentArticle.EntityKey == null)
                     SystemHelper.TMSContext.AddToArticles(CurrentArticle);
 

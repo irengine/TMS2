@@ -37,6 +37,7 @@
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Ch_Up = new System.Windows.Forms.CheckBox();
             this._operationsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             // _operationsPanel
             // 
+            this._operationsPanel.Controls.Add(this.Ch_Up);
             this._operationsPanel.Controls.Add(this._saveButton);
             this._operationsPanel.Controls.Add(this._cancelButton);
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -111,6 +113,16 @@
             // 
             this._errorProvider.ContainerControl = this;
             // 
+            // Ch_Up
+            // 
+            this.Ch_Up.AutoSize = true;
+            this.Ch_Up.Location = new System.Drawing.Point(45, 12);
+            this.Ch_Up.Name = "Ch_Up";
+            this.Ch_Up.Size = new System.Drawing.Size(48, 16);
+            this.Ch_Up.TabIndex = 2;
+            this.Ch_Up.Text = "置顶";
+            this.Ch_Up.UseVisualStyleBackColor = true;
+            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -126,6 +138,7 @@
             this.Text = "工艺标准管理";
             this.Load += new System.EventHandler(this.ManageArticleForm_Load);
             this._operationsPanel.ResumeLayout(false);
+            this._operationsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,5 +155,6 @@
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.ErrorProvider _errorProvider;
+        private System.Windows.Forms.CheckBox Ch_Up;
     }
 }
