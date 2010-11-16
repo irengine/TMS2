@@ -213,12 +213,12 @@ namespace CarsMaintenance.OrderManagement
                 {
                     if (!dgvr.IsNewRow)
                     {
-                        decimal transferQuantity = ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
+                        decimal transferQuantity = SystemHelper.ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
                         if (transferQuantity > 0)
                         {
                             OutboundOrderDetail item = new OutboundOrderDetail();
 
-                            decimal unitPrice = ConvertToNumber(dgvr.Cells["ItemUnitPrice"].Value);
+                            decimal unitPrice = SystemHelper.ConvertToNumber(dgvr.Cells["ItemUnitPrice"].Value);
 
                             string code = dgvr.Cells["ItemCode"].Value.ToString();
                             Tool t = SystemHelper.TMSContext.Tools.FirstOrDefault(s => s.Code == code);
@@ -242,7 +242,7 @@ namespace CarsMaintenance.OrderManagement
             {
                 if (!dgvr.IsNewRow)
                 {
-                    decimal transferQuantity = ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
+                    decimal transferQuantity = SystemHelper.ConvertToNumber(dgvr.Cells["TransferQuantity"].Value);
                     if (transferQuantity > 0)
                     {
                         return true;
@@ -303,10 +303,10 @@ namespace CarsMaintenance.OrderManagement
         private bool IsLessThanBalance(DataGridViewRow row)
         {
             // validate row value, quantity + transfer quantity + prescrap quantity <= balance
-            decimal balance = ConvertToNumber(row.Cells["ItemBalance"].Value);
-            decimal quantity = ConvertToNumber(row.Cells["Quantity"].Value);
-            decimal transferQuantity = ConvertToNumber(row.Cells["TransferQuantity"].Value);
-            decimal prescrapQuantity = ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
+            decimal balance = SystemHelper.ConvertToNumber(row.Cells["ItemBalance"].Value);
+            decimal quantity = SystemHelper.ConvertToNumber(row.Cells["Quantity"].Value);
+            decimal transferQuantity = SystemHelper.ConvertToNumber(row.Cells["TransferQuantity"].Value);
+            decimal prescrapQuantity = SystemHelper.ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
 
             if (balance >= (quantity + transferQuantity + prescrapQuantity))
             {
@@ -322,7 +322,7 @@ namespace CarsMaintenance.OrderManagement
 
         private bool IsIncludeReason(DataGridViewRow row)
         {
-            decimal prescrapQuantity = ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
+            decimal prescrapQuantity = SystemHelper.ConvertToNumber(row.Cells["PrescrapQuantity"].Value);
 
             if (prescrapQuantity == 0)
             {
@@ -341,25 +341,13 @@ namespace CarsMaintenance.OrderManagement
             }
         }
 
-        private decimal ConvertToNumber(object o)
-        {
-            if (o == null || o.ToString().Length == 0)
-                return 0;
-
-            decimal i;
-            if (decimal.TryParse(o.ToString(), out i))
-                return i;
-            else
-                return 0;
-        }
-
         private void btnReturnAll_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
             {
                 if (!dgvr.IsNewRow)
                 {
-                    decimal balance = ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
+                    decimal balance = SystemHelper.ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
                     dgvr.Cells["Quantity"].Value = balance;
                     dgvr.Cells["TransferQuantity"].Value = null;
                     dgvr.Cells["PrescrapQuantity"].Value = null;
@@ -374,7 +362,7 @@ namespace CarsMaintenance.OrderManagement
             {
                 if (!dgvr.IsNewRow)
                 {
-                    decimal balance = ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
+                    decimal balance = SystemHelper.ConvertToNumber(dgvr.Cells["ItemBalance"].Value);
                     dgvr.Cells["Quantity"].Value = null;
                     dgvr.Cells["TransferQuantity"].Value = balance;
                     dgvr.Cells["PrescrapQuantity"].Value = null;

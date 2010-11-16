@@ -37,6 +37,18 @@ namespace CarsMaintenance.Common
                 SystemHelper.TMSContext.Refresh(System.Data.Objects.RefreshMode.StoreWins, o);
         }
 
+        public static decimal ConvertToNumber(object o)
+        {
+            if (o == null || o.ToString().Length == 0)
+                return 0;
+
+            decimal i;
+            if (decimal.TryParse(o.ToString(), out i))
+                return i;
+            else
+                return 0;
+        }
+
         public static void BindComboBoxToScrapReason(DataGridViewComboBoxColumn col)
         {
             string[] reason = { "", "边缘断裂", "变形", "大圈变形", "断层", "断股", "断裂", 
