@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStripOutboundOrder = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemBrowseOutboundOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPrintOutboundOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemCreateOutboundOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAppendOutboundOrder = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
-            this.toolStripMenuItemPrintOutboundOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripOutboundOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outboundOrderBindingSource)).BeginInit();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -85,6 +85,13 @@
             this.toolStripMenuItemBrowseOutboundOrder.Text = "查看";
             this.toolStripMenuItemBrowseOutboundOrder.Click += new System.EventHandler(this.toolStripMenuItemBrowseOutboundOrder_Click);
             // 
+            // toolStripMenuItemPrintOutboundOrder
+            // 
+            this.toolStripMenuItemPrintOutboundOrder.Name = "toolStripMenuItemPrintOutboundOrder";
+            this.toolStripMenuItemPrintOutboundOrder.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemPrintOutboundOrder.Text = "打印";
+            this.toolStripMenuItemPrintOutboundOrder.Click += new System.EventHandler(this.toolStripMenuItemPrintOutboundOrder_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -108,7 +115,7 @@
             // 
             this.toolStripMenuItemReturnOutboundOrder.Name = "toolStripMenuItemReturnOutboundOrder";
             this.toolStripMenuItemReturnOutboundOrder.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemReturnOutboundOrder.Text = "归还";
+            this.toolStripMenuItemReturnOutboundOrder.Text = "归还、转借";
             this.toolStripMenuItemReturnOutboundOrder.Click += new System.EventHandler(this.toolStripMenuItemReturnOutboundOrder_Click);
             // 
             // outboundOrderBindingSource
@@ -317,13 +324,6 @@
             this.lblDate.Size = new System.Drawing.Size(53, 12);
             this.lblDate.TabIndex = 8;
             this.lblDate.Text = "日期范围";
-            // 
-            // toolStripMenuItemPrintOutboundOrder
-            // 
-            this.toolStripMenuItemPrintOutboundOrder.Name = "toolStripMenuItemPrintOutboundOrder";
-            this.toolStripMenuItemPrintOutboundOrder.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemPrintOutboundOrder.Text = "打印";
-            this.toolStripMenuItemPrintOutboundOrder.Click += new System.EventHandler(this.toolStripMenuItemPrintOutboundOrder_Click);
             // 
             // ViewOutboundOrderForm
             // 
