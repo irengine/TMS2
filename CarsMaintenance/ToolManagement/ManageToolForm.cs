@@ -21,7 +21,6 @@ namespace CarsMaintenance.ToolManagement
         public ManageToolForm()
         {
             InitializeComponent();
-            RegisterControlsForValidation();
         }
 
         private ValidationManager _validationManager;
@@ -57,6 +56,12 @@ namespace CarsMaintenance.ToolManagement
                 Control = txtRatedQuantity,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.DigitalErrorMessage, lblRatedQuantity.Text)
             });
+            _validationManager.Validators.Add(new ParentCodeValidator()
+            {
+                Control = txtCode,
+                ParentCode = CurrentCategory.Code,
+                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.ParentCodeErrorMessage, lblCode.Text)
+            });
         }
 
         private void LoadData()
@@ -88,6 +93,7 @@ namespace CarsMaintenance.ToolManagement
         private void ManageToolForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            RegisterControlsForValidation();
         }
 
         private void _saveButton_Click(object sender, EventArgs e)

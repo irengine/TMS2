@@ -99,6 +99,8 @@
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ExecuteActionHelper.cs" />
+    <Compile Include="Common\Sorting\PropertyComparer.cs" />
+    <Compile Include="Common\Sorting\SortableBindingList.cs" />
     <Compile Include="Common\SQLHelper.cs" />
     <Compile Include="Common\SystemHelper.cs" />
     <Compile Include="Common\Validation\DecimalValidator.cs" />

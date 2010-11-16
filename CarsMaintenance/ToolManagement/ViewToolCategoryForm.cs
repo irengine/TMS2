@@ -70,14 +70,24 @@ namespace CarsMaintenance.ToolManagement
 
         private void treeViewToolCategory_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            LoadToolData();
+        }
+
+        private void LoadToolData()
+        {
             string categoryCode = GetSelectedCategoryCode();
 
             var childQuery = from u in SystemHelper.TMSContext.Tools
-                             where u.Code.Substring(0,2) == categoryCode && u.Deleted == false
+                             where u.Code.StartsWith(categoryCode) && u.Deleted == false
                              orderby u.Code
                              select u;
 
-            dataGridViewTool.DataSource = childQuery;
+            CarsMaintenance.Common.Sorting.SortableBindingList<Tool> tools = new CarsMaintenance.Common.Sorting.SortableBindingList<Tool>();
+            foreach (Tool t in childQuery)
+            {
+                tools.Add(t);
+            }
+            dataGridViewTool.DataSource = tools;
         }
 
         private string GetSelectedCategoryCode()
@@ -103,7 +113,7 @@ namespace CarsMaintenance.ToolManagement
             return SystemHelper.TMSContext.ToolCategories.First(u => u.Code == categoryCode);
         }
 
-        private void Add()
+        private void AddToolCategory()
         {
             using (ManageToolCategoryForm form = new ManageToolCategoryForm())
             {
@@ -121,7 +131,7 @@ namespace CarsMaintenance.ToolManagement
             }
         }
 
-        private void Edit()
+        private void EditCategory()
         {
             using (ManageToolCategoryForm form = new ManageToolCategoryForm())
             {
@@ -139,7 +149,7 @@ namespace CarsMaintenance.ToolManagement
             }
         }
 
-        private void Delete()
+        private void DeleteToolCategory()
         {
             ToolCategory category = GetSelectedCategory();
 
@@ -187,7 +197,7 @@ namespace CarsMaintenance.ToolManagement
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    LoadToolData();
                 }
             }
         }
@@ -208,12 +218,12 @@ namespace CarsMaintenance.ToolManagement
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    LoadToolData();
                 }
             }
         }
 
-        private void Edit2()
+        private void EditTool()
         {
             ToolCategory tc = GetSelectedCategory();
 
@@ -226,7 +236,7 @@ namespace CarsMaintenance.ToolManagement
 
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        //LoadData();
+                        LoadToolData();
                     }
                 }
             }
@@ -239,13 +249,13 @@ namespace CarsMaintenance.ToolManagement
 
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        //LoadData();
+                        LoadToolData();
                     }
                 }
             }
         }
 
-        private void Delete2()
+        private void DeleteTool()
         {
             Tool u = GetSelectedTool();
 
@@ -261,7 +271,7 @@ namespace CarsMaintenance.ToolManagement
                 }
                 SystemHelper.TMSContext.SaveChanges();
 
-                //LoadData();
+                LoadToolData();
             }
         }
 
@@ -269,22 +279,22 @@ namespace CarsMaintenance.ToolManagement
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Add);
+            ExecuteActionHelper.ExecuteAction(AddToolCategory);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Edit);
+            ExecuteActionHelper.ExecuteAction(EditCategory);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Delete);
+            ExecuteActionHelper.ExecuteAction(DeleteToolCategory);
         }
 
         private void dataGridViewTool_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Edit2);
+            ExecuteActionHelper.ExecuteAction(EditTool);
         }
 
         private void AddToolToolStripMenuItem_Click(object sender, EventArgs e)
@@ -299,12 +309,12 @@ namespace CarsMaintenance.ToolManagement
 
         private void edit2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Edit2);
+            ExecuteActionHelper.ExecuteAction(EditTool);
         }
 
         private void delete2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExecuteActionHelper.ExecuteAction(Delete2);
+            ExecuteActionHelper.ExecuteAction(DeleteTool);
         }
 
         #endregion
