@@ -12,14 +12,12 @@
               <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>Select Temp1.*,(Temp1.Quantity/Temp2.Quantity)as Percentage,Temp2.Quantity as AllQuantity from (Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,(Sum(Sod.UnitPrice)* Sum(Sod.ScrapQuantity) ) as UnitPrice
+                    <CommandText>Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,Sum(Sod.UnitPrice*Sod.ScrapQuantity) as TotalPrice
+, Sum(Sod.UnitPrice*Sod.ScrapQuantity)/summaryTotalPrice as Percentage
  from ScrapOrder as so inner join ScrapOrderDetail  as sod on so.ScrapOrderID=sod.ScrapOrderID
   inner join Unit as u on so.CustomerID=u.UnitID inner join Unit as Pu on u.ParentUnitID=Pu.UnitID 
-Group by So.CustomerID,u.Name,Pu.Name) as Temp1
-inner join 
-(Select o.CustomerID,Sum(od.Quantity) as Quantity From OutboundOrder as o inner join OutboundOrderDetail as od on o.OutboundOrderID=od.OutboundOrderID Group by o.CustomerID) as Temp2
-on Temp1.CustomerID=Temp2.CustomerID
-</CommandText>
+  ,(select SUM(sodtotal.ScrapQuantity) as totalQuantity, SUM(sodtotal.ScrapQuantity*sodtotal.UnitPrice)as summaryTotalPrice from ScrapOrderDetail sodtotal) total
+Group by So.CustomerID,u.Name,Pu.Name,summaryTotalPrice</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -29,10 +27,9 @@ on Temp1.CustomerID=Temp2.CustomerID
               <Mapping SourceColumn="ParentName" DataSetColumn="ParentName" />
               <Mapping SourceColumn="UintName" DataSetColumn="UintName" />
               <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
-              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
               <Mapping SourceColumn="Percentage" DataSetColumn="Percentage" />
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
-              <Mapping SourceColumn="AllQuantity" DataSetColumn="AllQuantity" />
+              <Mapping SourceColumn="TotalPrice" DataSetColumn="TotalPrice" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -62,10 +59,9 @@ on Temp1.CustomerID=Temp2.CustomerID
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Quantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" minOccurs="0" />
-              <xs:element name="UnitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" minOccurs="0" />
               <xs:element name="Percentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPercentage" msprop:Generator_ColumnPropNameInRow="Percentage" msprop:Generator_ColumnPropNameInTable="PercentageColumn" msprop:Generator_UserColumnName="Percentage" type="xs:decimal" minOccurs="0" />
               <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" minOccurs="0" />
-              <xs:element name="AllQuantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAllQuantity" msprop:Generator_ColumnPropNameInRow="AllQuantity" msprop:Generator_ColumnPropNameInTable="AllQuantityColumn" msprop:Generator_UserColumnName="AllQuantity" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalPrice" msprop:Generator_ColumnPropNameInRow="TotalPrice" msprop:Generator_ColumnPropNameInTable="TotalPriceColumn" msprop:Generator_UserColumnName="TotalPrice" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

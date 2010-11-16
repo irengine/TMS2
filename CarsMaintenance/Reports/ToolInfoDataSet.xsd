@@ -12,10 +12,11 @@
               <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>Select s.*,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
+                    <CommandText>Select s.ScrapDate,s.Code,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
 t.Name as ToolName,t.Dimensions,u.Name as CustomerName,o.Berth,
 o.Cargo,o.Hatch,o.Job,o.JobPosition,o.JobType,o.Machine,o.Process,
-o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName
+o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName,
+Case when o.ClassType=1 then '日班' ELSE '夜班' END as ClassType ,Case When sd.IsAbnormal=0 THEN '否' ELSE '是' END as  IsAbnormal
  From ScrapOrder as s 
 inner join ScrapOrderDetail as sd on s.ScrapOrderID = sd.ScrapOrderID
 inner join OutboundOrder as o on s.OutboundOrderID=o.OutboundOrderID
@@ -31,14 +32,7 @@ inner join SystemUser as su1 on o.LastUpdatedBy=su1.SystemUserID</CommandText>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="ScrapOrderID" DataSetColumn="ScrapOrderID" />
               <Mapping SourceColumn="ScrapDate" DataSetColumn="ScrapDate" />
-              <Mapping SourceColumn="OutboundOrderID" DataSetColumn="OutboundOrderID" />
-              <Mapping SourceColumn="Code" DataSetColumn="Code" />
-              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
-              <Mapping SourceColumn="Status" DataSetColumn="Status" />
-              <Mapping SourceColumn="LastUpdatedBy" DataSetColumn="LastUpdatedBy" />
-              <Mapping SourceColumn="LastUpdateTime" DataSetColumn="LastUpdateTime" />
               <Mapping SourceColumn="ToolName" DataSetColumn="ToolName" />
               <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
               <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
@@ -59,6 +53,9 @@ inner join SystemUser as su1 on o.LastUpdatedBy=su1.SystemUserID</CommandText>
               <Mapping SourceColumn="AllUnitPrice" DataSetColumn="AllUnitPrice" />
               <Mapping SourceColumn="ScrapSystemUnerName" DataSetColumn="ScrapSystemUnerName" />
               <Mapping SourceColumn="OutboundSystemUserName" DataSetColumn="OutboundSystemUserName" />
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="ClassType" DataSetColumn="ClassType" />
+              <Mapping SourceColumn="IsAbnormal" DataSetColumn="IsAbnormal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -73,20 +70,7 @@ inner join SystemUser as su1 on o.LastUpdatedBy=su1.SystemUserID</CommandText>
         <xs:element name="ToolInfoDataset" msprop:Generator_TableClassName="ToolInfoDatasetDataTable" msprop:Generator_TableVarName="tableToolInfoDataset" msprop:Generator_TablePropName="ToolInfoDataset" msprop:Generator_RowDeletingName="ToolInfoDatasetRowDeleting" msprop:Generator_UserTableName="ToolInfoDataset" msprop:Generator_RowChangingName="ToolInfoDatasetRowChanging" msprop:Generator_RowEvHandlerName="ToolInfoDatasetRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolInfoDatasetRowDeleted" msprop:Generator_RowEvArgName="ToolInfoDatasetRowChangeEvent" msprop:Generator_RowChangedName="ToolInfoDatasetRowChanged" msprop:Generator_RowClassName="ToolInfoDatasetRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ScrapOrderID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnScrapOrderID" msprop:Generator_ColumnPropNameInRow="ScrapOrderID" msprop:Generator_ColumnPropNameInTable="ScrapOrderIDColumn" msprop:Generator_UserColumnName="ScrapOrderID" type="xs:int" />
               <xs:element name="ScrapDate" msprop:Generator_ColumnVarNameInTable="columnScrapDate" msprop:Generator_ColumnPropNameInRow="ScrapDate" msprop:Generator_ColumnPropNameInTable="ScrapDateColumn" msprop:Generator_UserColumnName="ScrapDate" type="xs:dateTime" />
-              <xs:element name="OutboundOrderID" msprop:Generator_ColumnVarNameInTable="columnOutboundOrderID" msprop:Generator_ColumnPropNameInRow="OutboundOrderID" msprop:Generator_ColumnPropNameInTable="OutboundOrderIDColumn" msprop:Generator_UserColumnName="OutboundOrderID" type="xs:int" minOccurs="0" />
-              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" minOccurs="0" />
-              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" />
-              <xs:element name="LastUpdatedBy" msprop:Generator_ColumnVarNameInTable="columnLastUpdatedBy" msprop:Generator_ColumnPropNameInRow="LastUpdatedBy" msprop:Generator_ColumnPropNameInTable="LastUpdatedByColumn" msprop:Generator_UserColumnName="LastUpdatedBy" type="xs:int" />
-              <xs:element name="LastUpdateTime" msprop:Generator_ColumnVarNameInTable="columnLastUpdateTime" msprop:Generator_ColumnPropNameInRow="LastUpdateTime" msprop:Generator_ColumnPropNameInTable="LastUpdateTimeColumn" msprop:Generator_UserColumnName="LastUpdateTime" type="xs:dateTime" />
               <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -203,14 +187,31 @@ inner join SystemUser as su1 on o.LastUpdatedBy=su1.SystemUserID</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClassType" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnClassType" msprop:Generator_ColumnPropNameInRow="ClassType" msprop:Generator_ColumnPropNameInTable="ClassTypeColumn" msprop:Generator_UserColumnName="ClassType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsAbnormal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnIsAbnormal" msprop:Generator_ColumnPropNameInRow="IsAbnormal" msprop:Generator_ColumnPropNameInTable="IsAbnormalColumn" msprop:Generator_UserColumnName="IsAbnormal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:ToolInfoDataset" />
-      <xs:field xpath="mstns:ScrapOrderID" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -905,15 +905,15 @@ namespace CarsMaintenance.Reports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CooligateByUnitNameDataTable : global::System.Data.TypedTableBase<CooligateByUnitNameRow> {
             
-            private global::System.Data.DataColumn columnUnitPrice;
-            
-            private global::System.Data.DataColumn columnName;
-            
             private global::System.Data.DataColumn columnPercentage;
             
             private global::System.Data.DataColumn columnMaxName;
             
             private global::System.Data.DataColumn columnMinName;
+            
+            private global::System.Data.DataColumn columnPName;
+            
+            private global::System.Data.DataColumn columnTotalPrice;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -950,22 +950,6 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnitPriceColumn {
-                get {
-                    return this.columnUnitPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PercentageColumn {
                 get {
                     return this.columnPercentage;
@@ -985,6 +969,22 @@ namespace CarsMaintenance.Reports {
             public global::System.Data.DataColumn MinNameColumn {
                 get {
                     return this.columnMinName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PNameColumn {
+                get {
+                    return this.columnPName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalPriceColumn {
+                get {
+                    return this.columnTotalPrice;
                 }
             }
             
@@ -1025,14 +1025,14 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CooligateByUnitNameRow AddCooligateByUnitNameRow(decimal UnitPrice, string Name, decimal Percentage, string MaxName, string MinName) {
+            public CooligateByUnitNameRow AddCooligateByUnitNameRow(decimal Percentage, string MaxName, string MinName, string PName, decimal TotalPrice) {
                 CooligateByUnitNameRow rowCooligateByUnitNameRow = ((CooligateByUnitNameRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        UnitPrice,
-                        Name,
                         Percentage,
                         MaxName,
-                        MinName};
+                        MinName,
+                        PName,
+                        TotalPrice};
                 rowCooligateByUnitNameRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCooligateByUnitNameRow);
                 return rowCooligateByUnitNameRow;
@@ -1055,34 +1055,34 @@ namespace CarsMaintenance.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnUnitPrice = base.Columns["UnitPrice"];
-                this.columnName = base.Columns["Name"];
                 this.columnPercentage = base.Columns["Percentage"];
                 this.columnMaxName = base.Columns["MaxName"];
                 this.columnMinName = base.Columns["MinName"];
+                this.columnPName = base.Columns["PName"];
+                this.columnTotalPrice = base.Columns["TotalPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUnitPrice);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
                 this.columnPercentage = new global::System.Data.DataColumn("Percentage", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPercentage);
                 this.columnMaxName = new global::System.Data.DataColumn("MaxName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaxName);
                 this.columnMinName = new global::System.Data.DataColumn("MinName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMinName);
-                this.columnUnitPrice.ReadOnly = true;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 100;
+                this.columnPName = new global::System.Data.DataColumn("PName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPName);
+                this.columnTotalPrice = new global::System.Data.DataColumn("TotalPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalPrice);
                 this.columnPercentage.ReadOnly = true;
                 this.columnMaxName.AllowDBNull = false;
                 this.columnMaxName.MaxLength = 100;
                 this.columnMinName.AllowDBNull = false;
                 this.columnMinName.MaxLength = 100;
+                this.columnPName.AllowDBNull = false;
+                this.columnPName.MaxLength = 100;
+                this.columnTotalPrice.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1423,33 +1423,6 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal UnitPrice {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableCooligateByUnitName.UnitPriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UnitPrice\' in table \'CooligateByUnitName\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCooligateByUnitName.UnitPriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableCooligateByUnitName.NameColumn]));
-                }
-                set {
-                    this[this.tableCooligateByUnitName.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Percentage {
                 get {
                     try {
@@ -1488,14 +1461,29 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUnitPriceNull() {
-                return this.IsNull(this.tableCooligateByUnitName.UnitPriceColumn);
+            public string PName {
+                get {
+                    return ((string)(this[this.tableCooligateByUnitName.PNameColumn]));
+                }
+                set {
+                    this[this.tableCooligateByUnitName.PNameColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUnitPriceNull() {
-                this[this.tableCooligateByUnitName.UnitPriceColumn] = global::System.Convert.DBNull;
+            public decimal TotalPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCooligateByUnitName.TotalPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPrice\' in table \'CooligateByUnitName\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCooligateByUnitName.TotalPriceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1508,6 +1496,18 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPercentageNull() {
                 this[this.tableCooligateByUnitName.PercentageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalPriceNull() {
+                return this.IsNull(this.tableCooligateByUnitName.TotalPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalPriceNull() {
+                this[this.tableCooligateByUnitName.TotalPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2090,11 +2090,11 @@ Group by o.JobPosition";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CooligateByUnitName";
-            tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
-            tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Percentage", "Percentage");
             tableMapping.ColumnMappings.Add("MaxName", "MaxName");
             tableMapping.ColumnMappings.Add("MinName", "MinName");
+            tableMapping.ColumnMappings.Add("PName", "PName");
+            tableMapping.ColumnMappings.Add("TotalPrice", "TotalPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2111,31 +2111,31 @@ Group by o.JobPosition";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "Select findName_Price.*,findMax.MaxName,findMin.MinName from (Select Sum(sd.UnitP" +
-                "rice * sd.ScrapQuantity) as UnitPrice,pu.Name,\r\n (SUM(sd.UnitPrice*sd.ScrapQuant" +
-                "ity)/(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrderDetail as sd1))" +
-                " as Percentage from ScrapOrder as s \r\ninner join ScrapOrderDetail as sd on s.Scr" +
-                "apOrderID=sd.ScrapOrderID\r\ninner join OutboundOrder as o on s.OutboundOrderID=o." +
-                "OutboundOrderID\r\ninner join OutboundOrderDetail as od on sd.OutboundOrderDetailI" +
-                "D=od.OutboundOrderDetailID\r\ninner join Unit as u on s.CustomerID=u.UnitId\r\ninner" +
-                " join Unit as pu on u.ParentUnitID=pu.UnitID\r\nGroup by pu.Name) as findName_Pric" +
-                "e \r\ninner join (Select pu.Name,u.Name as MaxName from ScrapOrder as s inner join" +
-                " ScrapOrderDetail as sd\r\n\t\ton s.ScrapOrderID = sd.ScrapOrderID\r\n\t\tinner join Uni" +
-                "t as u on s.CustomerID=u.UnitID\r\n\t\tinner join Unit as pu on u.ParentUnitID=pu.Un" +
-                "itID\r\n\t\tGroup by u.Name,pu.Name HAVING MAX(sd.ScrapQuantity*sd.UnitPrice)=\r\n\t\t(S" +
-                "elect MAX(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrder as s1 \r\n\t\tinner join " +
-                "ScrapOrderDetail as sd1 on s1.ScrapOrderID=sd1.ScrapOrderID \r\n\t\tinner join Unit " +
-                "as u1 on s1.CustomerID=u1.UnitID \r\n\t\tinner join Unit as pu1  on u1.ParentUnitID=" +
-                "pu1.UnitID where pu1.Name=pu.Name)\r\n\t\t) as findMax on findName_Price.Name=findMa" +
-                "x.Name \r\ninner join (Select pu.Name,u.Name as MinName from ScrapOrder as s inner" +
-                " join ScrapOrderDetail as sd\r\n\t\t\ton s.ScrapOrderID = sd.ScrapOrderID\r\n\t\t\tinner j" +
-                "oin Unit as u on s.CustomerID=u.UnitID\r\n\t\t\tinner join Unit as pu on u.ParentUnit" +
-                "ID=pu.UnitID\r\n\t\t\tGroup by u.Name,pu.Name HAVING Min(sd.ScrapQuantity*sd.UnitPric" +
-                "e)=\r\n\t\t\t(Select Min(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrder as s1 \r\n\t\t\t" +
-                "inner join ScrapOrderDetail as sd1 on s1.ScrapOrderID=sd1.ScrapOrderID \r\n\t\t\tinne" +
-                "r join Unit as u1 on s1.CustomerID=u1.UnitID \r\n\t\t\tinner join Unit as pu1  on u1." +
-                "ParentUnitID=pu1.UnitID where pu1.Name=pu.Name)) as findMin on findName_Price.Na" +
-                "me=findMin.Name";
+            this._commandCollection[0].CommandText = "\r\n\r\n\r\n\r\n\r\n\r\nselect findAll.PName,findAll.TotalPrice,findAll.Name as MaxName,findM" +
+                "in.Name as MinName,findMax.Percentage from \r\n(\r\nSelect Sum(sd.UnitPrice * sd.Scr" +
+                "apQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Name,u.Code from " +
+                "ScrapOrder as s \r\ninner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOr" +
+                "derID\r\ninner join Unit as u on s.CustomerID=u.UnitId\r\ninner join Unit as pu on u" +
+                ".ParentUnitID=pu.UnitID\r\n,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summar" +
+                "yTotalPrice from ScrapOrderDetail as sd1) total\r\nGroup by pu.code,pu.Name,u.Name" +
+                ",u.Code,summaryTotalPrice) as findAll inner join (\r\nselect PCode, PName, MAX(Tot" +
+                "alPrice) as maxTotal, MIN(TotalPrice) as minTotal,SUM(Percentage) as Percentage\r" +
+                "\nfrom\r\n(\r\nSelect Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as P" +
+                "Code, pu.name as PName,u.Code,u.Name ,\r\n (SUM(sd.UnitPrice*sd.ScrapQuantity)/(su" +
+                "mmaryTotalPrice)) as Percentage from ScrapOrder as s \r\ninner join ScrapOrderDeta" +
+                "il as sd on s.ScrapOrderID=sd.ScrapOrderID\r\ninner join Unit as u on s.CustomerID" +
+                "=u.UnitId\r\ninner join Unit as pu on u.ParentUnitID=pu.UnitID\r\n,(Select SUM(sd1.S" +
+                "crapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) t" +
+                "otal\r\nGroup by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice\r\n) temp1\r\ngroup b" +
+                "y PCode,PName\r\n) as  findMax\r\n on findMax.PCode= findAll.PCode and findMax.maxTo" +
+                "tal = findAll.TotalPrice\r\ninner join\r\n(\r\nSelect Sum(sd.UnitPrice * sd.ScrapQuant" +
+                "ity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name from ScrapOr" +
+                "der as s \r\ninner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID\r\n" +
+                "inner join Unit as u on s.CustomerID=u.UnitId\r\ninner join Unit as pu on u.Parent" +
+                "UnitID=pu.UnitID\r\n,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalP" +
+                "rice from ScrapOrderDetail as sd1) total\r\nGroup by pu.code,pu.Name,u.Code,u.Name" +
+                ",summaryTotalPrice\r\n) as findMin on findMax.PCode = findMin.PCode and findMax.mi" +
+                "nTotal = findMin.TotalPrice";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

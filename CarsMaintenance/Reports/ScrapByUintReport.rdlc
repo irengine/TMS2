@@ -24,10 +24,6 @@
           <DataField>Quantity</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="UnitPrice">
-          <DataField>UnitPrice</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="Percentage">
           <DataField>Percentage</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -36,8 +32,8 @@
           <DataField>CustomerID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="AllQuantity">
-          <DataField>AllQuantity</DataField>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
@@ -315,14 +311,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="UnitPrice">
+                    <Textbox Name="TotalPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!UnitPrice.Value</Value>
+                              <Value>=Fields!TotalPrice.Value</Value>
                               <Style>
                                 <Format>#,0.00;(#,0.00)</Format>
                               </Style>
@@ -331,7 +327,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>UnitPrice</rd:DefaultName>
+                      <rd:DefaultName>TotalPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -449,14 +445,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="UnitPrice1">
+                    <Textbox Name="TotalPrice1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!UnitPrice.Value)</Value>
+                              <Value>=Sum(Fields!TotalPrice.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>f2</Format>
@@ -466,7 +462,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>UnitPrice1</rd:DefaultName>
+                      <rd:DefaultName>TotalPrice1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -552,14 +548,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="UnitPrice2">
+                    <Textbox Name="TotalPrice2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!UnitPrice.Value)</Value>
+                              <Value>=Sum(Fields!TotalPrice.Value)</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -568,7 +564,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>UnitPrice2</rd:DefaultName>
+                      <rd:DefaultName>TotalPrice2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -584,7 +580,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox4">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -600,7 +596,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>

@@ -9,12 +9,12 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ToolDataSetTableAdapter" GeneratorDataComponentClassName="ToolDataSetTableAdapter" Name="ToolDataSet" UserDataComponentName="ToolDataSetTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>
 Select t.Name as ToolName,T.Dimensions,t.Code,t.Unit,t.[Description], tc.Name as CategoryName,ti.OutQuantity,
-ti.Quantity,ti.PrescrapQuantity,ti.ScrapQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
+ti.Quantity,ti.PrescrapQuantity,ti.ScrapQuantity,t.RatedQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
 on t.ToolCategoryID=Tc.ToolCategoryID inner join ToolInventory as ti
 on t.ToolID=ti.ToolID
 
@@ -37,6 +37,7 @@ on t.ToolID=ti.ToolID
               <Mapping SourceColumn="ScrapQuantity" DataSetColumn="ScrapQuantity" />
               <Mapping SourceColumn="RepairingQuantity" DataSetColumn="RepairingQuantity" />
               <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="RatedQuantity" DataSetColumn="RatedQuantity" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -99,6 +100,7 @@ on t.ToolID=ti.ToolID
               <xs:element name="ScrapQuantity" msprop:Generator_ColumnVarNameInTable="columnScrapQuantity" msprop:Generator_ColumnPropNameInRow="ScrapQuantity" msprop:Generator_ColumnPropNameInTable="ScrapQuantityColumn" msprop:Generator_UserColumnName="ScrapQuantity" type="xs:decimal" />
               <xs:element name="RepairingQuantity" msprop:Generator_ColumnVarNameInTable="columnRepairingQuantity" msprop:Generator_ColumnPropNameInRow="RepairingQuantity" msprop:Generator_ColumnPropNameInTable="RepairingQuantityColumn" msprop:Generator_UserColumnName="RepairingQuantity" type="xs:decimal" />
               <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
+              <xs:element name="RatedQuantity" msprop:Generator_ColumnVarNameInTable="columnRatedQuantity" msprop:Generator_ColumnPropNameInRow="RatedQuantity" msprop:Generator_ColumnPropNameInTable="RatedQuantityColumn" msprop:Generator_UserColumnName="RatedQuantity" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -279,21 +279,7 @@ namespace CarsMaintenance.Reports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ToolInfoDatasetDataTable : global::System.Data.TypedTableBase<ToolInfoDatasetRow> {
             
-            private global::System.Data.DataColumn columnScrapOrderID;
-            
             private global::System.Data.DataColumn columnScrapDate;
-            
-            private global::System.Data.DataColumn columnOutboundOrderID;
-            
-            private global::System.Data.DataColumn columnCode;
-            
-            private global::System.Data.DataColumn columnCustomerID;
-            
-            private global::System.Data.DataColumn columnStatus;
-            
-            private global::System.Data.DataColumn columnLastUpdatedBy;
-            
-            private global::System.Data.DataColumn columnLastUpdateTime;
             
             private global::System.Data.DataColumn columnToolName;
             
@@ -335,6 +321,12 @@ namespace CarsMaintenance.Reports {
             
             private global::System.Data.DataColumn columnOutboundSystemUserName;
             
+            private global::System.Data.DataColumn columnCode;
+            
+            private global::System.Data.DataColumn columnClassType;
+            
+            private global::System.Data.DataColumn columnIsAbnormal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ToolInfoDatasetDataTable() {
@@ -370,65 +362,9 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ScrapOrderIDColumn {
-                get {
-                    return this.columnScrapOrderID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ScrapDateColumn {
                 get {
                     return this.columnScrapDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OutboundOrderIDColumn {
-                get {
-                    return this.columnOutboundOrderID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CodeColumn {
-                get {
-                    return this.columnCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CustomerIDColumn {
-                get {
-                    return this.columnCustomerID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StatusColumn {
-                get {
-                    return this.columnStatus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LastUpdatedByColumn {
-                get {
-                    return this.columnLastUpdatedBy;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LastUpdateTimeColumn {
-                get {
-                    return this.columnLastUpdateTime;
                 }
             }
             
@@ -594,6 +530,30 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodeColumn {
+                get {
+                    return this.columnCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ClassTypeColumn {
+                get {
+                    return this.columnClassType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsAbnormalColumn {
+                get {
+                    return this.columnIsAbnormal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -631,12 +591,6 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ToolInfoDatasetRow AddToolInfoDatasetRow(
                         System.DateTime ScrapDate, 
-                        int OutboundOrderID, 
-                        string Code, 
-                        int CustomerID, 
-                        int Status, 
-                        int LastUpdatedBy, 
-                        System.DateTime LastUpdateTime, 
                         string ToolName, 
                         string Dimensions, 
                         string CustomerName, 
@@ -656,17 +610,13 @@ namespace CarsMaintenance.Reports {
                         string ScrapReason, 
                         decimal AllUnitPrice, 
                         string ScrapSystemUnerName, 
-                        string OutboundSystemUserName) {
+                        string OutboundSystemUserName, 
+                        string Code, 
+                        string ClassType, 
+                        string IsAbnormal) {
                 ToolInfoDatasetRow rowToolInfoDatasetRow = ((ToolInfoDatasetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         ScrapDate,
-                        OutboundOrderID,
-                        Code,
-                        CustomerID,
-                        Status,
-                        LastUpdatedBy,
-                        LastUpdateTime,
                         ToolName,
                         Dimensions,
                         CustomerName,
@@ -686,17 +636,13 @@ namespace CarsMaintenance.Reports {
                         ScrapReason,
                         AllUnitPrice,
                         ScrapSystemUnerName,
-                        OutboundSystemUserName};
+                        OutboundSystemUserName,
+                        Code,
+                        ClassType,
+                        IsAbnormal};
                 rowToolInfoDatasetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowToolInfoDatasetRow);
                 return rowToolInfoDatasetRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolInfoDatasetRow FindByScrapOrderID(int ScrapOrderID) {
-                return ((ToolInfoDatasetRow)(this.Rows.Find(new object[] {
-                            ScrapOrderID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -716,14 +662,7 @@ namespace CarsMaintenance.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnScrapOrderID = base.Columns["ScrapOrderID"];
                 this.columnScrapDate = base.Columns["ScrapDate"];
-                this.columnOutboundOrderID = base.Columns["OutboundOrderID"];
-                this.columnCode = base.Columns["Code"];
-                this.columnCustomerID = base.Columns["CustomerID"];
-                this.columnStatus = base.Columns["Status"];
-                this.columnLastUpdatedBy = base.Columns["LastUpdatedBy"];
-                this.columnLastUpdateTime = base.Columns["LastUpdateTime"];
                 this.columnToolName = base.Columns["ToolName"];
                 this.columnDimensions = base.Columns["Dimensions"];
                 this.columnCustomerName = base.Columns["CustomerName"];
@@ -744,27 +683,16 @@ namespace CarsMaintenance.Reports {
                 this.columnAllUnitPrice = base.Columns["AllUnitPrice"];
                 this.columnScrapSystemUnerName = base.Columns["ScrapSystemUnerName"];
                 this.columnOutboundSystemUserName = base.Columns["OutboundSystemUserName"];
+                this.columnCode = base.Columns["Code"];
+                this.columnClassType = base.Columns["ClassType"];
+                this.columnIsAbnormal = base.Columns["IsAbnormal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnScrapOrderID = new global::System.Data.DataColumn("ScrapOrderID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnScrapOrderID);
                 this.columnScrapDate = new global::System.Data.DataColumn("ScrapDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnScrapDate);
-                this.columnOutboundOrderID = new global::System.Data.DataColumn("OutboundOrderID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOutboundOrderID);
-                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCode);
-                this.columnCustomerID = new global::System.Data.DataColumn("CustomerID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomerID);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
-                this.columnLastUpdatedBy = new global::System.Data.DataColumn("LastUpdatedBy", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastUpdatedBy);
-                this.columnLastUpdateTime = new global::System.Data.DataColumn("LastUpdateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastUpdateTime);
                 this.columnToolName = new global::System.Data.DataColumn("ToolName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnToolName);
                 this.columnDimensions = new global::System.Data.DataColumn("Dimensions", typeof(string), null, global::System.Data.MappingType.Element);
@@ -805,20 +733,13 @@ namespace CarsMaintenance.Reports {
                 base.Columns.Add(this.columnScrapSystemUnerName);
                 this.columnOutboundSystemUserName = new global::System.Data.DataColumn("OutboundSystemUserName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOutboundSystemUserName);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnScrapOrderID}, true));
-                this.columnScrapOrderID.AutoIncrement = true;
-                this.columnScrapOrderID.AutoIncrementSeed = -1;
-                this.columnScrapOrderID.AutoIncrementStep = -1;
-                this.columnScrapOrderID.AllowDBNull = false;
-                this.columnScrapOrderID.ReadOnly = true;
-                this.columnScrapOrderID.Unique = true;
+                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCode);
+                this.columnClassType = new global::System.Data.DataColumn("ClassType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClassType);
+                this.columnIsAbnormal = new global::System.Data.DataColumn("IsAbnormal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsAbnormal);
                 this.columnScrapDate.AllowDBNull = false;
-                this.columnCode.AllowDBNull = false;
-                this.columnCode.MaxLength = 20;
-                this.columnStatus.AllowDBNull = false;
-                this.columnLastUpdatedBy.AllowDBNull = false;
-                this.columnLastUpdateTime.AllowDBNull = false;
                 this.columnToolName.AllowDBNull = false;
                 this.columnToolName.MaxLength = 50;
                 this.columnDimensions.AllowDBNull = false;
@@ -845,6 +766,12 @@ namespace CarsMaintenance.Reports {
                 this.columnScrapSystemUnerName.MaxLength = 10;
                 this.columnOutboundSystemUserName.AllowDBNull = false;
                 this.columnOutboundSystemUserName.MaxLength = 10;
+                this.columnCode.AllowDBNull = false;
+                this.columnCode.MaxLength = 20;
+                this.columnClassType.ReadOnly = true;
+                this.columnClassType.MaxLength = 4;
+                this.columnIsAbnormal.ReadOnly = true;
+                this.columnIsAbnormal.MaxLength = 2;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -987,99 +914,12 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ScrapOrderID {
-                get {
-                    return ((int)(this[this.tableToolInfoDataset.ScrapOrderIDColumn]));
-                }
-                set {
-                    this[this.tableToolInfoDataset.ScrapOrderIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime ScrapDate {
                 get {
                     return ((global::System.DateTime)(this[this.tableToolInfoDataset.ScrapDateColumn]));
                 }
                 set {
                     this[this.tableToolInfoDataset.ScrapDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OutboundOrderID {
-                get {
-                    try {
-                        return ((int)(this[this.tableToolInfoDataset.OutboundOrderIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OutboundOrderID\' in table \'ToolInfoDataset\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolInfoDataset.OutboundOrderIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Code {
-                get {
-                    return ((string)(this[this.tableToolInfoDataset.CodeColumn]));
-                }
-                set {
-                    this[this.tableToolInfoDataset.CodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CustomerID {
-                get {
-                    try {
-                        return ((int)(this[this.tableToolInfoDataset.CustomerIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerID\' in table \'ToolInfoDataset\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolInfoDataset.CustomerIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Status {
-                get {
-                    return ((int)(this[this.tableToolInfoDataset.StatusColumn]));
-                }
-                set {
-                    this[this.tableToolInfoDataset.StatusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LastUpdatedBy {
-                get {
-                    return ((int)(this[this.tableToolInfoDataset.LastUpdatedByColumn]));
-                }
-                set {
-                    this[this.tableToolInfoDataset.LastUpdatedByColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime LastUpdateTime {
-                get {
-                    return ((global::System.DateTime)(this[this.tableToolInfoDataset.LastUpdateTimeColumn]));
-                }
-                set {
-                    this[this.tableToolInfoDataset.LastUpdateTimeColumn] = value;
                 }
             }
             
@@ -1360,26 +1200,45 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOutboundOrderIDNull() {
-                return this.IsNull(this.tableToolInfoDataset.OutboundOrderIDColumn);
+            public string Code {
+                get {
+                    return ((string)(this[this.tableToolInfoDataset.CodeColumn]));
+                }
+                set {
+                    this[this.tableToolInfoDataset.CodeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOutboundOrderIDNull() {
-                this[this.tableToolInfoDataset.OutboundOrderIDColumn] = global::System.Convert.DBNull;
+            public string ClassType {
+                get {
+                    try {
+                        return ((string)(this[this.tableToolInfoDataset.ClassTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClassType\' in table \'ToolInfoDataset\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolInfoDataset.ClassTypeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCustomerIDNull() {
-                return this.IsNull(this.tableToolInfoDataset.CustomerIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCustomerIDNull() {
-                this[this.tableToolInfoDataset.CustomerIDColumn] = global::System.Convert.DBNull;
+            public string IsAbnormal {
+                get {
+                    try {
+                        return ((string)(this[this.tableToolInfoDataset.IsAbnormalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsAbnormal\' in table \'ToolInfoDataset\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolInfoDataset.IsAbnormalColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1512,6 +1371,30 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAllUnitPriceNull() {
                 this[this.tableToolInfoDataset.AllUnitPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsClassTypeNull() {
+                return this.IsNull(this.tableToolInfoDataset.ClassTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetClassTypeNull() {
+                this[this.tableToolInfoDataset.ClassTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIsAbnormalNull() {
+                return this.IsNull(this.tableToolInfoDataset.IsAbnormalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIsAbnormalNull() {
+                this[this.tableToolInfoDataset.IsAbnormalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1674,14 +1557,7 @@ namespace CarsMaintenance.Reports.ToolInfoDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ToolInfoDataset";
-            tableMapping.ColumnMappings.Add("ScrapOrderID", "ScrapOrderID");
             tableMapping.ColumnMappings.Add("ScrapDate", "ScrapDate");
-            tableMapping.ColumnMappings.Add("OutboundOrderID", "OutboundOrderID");
-            tableMapping.ColumnMappings.Add("Code", "Code");
-            tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
-            tableMapping.ColumnMappings.Add("Status", "Status");
-            tableMapping.ColumnMappings.Add("LastUpdatedBy", "LastUpdatedBy");
-            tableMapping.ColumnMappings.Add("LastUpdateTime", "LastUpdateTime");
             tableMapping.ColumnMappings.Add("ToolName", "ToolName");
             tableMapping.ColumnMappings.Add("Dimensions", "Dimensions");
             tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
@@ -1702,6 +1578,9 @@ namespace CarsMaintenance.Reports.ToolInfoDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("AllUnitPrice", "AllUnitPrice");
             tableMapping.ColumnMappings.Add("ScrapSystemUnerName", "ScrapSystemUnerName");
             tableMapping.ColumnMappings.Add("OutboundSystemUserName", "OutboundSystemUserName");
+            tableMapping.ColumnMappings.Add("Code", "Code");
+            tableMapping.ColumnMappings.Add("ClassType", "ClassType");
+            tableMapping.ColumnMappings.Add("IsAbnormal", "IsAbnormal");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1718,10 +1597,11 @@ namespace CarsMaintenance.Reports.ToolInfoDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"Select s.*,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
+            this._commandCollection[0].CommandText = @"Select s.ScrapDate,s.Code,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
 t.Name as ToolName,t.Dimensions,u.Name as CustomerName,o.Berth,
 o.Cargo,o.Hatch,o.Job,o.JobPosition,o.JobType,o.Machine,o.Process,
-o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName
+o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName,
+Case when o.ClassType=1 then '日班' ELSE '夜班' END as ClassType ,Case When sd.IsAbnormal=0 THEN '否' ELSE '是' END as  IsAbnormal
  From ScrapOrder as s 
 inner join ScrapOrderDetail as sd on s.ScrapOrderID = sd.ScrapOrderID
 inner join OutboundOrder as o on s.OutboundOrderID=o.OutboundOrderID

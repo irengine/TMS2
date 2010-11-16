@@ -62,44 +62,54 @@ Group by o.JobPosition</CommandText>
               <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>Select findName_Price.*,findMax.MaxName,findMin.MinName from (Select Sum(sd.UnitPrice * sd.ScrapQuantity) as UnitPrice,pu.Name,
- (SUM(sd.UnitPrice*sd.ScrapQuantity)/(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrderDetail as sd1)) as Percentage from ScrapOrder as s 
+                    <CommandText>
+
+
+
+
+
+select findAll.PName,findAll.TotalPrice,findAll.Name as MaxName,findMin.Name as MinName,findMax.Percentage from 
+(
+Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Name,u.Code from ScrapOrder as s 
 inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
-inner join OutboundOrder as o on s.OutboundOrderID=o.OutboundOrderID
-inner join OutboundOrderDetail as od on sd.OutboundOrderDetailID=od.OutboundOrderDetailID
 inner join Unit as u on s.CustomerID=u.UnitId
 inner join Unit as pu on u.ParentUnitID=pu.UnitID
-Group by pu.Name) as findName_Price 
-inner join (Select pu.Name,u.Name as MaxName from ScrapOrder as s inner join ScrapOrderDetail as sd
-		on s.ScrapOrderID = sd.ScrapOrderID
-		inner join Unit as u on s.CustomerID=u.UnitID
-		inner join Unit as pu on u.ParentUnitID=pu.UnitID
-		Group by u.Name,pu.Name HAVING MAX(sd.ScrapQuantity*sd.UnitPrice)=
-		(Select MAX(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrder as s1 
-		inner join ScrapOrderDetail as sd1 on s1.ScrapOrderID=sd1.ScrapOrderID 
-		inner join Unit as u1 on s1.CustomerID=u1.UnitID 
-		inner join Unit as pu1  on u1.ParentUnitID=pu1.UnitID where pu1.Name=pu.Name)
-		) as findMax on findName_Price.Name=findMax.Name 
-inner join (Select pu.Name,u.Name as MinName from ScrapOrder as s inner join ScrapOrderDetail as sd
-			on s.ScrapOrderID = sd.ScrapOrderID
-			inner join Unit as u on s.CustomerID=u.UnitID
-			inner join Unit as pu on u.ParentUnitID=pu.UnitID
-			Group by u.Name,pu.Name HAVING Min(sd.ScrapQuantity*sd.UnitPrice)=
-			(Select Min(sd1.ScrapQuantity*sd1.UnitPrice) from ScrapOrder as s1 
-			inner join ScrapOrderDetail as sd1 on s1.ScrapOrderID=sd1.ScrapOrderID 
-			inner join Unit as u1 on s1.CustomerID=u1.UnitID 
-			inner join Unit as pu1  on u1.ParentUnitID=pu1.UnitID where pu1.Name=pu.Name)) as findMin on findName_Price.Name=findMin.Name</CommandText>
+,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+Group by pu.code,pu.Name,u.Name,u.Code,summaryTotalPrice) as findAll inner join (
+select PCode, PName, MAX(TotalPrice) as maxTotal, MIN(TotalPrice) as minTotal,SUM(Percentage) as Percentage
+from
+(
+Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name ,
+ (SUM(sd.UnitPrice*sd.ScrapQuantity)/(summaryTotalPrice)) as Percentage from ScrapOrder as s 
+inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+inner join Unit as u on s.CustomerID=u.UnitId
+inner join Unit as pu on u.ParentUnitID=pu.UnitID
+,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
+) temp1
+group by PCode,PName
+) as  findMax
+ on findMax.PCode= findAll.PCode and findMax.maxTotal = findAll.TotalPrice
+inner join
+(
+Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name from ScrapOrder as s 
+inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+inner join Unit as u on s.CustomerID=u.UnitId
+inner join Unit as pu on u.ParentUnitID=pu.UnitID
+,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
+) as findMin on findMax.PCode = findMin.PCode and findMax.minTotal = findMin.TotalPrice</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
               <Mapping SourceColumn="Percentage" DataSetColumn="Percentage" />
               <Mapping SourceColumn="MaxName" DataSetColumn="MaxName" />
               <Mapping SourceColumn="MinName" DataSetColumn="MinName" />
+              <Mapping SourceColumn="PName" DataSetColumn="PName" />
+              <Mapping SourceColumn="TotalPrice" DataSetColumn="TotalPrice" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -144,14 +154,6 @@ inner join (Select pu.Name,u.Name as MinName from ScrapOrder as s inner join Scr
         <xs:element name="CooligateByUnitName" msprop:Generator_TableClassName="CooligateByUnitNameDataTable" msprop:Generator_TableVarName="tableCooligateByUnitName" msprop:Generator_TablePropName="CooligateByUnitName" msprop:Generator_RowDeletingName="CooligateByUnitNameRowDeleting" msprop:Generator_UserTableName="CooligateByUnitName" msprop:Generator_RowChangingName="CooligateByUnitNameRowChanging" msprop:Generator_RowEvHandlerName="CooligateByUnitNameRowChangeEventHandler" msprop:Generator_RowDeletedName="CooligateByUnitNameRowDeleted" msprop:Generator_RowEvArgName="CooligateByUnitNameRowChangeEvent" msprop:Generator_RowChangedName="CooligateByUnitNameRowChanged" msprop:Generator_RowClassName="CooligateByUnitNameRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="UnitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Percentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPercentage" msprop:Generator_ColumnPropNameInRow="Percentage" msprop:Generator_ColumnPropNameInTable="PercentageColumn" msprop:Generator_UserColumnName="Percentage" type="xs:decimal" minOccurs="0" />
               <xs:element name="MaxName" msprop:Generator_ColumnVarNameInTable="columnMaxName" msprop:Generator_ColumnPropNameInRow="MaxName" msprop:Generator_ColumnPropNameInTable="MaxNameColumn" msprop:Generator_UserColumnName="MaxName">
                 <xs:simpleType>
@@ -167,6 +169,14 @@ inner join (Select pu.Name,u.Name as MinName from ScrapOrder as s inner join Scr
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="PName" msprop:Generator_ColumnVarNameInTable="columnPName" msprop:Generator_ColumnPropNameInRow="PName" msprop:Generator_ColumnPropNameInTable="PNameColumn" msprop:Generator_UserColumnName="PName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalPrice" msprop:Generator_ColumnPropNameInRow="TotalPrice" msprop:Generator_ColumnPropNameInTable="TotalPriceColumn" msprop:Generator_UserColumnName="TotalPrice" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

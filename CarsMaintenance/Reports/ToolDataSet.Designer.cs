@@ -303,6 +303,8 @@ namespace CarsMaintenance.Reports {
             
             private global::System.Data.DataColumn columnUnitPrice;
             
+            private global::System.Data.DataColumn columnRatedQuantity;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ToolDataSetDataTable() {
@@ -434,6 +436,14 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RatedQuantityColumn {
+                get {
+                    return this.columnRatedQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -469,7 +479,7 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolDataSetRow AddToolDataSetRow(string ToolName, string Dimensions, string Code, string Unit, string Description, string CategoryName, decimal OutQuantity, decimal Quantity, decimal PrescrapQuantity, decimal ScrapQuantity, decimal RepairingQuantity, decimal UnitPrice) {
+            public ToolDataSetRow AddToolDataSetRow(string ToolName, string Dimensions, string Code, string Unit, string Description, string CategoryName, decimal OutQuantity, decimal Quantity, decimal PrescrapQuantity, decimal ScrapQuantity, decimal RepairingQuantity, decimal UnitPrice, decimal RatedQuantity) {
                 ToolDataSetRow rowToolDataSetRow = ((ToolDataSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ToolName,
@@ -483,7 +493,8 @@ namespace CarsMaintenance.Reports {
                         PrescrapQuantity,
                         ScrapQuantity,
                         RepairingQuantity,
-                        UnitPrice};
+                        UnitPrice,
+                        RatedQuantity};
                 rowToolDataSetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowToolDataSetRow);
                 return rowToolDataSetRow;
@@ -518,6 +529,7 @@ namespace CarsMaintenance.Reports {
                 this.columnScrapQuantity = base.Columns["ScrapQuantity"];
                 this.columnRepairingQuantity = base.Columns["RepairingQuantity"];
                 this.columnUnitPrice = base.Columns["UnitPrice"];
+                this.columnRatedQuantity = base.Columns["RatedQuantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -547,6 +559,8 @@ namespace CarsMaintenance.Reports {
                 base.Columns.Add(this.columnRepairingQuantity);
                 this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitPrice);
+                this.columnRatedQuantity = new global::System.Data.DataColumn("RatedQuantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRatedQuantity);
                 this.columnToolName.AllowDBNull = false;
                 this.columnToolName.MaxLength = 50;
                 this.columnDimensions.AllowDBNull = false;
@@ -564,6 +578,7 @@ namespace CarsMaintenance.Reports {
                 this.columnScrapQuantity.AllowDBNull = false;
                 this.columnRepairingQuantity.AllowDBNull = false;
                 this.columnUnitPrice.AllowDBNull = false;
+                this.columnRatedQuantity.AllowDBNull = false;
                 this.ExtendedProperties.Add("Generator_TablePropName", "_ToolDataSet");
                 this.ExtendedProperties.Add("Generator_UserTableName", "ToolDataSet");
             }
@@ -845,6 +860,17 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal RatedQuantity {
+                get {
+                    return ((decimal)(this[this.tableToolDataSet.RatedQuantityColumn]));
+                }
+                set {
+                    this[this.tableToolDataSet.RatedQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableToolDataSet.DescriptionColumn);
             }
@@ -1027,6 +1053,7 @@ namespace CarsMaintenance.Reports.ToolDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ScrapQuantity", "ScrapQuantity");
             tableMapping.ColumnMappings.Add("RepairingQuantity", "RepairingQuantity");
             tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
+            tableMapping.ColumnMappings.Add("RatedQuantity", "RatedQuantity");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1045,7 +1072,7 @@ namespace CarsMaintenance.Reports.ToolDataSetTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"
 Select t.Name as ToolName,T.Dimensions,t.Code,t.Unit,t.[Description], tc.Name as CategoryName,ti.OutQuantity,
-ti.Quantity,ti.PrescrapQuantity,ti.ScrapQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
+ti.Quantity,ti.PrescrapQuantity,ti.ScrapQuantity,t.RatedQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
 on t.ToolCategoryID=Tc.ToolCategoryID inner join ToolInventory as ti
 on t.ToolID=ti.ToolID
 

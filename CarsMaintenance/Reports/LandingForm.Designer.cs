@@ -45,10 +45,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblRoles = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblOut = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.gbMessage.SuspendLayout();
             this.gbSummary.SuspendLayout();
             this.gbIO.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -115,6 +121,9 @@
             // 
             // gbSummary
             // 
+            this.gbSummary.Controls.Add(this.lblOut);
+            this.gbSummary.Controls.Add(this.lblStock);
+            this.gbSummary.Controls.Add(this.lblTotal);
             this.gbSummary.Controls.Add(this.label6);
             this.gbSummary.Controls.Add(this.label5);
             this.gbSummary.Controls.Add(this.label4);
@@ -224,6 +233,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblRoles);
+            this.groupBox1.Controls.Add(this.lblUserName);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(404, 123);
             this.groupBox1.Name = "groupBox1";
@@ -232,6 +243,51 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "今日当班";
+            // 
+            // lblRoles
+            // 
+            this.lblRoles.AutoSize = true;
+            this.lblRoles.Location = new System.Drawing.Point(158, 40);
+            this.lblRoles.Name = "lblRoles";
+            this.lblRoles.Size = new System.Drawing.Size(47, 12);
+            this.lblRoles.TabIndex = 1;
+            this.lblRoles.Text = "label10";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(32, 40);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(47, 12);
+            this.lblUserName.TabIndex = 0;
+            this.lblUserName.Text = "label10";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(115, 34);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(47, 12);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "label10";
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(115, 60);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(47, 12);
+            this.lblStock.TabIndex = 4;
+            this.lblStock.Text = "label11";
+            // 
+            // lblOut
+            // 
+            this.lblOut.AutoSize = true;
+            this.lblOut.Location = new System.Drawing.Point(115, 86);
+            this.lblOut.Name = "lblOut";
+            this.lblOut.Size = new System.Drawing.Size(47, 12);
+            this.lblOut.TabIndex = 5;
+            this.lblOut.Text = "label12";
             // 
             // LandingForm
             // 
@@ -248,6 +304,8 @@
             this.gbSummary.PerformLayout();
             this.gbIO.ResumeLayout(false);
             this.gbIO.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,5 +329,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblRoles;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label lblOut;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

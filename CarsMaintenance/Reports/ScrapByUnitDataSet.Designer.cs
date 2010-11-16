@@ -285,13 +285,11 @@ namespace CarsMaintenance.Reports {
             
             private global::System.Data.DataColumn columnQuantity;
             
-            private global::System.Data.DataColumn columnUnitPrice;
-            
             private global::System.Data.DataColumn columnPercentage;
             
             private global::System.Data.DataColumn columnCustomerID;
             
-            private global::System.Data.DataColumn columnAllQuantity;
+            private global::System.Data.DataColumn columnTotalPrice;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -352,14 +350,6 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnitPriceColumn {
-                get {
-                    return this.columnUnitPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn PercentageColumn {
                 get {
                     return this.columnPercentage;
@@ -376,9 +366,9 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AllQuantityColumn {
+            public global::System.Data.DataColumn TotalPriceColumn {
                 get {
-                    return this.columnAllQuantity;
+                    return this.columnTotalPrice;
                 }
             }
             
@@ -419,16 +409,15 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScrapOrderByUintRow AddScrapOrderByUintRow(string ParentName, string UintName, decimal Quantity, decimal UnitPrice, decimal Percentage, int CustomerID, decimal AllQuantity) {
+            public ScrapOrderByUintRow AddScrapOrderByUintRow(string ParentName, string UintName, decimal Quantity, decimal Percentage, int CustomerID, decimal TotalPrice) {
                 ScrapOrderByUintRow rowScrapOrderByUintRow = ((ScrapOrderByUintRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ParentName,
                         UintName,
                         Quantity,
-                        UnitPrice,
                         Percentage,
                         CustomerID,
-                        AllQuantity};
+                        TotalPrice};
                 rowScrapOrderByUintRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScrapOrderByUintRow);
                 return rowScrapOrderByUintRow;
@@ -454,10 +443,9 @@ namespace CarsMaintenance.Reports {
                 this.columnParentName = base.Columns["ParentName"];
                 this.columnUintName = base.Columns["UintName"];
                 this.columnQuantity = base.Columns["Quantity"];
-                this.columnUnitPrice = base.Columns["UnitPrice"];
                 this.columnPercentage = base.Columns["Percentage"];
                 this.columnCustomerID = base.Columns["CustomerID"];
-                this.columnAllQuantity = base.Columns["AllQuantity"];
+                this.columnTotalPrice = base.Columns["TotalPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -469,22 +457,19 @@ namespace CarsMaintenance.Reports {
                 base.Columns.Add(this.columnUintName);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
-                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUnitPrice);
                 this.columnPercentage = new global::System.Data.DataColumn("Percentage", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPercentage);
                 this.columnCustomerID = new global::System.Data.DataColumn("CustomerID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomerID);
-                this.columnAllQuantity = new global::System.Data.DataColumn("AllQuantity", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAllQuantity);
+                this.columnTotalPrice = new global::System.Data.DataColumn("TotalPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalPrice);
                 this.columnParentName.AllowDBNull = false;
                 this.columnParentName.MaxLength = 100;
                 this.columnUintName.AllowDBNull = false;
                 this.columnUintName.MaxLength = 100;
                 this.columnQuantity.ReadOnly = true;
-                this.columnUnitPrice.ReadOnly = true;
                 this.columnPercentage.ReadOnly = true;
-                this.columnAllQuantity.ReadOnly = true;
+                this.columnTotalPrice.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -665,22 +650,6 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal UnitPrice {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableScrapOrderByUint.UnitPriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'UnitPrice\' in table \'ScrapOrderByUint\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableScrapOrderByUint.UnitPriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Percentage {
                 get {
                     try {
@@ -713,17 +682,17 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal AllQuantity {
+            public decimal TotalPrice {
                 get {
                     try {
-                        return ((decimal)(this[this.tableScrapOrderByUint.AllQuantityColumn]));
+                        return ((decimal)(this[this.tableScrapOrderByUint.TotalPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AllQuantity\' in table \'ScrapOrderByUint\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPrice\' in table \'ScrapOrderByUint\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableScrapOrderByUint.AllQuantityColumn] = value;
+                    this[this.tableScrapOrderByUint.TotalPriceColumn] = value;
                 }
             }
             
@@ -737,18 +706,6 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableScrapOrderByUint.QuantityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUnitPriceNull() {
-                return this.IsNull(this.tableScrapOrderByUint.UnitPriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUnitPriceNull() {
-                this[this.tableScrapOrderByUint.UnitPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -777,14 +734,14 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAllQuantityNull() {
-                return this.IsNull(this.tableScrapOrderByUint.AllQuantityColumn);
+            public bool IsTotalPriceNull() {
+                return this.IsNull(this.tableScrapOrderByUint.TotalPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAllQuantityNull() {
-                this[this.tableScrapOrderByUint.AllQuantityColumn] = global::System.Convert.DBNull;
+            public void SetTotalPriceNull() {
+                this[this.tableScrapOrderByUint.TotalPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -950,10 +907,9 @@ namespace CarsMaintenance.Reports.ScrapByUnitDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ParentName", "ParentName");
             tableMapping.ColumnMappings.Add("UintName", "UintName");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
-            tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
             tableMapping.ColumnMappings.Add("Percentage", "Percentage");
             tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
-            tableMapping.ColumnMappings.Add("AllQuantity", "AllQuantity");
+            tableMapping.ColumnMappings.Add("TotalPrice", "TotalPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -970,14 +926,12 @@ namespace CarsMaintenance.Reports.ScrapByUnitDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"Select Temp1.*,(Temp1.Quantity/Temp2.Quantity)as Percentage,Temp2.Quantity as AllQuantity from (Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,(Sum(Sod.UnitPrice)* Sum(Sod.ScrapQuantity) ) as UnitPrice
+            this._commandCollection[0].CommandText = @"Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,Sum(Sod.UnitPrice*Sod.ScrapQuantity) as TotalPrice
+, Sum(Sod.UnitPrice*Sod.ScrapQuantity)/summaryTotalPrice as Percentage
  from ScrapOrder as so inner join ScrapOrderDetail  as sod on so.ScrapOrderID=sod.ScrapOrderID
   inner join Unit as u on so.CustomerID=u.UnitID inner join Unit as Pu on u.ParentUnitID=Pu.UnitID 
-Group by So.CustomerID,u.Name,Pu.Name) as Temp1
-inner join 
-(Select o.CustomerID,Sum(od.Quantity) as Quantity From OutboundOrder as o inner join OutboundOrderDetail as od on o.OutboundOrderID=od.OutboundOrderID Group by o.CustomerID) as Temp2
-on Temp1.CustomerID=Temp2.CustomerID
-";
+  ,(select SUM(sodtotal.ScrapQuantity) as totalQuantity, SUM(sodtotal.ScrapQuantity*sodtotal.UnitPrice)as summaryTotalPrice from ScrapOrderDetail sodtotal) total
+Group by So.CustomerID,u.Name,Pu.Name,summaryTotalPrice";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
