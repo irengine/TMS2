@@ -114,7 +114,13 @@ namespace CarsMaintenance.ToolManagement
                             LastTime = ti.LastInboundDate
                         };
 
-            dataGridViewToolInventory.DataSource = query;
+            CarsMaintenance.Common.Sorting.SortableBindingList<object> toolInventories = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+            foreach (object o in query)
+            {
+                toolInventories.Add(o);
+            }
+
+            dataGridViewToolInventory.DataSource = toolInventories;
 
             SystemHelper.BindComboxToToolCategory(cbCategory);
         }
@@ -141,7 +147,7 @@ namespace CarsMaintenance.ToolManagement
             var query = from t in SystemHelper.TMSContext.Tools
                         join ti in SystemHelper.TMSContext.ToolInventories on t.ToolID equals ti.ToolID
                         join s in SystemHelper.TMSContext.Supplies on ti.SupplyID equals s.SupplyID
-                        where t.Deleted == false && t.Code.Substring(0, 2) == categoryCode
+                        where t.Deleted == false && t.Code.StartsWith(categoryCode)
                         orderby t.Code
                         select new
                         {
@@ -160,7 +166,13 @@ namespace CarsMaintenance.ToolManagement
                             LastTime = ti.LastInboundDate
                         };
 
-            dataGridViewToolInventory.DataSource = query;
+            CarsMaintenance.Common.Sorting.SortableBindingList<object> toolInventories = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+            foreach (object o in query)
+            {
+                toolInventories.Add(o);
+            }
+
+            dataGridViewToolInventory.DataSource = toolInventories;
         }
     }
 }
