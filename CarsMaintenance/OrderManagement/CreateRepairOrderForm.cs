@@ -44,6 +44,7 @@ namespace CarsMaintenance.OrderManagement
                 dataGridViewDetail.AllowUserToDeleteRows = true;
 
                 dataGridViewDetail.Columns[1].ReadOnly = false;
+                dataGridViewDetail.Columns[4].ReadOnly = false;
             }
         }
 
@@ -139,6 +140,9 @@ namespace CarsMaintenance.OrderManagement
                 {
                     if (!dgvr.IsNewRow)
                     {
+                        if (!(ValidateRow(dgvr.Index)))
+                            return;
+
                         // for repair detail
                         string code = dgvr.Cells["ItemCode"].Value.ToString();
                         Tool t = SystemHelper.TMSContext.Tools.FirstOrDefault(s => s.Code == code);
@@ -230,6 +234,27 @@ namespace CarsMaintenance.OrderManagement
         private void cbSystemUser_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
+        }
+
+        private bool ValidateRow(int row)
+        {
+
+            decimal repairingQuantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["ItemQuantity"].Value); 
+            
+            decimal quantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["Quantity"].Value);
+
+            decimal scrapQuantity = SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[row].Cells["ScrapQuantity"].Value);
+
+            if (repairingQuantity != (quantity + scrapQuantity))
+            {
+                dataGridViewDetail.Rows[row].ErrorText = "归还数和报废数之和必须等于修理数.";
+                return false;
+            }
+            else
+            {
+                dataGridViewDetail.Rows[row].ErrorText = "";
+                return true;
+            }
         }
     }
 }

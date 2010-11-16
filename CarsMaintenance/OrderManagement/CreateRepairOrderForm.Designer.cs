@@ -176,6 +176,7 @@
             this.Quantity,
             this.ScrapQuantity,
             this.ScrapReason});
+            this.dataGridViewDetail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewDetail.Location = new System.Drawing.Point(25, 79);
             this.dataGridViewDetail.MultiSelect = false;
             this.dataGridViewDetail.Name = "dataGridViewDetail";
@@ -215,6 +216,7 @@
             // 
             this.ItemQuantity.HeaderText = "修理数";
             this.ItemQuantity.Name = "ItemQuantity";
+            this.ItemQuantity.ReadOnly = true;
             this.ItemQuantity.Width = 90;
             // 
             // Quantity
