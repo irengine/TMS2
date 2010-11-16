@@ -34,10 +34,20 @@
             this.line2 = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Label();
             this.gbSummary = new System.Windows.Forms.GroupBox();
+            this.lblOut = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.gbIO = new System.Windows.Forms.GroupBox();
+            this.lblYearScrap = new System.Windows.Forms.Label();
+            this.lblYearOut = new System.Windows.Forms.Label();
+            this.lblMonthScrap = new System.Windows.Forms.Label();
+            this.lblMonthOut = new System.Windows.Forms.Label();
+            this.lblDay2Out = new System.Windows.Forms.Label();
+            this.lblDayScrap = new System.Windows.Forms.Label();
+            this.lblDay1Out = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,9 +57,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRoles = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
-            this.lblOut = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.gbMessage.SuspendLayout();
             this.gbSummary.SuspendLayout();
@@ -135,6 +142,33 @@
             this.gbSummary.TabStop = false;
             this.gbSummary.Text = "工具属统计情况";
             // 
+            // lblOut
+            // 
+            this.lblOut.AutoSize = true;
+            this.lblOut.Location = new System.Drawing.Point(115, 86);
+            this.lblOut.Name = "lblOut";
+            this.lblOut.Size = new System.Drawing.Size(47, 12);
+            this.lblOut.TabIndex = 5;
+            this.lblOut.Text = "label12";
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(115, 60);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(47, 12);
+            this.lblStock.TabIndex = 4;
+            this.lblStock.Text = "label11";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(115, 34);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(47, 12);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "label10";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -164,6 +198,13 @@
             // 
             // gbIO
             // 
+            this.gbIO.Controls.Add(this.lblYearScrap);
+            this.gbIO.Controls.Add(this.lblYearOut);
+            this.gbIO.Controls.Add(this.lblMonthScrap);
+            this.gbIO.Controls.Add(this.lblMonthOut);
+            this.gbIO.Controls.Add(this.lblDay2Out);
+            this.gbIO.Controls.Add(this.lblDayScrap);
+            this.gbIO.Controls.Add(this.lblDay1Out);
             this.gbIO.Controls.Add(this.label9);
             this.gbIO.Controls.Add(this.label8);
             this.gbIO.Controls.Add(this.label7);
@@ -176,6 +217,69 @@
             this.gbIO.Size = new System.Drawing.Size(395, 174);
             this.gbIO.TabIndex = 2;
             this.gbIO.TabStop = false;
+            // 
+            // lblYearScrap
+            // 
+            this.lblYearScrap.AutoSize = true;
+            this.lblYearScrap.Location = new System.Drawing.Point(269, 133);
+            this.lblYearScrap.Name = "lblYearScrap";
+            this.lblYearScrap.Size = new System.Drawing.Size(47, 12);
+            this.lblYearScrap.TabIndex = 20;
+            this.lblYearScrap.Text = "label17";
+            // 
+            // lblYearOut
+            // 
+            this.lblYearOut.AutoSize = true;
+            this.lblYearOut.Location = new System.Drawing.Point(138, 133);
+            this.lblYearOut.Name = "lblYearOut";
+            this.lblYearOut.Size = new System.Drawing.Size(47, 12);
+            this.lblYearOut.TabIndex = 19;
+            this.lblYearOut.Text = "label16";
+            // 
+            // lblMonthScrap
+            // 
+            this.lblMonthScrap.AutoSize = true;
+            this.lblMonthScrap.Location = new System.Drawing.Point(269, 106);
+            this.lblMonthScrap.Name = "lblMonthScrap";
+            this.lblMonthScrap.Size = new System.Drawing.Size(47, 12);
+            this.lblMonthScrap.TabIndex = 18;
+            this.lblMonthScrap.Text = "label15";
+            // 
+            // lblMonthOut
+            // 
+            this.lblMonthOut.AutoSize = true;
+            this.lblMonthOut.Location = new System.Drawing.Point(138, 106);
+            this.lblMonthOut.Name = "lblMonthOut";
+            this.lblMonthOut.Size = new System.Drawing.Size(47, 12);
+            this.lblMonthOut.TabIndex = 17;
+            this.lblMonthOut.Text = "label14";
+            // 
+            // lblDay2Out
+            // 
+            this.lblDay2Out.AutoSize = true;
+            this.lblDay2Out.Location = new System.Drawing.Point(138, 79);
+            this.lblDay2Out.Name = "lblDay2Out";
+            this.lblDay2Out.Size = new System.Drawing.Size(47, 12);
+            this.lblDay2Out.TabIndex = 15;
+            this.lblDay2Out.Text = "label12";
+            // 
+            // lblDayScrap
+            // 
+            this.lblDayScrap.AutoSize = true;
+            this.lblDayScrap.Location = new System.Drawing.Point(269, 66);
+            this.lblDayScrap.Name = "lblDayScrap";
+            this.lblDayScrap.Size = new System.Drawing.Size(47, 12);
+            this.lblDayScrap.TabIndex = 14;
+            this.lblDayScrap.Text = "label11";
+            // 
+            // lblDay1Out
+            // 
+            this.lblDay1Out.AutoSize = true;
+            this.lblDay1Out.Location = new System.Drawing.Point(138, 52);
+            this.lblDay1Out.Name = "lblDay1Out";
+            this.lblDay1Out.Size = new System.Drawing.Size(47, 12);
+            this.lblDay1Out.TabIndex = 13;
+            this.lblDay1Out.Text = "label10";
             // 
             // label9
             // 
@@ -262,33 +366,6 @@
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "label10";
             // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(115, 34);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(47, 12);
-            this.lblTotal.TabIndex = 3;
-            this.lblTotal.Text = "label10";
-            // 
-            // lblStock
-            // 
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(115, 60);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(47, 12);
-            this.lblStock.TabIndex = 4;
-            this.lblStock.Text = "label11";
-            // 
-            // lblOut
-            // 
-            this.lblOut.AutoSize = true;
-            this.lblOut.Location = new System.Drawing.Point(115, 86);
-            this.lblOut.Name = "lblOut";
-            this.lblOut.Size = new System.Drawing.Size(47, 12);
-            this.lblOut.TabIndex = 5;
-            this.lblOut.Text = "label12";
-            // 
             // LandingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -334,5 +411,12 @@
         private System.Windows.Forms.Label lblOut;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblYearScrap;
+        private System.Windows.Forms.Label lblYearOut;
+        private System.Windows.Forms.Label lblMonthScrap;
+        private System.Windows.Forms.Label lblMonthOut;
+        private System.Windows.Forms.Label lblDay2Out;
+        private System.Windows.Forms.Label lblDayScrap;
+        private System.Windows.Forms.Label lblDay1Out;
     }
 }

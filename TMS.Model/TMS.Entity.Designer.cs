@@ -596,12 +596,16 @@ namespace TMS.Model
         /// <param name="articleID">Initial value of the ArticleID property.</param>
         /// <param name="subject">Initial value of the Subject property.</param>
         /// <param name="deleted">Initial value of the Deleted property.</param>
-        public static Article CreateArticle(global::System.Int32 articleID, global::System.String subject, global::System.Boolean deleted)
+        /// <param name="isTop">Initial value of the IsTop property.</param>
+        /// <param name="lastUpdateTime">Initial value of the LastUpdateTime property.</param>
+        public static Article CreateArticle(global::System.Int32 articleID, global::System.String subject, global::System.Boolean deleted, global::System.Boolean isTop, global::System.DateTime lastUpdateTime)
         {
             Article article = new Article();
             article.ArticleID = articleID;
             article.Subject = subject;
             article.Deleted = deleted;
+            article.IsTop = isTop;
+            article.LastUpdateTime = lastUpdateTime;
             return article;
         }
 
@@ -706,6 +710,54 @@ namespace TMS.Model
         private global::System.Boolean _Deleted;
         partial void OnDeletedChanging(global::System.Boolean value);
         partial void OnDeletedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsTop
+        {
+            get
+            {
+                return _IsTop;
+            }
+            set
+            {
+                OnIsTopChanging(value);
+                ReportPropertyChanging("IsTop");
+                _IsTop = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsTop");
+                OnIsTopChanged();
+            }
+        }
+        private global::System.Boolean _IsTop;
+        partial void OnIsTopChanging(global::System.Boolean value);
+        partial void OnIsTopChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime LastUpdateTime
+        {
+            get
+            {
+                return _LastUpdateTime;
+            }
+            set
+            {
+                OnLastUpdateTimeChanging(value);
+                ReportPropertyChanging("LastUpdateTime");
+                _LastUpdateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastUpdateTime");
+                OnLastUpdateTimeChanged();
+            }
+        }
+        private global::System.DateTime _LastUpdateTime;
+        partial void OnLastUpdateTimeChanging(global::System.DateTime value);
+        partial void OnLastUpdateTimeChanged();
 
         #endregion
     

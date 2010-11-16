@@ -49,6 +49,7 @@ namespace CarsMaintenance.ToolManagement
 
             txtSubject.Text = CurrentArticle.Subject;
             txtContent.Text = CurrentArticle.Content;
+            cbIsTop.Checked = CurrentArticle.IsTop;
         }
 
         private void ManageArticleForm_Load(object sender, EventArgs e)
@@ -67,6 +68,8 @@ namespace CarsMaintenance.ToolManagement
 
                 CurrentArticle.Subject = txtSubject.Text;
                 CurrentArticle.Content = txtContent.Text;
+                CurrentArticle.IsTop = cbIsTop.Checked;
+                CurrentArticle.LastUpdateTime = System.DateTime.Now;
 
                 if (CurrentArticle.EntityKey == null)
                     SystemHelper.TMSContext.AddToArticles(CurrentArticle);

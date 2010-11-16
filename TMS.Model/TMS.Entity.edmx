@@ -209,6 +209,8 @@
           <Property Name="ArticleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Subject" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="Content" Type="text" />
+          <Property Name="IsTop" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateTime" Type="datetime2" Nullable="false" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="InboundOrder">
@@ -343,9 +345,9 @@
           <Property Name="Quantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="ScrapQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="ScrapReason" Type="varchar" MaxLength="50" />
+          <Property Name="IsAbnormal" Type="bit" Nullable="false" />
           <Property Name="RepairingQuantity" Type="numeric" Nullable="false" Precision="10" Scale="2" />
           <Property Name="UnitPrice" Type="numeric" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="IsAbnormal" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Supply">
           <Key>
@@ -1957,6 +1959,8 @@
           <Property Type="String" Name="Subject" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="Deleted" Nullable="false" />
+          <Property Type="Boolean" Name="IsTop" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateTime" Nullable="false" />
         </EntityType>
         <Association Name="FK_ToolInventoryHistory_InboundOrder">
           <End Type="TMS.Model.InboundOrder" Role="InboundOrder" Multiplicity="0..1" />
@@ -2332,6 +2336,8 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="TMS.Model.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+                <ScalarProperty Name="IsTop" ColumnName="IsTop" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />

@@ -52,13 +52,13 @@ namespace CarsMaintenance.Common
 
 
 		private static string sqlScrapByUnit =
-                     @"Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,Sum(Sod.UnitPrice*Sod.ScrapQuantity) as TotalPrice
-                    , Sum(Sod.UnitPrice*Sod.ScrapQuantity)/summaryTotalPrice as Percentage
-                     from ScrapOrder as so inner join ScrapOrderDetail  as sod on so.ScrapOrderID=sod.ScrapOrderID
-                      inner join Unit as u on so.CustomerID=u.UnitID inner join Unit as Pu on u.ParentUnitID=Pu.UnitID 
-                      ,(select SUM(sodtotal.ScrapQuantity) as totalQuantity, SUM(sodtotal.ScrapQuantity*sodtotal.UnitPrice)as summaryTotalPrice from ScrapOrderDetail sodtotal) total
-                    Where Sod.ScrapQuantity>0 and  (So.ScrapDate between '{0}' and '{1}')
-                        Group by So.CustomerID,u.Name,Pu.Name,summaryTotalPrice";
+					 @"Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,Sum(Sod.UnitPrice*Sod.ScrapQuantity) as TotalPrice
+					, Sum(Sod.UnitPrice*Sod.ScrapQuantity)/summaryTotalPrice as Percentage
+					 from ScrapOrder as so inner join ScrapOrderDetail  as sod on so.ScrapOrderID=sod.ScrapOrderID
+					  inner join Unit as u on so.CustomerID=u.UnitID inner join Unit as Pu on u.ParentUnitID=Pu.UnitID 
+					  ,(select SUM(sodtotal.ScrapQuantity) as totalQuantity, SUM(sodtotal.ScrapQuantity*sodtotal.UnitPrice)as summaryTotalPrice from ScrapOrderDetail sodtotal) total
+					Where Sod.ScrapQuantity>0 and  (So.ScrapDate between '{0}' and '{1}')
+						Group by So.CustomerID,u.Name,Pu.Name,summaryTotalPrice";
 		private static string sqlScrapByShip =
 					@"Select so.ScrapDate,o.JobType,o.Ship,SUM(sod.ScrapQuantity) as Quantity,SUM(sod.UnitPrice)as UnitPrice  from ScrapOrder as so 
 								inner join  ScrapOrderDetail as sod 
@@ -74,7 +74,7 @@ namespace CarsMaintenance.Common
 								"where i.OutboundDate between '{0}' and '{1}'" +
 								"group by c.Name , t.Code, t.Name, t.Dimensions, t.Unit ";
 		private static string sqlToolReport =
-                    @"Select t.Name as ToolName,T.Dimensions,t.Code,t.Unit,t.[Description], tc.Name as CategoryName,ti.OutQuantity,
+					@"Select t.Name as ToolName,T.Dimensions,t.Code,t.Unit,t.[Description], tc.Name as CategoryName,ti.OutQuantity,
 								ti.Quantity,ti.PrescrapQuantity,t.RatedQuantity,ti.ScrapQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
 								on t.ToolCategoryID=Tc.ToolCategoryID inner join ToolInventory as ti
 								on t.ToolID=ti.ToolID Where t.Name like '%{0}%' and t.Code like '%{1}%'";
@@ -98,47 +98,47 @@ namespace CarsMaintenance.Common
 								where s.ScrapDate between '{0}' and '{1}'
 								Group by o.JobPosition";
 		private static string sqlColligaterByUnitName = @"
-                                            select findAll.PName,findAll.TotalPrice,findAll.Name as MaxName,findMin.Name as MinName,findMax.Percentage from 
-                                            (
-                                            Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Name,u.Code from ScrapOrder as s 
-                                            inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
-                                            inner join Unit as u on s.CustomerID=u.UnitId
-                                            inner join Unit as pu on u.ParentUnitID=pu.UnitID
-                                            ,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
-                                             where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
-                                            Group by pu.code,pu.Name,u.Name,u.Code,summaryTotalPrice) as findAll inner join (
-                                            select PCode, PName, MAX(TotalPrice) as maxTotal, MIN(TotalPrice) as minTotal,SUM(Percentage) as Percentage
-                                            from
-                                            (
-                                            Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name ,
-                                             (SUM(sd.UnitPrice*sd.ScrapQuantity)/(summaryTotalPrice)) as Percentage from ScrapOrder as s 
-                                            inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
-                                            inner join Unit as u on s.CustomerID=u.UnitId
-                                            inner join Unit as pu on u.ParentUnitID=pu.UnitID
-                                            ,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
-                                           where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
-                                            Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
-                                            ) temp1
-                                            group by PCode,PName
-                                            ) as  findMax
-                                             on findMax.PCode= findAll.PCode and findMax.maxTotal = findAll.TotalPrice
-                                            inner join
-                                            (
-                                            Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name from ScrapOrder as s 
-                                            inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
-                                            inner join Unit as u on s.CustomerID=u.UnitId
-                                            inner join Unit as pu on u.ParentUnitID=pu.UnitID
-                                            ,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
-                                            where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
-                                            Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
-                                            ) as findMin on findMax.PCode = findMin.PCode and findMax.minTotal = findMin.TotalPrice
-                                            ";
+											select findAll.PName,findAll.TotalPrice,findAll.Name as MaxName,findMin.Name as MinName,findMax.Percentage from 
+											(
+											Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Name,u.Code from ScrapOrder as s 
+											inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+											inner join Unit as u on s.CustomerID=u.UnitId
+											inner join Unit as pu on u.ParentUnitID=pu.UnitID
+											,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+											 where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
+											Group by pu.code,pu.Name,u.Name,u.Code,summaryTotalPrice) as findAll inner join (
+											select PCode, PName, MAX(TotalPrice) as maxTotal, MIN(TotalPrice) as minTotal,SUM(Percentage) as Percentage
+											from
+											(
+											Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name ,
+											 (SUM(sd.UnitPrice*sd.ScrapQuantity)/(summaryTotalPrice)) as Percentage from ScrapOrder as s 
+											inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+											inner join Unit as u on s.CustomerID=u.UnitId
+											inner join Unit as pu on u.ParentUnitID=pu.UnitID
+											,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+										   where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
+											Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
+											) temp1
+											group by PCode,PName
+											) as  findMax
+											 on findMax.PCode= findAll.PCode and findMax.maxTotal = findAll.TotalPrice
+											inner join
+											(
+											Select Sum(sd.UnitPrice * sd.ScrapQuantity) as TotalPrice,pu.code as PCode, pu.name as PName,u.Code,u.Name from ScrapOrder as s 
+											inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+											inner join Unit as u on s.CustomerID=u.UnitId
+											inner join Unit as pu on u.ParentUnitID=pu.UnitID
+											,(Select SUM(sd1.ScrapQuantity*sd1.UnitPrice) as summaryTotalPrice from ScrapOrderDetail as sd1) total
+											where (s.ScrapDate between '{0}' and '{1}') and sd.ScrapQuantity>0 
+											Group by pu.code,pu.Name,u.Code,u.Name,summaryTotalPrice
+											) as findMin on findMax.PCode = findMin.PCode and findMax.minTotal = findMin.TotalPrice
+											";
 
-        private static string sqlToolInfoReport = @"Select s.ScrapDate,s.Code,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
+		private static string sqlToolInfoReport = @"Select s.ScrapDate,s.Code,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
 											t.Name as ToolName,t.Dimensions,u.Name as CustomerName,o.Berth,
 											o.Cargo,o.Hatch,o.Job,o.JobPosition,o.JobType,o.Machine,o.Process,
 											o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName,
-                                            Case when o.ClassType=1 then '日班' ELSE '夜班' END as ClassType ,Case When sd.IsAbnormal=0 THEN '否' ELSE '是' END as  IsAbnormal
+											Case when o.ClassType=1 then '日班' ELSE '夜班' END as ClassType ,Case When sd.IsAbnormal=0 THEN '否' ELSE '是' END as  IsAbnormal
 											 From ScrapOrder as s 
 											inner join ScrapOrderDetail as sd on s.ScrapOrderID = sd.ScrapOrderID
 											inner join OutboundOrder as o on s.OutboundOrderID=o.OutboundOrderID
@@ -443,32 +443,73 @@ namespace CarsMaintenance.Common
 			return dataSet;
 		}
 
-        public static string SQL_TOTAL_RATED = "SELECT SUM(RatedQuantity) FROM Tool";
-        public static string SQL_TOTAL_STOCK = "SELECT SUM(Quantity) FROM ToolInventory";
-        public static string SQL_TOTAL_OUT = "SELECT SUM(OutQuantity) FROM ToolInventory";
+		public static string SQL_TOTAL_RATED = "SELECT SUM(RatedQuantity) FROM Tool";
+		public static string SQL_TOTAL_STOCK = "SELECT SUM(Quantity) FROM ToolInventory";
+		public static string SQL_TOTAL_OUT = "SELECT SUM(OutQuantity) FROM ToolInventory";
 
-        public static string QueryLandForm(string sql)
-        {
-            string val = "";
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[CONNECTION_NAME].ConnectionString))
-            {
-                try
-                {
+		public static string QueryLandForm(string sql)
+		{
+			string val = "";
+			using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[CONNECTION_NAME].ConnectionString))
+			{
+				try
+				{
 
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    val = cmd.ExecuteScalar().ToString();
-                }
-                //catch (Exception e)
-                //{
-                //}
-                finally
-                {
-                    conn.Close();
-                }
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(sql, conn);
+					val = cmd.ExecuteScalar().ToString();
+				}
+				//catch (Exception e)
+				//{
+				//}
+				finally
+				{
+					conn.Close();
+				}
 
-            }
-            return val;
-        }
+			}
+			return val;
+		}
+
+		public static string SQL_DAY1_OUT = @"select SUM(OutboundOrderDetail.Quantity) from OutboundOrderDetail 
+											inner join OutboundOrder on OutboundOrderDetail.OutboundOrderID = OutboundOrder.OutboundOrderID 
+											where ClassType = 1 and DATEPART(day, OutboundOrder.OutboundDate) = {0}";
+		public static string SQL_DAY2_OUT = @"select SUM(OutboundOrderDetail.Quantity) from OutboundOrderDetail 
+											inner join OutboundOrder on OutboundOrderDetail.OutboundOrderID = OutboundOrder.OutboundOrderID 
+											where ClassType = 2 and DATEPART(day, OutboundOrder.OutboundDate) = {0}";
+		public static string SQL_MONTH_OUT = @"select SUM(OutboundOrderDetail.Quantity) from OutboundOrderDetail 
+											inner join OutboundOrder on OutboundOrderDetail.OutboundOrderID = OutboundOrder.OutboundOrderID 
+											where DATEPART(month, OutboundOrder.OutboundDate) = {0}";
+		public static string SQL_YEAR_OUT = @"select SUM(OutboundOrderDetail.Quantity) from OutboundOrderDetail 
+											inner join OutboundOrder on OutboundOrderDetail.OutboundOrderID = OutboundOrder.OutboundOrderID 
+											where DATEPART(year, OutboundOrder.OutboundDate) = {0}";
+        public static string SQL_DAY_SCRAP = @"select SUM(ScrapQuantity) from ScrapOrderDetail where DATEPART(day, ScrapDate) = {0}";
+        public static string SQL_MONTH_SCRAP = @"select SUM(ScrapQuantity) from ScrapOrderDetail where DATEPART(month, ScrapDate) = {0}";
+        public static string SQL_YEAR_SCRAP = @"select SUM(ScrapQuantity) from ScrapOrderDetail where DATEPART(year, ScrapDate) = {0}";
+
+		public static string QueryLandForm(string sql, int cnt)
+		{
+			string val = "";
+			using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[CONNECTION_NAME].ConnectionString))
+			{
+				try
+				{
+
+					conn.Open();
+					sql = string.Format(sql, cnt);
+					SqlCommand cmd = new SqlCommand(sql, conn);
+					val = cmd.ExecuteScalar().ToString();
+				}
+				//catch (Exception e)
+				//{
+				//}
+				finally
+				{
+					conn.Close();
+				}
+
+			}
+			return val;
+		}
 	}
 }

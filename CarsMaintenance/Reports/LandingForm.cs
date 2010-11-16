@@ -22,9 +22,27 @@ namespace CarsMaintenance.Reports
 
         private void LoadData()
         {
+            var query = (from o in SystemHelper.TMSContext.Articles
+                        orderby o.LastUpdateTime descending
+                        where o.IsTop
+                        select o).Take(3);
+
             this.line1.Text = "1.欢迎使用工属具管理应用系统，欢迎提供宝贵意见！";
             this.line2.Text = "2.";
             this.line3.Text = "3.";
+            
+            int i = 1;
+            foreach (Article a in query)
+            {
+                if (i == 1)
+                    this.line1.Text = a.Subject;
+                else if (i == 2)
+                     this.line2.Text = a.Subject;
+                else if (i == 3)
+                    this.line3.Text = a.Subject;
+
+                i++;
+            }
 
             lblUserName.Text = SystemHelper.CurrentUser.Name;
 
@@ -41,6 +59,15 @@ namespace CarsMaintenance.Reports
             lblTotal.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_RATED);
             lblStock.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_STOCK);
             lblOut.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_OUT);
+
+            lblDay1Out.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY1_OUT, DateTime.Now.Day);
+            lblDay2Out.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY2_OUT, DateTime.Now.Day);
+            lblMonthOut.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_MONTH_OUT, DateTime.Now.Month);
+            lblYearOut.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_YEAR_OUT, DateTime.Now.Year);
+
+            lblDayScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY_SCRAP, DateTime.Now.Day);
+            lblMonthScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_MONTH_SCRAP, DateTime.Now.Month);
+            lblYearScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_YEAR_SCRAP, DateTime.Now.Year);
         }
     }
 }

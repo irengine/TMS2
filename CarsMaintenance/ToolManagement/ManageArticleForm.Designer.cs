@@ -37,6 +37,7 @@
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbIsTop = new System.Windows.Forms.CheckBox();
             this._operationsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +80,7 @@
             this._operationsPanel.Controls.Add(this._saveButton);
             this._operationsPanel.Controls.Add(this._cancelButton);
             this._operationsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._operationsPanel.Location = new System.Drawing.Point(0, 369);
+            this._operationsPanel.Location = new System.Drawing.Point(0, 399);
             this._operationsPanel.Name = "_operationsPanel";
             this._operationsPanel.Size = new System.Drawing.Size(445, 39);
             this._operationsPanel.TabIndex = 7;
@@ -111,11 +112,22 @@
             // 
             this._errorProvider.ContainerControl = this;
             // 
+            // cbIsTop
+            // 
+            this.cbIsTop.AutoSize = true;
+            this.cbIsTop.Location = new System.Drawing.Point(81, 369);
+            this.cbIsTop.Name = "cbIsTop";
+            this.cbIsTop.Size = new System.Drawing.Size(48, 16);
+            this.cbIsTop.TabIndex = 8;
+            this.cbIsTop.Text = "置顶";
+            this.cbIsTop.UseVisualStyleBackColor = true;
+            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 408);
+            this.ClientSize = new System.Drawing.Size(445, 438);
+            this.Controls.Add(this.cbIsTop);
             this.Controls.Add(this._operationsPanel);
             this.Controls.Add(this.txtContent);
             this.Controls.Add(this.lblContent);
@@ -142,5 +154,6 @@
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.ErrorProvider _errorProvider;
+        private System.Windows.Forms.CheckBox cbIsTop;
     }
 }

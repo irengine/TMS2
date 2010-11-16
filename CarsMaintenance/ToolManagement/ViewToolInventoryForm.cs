@@ -96,6 +96,7 @@ namespace CarsMaintenance.ToolManagement
                         join ti in SystemHelper.TMSContext.ToolInventories on t.ToolID equals ti.ToolID
                         join s in SystemHelper.TMSContext.Supplies on ti.SupplyID equals s.SupplyID
                         where t.Deleted == false
+                        && (ti.Quantity > 0 || ti.OutQuantity > 0 || ti.PrescrapQuantity > 0 || ti.ScrapQuantity > 0 || ti.RepairingQuantity > 0)
                         orderby t.Code
                         select new
                         {
@@ -144,35 +145,71 @@ namespace CarsMaintenance.ToolManagement
         private void btnQuery_Click(object sender, EventArgs e)
         {
             string categoryCode = cbCategory.SelectedValue as string;
-            var query = from t in SystemHelper.TMSContext.Tools
-                        join ti in SystemHelper.TMSContext.ToolInventories on t.ToolID equals ti.ToolID
-                        join s in SystemHelper.TMSContext.Supplies on ti.SupplyID equals s.SupplyID
-                        where t.Deleted == false && t.Code.StartsWith(categoryCode)
-                        orderby t.Code
-                        select new
-                        {
-                            ToolID = t.ToolID,
-                            Code = t.Code,
-                            Name = t.Name,
-                            Dimensions = t.Dimensions,
-                            Quantity = ti.Quantity,
-                            OutQuantity = ti.OutQuantity,
-                            PrescrapQuantity = ti.PrescrapQuantity,
-                            ScrapQuantity = ti.ScrapQuantity,
-                            RepairingQuantity = ti.RepairingQuantity,
-                            Unit = t.Unit,
-                            UnitPrice = ti.UnitPrice,
-                            Supply = s.Name,
-                            LastTime = ti.LastInboundDate
-                        };
-
-            CarsMaintenance.Common.Sorting.SortableBindingList<object> toolInventories = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
-            foreach (object o in query)
+            if (cbShowEmpty.Checked)
             {
-                toolInventories.Add(o);
-            }
+                var query = from t in SystemHelper.TMSContext.Tools
+                            join ti in SystemHelper.TMSContext.ToolInventories on t.ToolID equals ti.ToolID
+                            join s in SystemHelper.TMSContext.Supplies on ti.SupplyID equals s.SupplyID
+                            where t.Deleted == false && t.Code.StartsWith(categoryCode)
+                            orderby t.Code
+                            select new
+                            {
+                                ToolID = t.ToolID,
+                                Code = t.Code,
+                                Name = t.Name,
+                                Dimensions = t.Dimensions,
+                                Quantity = ti.Quantity,
+                                OutQuantity = ti.OutQuantity,
+                                PrescrapQuantity = ti.PrescrapQuantity,
+                                ScrapQuantity = ti.ScrapQuantity,
+                                RepairingQuantity = ti.RepairingQuantity,
+                                Unit = t.Unit,
+                                UnitPrice = ti.UnitPrice,
+                                Supply = s.Name,
+                                LastTime = ti.LastInboundDate
+                            };
 
-            dataGridViewToolInventory.DataSource = toolInventories;
+                CarsMaintenance.Common.Sorting.SortableBindingList<object> toolInventories = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+                foreach (object o in query)
+                {
+                    toolInventories.Add(o);
+                }
+
+                dataGridViewToolInventory.DataSource = toolInventories;
+            }
+            else
+            {
+                var query = from t in SystemHelper.TMSContext.Tools
+                            join ti in SystemHelper.TMSContext.ToolInventories on t.ToolID equals ti.ToolID
+                            join s in SystemHelper.TMSContext.Supplies on ti.SupplyID equals s.SupplyID
+                            where t.Deleted == false && t.Code.StartsWith(categoryCode)
+                            && (ti.Quantity > 0 || ti.OutQuantity > 0 || ti.PrescrapQuantity > 0 || ti.ScrapQuantity > 0 || ti.RepairingQuantity > 0)
+                            orderby t.Code
+                            select new
+                            {
+                                ToolID = t.ToolID,
+                                Code = t.Code,
+                                Name = t.Name,
+                                Dimensions = t.Dimensions,
+                                Quantity = ti.Quantity,
+                                OutQuantity = ti.OutQuantity,
+                                PrescrapQuantity = ti.PrescrapQuantity,
+                                ScrapQuantity = ti.ScrapQuantity,
+                                RepairingQuantity = ti.RepairingQuantity,
+                                Unit = t.Unit,
+                                UnitPrice = ti.UnitPrice,
+                                Supply = s.Name,
+                                LastTime = ti.LastInboundDate
+                            };
+
+                CarsMaintenance.Common.Sorting.SortableBindingList<object> toolInventories = new CarsMaintenance.Common.Sorting.SortableBindingList<object>();
+                foreach (object o in query)
+                {
+                    toolInventories.Add(o);
+                }
+
+                dataGridViewToolInventory.DataSource = toolInventories;
+            }
         }
     }
 }

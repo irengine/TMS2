@@ -34,9 +34,10 @@
             this.contextMenuStripToolInventory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemPurchaseOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.btnQuery = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
-            this.btnQuery = new System.Windows.Forms.Button();
+            this.cbShowEmpty = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToolInventory)).BeginInit();
             this.contextMenuStripToolInventory.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // panelSearch
             // 
+            this.panelSearch.Controls.Add(this.cbShowEmpty);
             this.panelSearch.Controls.Add(this.btnQuery);
             this.panelSearch.Controls.Add(this.cbCategory);
             this.panelSearch.Controls.Add(this.lblCategory);
@@ -98,6 +100,16 @@
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(744, 54);
             this.panelSearch.TabIndex = 0;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(389, 16);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 2;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // cbCategory
             // 
@@ -116,15 +128,15 @@
             this.lblCategory.TabIndex = 0;
             this.lblCategory.Text = "工属具类别";
             // 
-            // btnQuery
+            // cbShowEmpty
             // 
-            this.btnQuery.Location = new System.Drawing.Point(299, 15);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 2;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            this.cbShowEmpty.AutoSize = true;
+            this.cbShowEmpty.Location = new System.Drawing.Point(299, 20);
+            this.cbShowEmpty.Name = "cbShowEmpty";
+            this.cbShowEmpty.Size = new System.Drawing.Size(84, 16);
+            this.cbShowEmpty.TabIndex = 3;
+            this.cbShowEmpty.Text = "显示空记录";
+            this.cbShowEmpty.UseVisualStyleBackColor = true;
             // 
             // ViewToolInventoryForm
             // 
@@ -154,5 +166,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripToolInventory;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPurchaseOrder;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.CheckBox cbShowEmpty;
     }
 }
