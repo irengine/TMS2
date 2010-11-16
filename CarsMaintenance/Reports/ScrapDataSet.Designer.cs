@@ -20,17 +20,17 @@ namespace CarsMaintenance.Reports {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("ScrapDetailDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ScrapDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ScrapDetailDataSet : global::System.Data.DataSet {
+    public partial class ScrapDataSet : global::System.Data.DataSet {
         
-        private ToolGroupDataTable tableToolGroup;
+        private ScrapInfoDataTable tableScrapInfo;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ScrapDetailDataSet() {
+        public ScrapDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace CarsMaintenance.Reports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected ScrapDetailDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ScrapDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace CarsMaintenance.Reports {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ToolGroup"] != null)) {
-                    base.Tables.Add(new ToolGroupDataTable(ds.Tables["ToolGroup"]));
+                if ((ds.Tables["ScrapInfo"] != null)) {
+                    base.Tables.Add(new ScrapInfoDataTable(ds.Tables["ScrapInfo"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace CarsMaintenance.Reports {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ToolGroupDataTable ToolGroup {
+        public ScrapInfoDataTable ScrapInfo {
             get {
-                return this.tableToolGroup;
+                return this.tableScrapInfo;
             }
         }
         
@@ -127,7 +127,7 @@ namespace CarsMaintenance.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ScrapDetailDataSet cln = ((ScrapDetailDataSet)(base.Clone()));
+            ScrapDataSet cln = ((ScrapDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace CarsMaintenance.Reports {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ToolGroup"] != null)) {
-                    base.Tables.Add(new ToolGroupDataTable(ds.Tables["ToolGroup"]));
+                if ((ds.Tables["ScrapInfo"] != null)) {
+                    base.Tables.Add(new ScrapInfoDataTable(ds.Tables["ScrapInfo"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace CarsMaintenance.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableToolGroup = ((ToolGroupDataTable)(base.Tables["ToolGroup"]));
+            this.tableScrapInfo = ((ScrapInfoDataTable)(base.Tables["ScrapInfo"]));
             if ((initTable == true)) {
-                if ((this.tableToolGroup != null)) {
-                    this.tableToolGroup.InitVars();
+                if ((this.tableScrapInfo != null)) {
+                    this.tableScrapInfo.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace CarsMaintenance.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "ScrapDetailDataSet";
+            this.DataSetName = "ScrapDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/ScrapDetailDataSet.xsd";
+            this.Namespace = "http://tempuri.org/ScrapDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableToolGroup = new ToolGroupDataTable();
-            base.Tables.Add(this.tableToolGroup);
+            this.tableScrapInfo = new ScrapInfoDataTable();
+            base.Tables.Add(this.tableScrapInfo);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeToolGroup() {
+        private bool ShouldSerializeScrapInfo() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace CarsMaintenance.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ScrapDetailDataSet ds = new ScrapDetailDataSet();
+            ScrapDataSet ds = new ScrapDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,51 +270,31 @@ namespace CarsMaintenance.Reports {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ToolGroupRowChangeEventHandler(object sender, ToolGroupRowChangeEvent e);
+        public delegate void ScrapInfoRowChangeEventHandler(object sender, ScrapInfoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ToolGroupDataTable : global::System.Data.TypedTableBase<ToolGroupRow> {
-            
-            private global::System.Data.DataColumn columnToolID;
-            
-            private global::System.Data.DataColumn columnCode;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnDiameter;
-            
-            private global::System.Data.DataColumn columnLength;
-            
-            private global::System.Data.DataColumn columnLoad2;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnDimensions;
-            
-            private global::System.Data.DataColumn columnUnit;
-            
-            private global::System.Data.DataColumn columnRatedQuantity;
-            
-            private global::System.Data.DataColumn columnComment;
-            
-            private global::System.Data.DataColumn columnDeleted;
-            
-            private global::System.Data.DataColumn columnToolCategoryID;
-            
-            private global::System.Data.DataColumn columnToolGroupID;
-            
-            private global::System.Data.DataColumn columnToolID1;
+        public partial class ScrapInfoDataTable : global::System.Data.TypedTableBase<ScrapInfoRow> {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnDimensions;
+            
+            private global::System.Data.DataColumn columnToolName;
+            
+            private global::System.Data.DataColumn columnUnitPrice;
+            
+            private global::System.Data.DataColumn columnToolCategoryName;
+            
+            private global::System.Data.DataColumn columnAllUnitPrice;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupDataTable() {
-                this.TableName = "ToolGroup";
+            public ScrapInfoDataTable() {
+                this.TableName = "ScrapInfo";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -322,7 +302,7 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ToolGroupDataTable(global::System.Data.DataTable table) {
+            internal ScrapInfoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -339,64 +319,16 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ToolGroupDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ScrapInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ToolIDColumn {
+            public global::System.Data.DataColumn QuantityColumn {
                 get {
-                    return this.columnToolID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CodeColumn {
-                get {
-                    return this.columnCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiameterColumn {
-                get {
-                    return this.columnDiameter;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LengthColumn {
-                get {
-                    return this.columnLength;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Load2Column {
-                get {
-                    return this.columnLoad2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
+                    return this.columnQuantity;
                 }
             }
             
@@ -410,65 +342,33 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnitColumn {
+            public global::System.Data.DataColumn ToolNameColumn {
                 get {
-                    return this.columnUnit;
+                    return this.columnToolName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RatedQuantityColumn {
+            public global::System.Data.DataColumn UnitPriceColumn {
                 get {
-                    return this.columnRatedQuantity;
+                    return this.columnUnitPrice;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CommentColumn {
+            public global::System.Data.DataColumn ToolCategoryNameColumn {
                 get {
-                    return this.columnComment;
+                    return this.columnToolCategoryName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DeletedColumn {
+            public global::System.Data.DataColumn AllUnitPriceColumn {
                 get {
-                    return this.columnDeleted;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ToolCategoryIDColumn {
-                get {
-                    return this.columnToolCategoryID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ToolGroupIDColumn {
-                get {
-                    return this.columnToolGroupID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ToolID1Column {
-                get {
-                    return this.columnToolID1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QuantityColumn {
-                get {
-                    return this.columnQuantity;
+                    return this.columnAllUnitPrice;
                 }
             }
             
@@ -483,69 +383,50 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRow this[int index] {
+            public ScrapInfoRow this[int index] {
                 get {
-                    return ((ToolGroupRow)(this.Rows[index]));
+                    return ((ScrapInfoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ToolGroupRowChangeEventHandler ToolGroupRowChanging;
+            public event ScrapInfoRowChangeEventHandler ScrapInfoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ToolGroupRowChangeEventHandler ToolGroupRowChanged;
+            public event ScrapInfoRowChangeEventHandler ScrapInfoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ToolGroupRowChangeEventHandler ToolGroupRowDeleting;
+            public event ScrapInfoRowChangeEventHandler ScrapInfoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ToolGroupRowChangeEventHandler ToolGroupRowDeleted;
+            public event ScrapInfoRowChangeEventHandler ScrapInfoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddToolGroupRow(ToolGroupRow row) {
+            public void AddScrapInfoRow(ScrapInfoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRow AddToolGroupRow(string Code, string Name, string Diameter, string Length, string Load2, string Description, string Dimensions, string Unit, decimal RatedQuantity, string Comment, bool Deleted, int ToolCategoryID, int ToolGroupID, int ToolID1, int Quantity) {
-                ToolGroupRow rowToolGroupRow = ((ToolGroupRow)(this.NewRow()));
+            public ScrapInfoRow AddScrapInfoRow(decimal Quantity, string Dimensions, string ToolName, decimal UnitPrice, string ToolCategoryName, decimal AllUnitPrice) {
+                ScrapInfoRow rowScrapInfoRow = ((ScrapInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        Code,
-                        Name,
-                        Diameter,
-                        Length,
-                        Load2,
-                        Description,
+                        Quantity,
                         Dimensions,
-                        Unit,
-                        RatedQuantity,
-                        Comment,
-                        Deleted,
-                        ToolCategoryID,
-                        ToolGroupID,
-                        ToolID1,
-                        Quantity};
-                rowToolGroupRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowToolGroupRow);
-                return rowToolGroupRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRow FindByToolIDToolGroupIDToolID1(int ToolID, int ToolGroupID, int ToolID1) {
-                return ((ToolGroupRow)(this.Rows.Find(new object[] {
-                            ToolID,
-                            ToolGroupID,
-                            ToolID1})));
+                        ToolName,
+                        UnitPrice,
+                        ToolCategoryName,
+                        AllUnitPrice};
+                rowScrapInfoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowScrapInfoRow);
+                return rowScrapInfoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ToolGroupDataTable cln = ((ToolGroupDataTable)(base.Clone()));
+                ScrapInfoDataTable cln = ((ScrapInfoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -553,119 +434,65 @@ namespace CarsMaintenance.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ToolGroupDataTable();
+                return new ScrapInfoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnToolID = base.Columns["ToolID"];
-                this.columnCode = base.Columns["Code"];
-                this.columnName = base.Columns["Name"];
-                this.columnDiameter = base.Columns["Diameter"];
-                this.columnLength = base.Columns["Length"];
-                this.columnLoad2 = base.Columns["Load2"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnDimensions = base.Columns["Dimensions"];
-                this.columnUnit = base.Columns["Unit"];
-                this.columnRatedQuantity = base.Columns["RatedQuantity"];
-                this.columnComment = base.Columns["Comment"];
-                this.columnDeleted = base.Columns["Deleted"];
-                this.columnToolCategoryID = base.Columns["ToolCategoryID"];
-                this.columnToolGroupID = base.Columns["ToolGroupID"];
-                this.columnToolID1 = base.Columns["ToolID1"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnDimensions = base.Columns["Dimensions"];
+                this.columnToolName = base.Columns["ToolName"];
+                this.columnUnitPrice = base.Columns["UnitPrice"];
+                this.columnToolCategoryName = base.Columns["ToolCategoryName"];
+                this.columnAllUnitPrice = base.Columns["AllUnitPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnToolID = new global::System.Data.DataColumn("ToolID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToolID);
-                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCode);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnDiameter = new global::System.Data.DataColumn("Diameter", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiameter);
-                this.columnLength = new global::System.Data.DataColumn("Length", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLength);
-                this.columnLoad2 = new global::System.Data.DataColumn("Load2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLoad2);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
                 this.columnDimensions = new global::System.Data.DataColumn("Dimensions", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDimensions);
-                this.columnUnit = new global::System.Data.DataColumn("Unit", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUnit);
-                this.columnRatedQuantity = new global::System.Data.DataColumn("RatedQuantity", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRatedQuantity);
-                this.columnComment = new global::System.Data.DataColumn("Comment", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComment);
-                this.columnDeleted = new global::System.Data.DataColumn("Deleted", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeleted);
-                this.columnToolCategoryID = new global::System.Data.DataColumn("ToolCategoryID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToolCategoryID);
-                this.columnToolGroupID = new global::System.Data.DataColumn("ToolGroupID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToolGroupID);
-                this.columnToolID1 = new global::System.Data.DataColumn("ToolID1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToolID1);
-                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantity);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnToolID,
-                                this.columnToolGroupID,
-                                this.columnToolID1}, true));
-                this.columnToolID.AutoIncrement = true;
-                this.columnToolID.AutoIncrementSeed = -1;
-                this.columnToolID.AutoIncrementStep = -1;
-                this.columnToolID.AllowDBNull = false;
-                this.columnToolID.ReadOnly = true;
-                this.columnCode.AllowDBNull = false;
-                this.columnCode.MaxLength = 20;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 50;
-                this.columnDiameter.MaxLength = 20;
-                this.columnLength.MaxLength = 20;
-                this.columnLoad2.MaxLength = 20;
-                this.columnDescription.MaxLength = 20;
-                this.columnDimensions.AllowDBNull = false;
+                this.columnToolName = new global::System.Data.DataColumn("ToolName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolName);
+                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitPrice);
+                this.columnToolCategoryName = new global::System.Data.DataColumn("ToolCategoryName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToolCategoryName);
+                this.columnAllUnitPrice = new global::System.Data.DataColumn("AllUnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAllUnitPrice);
                 this.columnDimensions.MaxLength = 50;
-                this.columnUnit.AllowDBNull = false;
-                this.columnUnit.MaxLength = 10;
-                this.columnRatedQuantity.AllowDBNull = false;
-                this.columnComment.MaxLength = 4000;
-                this.columnDeleted.AllowDBNull = false;
-                this.columnToolCategoryID.AllowDBNull = false;
-                this.columnToolGroupID.AllowDBNull = false;
-                this.columnToolID1.AllowDBNull = false;
-                this.columnQuantity.AllowDBNull = false;
+                this.columnToolName.MaxLength = 50;
+                this.columnToolCategoryName.MaxLength = 20;
+                this.columnAllUnitPrice.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRow NewToolGroupRow() {
-                return ((ToolGroupRow)(this.NewRow()));
+            public ScrapInfoRow NewScrapInfoRow() {
+                return ((ScrapInfoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ToolGroupRow(builder);
+                return new ScrapInfoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ToolGroupRow);
+                return typeof(ScrapInfoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ToolGroupRowChanged != null)) {
-                    this.ToolGroupRowChanged(this, new ToolGroupRowChangeEvent(((ToolGroupRow)(e.Row)), e.Action));
+                if ((this.ScrapInfoRowChanged != null)) {
+                    this.ScrapInfoRowChanged(this, new ScrapInfoRowChangeEvent(((ScrapInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -673,8 +500,8 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ToolGroupRowChanging != null)) {
-                    this.ToolGroupRowChanging(this, new ToolGroupRowChangeEvent(((ToolGroupRow)(e.Row)), e.Action));
+                if ((this.ScrapInfoRowChanging != null)) {
+                    this.ScrapInfoRowChanging(this, new ScrapInfoRowChangeEvent(((ScrapInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -682,8 +509,8 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ToolGroupRowDeleted != null)) {
-                    this.ToolGroupRowDeleted(this, new ToolGroupRowChangeEvent(((ToolGroupRow)(e.Row)), e.Action));
+                if ((this.ScrapInfoRowDeleted != null)) {
+                    this.ScrapInfoRowDeleted(this, new ScrapInfoRowChangeEvent(((ScrapInfoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -691,14 +518,14 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ToolGroupRowDeleting != null)) {
-                    this.ToolGroupRowDeleting(this, new ToolGroupRowChangeEvent(((ToolGroupRow)(e.Row)), e.Action));
+                if ((this.ScrapInfoRowDeleting != null)) {
+                    this.ScrapInfoRowDeleting(this, new ScrapInfoRowChangeEvent(((ScrapInfoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveToolGroupRow(ToolGroupRow row) {
+            public void RemoveScrapInfoRow(ScrapInfoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -707,7 +534,7 @@ namespace CarsMaintenance.Reports {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ScrapDetailDataSet ds = new ScrapDetailDataSet();
+                ScrapDataSet ds = new ScrapDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -725,7 +552,7 @@ namespace CarsMaintenance.Reports {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ToolGroupDataTable";
+                attribute2.FixedValue = "ScrapInfoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -769,111 +596,30 @@ namespace CarsMaintenance.Reports {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ToolGroupRow : global::System.Data.DataRow {
+        public partial class ScrapInfoRow : global::System.Data.DataRow {
             
-            private ToolGroupDataTable tableToolGroup;
+            private ScrapInfoDataTable tableScrapInfo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ToolGroupRow(global::System.Data.DataRowBuilder rb) : 
+            internal ScrapInfoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableToolGroup = ((ToolGroupDataTable)(this.Table));
+                this.tableScrapInfo = ((ScrapInfoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ToolID {
-                get {
-                    return ((int)(this[this.tableToolGroup.ToolIDColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.ToolIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Code {
-                get {
-                    return ((string)(this[this.tableToolGroup.CodeColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.CodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableToolGroup.NameColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Diameter {
+            public decimal Quantity {
                 get {
                     try {
-                        return ((string)(this[this.tableToolGroup.DiameterColumn]));
+                        return ((decimal)(this[this.tableScrapInfo.QuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Diameter\' in table \'ToolGroup\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'ScrapInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableToolGroup.DiameterColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Length {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolGroup.LengthColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Length\' in table \'ToolGroup\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolGroup.LengthColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Load2 {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolGroup.Load2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Load2\' in table \'ToolGroup\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolGroup.Load2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolGroup.DescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'ToolGroup\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolGroup.DescriptionColumn] = value;
+                    this[this.tableScrapInfo.QuantityColumn] = value;
                 }
             }
             
@@ -881,164 +627,152 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Dimensions {
                 get {
-                    return ((string)(this[this.tableToolGroup.DimensionsColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.DimensionsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Unit {
-                get {
-                    return ((string)(this[this.tableToolGroup.UnitColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.UnitColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal RatedQuantity {
-                get {
-                    return ((decimal)(this[this.tableToolGroup.RatedQuantityColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.RatedQuantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Comment {
-                get {
                     try {
-                        return ((string)(this[this.tableToolGroup.CommentColumn]));
+                        return ((string)(this[this.tableScrapInfo.DimensionsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Comment\' in table \'ToolGroup\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dimensions\' in table \'ScrapInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableToolGroup.CommentColumn] = value;
+                    this[this.tableScrapInfo.DimensionsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Deleted {
+            public string ToolName {
                 get {
-                    return ((bool)(this[this.tableToolGroup.DeletedColumn]));
+                    try {
+                        return ((string)(this[this.tableScrapInfo.ToolNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ToolName\' in table \'ScrapInfo\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableToolGroup.DeletedColumn] = value;
+                    this[this.tableScrapInfo.ToolNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ToolCategoryID {
+            public decimal UnitPrice {
                 get {
-                    return ((int)(this[this.tableToolGroup.ToolCategoryIDColumn]));
+                    try {
+                        return ((decimal)(this[this.tableScrapInfo.UnitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UnitPrice\' in table \'ScrapInfo\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableToolGroup.ToolCategoryIDColumn] = value;
+                    this[this.tableScrapInfo.UnitPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ToolGroupID {
+            public string ToolCategoryName {
                 get {
-                    return ((int)(this[this.tableToolGroup.ToolGroupIDColumn]));
+                    try {
+                        return ((string)(this[this.tableScrapInfo.ToolCategoryNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ToolCategoryName\' in table \'ScrapInfo\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableToolGroup.ToolGroupIDColumn] = value;
+                    this[this.tableScrapInfo.ToolCategoryNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ToolID1 {
+            public decimal AllUnitPrice {
                 get {
-                    return ((int)(this[this.tableToolGroup.ToolID1Column]));
+                    try {
+                        return ((decimal)(this[this.tableScrapInfo.AllUnitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AllUnitPrice\' in table \'ScrapInfo\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableToolGroup.ToolID1Column] = value;
+                    this[this.tableScrapInfo.AllUnitPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Quantity {
-                get {
-                    return ((int)(this[this.tableToolGroup.QuantityColumn]));
-                }
-                set {
-                    this[this.tableToolGroup.QuantityColumn] = value;
-                }
+            public bool IsQuantityNull() {
+                return this.IsNull(this.tableScrapInfo.QuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiameterNull() {
-                return this.IsNull(this.tableToolGroup.DiameterColumn);
+            public void SetQuantityNull() {
+                this[this.tableScrapInfo.QuantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiameterNull() {
-                this[this.tableToolGroup.DiameterColumn] = global::System.Convert.DBNull;
+            public bool IsDimensionsNull() {
+                return this.IsNull(this.tableScrapInfo.DimensionsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLengthNull() {
-                return this.IsNull(this.tableToolGroup.LengthColumn);
+            public void SetDimensionsNull() {
+                this[this.tableScrapInfo.DimensionsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLengthNull() {
-                this[this.tableToolGroup.LengthColumn] = global::System.Convert.DBNull;
+            public bool IsToolNameNull() {
+                return this.IsNull(this.tableScrapInfo.ToolNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLoad2Null() {
-                return this.IsNull(this.tableToolGroup.Load2Column);
+            public void SetToolNameNull() {
+                this[this.tableScrapInfo.ToolNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLoad2Null() {
-                this[this.tableToolGroup.Load2Column] = global::System.Convert.DBNull;
+            public bool IsUnitPriceNull() {
+                return this.IsNull(this.tableScrapInfo.UnitPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescriptionNull() {
-                return this.IsNull(this.tableToolGroup.DescriptionColumn);
+            public void SetUnitPriceNull() {
+                this[this.tableScrapInfo.UnitPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescriptionNull() {
-                this[this.tableToolGroup.DescriptionColumn] = global::System.Convert.DBNull;
+            public bool IsToolCategoryNameNull() {
+                return this.IsNull(this.tableScrapInfo.ToolCategoryNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCommentNull() {
-                return this.IsNull(this.tableToolGroup.CommentColumn);
+            public void SetToolCategoryNameNull() {
+                this[this.tableScrapInfo.ToolCategoryNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCommentNull() {
-                this[this.tableToolGroup.CommentColumn] = global::System.Convert.DBNull;
+            public bool IsAllUnitPriceNull() {
+                return this.IsNull(this.tableScrapInfo.AllUnitPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAllUnitPriceNull() {
+                this[this.tableScrapInfo.AllUnitPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1046,22 +780,22 @@ namespace CarsMaintenance.Reports {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ToolGroupRowChangeEvent : global::System.EventArgs {
+        public class ScrapInfoRowChangeEvent : global::System.EventArgs {
             
-            private ToolGroupRow eventRow;
+            private ScrapInfoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRowChangeEvent(ToolGroupRow row, global::System.Data.DataRowAction action) {
+            public ScrapInfoRowChangeEvent(ScrapInfoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ToolGroupRow Row {
+            public ScrapInfoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1077,7 +811,7 @@ namespace CarsMaintenance.Reports {
         }
     }
 }
-namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
+namespace CarsMaintenance.Reports.ScrapDataSetTableAdapters {
     
     
     /// <summary>
@@ -1089,7 +823,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ToolGroupTableAdapter : global::System.ComponentModel.Component {
+    public partial class ScrapInfoTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1103,7 +837,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ToolGroupTableAdapter() {
+        public ScrapInfoTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1200,23 +934,13 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ToolGroup";
-            tableMapping.ColumnMappings.Add("ToolID", "ToolID");
-            tableMapping.ColumnMappings.Add("Code", "Code");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Diameter", "Diameter");
-            tableMapping.ColumnMappings.Add("Length", "Length");
-            tableMapping.ColumnMappings.Add("Load2", "Load2");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("Dimensions", "Dimensions");
-            tableMapping.ColumnMappings.Add("Unit", "Unit");
-            tableMapping.ColumnMappings.Add("RatedQuantity", "RatedQuantity");
-            tableMapping.ColumnMappings.Add("Comment", "Comment");
-            tableMapping.ColumnMappings.Add("Deleted", "Deleted");
-            tableMapping.ColumnMappings.Add("ToolCategoryID", "ToolCategoryID");
-            tableMapping.ColumnMappings.Add("ToolGroupID", "ToolGroupID");
-            tableMapping.ColumnMappings.Add("ToolID1", "ToolID1");
+            tableMapping.DataSetTable = "ScrapInfo";
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("Dimensions", "Dimensions");
+            tableMapping.ColumnMappings.Add("ToolName", "ToolName");
+            tableMapping.ColumnMappings.Add("UnitPrice", "UnitPrice");
+            tableMapping.ColumnMappings.Add("ToolCategoryName", "ToolCategoryName");
+            tableMapping.ColumnMappings.Add("AllUnitPrice", "AllUnitPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1233,8 +957,16 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select tool.*, toolgroup.* from tool inner join toolgroup on tool.toolid = toolgr" +
-                "oup.toolgroupid";
+            this._commandCollection[0].CommandText = @"SELECT ToolCategory.Name AS ToolCategoryName,
+                    Tool.Name AS ToolName, 
+                  ScrapOrderDetail.UnitPrice * ScrapOrderDetail.ScrapQuantity  AS AllUnitPrice, 
+                  ScrapOrderDetail.UnitPrice, ScrapOrderDetail.ScrapQuantity as Quantity , Tool.Dimensions
+                  FROM ScrapOrder LEFT JOIN
+                      ScrapOrderDetail ON 
+                      ScrapOrder.ScrapOrderID = ScrapOrderDetail.ScrapOrderID LEFT JOIN
+                      Tool ON ScrapOrderDetail.ToolID = Tool.ToolID LEFT JOIN
+                      ToolCategory ON Tool.ToolCategoryID = ToolCategory.ToolCategoryID
+                  ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1242,7 +974,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ScrapDetailDataSet.ToolGroupDataTable dataTable) {
+        public virtual int Fill(ScrapDataSet.ScrapInfoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1255,9 +987,9 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ScrapDetailDataSet.ToolGroupDataTable GetData() {
+        public virtual ScrapDataSet.ScrapInfoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ScrapDetailDataSet.ToolGroupDataTable dataTable = new ScrapDetailDataSet.ToolGroupDataTable();
+            ScrapDataSet.ScrapInfoDataTable dataTable = new ScrapDataSet.ScrapInfoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1331,7 +1063,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(ScrapDetailDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ScrapDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1341,7 +1073,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(ScrapDetailDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ScrapDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1351,7 +1083,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(ScrapDetailDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ScrapDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1385,7 +1117,7 @@ namespace CarsMaintenance.Reports.ScrapDetailDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(ScrapDetailDataSet dataSet) {
+        public virtual int UpdateAll(ScrapDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

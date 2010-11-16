@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AbnormityScrapDataSet" targetNamespace="http://tempuri.org/AbnormityScrapDataSet.xsd" xmlns:mstns="http://tempuri.org/AbnormityScrapDataSet.xsd" xmlns="http://tempuri.org/AbnormityScrapDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QueryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QueryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CarsMaintenance.Properties.Settings.GlobalReference.Default.QueryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AbnormityDataSetTableAdapter" GeneratorDataComponentClassName="AbnormityDataSetTableAdapter" Name="AbnormityDataSet" UserDataComponentName="AbnormityDataSetTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>Select S.ScrapDate,o.JobType,o.JobPosition,o.Ship,t.Dimensions,t.Name as ToolName,
+CASE WHEN o.ClassType=1 Then '白班' ELSE '夜班' END as ClassType,pu.Name as ParentUserName,u.Name as UserName,su.Name as SystemUserName,
+sd.ScrapQuantity,sd.UnitPrice,(sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice ,Case When  sd.IsAbnormal=0  then '否' Else  '是' End as IsAbnormal,sd.ScrapReason from ScrapOrder as s 
+inner join ScrapOrderDetail as sd on s.ScrapOrderID=sd.ScrapOrderID
+inner join Tool as t on sd.ToolID=t.ToolID
+inner join Unit as u on s.CustomerID=u.UnitID
+inner join Unit as pu on u.ParentUnitID= pu.UnitID
+inner join OutboundOrder as o on o.OutboundOrderID=s.OutboundOrderID
+inner join SystemUser as su on s.LastUpdatedBy=su.SystemUserID where sd.IsAbnormal!=0</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ScrapDate" DataSetColumn="ScrapDate" />
+              <Mapping SourceColumn="JobType" DataSetColumn="JobType" />
+              <Mapping SourceColumn="JobPosition" DataSetColumn="JobPosition" />
+              <Mapping SourceColumn="Ship" DataSetColumn="Ship" />
+              <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
+              <Mapping SourceColumn="ToolName" DataSetColumn="ToolName" />
+              <Mapping SourceColumn="ParentUserName" DataSetColumn="ParentUserName" />
+              <Mapping SourceColumn="UserName" DataSetColumn="UserName" />
+              <Mapping SourceColumn="SystemUserName" DataSetColumn="SystemUserName" />
+              <Mapping SourceColumn="ScrapQuantity" DataSetColumn="ScrapQuantity" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="AllUnitPrice" DataSetColumn="AllUnitPrice" />
+              <Mapping SourceColumn="ScrapReason" DataSetColumn="ScrapReason" />
+              <Mapping SourceColumn="ClassType" DataSetColumn="ClassType" />
+              <Mapping SourceColumn="IsAbnormal" DataSetColumn="IsAbnormal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AbnormityScrapDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AbnormityScrapDataSet" msprop:Generator_UserDSName="AbnormityScrapDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AbnormityDataSet" msprop:Generator_TableClassName="AbnormityDataSetDataTable" msprop:Generator_TableVarName="tableAbnormityDataSet" msprop:Generator_TablePropName="AbnormityDataSet" msprop:Generator_RowDeletingName="AbnormityDataSetRowDeleting" msprop:Generator_UserTableName="AbnormityDataSet" msprop:Generator_RowChangingName="AbnormityDataSetRowChanging" msprop:Generator_RowEvHandlerName="AbnormityDataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="AbnormityDataSetRowDeleted" msprop:Generator_RowEvArgName="AbnormityDataSetRowChangeEvent" msprop:Generator_RowChangedName="AbnormityDataSetRowChanged" msprop:Generator_RowClassName="AbnormityDataSetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ScrapDate" msprop:Generator_ColumnVarNameInTable="columnScrapDate" msprop:Generator_ColumnPropNameInRow="ScrapDate" msprop:Generator_ColumnPropNameInTable="ScrapDateColumn" msprop:Generator_UserColumnName="ScrapDate" type="xs:dateTime" />
+              <xs:element name="JobType" msprop:Generator_ColumnVarNameInTable="columnJobType" msprop:Generator_ColumnPropNameInRow="JobType" msprop:Generator_ColumnPropNameInTable="JobTypeColumn" msprop:Generator_UserColumnName="JobType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JobPosition" msprop:Generator_ColumnVarNameInTable="columnJobPosition" msprop:Generator_ColumnPropNameInRow="JobPosition" msprop:Generator_ColumnPropNameInTable="JobPositionColumn" msprop:Generator_UserColumnName="JobPosition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ship" msprop:Generator_ColumnVarNameInTable="columnShip" msprop:Generator_ColumnPropNameInRow="Ship" msprop:Generator_ColumnPropNameInTable="ShipColumn" msprop:Generator_UserColumnName="Ship" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:Generator_UserColumnName="Dimensions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ParentUserName" msprop:Generator_ColumnVarNameInTable="columnParentUserName" msprop:Generator_ColumnPropNameInRow="ParentUserName" msprop:Generator_ColumnPropNameInTable="ParentUserNameColumn" msprop:Generator_UserColumnName="ParentUserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SystemUserName" msprop:Generator_ColumnVarNameInTable="columnSystemUserName" msprop:Generator_ColumnPropNameInRow="SystemUserName" msprop:Generator_ColumnPropNameInTable="SystemUserNameColumn" msprop:Generator_UserColumnName="SystemUserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ScrapQuantity" msprop:Generator_ColumnVarNameInTable="columnScrapQuantity" msprop:Generator_ColumnPropNameInRow="ScrapQuantity" msprop:Generator_ColumnPropNameInTable="ScrapQuantityColumn" msprop:Generator_UserColumnName="ScrapQuantity" type="xs:decimal" />
+              <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
+              <xs:element name="AllUnitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAllUnitPrice" msprop:Generator_ColumnPropNameInRow="AllUnitPrice" msprop:Generator_ColumnPropNameInTable="AllUnitPriceColumn" msprop:Generator_UserColumnName="AllUnitPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ScrapReason" msprop:Generator_ColumnVarNameInTable="columnScrapReason" msprop:Generator_ColumnPropNameInRow="ScrapReason" msprop:Generator_ColumnPropNameInTable="ScrapReasonColumn" msprop:Generator_UserColumnName="ScrapReason" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClassType" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnClassType" msprop:Generator_ColumnPropNameInRow="ClassType" msprop:Generator_ColumnPropNameInTable="ClassTypeColumn" msprop:Generator_UserColumnName="ClassType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsAbnormal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnIsAbnormal" msprop:Generator_ColumnPropNameInRow="IsAbnormal" msprop:Generator_ColumnPropNameInTable="IsAbnormalColumn" msprop:Generator_UserColumnName="IsAbnormal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
