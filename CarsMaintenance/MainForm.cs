@@ -261,7 +261,76 @@ namespace CarsMaintenance
         {
             ExecuteActionHelper.ExecuteAction(delegate()
             {
-                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapDetailReport), null);
+               // FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapDetailReport), null);
+            });
+        }
+
+        private void ScrapReportMune_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ScrapByCategoryMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapReport), null);
+            });                                                                                                                     
+        }
+
+        private void OutToolMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.OutBoundOrderByUintReport), null);
+            });
+        }
+
+        private void ScrapByUnitMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapByUintReport), null);
+            });
+        }
+
+        private void ScrapByShipMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ScrapByShipReport), null);
+            });
+        }
+
+        private void ScrapByAbnormality_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.AbnormityScrapReport), null);
+            });
+        }
+
+        private void ToolInfoMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ToolReport), null);
+            });
+        }
+
+        private void ScrapByColligateMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ColliagteReport), null);
+            });
+        }
+
+        private void ScrapAdvanceMenu_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ToolInfoReport), null);
             });
         }
 

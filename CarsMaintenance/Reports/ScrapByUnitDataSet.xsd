@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ScrapByUnitDataSet" targetNamespace="http://tempuri.org/ScrapByUnitDataSet.xsd" xmlns:mstns="http://tempuri.org/ScrapByUnitDataSet.xsd" xmlns="http://tempuri.org/ScrapByUnitDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QueryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QueryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CarsMaintenance.Properties.Settings.GlobalReference.Default.QueryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ScrapOrderByUintTableAdapter" GeneratorDataComponentClassName="ScrapOrderByUintTableAdapter" Name="ScrapOrderByUint" UserDataComponentName="ScrapOrderByUintTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>Select Temp1.*,(Temp1.Quantity/Temp2.Quantity)as Percentage,Temp2.Quantity as AllQuantity from (Select So.CustomerID,Pu.Name as ParentName,u.Name as UintName,Sum(Sod.ScrapQuantity) as Quantity,(Sum(Sod.UnitPrice)* Sum(Sod.ScrapQuantity) ) as UnitPrice
+ from ScrapOrder as so inner join ScrapOrderDetail  as sod on so.ScrapOrderID=sod.ScrapOrderID
+  inner join Unit as u on so.CustomerID=u.UnitID inner join Unit as Pu on u.ParentUnitID=Pu.UnitID 
+Group by So.CustomerID,u.Name,Pu.Name) as Temp1
+inner join 
+(Select o.CustomerID,Sum(od.Quantity) as Quantity From OutboundOrder as o inner join OutboundOrderDetail as od on o.OutboundOrderID=od.OutboundOrderID Group by o.CustomerID) as Temp2
+on Temp1.CustomerID=Temp2.CustomerID
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ParentName" DataSetColumn="ParentName" />
+              <Mapping SourceColumn="UintName" DataSetColumn="UintName" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="Percentage" DataSetColumn="Percentage" />
+              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
+              <Mapping SourceColumn="AllQuantity" DataSetColumn="AllQuantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ScrapByUnitDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ScrapByUnitDataSet" msprop:Generator_UserDSName="ScrapByUnitDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ScrapOrderByUint" msprop:Generator_TableClassName="ScrapOrderByUintDataTable" msprop:Generator_TableVarName="tableScrapOrderByUint" msprop:Generator_TablePropName="ScrapOrderByUint" msprop:Generator_RowDeletingName="ScrapOrderByUintRowDeleting" msprop:Generator_UserTableName="ScrapOrderByUint" msprop:Generator_RowChangingName="ScrapOrderByUintRowChanging" msprop:Generator_RowEvHandlerName="ScrapOrderByUintRowChangeEventHandler" msprop:Generator_RowDeletedName="ScrapOrderByUintRowDeleted" msprop:Generator_RowEvArgName="ScrapOrderByUintRowChangeEvent" msprop:Generator_RowChangedName="ScrapOrderByUintRowChanged" msprop:Generator_RowClassName="ScrapOrderByUintRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParentName" msprop:Generator_ColumnVarNameInTable="columnParentName" msprop:Generator_ColumnPropNameInRow="ParentName" msprop:Generator_ColumnPropNameInTable="ParentNameColumn" msprop:Generator_UserColumnName="ParentName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UintName" msprop:Generator_ColumnVarNameInTable="columnUintName" msprop:Generator_ColumnPropNameInRow="UintName" msprop:Generator_ColumnPropNameInTable="UintNameColumn" msprop:Generator_UserColumnName="UintName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UnitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Percentage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPercentage" msprop:Generator_ColumnPropNameInRow="Percentage" msprop:Generator_ColumnPropNameInTable="PercentageColumn" msprop:Generator_UserColumnName="Percentage" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" minOccurs="0" />
+              <xs:element name="AllQuantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAllQuantity" msprop:Generator_ColumnPropNameInRow="AllQuantity" msprop:Generator_ColumnPropNameInTable="AllQuantityColumn" msprop:Generator_UserColumnName="AllQuantity" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

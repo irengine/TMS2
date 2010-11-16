@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ToolInfoDataSet" targetNamespace="http://tempuri.org/ToolInfoDataSet.xsd" xmlns:mstns="http://tempuri.org/ToolInfoDataSet.xsd" xmlns="http://tempuri.org/ToolInfoDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QueryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QueryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CarsMaintenance.Properties.Settings.GlobalReference.Default.QueryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ToolInfoDatasetTableAdapter" GeneratorDataComponentClassName="ToolInfoDatasetTableAdapter" Name="ToolInfoDataset" UserDataComponentName="ToolInfoDatasetTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>Select s.*,sd.ScrapQuantity,sd.UnitPrice,sd.ScrapReason, (sd.ScrapQuantity* sd.UnitPrice) as AllUnitPrice,
+t.Name as ToolName,t.Dimensions,u.Name as CustomerName,o.Berth,
+o.Cargo,o.Hatch,o.Job,o.JobPosition,o.JobType,o.Machine,o.Process,
+o.Ship,o.[Version],su.Name as ScrapSystemUnerName,su1.Name as OutboundSystemUserName,pu.Name as ParentUserName
+ From ScrapOrder as s 
+inner join ScrapOrderDetail as sd on s.ScrapOrderID = sd.ScrapOrderID
+inner join OutboundOrder as o on s.OutboundOrderID=o.OutboundOrderID
+inner join OutboundOrderDetail as od on sd.OutboundOrderDetailID=od.OutboundOrderDetailID
+inner join Tool as t on sd.ToolID=t.ToolID
+inner join Unit as u on s.CustomerID=u.UnitID
+inner join SystemUser as su on s.LastUpdatedBy=su.SystemUserID
+inner join Unit as pu on u.ParentUnitID=pu.UnitID
+inner join SystemUser as su1 on o.LastUpdatedBy=su1.SystemUserID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ScrapOrderID" DataSetColumn="ScrapOrderID" />
+              <Mapping SourceColumn="ScrapDate" DataSetColumn="ScrapDate" />
+              <Mapping SourceColumn="OutboundOrderID" DataSetColumn="OutboundOrderID" />
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="LastUpdatedBy" DataSetColumn="LastUpdatedBy" />
+              <Mapping SourceColumn="LastUpdateTime" DataSetColumn="LastUpdateTime" />
+              <Mapping SourceColumn="ToolName" DataSetColumn="ToolName" />
+              <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
+              <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
+              <Mapping SourceColumn="Berth" DataSetColumn="Berth" />
+              <Mapping SourceColumn="Cargo" DataSetColumn="Cargo" />
+              <Mapping SourceColumn="Hatch" DataSetColumn="Hatch" />
+              <Mapping SourceColumn="Job" DataSetColumn="Job" />
+              <Mapping SourceColumn="JobPosition" DataSetColumn="JobPosition" />
+              <Mapping SourceColumn="JobType" DataSetColumn="JobType" />
+              <Mapping SourceColumn="Machine" DataSetColumn="Machine" />
+              <Mapping SourceColumn="Process" DataSetColumn="Process" />
+              <Mapping SourceColumn="Ship" DataSetColumn="Ship" />
+              <Mapping SourceColumn="Version" DataSetColumn="Version" />
+              <Mapping SourceColumn="ParentUserName" DataSetColumn="ParentUserName" />
+              <Mapping SourceColumn="ScrapQuantity" DataSetColumn="ScrapQuantity" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="ScrapReason" DataSetColumn="ScrapReason" />
+              <Mapping SourceColumn="AllUnitPrice" DataSetColumn="AllUnitPrice" />
+              <Mapping SourceColumn="ScrapSystemUnerName" DataSetColumn="ScrapSystemUnerName" />
+              <Mapping SourceColumn="OutboundSystemUserName" DataSetColumn="OutboundSystemUserName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ToolInfoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ToolInfoDataSet" msprop:Generator_UserDSName="ToolInfoDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ToolInfoDataset" msprop:Generator_TableClassName="ToolInfoDatasetDataTable" msprop:Generator_TableVarName="tableToolInfoDataset" msprop:Generator_TablePropName="ToolInfoDataset" msprop:Generator_RowDeletingName="ToolInfoDatasetRowDeleting" msprop:Generator_UserTableName="ToolInfoDataset" msprop:Generator_RowChangingName="ToolInfoDatasetRowChanging" msprop:Generator_RowEvHandlerName="ToolInfoDatasetRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolInfoDatasetRowDeleted" msprop:Generator_RowEvArgName="ToolInfoDatasetRowChangeEvent" msprop:Generator_RowChangedName="ToolInfoDatasetRowChanged" msprop:Generator_RowClassName="ToolInfoDatasetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ScrapOrderID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnScrapOrderID" msprop:Generator_ColumnPropNameInRow="ScrapOrderID" msprop:Generator_ColumnPropNameInTable="ScrapOrderIDColumn" msprop:Generator_UserColumnName="ScrapOrderID" type="xs:int" />
+              <xs:element name="ScrapDate" msprop:Generator_ColumnVarNameInTable="columnScrapDate" msprop:Generator_ColumnPropNameInRow="ScrapDate" msprop:Generator_ColumnPropNameInTable="ScrapDateColumn" msprop:Generator_UserColumnName="ScrapDate" type="xs:dateTime" />
+              <xs:element name="OutboundOrderID" msprop:Generator_ColumnVarNameInTable="columnOutboundOrderID" msprop:Generator_ColumnPropNameInRow="OutboundOrderID" msprop:Generator_ColumnPropNameInTable="OutboundOrderIDColumn" msprop:Generator_UserColumnName="OutboundOrderID" type="xs:int" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_UserColumnName="CustomerID" type="xs:int" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" />
+              <xs:element name="LastUpdatedBy" msprop:Generator_ColumnVarNameInTable="columnLastUpdatedBy" msprop:Generator_ColumnPropNameInRow="LastUpdatedBy" msprop:Generator_ColumnPropNameInTable="LastUpdatedByColumn" msprop:Generator_UserColumnName="LastUpdatedBy" type="xs:int" />
+              <xs:element name="LastUpdateTime" msprop:Generator_ColumnVarNameInTable="columnLastUpdateTime" msprop:Generator_ColumnPropNameInRow="LastUpdateTime" msprop:Generator_ColumnPropNameInTable="LastUpdateTimeColumn" msprop:Generator_UserColumnName="LastUpdateTime" type="xs:dateTime" />
+              <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:Generator_UserColumnName="Dimensions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Berth" msprop:Generator_ColumnVarNameInTable="columnBerth" msprop:Generator_ColumnPropNameInRow="Berth" msprop:Generator_ColumnPropNameInTable="BerthColumn" msprop:Generator_UserColumnName="Berth" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cargo" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" msprop:Generator_UserColumnName="Cargo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Hatch" msprop:Generator_ColumnVarNameInTable="columnHatch" msprop:Generator_ColumnPropNameInRow="Hatch" msprop:Generator_ColumnPropNameInTable="HatchColumn" msprop:Generator_UserColumnName="Hatch" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Job" msprop:Generator_ColumnVarNameInTable="columnJob" msprop:Generator_ColumnPropNameInRow="Job" msprop:Generator_ColumnPropNameInTable="JobColumn" msprop:Generator_UserColumnName="Job" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JobPosition" msprop:Generator_ColumnVarNameInTable="columnJobPosition" msprop:Generator_ColumnPropNameInRow="JobPosition" msprop:Generator_ColumnPropNameInTable="JobPositionColumn" msprop:Generator_UserColumnName="JobPosition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JobType" msprop:Generator_ColumnVarNameInTable="columnJobType" msprop:Generator_ColumnPropNameInRow="JobType" msprop:Generator_ColumnPropNameInTable="JobTypeColumn" msprop:Generator_UserColumnName="JobType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Machine" msprop:Generator_ColumnVarNameInTable="columnMachine" msprop:Generator_ColumnPropNameInRow="Machine" msprop:Generator_ColumnPropNameInTable="MachineColumn" msprop:Generator_UserColumnName="Machine" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Process" msprop:Generator_ColumnVarNameInTable="columnProcess" msprop:Generator_ColumnPropNameInRow="Process" msprop:Generator_ColumnPropNameInTable="ProcessColumn" msprop:Generator_UserColumnName="Process" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ship" msprop:Generator_ColumnVarNameInTable="columnShip" msprop:Generator_ColumnPropNameInRow="Ship" msprop:Generator_ColumnPropNameInTable="ShipColumn" msprop:Generator_UserColumnName="Ship" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Version" msprop:Generator_ColumnVarNameInTable="columnVersion" msprop:Generator_ColumnPropNameInRow="Version" msprop:Generator_ColumnPropNameInTable="VersionColumn" msprop:Generator_UserColumnName="Version" type="xs:int" />
+              <xs:element name="ParentUserName" msprop:Generator_ColumnVarNameInTable="columnParentUserName" msprop:Generator_ColumnPropNameInRow="ParentUserName" msprop:Generator_ColumnPropNameInTable="ParentUserNameColumn" msprop:Generator_UserColumnName="ParentUserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ScrapQuantity" msprop:Generator_ColumnVarNameInTable="columnScrapQuantity" msprop:Generator_ColumnPropNameInRow="ScrapQuantity" msprop:Generator_ColumnPropNameInTable="ScrapQuantityColumn" msprop:Generator_UserColumnName="ScrapQuantity" type="xs:decimal" />
+              <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
+              <xs:element name="ScrapReason" msprop:Generator_ColumnVarNameInTable="columnScrapReason" msprop:Generator_ColumnPropNameInRow="ScrapReason" msprop:Generator_ColumnPropNameInTable="ScrapReasonColumn" msprop:Generator_UserColumnName="ScrapReason" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AllUnitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAllUnitPrice" msprop:Generator_ColumnPropNameInRow="AllUnitPrice" msprop:Generator_ColumnPropNameInTable="AllUnitPriceColumn" msprop:Generator_UserColumnName="AllUnitPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ScrapSystemUnerName" msprop:Generator_ColumnVarNameInTable="columnScrapSystemUnerName" msprop:Generator_ColumnPropNameInRow="ScrapSystemUnerName" msprop:Generator_ColumnPropNameInTable="ScrapSystemUnerNameColumn" msprop:Generator_UserColumnName="ScrapSystemUnerName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OutboundSystemUserName" msprop:Generator_ColumnVarNameInTable="columnOutboundSystemUserName" msprop:Generator_ColumnPropNameInRow="OutboundSystemUserName" msprop:Generator_ColumnPropNameInTable="OutboundSystemUserNameColumn" msprop:Generator_UserColumnName="OutboundSystemUserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ToolInfoDataset" />
+      <xs:field xpath="mstns:ScrapOrderID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

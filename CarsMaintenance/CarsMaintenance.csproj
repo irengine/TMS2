@@ -162,17 +162,50 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\AbnormityScrapDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AbnormityScrapDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AbnormityScrapReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\AbnormityScrapReport.Designer.cs">
+      <DependentUpon>AbnormityScrapReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\BarcodeReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\BarcodeReport.Designer.cs">
       <DependentUpon>BarcodeReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ColliagteReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ColliagteReport.Designer.cs">
+      <DependentUpon>ColliagteReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ColligateDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColligateDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\LandingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\LandingForm.Designer.cs">
       <DependentUpon>LandingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutBoundOrderByUintReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\OutBoundOrderByUintReport.Designer.cs">
+      <DependentUpon>OutBoundOrderByUintReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutboundOrderByUnitDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutboundOrderByUnitDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\OutboundOrderDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -196,16 +229,65 @@
     <Compile Include="Reports\OutboundSummaryReport.Designer.cs">
       <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ScrapDetailDataSet.Designer.cs">
+    <Compile Include="Reports\OutboundToolDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
+      <DependentUpon>OutboundToolDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ScrapDetailReport.cs">
+    <Compile Include="Reports\ScrapByShipDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScrapByShipDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapByShipReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ScrapDetailReport.Designer.cs">
-      <DependentUpon>ScrapDetailReport.cs</DependentUpon>
+    <Compile Include="Reports\ScrapByShipReport.Designer.cs">
+      <DependentUpon>ScrapByShipReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapByUintReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ScrapByUintReport.Designer.cs">
+      <DependentUpon>ScrapByUintReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapByUnitDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScrapByUnitDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScrapDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScrapReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ScrapReport.Designer.cs">
+      <DependentUpon>ScrapReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolInfoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolInfoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolInfoReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolInfoReport.Designer.cs">
+      <DependentUpon>ToolInfoReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ToolReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ToolReport.Designer.cs">
+      <DependentUpon>ToolReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ToolManagement\ManageArticleForm.cs">
       <SubType>Form</SubType>
@@ -330,14 +412,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\AbnormityScrapReport.rdlc" />
+    <EmbeddedResource Include="Reports\AbnormityScrapReport.resx">
+      <DependentUpon>AbnormityScrapReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\BarcodeReport.rdlc" />
     <EmbeddedResource Include="Reports\BarcodeReport.resx">
       <DependentUpon>BarcodeReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ColliagteReport.resx">
+      <DependentUpon>ColliagteReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ColligateReport.rdlc" />
     <EmbeddedResource Include="Reports\LandingForm.resx">
       <DependentUpon>LandingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OouboundOrderByUintReport.rdlc" />
     <EmbeddedResource Include="Reports\OutboundOrder.rdlc" />
+    <EmbeddedResource Include="Reports\OutBoundOrderByUintReport.resx">
+      <DependentUpon>OutBoundOrderByUintReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\OutboundOrderReport.resx">
       <DependentUpon>OutboundOrderReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,9 +439,25 @@
     <EmbeddedResource Include="Reports\OutboundSummaryReport.resx">
       <DependentUpon>OutboundSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ScrapDetailReport.rdlc" />
-    <EmbeddedResource Include="Reports\ScrapDetailReport.resx">
-      <DependentUpon>ScrapDetailReport.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\ScrapByShipReport.rdlc" />
+    <EmbeddedResource Include="Reports\ScrapByShipReport.resx">
+      <DependentUpon>ScrapByShipReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ScrapByUintReport.rdlc" />
+    <EmbeddedResource Include="Reports\ScrapByUintReport.resx">
+      <DependentUpon>ScrapByUintReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ScrapReport.rdlc" />
+    <EmbeddedResource Include="Reports\ScrapReport.resx">
+      <DependentUpon>ScrapReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolInfoReport.rdlc" />
+    <EmbeddedResource Include="Reports\ToolInfoReport.resx">
+      <DependentUpon>ToolInfoReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ToolReport.rdlc" />
+    <EmbeddedResource Include="Reports\ToolReport.resx">
+      <DependentUpon>ToolReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ManageArticleForm.resx">
       <DependentUpon>ManageArticleForm.cs</DependentUpon>
@@ -389,9 +499,29 @@
       <DependentUpon>ViewSystemUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.AbnormityScrapDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobPositionDataTable.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobPositionRow.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobPositionRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobPositionRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobTypeDataTable.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobTypeRow.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobTypeRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+ColligateByJobTypeRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+CooligateByUnitNameDataTable.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+CooligateByUnitNameRow.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+CooligateByUnitNameRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet+CooligateByUnitNameRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ColligateDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundOrderByUnitDataSet.datasource" />
     <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundOrderDataSet.datasource" />
     <None Include="Properties\DataSources\CarsMaintenance.Reports.OutboundSummaryDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ScrapByShipDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ScrapByUnitDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ScrapDataSet.datasource" />
     <None Include="Properties\DataSources\CarsMaintenance.Reports.ScrapDetailDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ToolDataSet.datasource" />
+    <None Include="Properties\DataSources\CarsMaintenance.Reports.ToolInfoDataSet.datasource" />
     <None Include="Properties\DataSources\TMS.Model.Article.datasource" />
     <None Include="Properties\DataSources\TMS.Model.OutboundOrder.datasource" />
     <None Include="Properties\DataSources\TMS.Model.RepairOrder.datasource" />
@@ -412,6 +542,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reports\AbnormityScrapDataSet.xsc">
+      <DependentUpon>AbnormityScrapDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\AbnormityScrapDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AbnormityScrapDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\AbnormityScrapDataSet.xss">
+      <DependentUpon>AbnormityScrapDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ColligateDataSet.xsc">
+      <DependentUpon>ColligateDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ColligateDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ColligateDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ColligateDataSet.xss">
+      <DependentUpon>ColligateDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutboundOrderByUnitDataSet.xsc">
+      <DependentUpon>OutboundOrderByUnitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutboundOrderByUnitDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OutboundOrderByUnitDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\OutboundOrderByUnitDataSet.xss">
+      <DependentUpon>OutboundOrderByUnitDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Reports\OutboundOrderDataSet.xsc">
       <DependentUpon>OutboundOrderDataSet.xsd</DependentUpon>
     </None>
@@ -434,16 +597,71 @@
     <None Include="Reports\OutboundSummaryDataSet.xss">
       <DependentUpon>OutboundSummaryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Reports\ScrapDetailDataSet.xsc">
-      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
+    <None Include="Reports\OutboundToolDataSet.xsc">
+      <DependentUpon>OutboundToolDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Reports\ScrapDetailDataSet.xsd">
+    <None Include="Reports\OutboundToolDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ScrapDetailDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>OutboundToolDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Reports\ScrapDetailDataSet.xss">
-      <DependentUpon>ScrapDetailDataSet.xsd</DependentUpon>
+    <None Include="Reports\OutboundToolDataSet.xss">
+      <DependentUpon>OutboundToolDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapByShipDataSet.xsc">
+      <DependentUpon>ScrapByShipDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapByShipDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScrapByShipDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ScrapByShipDataSet.xss">
+      <DependentUpon>ScrapByShipDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapByUnitDataSet.xsc">
+      <DependentUpon>ScrapByUnitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapByUnitDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScrapByUnitDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ScrapByUnitDataSet.xss">
+      <DependentUpon>ScrapByUnitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapDataSet.xsc">
+      <DependentUpon>ScrapDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ScrapDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScrapDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ScrapDataSet.xss">
+      <DependentUpon>ScrapDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolDataSet.xsc">
+      <DependentUpon>ToolDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ToolDataSet.xss">
+      <DependentUpon>ToolDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolInfoDataSet.xsc">
+      <DependentUpon>ToolInfoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ToolInfoDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ToolInfoDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ToolInfoDataSet.xss">
+      <DependentUpon>ToolInfoDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +672,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Reports\tip.jpg" />
     <None Include="Images\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

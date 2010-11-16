@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ToolDataSet" targetNamespace="http://tempuri.org/ToolDataSet.xsd" xmlns:mstns="http://tempuri.org/ToolDataSet.xsd" xmlns="http://tempuri.org/ToolDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QueryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QueryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CarsMaintenance.Properties.Settings.GlobalReference.Default.QueryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ToolDataSetTableAdapter" GeneratorDataComponentClassName="ToolDataSetTableAdapter" Name="ToolDataSet" UserDataComponentName="ToolDataSetTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+Select t.Name as ToolName,T.Dimensions,t.Code,t.Unit,t.[Description], tc.Name as CategoryName,ti.OutQuantity,
+ti.Quantity,ti.PrescrapQuantity,ti.ScrapQuantity,ti.RepairingQuantity,ti.UnitPrice from Tool as t inner join ToolCategory as tc
+on t.ToolCategoryID=Tc.ToolCategoryID inner join ToolInventory as ti
+on t.ToolID=ti.ToolID
+
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ToolName" DataSetColumn="ToolName" />
+              <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
+              <Mapping SourceColumn="Code" DataSetColumn="Code" />
+              <Mapping SourceColumn="Unit" DataSetColumn="Unit" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="CategoryName" DataSetColumn="CategoryName" />
+              <Mapping SourceColumn="OutQuantity" DataSetColumn="OutQuantity" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="PrescrapQuantity" DataSetColumn="PrescrapQuantity" />
+              <Mapping SourceColumn="ScrapQuantity" DataSetColumn="ScrapQuantity" />
+              <Mapping SourceColumn="RepairingQuantity" DataSetColumn="RepairingQuantity" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ToolDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ToolDataSet" msprop:Generator_UserDSName="ToolDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ToolDataSet" msprop:Generator_TableClassName="ToolDataSetDataTable" msprop:Generator_TableVarName="tableToolDataSet" msprop:Generator_TablePropName="_ToolDataSet" msprop:Generator_RowDeletingName="ToolDataSetRowDeleting" msprop:Generator_UserTableName="ToolDataSet" msprop:Generator_RowChangingName="ToolDataSetRowChanging" msprop:Generator_RowEvHandlerName="ToolDataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolDataSetRowDeleted" msprop:Generator_RowEvArgName="ToolDataSetRowChangeEvent" msprop:Generator_RowChangedName="ToolDataSetRowChanged" msprop:Generator_RowClassName="ToolDataSetRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ToolName" msprop:Generator_ColumnVarNameInTable="columnToolName" msprop:Generator_ColumnPropNameInRow="ToolName" msprop:Generator_ColumnPropNameInTable="ToolNameColumn" msprop:Generator_UserColumnName="ToolName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:Generator_UserColumnName="Dimensions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" msprop:Generator_UserColumnName="CategoryName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OutQuantity" msprop:Generator_ColumnVarNameInTable="columnOutQuantity" msprop:Generator_ColumnPropNameInRow="OutQuantity" msprop:Generator_ColumnPropNameInTable="OutQuantityColumn" msprop:Generator_UserColumnName="OutQuantity" type="xs:decimal" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" />
+              <xs:element name="PrescrapQuantity" msprop:Generator_ColumnVarNameInTable="columnPrescrapQuantity" msprop:Generator_ColumnPropNameInRow="PrescrapQuantity" msprop:Generator_ColumnPropNameInTable="PrescrapQuantityColumn" msprop:Generator_UserColumnName="PrescrapQuantity" type="xs:decimal" />
+              <xs:element name="ScrapQuantity" msprop:Generator_ColumnVarNameInTable="columnScrapQuantity" msprop:Generator_ColumnPropNameInRow="ScrapQuantity" msprop:Generator_ColumnPropNameInTable="ScrapQuantityColumn" msprop:Generator_UserColumnName="ScrapQuantity" type="xs:decimal" />
+              <xs:element name="RepairingQuantity" msprop:Generator_ColumnVarNameInTable="columnRepairingQuantity" msprop:Generator_ColumnPropNameInRow="RepairingQuantity" msprop:Generator_ColumnPropNameInTable="RepairingQuantityColumn" msprop:Generator_UserColumnName="RepairingQuantity" type="xs:decimal" />
+              <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
