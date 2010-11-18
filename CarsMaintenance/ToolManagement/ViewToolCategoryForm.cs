@@ -56,6 +56,10 @@ namespace CarsMaintenance.ToolManagement
         {
             foreach (ToolCategory c in parentCategory.ChildCategories)
             {
+                // if category is deleted, ignore it.
+                if (c.Deleted)
+                    continue;
+
                 TreeNode n = new TreeNode(c.Code + "-" + c.Name);
                 parentNode.Nodes.Add(n);
 
