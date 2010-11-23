@@ -16,6 +16,10 @@ namespace CarsMaintenance.OrderManagement
     {
         public OutboundOrder CurrentOrder { get; set; }
         public string CurrentMode { get; set; }
+
+        // this property just determine which rows are origin rows.
+        // if Create or Transfer mode, ItemCount equals 0,
+        // if Append mode, ItemCount equals original row count
         public int ItemCount { get; set; }
 
         public static string MODE_BROWSE = "BROWSE";
@@ -100,7 +104,6 @@ namespace CarsMaintenance.OrderManagement
                 CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.ClassType = GetCurrentClassType();
                 ItemCount = 0;
-                this.dataGridViewDetail.Columns.RemoveAt(1);
             }
             else if (CurrentMode == MODE_APPEND)
             {
@@ -111,6 +114,7 @@ namespace CarsMaintenance.OrderManagement
             else if (CurrentMode == MODE_BROWSE)
             {
                 ItemCount = CurrentOrder.Items.Count;
+                dataGridViewDetail.Columns["ItemBalance"].Visible = true;
             }
             else if (CurrentMode == MODE_TRANSFER)
             {
@@ -153,7 +157,7 @@ namespace CarsMaintenance.OrderManagement
             foreach (OutboundOrderDetail item in CurrentOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.Tool.Code, item.Balance,item.Quantity, item.Tool.Name, item.Tool.Dimensions };
+                object[] row = { item.Tool.Code, item.Quantity, item.Balance, item.Tool.Name, item.Tool.Dimensions };
                 dataGridViewDetail.Rows.Add(row);
             }
         }
@@ -223,6 +227,11 @@ namespace CarsMaintenance.OrderManagement
                 // Iterate all rows
                 foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
                 {
+                    // ignore row which code cell is empty
+                    if (dgvr.Cells["ItemCode"].Value == null || dgvr.Cells["ItemCode"].Value.ToString().Length == 0)
+                        continue;
+
+                    // deal with new rows only
                     if (!dgvr.IsNewRow && dgvr.Index >= ItemCount)
                     {
                         // for outbound detail

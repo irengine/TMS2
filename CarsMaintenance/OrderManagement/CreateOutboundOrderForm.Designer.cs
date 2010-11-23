@@ -32,11 +32,6 @@
             this._cancelButton = new System.Windows.Forms.Button();
             this.panelDetail = new System.Windows.Forms.Panel();
             this.dataGridViewDetail = new System.Windows.Forms.DataGridView();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMaster = new System.Windows.Forms.Panel();
             this.cbSystemUser = new System.Windows.Forms.ComboBox();
             this.cbCustomer = new System.Windows.Forms.ComboBox();
@@ -75,6 +70,11 @@
             this._operationsPanel = new System.Windows.Forms.Panel();
             this._saveButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
             this.panelMaster.SuspendLayout();
@@ -110,8 +110,8 @@
             this.dataGridViewDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemCode,
-            this.ItemBalance,
             this.ItemQuantity,
+            this.ItemBalance,
             this.ItemName,
             this.ItemDimensions});
             this.dataGridViewDetail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,37 +123,6 @@
             this.dataGridViewDetail.TabIndex = 0;
             this.dataGridViewDetail.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetail_CellEnter);
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "工属具编码";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.Width = 120;
-            // 
-            // ItemBalance
-            // 
-            this.ItemBalance.HeaderText = "未归还数";
-            this.ItemBalance.Name = "ItemBalance";
-            // 
-            // ItemQuantity
-            // 
-            this.ItemQuantity.HeaderText = "数量";
-            this.ItemQuantity.Name = "ItemQuantity";
-            this.ItemQuantity.Width = 120;
-            // 
-            // ItemName
-            // 
-            this.ItemName.HeaderText = "名称";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 120;
-            // 
-            // ItemDimensions
-            // 
-            this.ItemDimensions.HeaderText = "规格";
-            this.ItemDimensions.Name = "ItemDimensions";
-            this.ItemDimensions.ReadOnly = true;
-            this.ItemDimensions.Width = 120;
             // 
             // panelMaster
             // 
@@ -521,6 +490,39 @@
             // 
             this._errorProvider.ContainerControl = this;
             // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "工属具编码";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.Width = 120;
+            // 
+            // ItemQuantity
+            // 
+            this.ItemQuantity.HeaderText = "数量";
+            this.ItemQuantity.Name = "ItemQuantity";
+            this.ItemQuantity.Width = 120;
+            // 
+            // ItemBalance
+            // 
+            this.ItemBalance.HeaderText = "未归还数";
+            this.ItemBalance.Name = "ItemBalance";
+            this.ItemBalance.ReadOnly = true;
+            this.ItemBalance.Visible = false;
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "名称";
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 120;
+            // 
+            // ItemDimensions
+            // 
+            this.ItemDimensions.HeaderText = "规格";
+            this.ItemDimensions.Name = "ItemDimensions";
+            this.ItemDimensions.ReadOnly = true;
+            this.ItemDimensions.Width = 120;
+            // 
             // CreateOutboundOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -590,8 +592,8 @@
         private System.Windows.Forms.Panel panelDetail;
         private System.Windows.Forms.DataGridView dataGridViewDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
     }
