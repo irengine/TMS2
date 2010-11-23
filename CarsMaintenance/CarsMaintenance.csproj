@@ -106,6 +106,7 @@
     <Compile Include="Common\Validation\DecimalValidator.cs" />
     <Compile Include="Common\Validation\GridEmptyVaildator.cs" />
     <Compile Include="Common\Validation\IntValidator.cs" />
+    <Compile Include="Common\Validation\JobTypeValidData.cs" />
     <Compile Include="Common\Validation\ParentCodeValidator.cs" />
     <Compile Include="Common\Validation\ValidationManager.cs" />
     <Compile Include="Common\Validation\RequiredValidator.cs" />

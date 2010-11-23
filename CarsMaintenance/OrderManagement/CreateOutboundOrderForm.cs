@@ -74,16 +74,20 @@ namespace CarsMaintenance.OrderManagement
                 Control = cbJobPosition,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblJobPosition.Text)
             });
-            _validationManager.Validators.Add(new RequiredValidator()
-            {
-                Control = cbJobType,
-                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblJobType.Text)
-            });
+   
             _validationManager.Validators.Add(new RequiredValidator()
             {
                 Control = cbCustomer,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblCustomer.Text)
             });
+            _validationManager.Validators.Add(new JobTypeValidData()
+            {
+                Control = cbJobType,
+                ControlTo = cbJobPosition,
+                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblJobType.Text)
+            });
+      
+            
         }
 
         #endregion
@@ -350,6 +354,10 @@ namespace CarsMaintenance.OrderManagement
             if (dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Value != null
                 && dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString().StartsWith(CarsMaintenance.Properties.Settings.Default.ToolGroupCode))
             {
+                // if enter this cell at second time, do not change anything
+                if (dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Style.BackColor == Color.Red)
+                    return;
+
                 // if item is tool group, add tool group detail into data grid.
                 dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Style.BackColor = Color.Red;
                 dataGridViewDetail.Rows[e.RowIndex].Cells["ItemQuantity"].Style.BackColor = Color.Red;
@@ -386,7 +394,8 @@ namespace CarsMaintenance.OrderManagement
 
         private void dataGridViewDetail_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (dataGridViewDetail.Rows[e.Row.Index + 1].Cells["ItemCode"].Style.BackColor == Color.Yellow)
+            if (dataGridViewDetail.Rows[e.Row.Index].Cells["ItemCode"].Style.BackColor == Color.Red
+                && dataGridViewDetail.Rows[e.Row.Index + 1].Cells["ItemCode"].Style.BackColor == Color.Yellow)
             {
                 e.Cancel = true;
             }
