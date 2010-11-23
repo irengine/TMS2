@@ -70,6 +70,11 @@ namespace CarsMaintenance.OrderManagement
             });
             _validationManager.Validators.Add(new RequiredValidator()
             {
+                Control = cbJobType,
+                ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblJobType.Text)
+            });
+            _validationManager.Validators.Add(new RequiredValidator()
+            {
                 Control = cbCustomer,
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblCustomer.Text)
             });
@@ -95,6 +100,7 @@ namespace CarsMaintenance.OrderManagement
                 CurrentOrder.SystemUser = SystemHelper.CurrentUser;
                 CurrentOrder.ClassType = GetCurrentClassType();
                 ItemCount = 0;
+                this.dataGridViewDetail.Columns.RemoveAt(1);
             }
             else if (CurrentMode == MODE_APPEND)
             {
@@ -147,7 +153,7 @@ namespace CarsMaintenance.OrderManagement
             foreach (OutboundOrderDetail item in CurrentOrder.Items)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.Tool.Code, item.Quantity, item.Tool.Name, item.Tool.Dimensions };
+                object[] row = { item.Tool.Code, item.Balance,item.Quantity, item.Tool.Name, item.Tool.Dimensions };
                 dataGridViewDetail.Rows.Add(row);
             }
         }
@@ -300,12 +306,6 @@ namespace CarsMaintenance.OrderManagement
         private void cbSystemUser_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
-        }
-
-        private void cbJobType_Validating(object sender, CancelEventArgs e)
-        {
-            if (cbJobPosition.Text == "船舶" && cbJobType.Text == "")
-                e.Cancel = true;
-        }
+        }       
     }
 }

@@ -33,6 +33,7 @@
             this.panelDetail = new System.Windows.Forms.Panel();
             this.dataGridViewDetail = new System.Windows.Forms.DataGridView();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +110,7 @@
             this.dataGridViewDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemCode,
+            this.ItemBalance,
             this.ItemQuantity,
             this.ItemName,
             this.ItemDimensions});
@@ -127,6 +129,11 @@
             this.ItemCode.HeaderText = "工属具编码";
             this.ItemCode.Name = "ItemCode";
             this.ItemCode.Width = 120;
+            // 
+            // ItemBalance
+            // 
+            this.ItemBalance.HeaderText = "未归还数";
+            this.ItemBalance.Name = "ItemBalance";
             // 
             // ItemQuantity
             // 
@@ -276,7 +283,6 @@
             this.cbJobType.Name = "cbJobType";
             this.cbJobType.Size = new System.Drawing.Size(200, 20);
             this.cbJobType.TabIndex = 3;
-            this.cbJobType.Validating += new System.ComponentModel.CancelEventHandler(this.cbJobType_Validating);
             // 
             // cbJobPosition
             // 
@@ -584,6 +590,7 @@
         private System.Windows.Forms.Panel panelDetail;
         private System.Windows.Forms.DataGridView dataGridViewDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
