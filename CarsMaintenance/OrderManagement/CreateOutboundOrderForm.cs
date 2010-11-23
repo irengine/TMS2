@@ -48,6 +48,8 @@ namespace CarsMaintenance.OrderManagement
             rbNight.Enabled = true;
         }
 
+        #region register validator for input controls
+
         private ValidationManager _validationManager;
 
         private void RegisterControlsForValidation()
@@ -83,6 +85,10 @@ namespace CarsMaintenance.OrderManagement
                 ErrorMessage = string.Format(CarsMaintenance.Properties.Resources.RequiredErrorMessage, lblCustomer.Text)
             });
         }
+
+        #endregion
+
+        #region load data from database
 
         private void LoadData()
         {
@@ -150,7 +156,6 @@ namespace CarsMaintenance.OrderManagement
                 rbNight.Checked = true;
             }
 
-
             cbCustomer.SelectedItem = CurrentOrder.Customer;
             cbSystemUser.SelectedItem = CurrentOrder.SystemUser;
 
@@ -159,6 +164,17 @@ namespace CarsMaintenance.OrderManagement
                 DataGridViewRow dgvr = new DataGridViewRow();
                 object[] row = { item.Tool.Code, item.Quantity, item.Balance, item.Tool.Name, item.Tool.Dimensions };
                 dataGridViewDetail.Rows.Add(row);
+            }
+
+            AddEmptyRows();
+        }
+
+        private void AddEmptyRows()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                DataGridViewRow dgvr = new DataGridViewRow();
+                dataGridViewDetail.Rows.Add(dgvr);
             }
         }
 
@@ -181,6 +197,10 @@ namespace CarsMaintenance.OrderManagement
             LoadData();
             EnableForm();
         }
+
+        #endregion
+
+        #region save data into database
 
         private void _saveButton_Click(object sender, EventArgs e)
         {
@@ -231,12 +251,15 @@ namespace CarsMaintenance.OrderManagement
                     if (dgvr.Cells["ItemCode"].Value == null || dgvr.Cells["ItemCode"].Value.ToString().Length == 0)
                         continue;
 
+                    // ignore tool group row
+                    if (dgvr.Cells["ItemCode"].Value.ToString().StartsWith(CarsMaintenance.Properties.Settings.Default.ToolGroupCode))
+                        continue;
+
                     // deal with new rows only
                     if (!dgvr.IsNewRow && dgvr.Index >= ItemCount)
                     {
                         // for outbound detail
-                        decimal quantity = 0;
-                        decimal.TryParse(dgvr.Cells["ItemQuantity"].Value.ToString(), out quantity);
+                        decimal quantity = SystemHelper.ConvertToNumber(dgvr.Cells["ItemQuantity"].Value);
 
                         string code = dgvr.Cells["ItemCode"].Value.ToString();
                         Tool t = SystemHelper.TMSContext.Tools.FirstOrDefault(s => s.Code == code);
@@ -272,8 +295,23 @@ namespace CarsMaintenance.OrderManagement
             });
         }
 
+        #endregion
+
+        #region validate data
+
+        private void cbCustomer_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = !SystemHelper.ValidateComboxForCustomer(cbCustomer);
+        }
+
+        private void cbSystemUser_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
+        }
+
         private void dataGridViewDetail_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
+            // if it is origin data, set it read only.
             if (e.RowIndex < ItemCount)
                 dataGridViewDetail.CurrentCell.ReadOnly = true;
         }
@@ -307,14 +345,66 @@ namespace CarsMaintenance.OrderManagement
             }
         }
 
-        private void cbCustomer_Validating(object sender, CancelEventArgs e)
+        private void dataGridViewDetail_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            e.Cancel = !SystemHelper.ValidateComboxForCustomer(cbCustomer);
+            if (dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Value != null
+                && dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString().StartsWith(CarsMaintenance.Properties.Settings.Default.ToolGroupCode))
+            {
+                // if item is tool group, add tool group detail into data grid.
+                dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Style.BackColor = Color.Red;
+                dataGridViewDetail.Rows[e.RowIndex].Cells["ItemQuantity"].Style.BackColor = Color.Red;
+                dataGridViewDetail.Rows[e.RowIndex].Cells["ItemName"].Style.BackColor = Color.Red;
+                dataGridViewDetail.Rows[e.RowIndex].Cells["ItemDimensions"].Style.BackColor = Color.Red;
+
+                decimal quantity =
+                    SystemHelper.ConvertToNumber(dataGridViewDetail.Rows[e.RowIndex].Cells["ItemQuantity"].Value);
+
+                int i = 1;
+                string code = dataGridViewDetail.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString();
+                Tool t = SystemHelper.TMSContext.Tools.First(s => s.Code == code);
+
+                foreach (ToolGroup tg in t.Groups)
+                {
+                    int count = i++;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemCode"].Value = tg.Tool.Code;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemCode"].ReadOnly = true;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemCode"].Style.BackColor = Color.Yellow;
+
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemQuantity"].Value = tg.Quantity*quantity;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemQuantity"].Style.BackColor = Color.Yellow;
+
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemName"].Value = tg.Tool.Name;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemName"].ReadOnly = true;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemName"].Style.BackColor = Color.Yellow;
+
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemDimensions"].Value = tg.Tool.Dimensions;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemDimensions"].ReadOnly = true;
+                    dataGridViewDetail.Rows[e.RowIndex + count].Cells["ItemDimensions"].Style.BackColor = Color.Yellow;
+                }
+            }
         }
 
-        private void cbSystemUser_Validating(object sender, CancelEventArgs e)
+        private void dataGridViewDetail_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
-        }       
+            if (dataGridViewDetail.Rows[e.Row.Index + 1].Cells["ItemCode"].Style.BackColor == Color.Yellow)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void dataGridViewDetail_KeyDown(object sender, KeyEventArgs e)
+        {
+            int row = dataGridViewDetail.CurrentCell.RowIndex;
+            int col = dataGridViewDetail.CurrentCell.ColumnIndex;
+            if (col == 1 || col == 2 || col == 3 || col == 3)
+            {
+                if (e.KeyCode == Keys.Tab)
+                {
+                    dataGridViewDetail.CurrentCell = dataGridViewDetail.Rows[row + 1].Cells[0];
+                    e.SuppressKeyPress = true;
+                }
+            }
+        }
+        #endregion
     }
 }

@@ -123,6 +123,9 @@
             this.dataGridViewDetail.TabIndex = 0;
             this.dataGridViewDetail.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetail_CellEnter);
             this.dataGridViewDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewDetail_CellValidating);
+            this.dataGridViewDetail.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetail_RowValidated);
+            this.dataGridViewDetail.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewDetail_UserDeletingRow);
+            this.dataGridViewDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewDetail_KeyDown);
             // 
             // panelMaster
             // 
