@@ -45,7 +45,7 @@ namespace CarsMaintenance.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("G9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("99")]
         public string ToolGroupCode {
             get {
                 return ((string)(this["ToolGroupCode"]));

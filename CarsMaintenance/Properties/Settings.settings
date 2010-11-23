@@ -14,7 +14,7 @@
       <Value Profile="(Default)">Data Source=.\SQLExpress;Initial Catalog=TMS;Integrated Security=True;Pooling=False</Value>
     </Setting>
     <Setting Name="ToolGroupCode" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">G9</Value>
+      <Value Profile="(Default)">99</Value>
     </Setting>
   </Settings>
 </SettingsFile>
