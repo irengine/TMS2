@@ -39,6 +39,11 @@
             this.outboundOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewOutboundOrder = new System.Windows.Forms.DataGridView();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             this.outboundOrderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outboundDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,11 +59,6 @@
             this.processDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelSearch = new System.Windows.Forms.Panel();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDate = new System.Windows.Forms.Label();
             this.contextMenuStripOutboundOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outboundOrderBindingSource)).BeginInit();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -172,6 +172,51 @@
             this.dataGridViewOutboundOrder.TabIndex = 1;
             this.dataGridViewOutboundOrder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOutboundOrder_CellDoubleClick);
             // 
+            // panelSearch
+            // 
+            this.panelSearch.Controls.Add(this.btnQuery);
+            this.panelSearch.Controls.Add(this.dtEndDate);
+            this.panelSearch.Controls.Add(this.dtBeginDate);
+            this.panelSearch.Controls.Add(this.lblDate);
+            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearch.Location = new System.Drawing.Point(3, 3);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(689, 54);
+            this.panelSearch.TabIndex = 0;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(383, 17);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 11;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // dtEndDate
+            // 
+            this.dtEndDate.Location = new System.Drawing.Point(234, 19);
+            this.dtEndDate.Name = "dtEndDate";
+            this.dtEndDate.Size = new System.Drawing.Size(134, 21);
+            this.dtEndDate.TabIndex = 10;
+            // 
+            // dtBeginDate
+            // 
+            this.dtBeginDate.Location = new System.Drawing.Point(81, 19);
+            this.dtBeginDate.Name = "dtBeginDate";
+            this.dtBeginDate.Size = new System.Drawing.Size(134, 21);
+            this.dtBeginDate.TabIndex = 9;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(22, 25);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(53, 12);
+            this.lblDate.TabIndex = 8;
+            this.lblDate.Text = "日期范围";
+            // 
             // outboundOrderIDDataGridViewTextBoxColumn
             // 
             this.outboundOrderIDDataGridViewTextBoxColumn.DataPropertyName = "OutboundOrderID";
@@ -280,51 +325,6 @@
             this.lastUpdateTimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.lastUpdateTimeDataGridViewTextBoxColumn.Visible = false;
             // 
-            // panelSearch
-            // 
-            this.panelSearch.Controls.Add(this.btnQuery);
-            this.panelSearch.Controls.Add(this.dtEndDate);
-            this.panelSearch.Controls.Add(this.dtBeginDate);
-            this.panelSearch.Controls.Add(this.lblDate);
-            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearch.Location = new System.Drawing.Point(3, 3);
-            this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(689, 54);
-            this.panelSearch.TabIndex = 0;
-            // 
-            // btnQuery
-            // 
-            this.btnQuery.Location = new System.Drawing.Point(383, 17);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 11;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
-            // dtEndDate
-            // 
-            this.dtEndDate.Location = new System.Drawing.Point(234, 19);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(134, 21);
-            this.dtEndDate.TabIndex = 10;
-            // 
-            // dtBeginDate
-            // 
-            this.dtBeginDate.Location = new System.Drawing.Point(81, 19);
-            this.dtBeginDate.Name = "dtBeginDate";
-            this.dtBeginDate.Size = new System.Drawing.Size(134, 21);
-            this.dtBeginDate.TabIndex = 9;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(22, 25);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(53, 12);
-            this.lblDate.TabIndex = 8;
-            this.lblDate.Text = "日期范围";
-            // 
             // ViewOutboundOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -354,6 +354,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAppendOutboundOrder;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReturnOutboundOrder;
         private System.Windows.Forms.BindingSource outboundOrderBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBrowseOutboundOrder;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.DateTimePicker dtEndDate;
+        private System.Windows.Forms.DateTimePicker dtBeginDate;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPrintOutboundOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn outboundOrderIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn outboundDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
@@ -369,12 +376,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn processDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedByDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBrowseOutboundOrder;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.Button btnQuery;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
-        private System.Windows.Forms.DateTimePicker dtBeginDate;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPrintOutboundOrder;
     }
 }

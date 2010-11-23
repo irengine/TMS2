@@ -15,7 +15,7 @@ namespace CarsMaintenance
     {
         public LoginForm()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         private void btnOK_Click(object sender, EventArgs e)

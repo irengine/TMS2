@@ -69,6 +69,13 @@ namespace CarsMaintenance.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Login {
+            get {
+                object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to {0} 必须与以上级代码开头..
         /// </summary>
