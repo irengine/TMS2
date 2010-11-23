@@ -99,7 +99,8 @@ namespace CarsMaintenance.OrderManagement
                 ToolInventory inventory = item.Tool.ToolInventory;
                 
                 // Update unitprice:
-                inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
+                if (inventory.Quantity - item.ScrapQuantity != 0)
+                    inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
 
                 inventory.Quantity -= item.ScrapQuantity;
                 inventory.ScrapQuantity += item.ScrapQuantity;
@@ -133,7 +134,8 @@ namespace CarsMaintenance.OrderManagement
                 ToolInventory inventory = item.Tool.ToolInventory;
 
                 // Update unitprice:
-                inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
+                if (inventory.Quantity - item.ScrapQuantity != 0)
+                    inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
 
                 inventory.PrescrapQuantity -= item.Quantity + item.RepairingQuantity + item.ScrapQuantity;
                 inventory.Quantity += item.Quantity;
@@ -197,7 +199,8 @@ namespace CarsMaintenance.OrderManagement
                 ToolInventory inventory = item.Tool.ToolInventory;
 
                 // Update unitprice:
-                inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
+                if (inventory.Quantity - item.ScrapQuantity != 0)
+                    inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
 
                 inventory.Quantity -= item.ScrapQuantity;
                 inventory.ScrapQuantity += item.ScrapQuantity;
@@ -255,7 +258,8 @@ namespace CarsMaintenance.OrderManagement
                 ToolInventory inventory = item.Tool.ToolInventory;
 
                 // Update unitprice:
-                inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
+                if (inventory.Quantity - item.ScrapQuantity != 0)
+                    inventory.UnitPrice = (inventory.UnitPrice * inventory.Quantity - item.UnitPrice * item.ScrapQuantity) / (inventory.Quantity - item.ScrapQuantity);
 
                 inventory.Quantity += item.Quantity;
                 inventory.RepairingQuantity -= item.RepairingQuantity;
