@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -129,6 +130,11 @@ namespace CarsMaintenance.ToolManagement
                     SystemHelper.TMSContext.AddToTools(CurrentTool);
                 }
 
+                CurrentTool.Groups.Clear();
+
+
+                // should not have duplicate row
+                Hashtable htCodes = new Hashtable();
                 // Iterate all rows
                 foreach (DataGridViewRow dgvr in dataGridViewDetail.Rows)
                 {
@@ -139,6 +145,15 @@ namespace CarsMaintenance.ToolManagement
                         int.TryParse(dgvr.Cells["ItemQuantity"].Value.ToString(), out quantity);
 
                         string code = dgvr.Cells["ItemCode"].Value.ToString();
+                        if (htCodes.Contains(code))
+                        {
+                            MessageBox.Show("工属具组合里不能有重复的工属具，请检查!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            htCodes.Add(code, quantity);
+                        }
                         Tool t = SystemHelper.TMSContext.Tools.FirstOrDefault(s => s.Code == code);
 
 
