@@ -45,7 +45,5 @@ print 'inventory tables done'
 :r .\Seeddata\ToolCategory.sql
 :r .\Seeddata\Supply.sql
 :r .\Seeddata\Tool.sql
-:r .\Seeddata\PurchaseOrder.sql
 :r .\Seeddata\ToolInventory.sql
-:r .\Seeddata\ToolInventoryHistory.sql
 print 'seeddata done'
