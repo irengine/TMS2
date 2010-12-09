@@ -10,12 +10,14 @@ namespace CarsMaintenance.Common
 {
     class SystemHelper
     {
-        private static TMSEntities tmsContext = new TMSEntities();
+        private static TMSEntities tmsContext = null;
 
         public static TMSEntities TMSContext
         {
             get
             {
+                if (tmsContext == null)
+                    tmsContext = new TMSEntities();
                 return tmsContext;
             }
         }
