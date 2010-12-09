@@ -164,9 +164,9 @@ namespace CarsMaintenance.OrderManagement
             cbSystemUser.SelectedItem = CurrentOrder.SystemUser;
 
             foreach (OutboundOrderDetail item in CurrentOrder.Items)
-            {
+            {        
                 DataGridViewRow dgvr = new DataGridViewRow();
-                object[] row = { item.Tool.Code, item.Quantity, item.Balance, item.Tool.Name, item.Tool.Dimensions };
+                object[] row = { item.Tool.Code, item.Quantity, item.Balance, item.Tool.Name, item.Tool.Dimensions,item.Description};
                 dataGridViewDetail.Rows.Add(row);
             }
 
@@ -232,6 +232,7 @@ namespace CarsMaintenance.OrderManagement
                 CurrentOrder.Cargo = txtCargo.Text;
                 CurrentOrder.Quantity = txtQuantity.Text;
                 CurrentOrder.Process = txtProcess.Text;
+             
 
                 if (rbDay.Checked)
                     CurrentOrder.ClassType = 1;
@@ -275,7 +276,7 @@ namespace CarsMaintenance.OrderManagement
                         item.Balance = quantity;
                         item.UnitPrice = t.ToolInventory.UnitPrice;
                         item.OutboundDate = CurrentOrder.LastUpdateTime;
-
+                        item.Description = dgvr.Cells["Description"].Value.ToString();
                         CurrentOrder.Items.Add(item);
 
                         OrderManager.Lend(CurrentOrder, item);

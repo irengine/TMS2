@@ -11,8 +11,18 @@ using TMS.Model;
 
 namespace CarsMaintenance.ToolManagement
 {
-    public partial class ViewUnitForm : CarsMaintenance.BaseForm
+    public partial class ViewUnitForm : BaseForm
     {
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripUnit.Items.Count; i++)
+            {
+                contextMenuStripUnit.Items[i].Enabled = true;
+            }
+        }
+        #endregion 
+
         public ViewUnitForm()
         {
             InitializeComponent();

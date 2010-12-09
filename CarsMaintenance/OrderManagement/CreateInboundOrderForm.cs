@@ -23,7 +23,7 @@ namespace CarsMaintenance.OrderManagement
             InitializeComponent();
             RegisterControlsForValidation();
         }
-        
+
         private ValidationManager _validationManager;
 
         private void RegisterControlsForValidation()
@@ -205,7 +205,7 @@ namespace CarsMaintenance.OrderManagement
             e.Cancel = !SystemHelper.ValidateComboxForSystemUser(cbSystemUser);
         }
 
-         private void TransferOrderDetail(OutboundOrder transferOrder)
+        private void TransferOrderDetail(OutboundOrder transferOrder)
         {
             if (transferOrder.Items.Count == 0)
             {
@@ -227,6 +227,12 @@ namespace CarsMaintenance.OrderManagement
                             item.Balance = transferQuantity;
                             item.UnitPrice = unitPrice;
                             item.OutboundDate = CurrentOrder.InboundDate;
+
+                            //add by 张应洪 date:2010-12-9
+                            if (item.Description != null)
+                                item.Description = item.Description + ReferenceOrder.Customer.Name;
+                            else
+                                item.Description = ReferenceOrder.Customer.Name;
 
                             transferOrder.Items.Add(item);
                         }

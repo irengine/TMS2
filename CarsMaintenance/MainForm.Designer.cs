@@ -105,6 +105,7 @@
             // btnViewRepairOrderForm
             // 
             this.btnViewRepairOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnViewRepairOrderForm.Enabled = false;
             this.btnViewRepairOrderForm.Location = new System.Drawing.Point(3, 371);
             this.btnViewRepairOrderForm.Name = "btnViewRepairOrderForm";
             this.btnViewRepairOrderForm.Size = new System.Drawing.Size(94, 86);
@@ -118,6 +119,7 @@
             // btnViewScrapOrderForm
             // 
             this.btnViewScrapOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnViewScrapOrderForm.Enabled = false;
             this.btnViewScrapOrderForm.Location = new System.Drawing.Point(3, 279);
             this.btnViewScrapOrderForm.Name = "btnViewScrapOrderForm";
             this.btnViewScrapOrderForm.Size = new System.Drawing.Size(94, 86);
@@ -131,6 +133,7 @@
             // btnViewOutboundOrderForm
             // 
             this.btnViewOutboundOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnViewOutboundOrderForm.Enabled = false;
             this.btnViewOutboundOrderForm.Location = new System.Drawing.Point(3, 187);
             this.btnViewOutboundOrderForm.Name = "btnViewOutboundOrderForm";
             this.btnViewOutboundOrderForm.Size = new System.Drawing.Size(94, 86);
@@ -144,6 +147,7 @@
             // btnViewToolInventoryForm
             // 
             this.btnViewToolInventoryForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnViewToolInventoryForm.Enabled = false;
             this.btnViewToolInventoryForm.Location = new System.Drawing.Point(3, 95);
             this.btnViewToolInventoryForm.Name = "btnViewToolInventoryForm";
             this.btnViewToolInventoryForm.Size = new System.Drawing.Size(94, 86);
@@ -157,6 +161,7 @@
             // btnLandingForm
             // 
             this.btnLandingForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLandingForm.Enabled = false;
             this.btnLandingForm.Location = new System.Drawing.Point(3, 3);
             this.btnLandingForm.Name = "btnLandingForm";
             this.btnLandingForm.Size = new System.Drawing.Size(94, 86);
@@ -207,6 +212,7 @@
             // 
             // unitToolStripMenuItem
             // 
+            this.unitToolStripMenuItem.Enabled = false;
             this.unitToolStripMenuItem.Name = "unitToolStripMenuItem";
             this.unitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.unitToolStripMenuItem.Text = "组织机构管理";
@@ -214,6 +220,7 @@
             // 
             // userToolStripMenuItem
             // 
+            this.userToolStripMenuItem.Enabled = false;
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.userToolStripMenuItem.Text = "系统用户管理";
@@ -232,6 +239,7 @@
             // 
             // toolCategoryToolStripMenuItem
             // 
+            this.toolCategoryToolStripMenuItem.Enabled = false;
             this.toolCategoryToolStripMenuItem.Name = "toolCategoryToolStripMenuItem";
             this.toolCategoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.toolCategoryToolStripMenuItem.Text = "工属具管理";
@@ -239,6 +247,7 @@
             // 
             // supplyToolStripMenuItem
             // 
+            this.supplyToolStripMenuItem.Enabled = false;
             this.supplyToolStripMenuItem.Name = "supplyToolStripMenuItem";
             this.supplyToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.supplyToolStripMenuItem.Text = "供应商管理";
@@ -246,6 +255,7 @@
             // 
             // toolGroupToolStripMenuItem
             // 
+            this.toolGroupToolStripMenuItem.Enabled = false;
             this.toolGroupToolStripMenuItem.Name = "toolGroupToolStripMenuItem";
             this.toolGroupToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.toolGroupToolStripMenuItem.Text = "工具组合管理";
@@ -254,6 +264,7 @@
             // 
             // articleToolStripMenuItem
             // 
+            this.articleToolStripMenuItem.Enabled = false;
             this.articleToolStripMenuItem.Name = "articleToolStripMenuItem";
             this.articleToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.articleToolStripMenuItem.Text = "工艺标准管理";
@@ -276,6 +287,7 @@
             // 
             // purchaseOrderToolStripMenuItem
             // 
+            this.purchaseOrderToolStripMenuItem.Enabled = false;
             this.purchaseOrderToolStripMenuItem.Name = "purchaseOrderToolStripMenuItem";
             this.purchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.purchaseOrderToolStripMenuItem.Text = "采购入库";
@@ -283,6 +295,7 @@
             // 
             // outboundOrderToolStripMenuItem
             // 
+            this.outboundOrderToolStripMenuItem.Enabled = false;
             this.outboundOrderToolStripMenuItem.Name = "outboundOrderToolStripMenuItem";
             this.outboundOrderToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.outboundOrderToolStripMenuItem.Text = "借用";
@@ -295,6 +308,7 @@
             // 
             // outboundOrder2ToolStripMenuItem
             // 
+            this.outboundOrder2ToolStripMenuItem.Enabled = false;
             this.outboundOrder2ToolStripMenuItem.Name = "outboundOrder2ToolStripMenuItem";
             this.outboundOrder2ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.outboundOrder2ToolStripMenuItem.Text = "补借";
@@ -302,6 +316,7 @@
             // 
             // inboundToolStripMenuItem
             // 
+            this.inboundToolStripMenuItem.Enabled = false;
             this.inboundToolStripMenuItem.Name = "inboundToolStripMenuItem";
             this.inboundToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.inboundToolStripMenuItem.Text = "归还";
@@ -314,6 +329,7 @@
             // 
             // scrapOrderToolStripMenuItem
             // 
+            this.scrapOrderToolStripMenuItem.Enabled = false;
             this.scrapOrderToolStripMenuItem.Name = "scrapOrderToolStripMenuItem";
             this.scrapOrderToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.scrapOrderToolStripMenuItem.Text = "报废";
@@ -321,6 +337,7 @@
             // 
             // repairOrderToolStripMenuItem
             // 
+            this.repairOrderToolStripMenuItem.Enabled = false;
             this.repairOrderToolStripMenuItem.Name = "repairOrderToolStripMenuItem";
             this.repairOrderToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.repairOrderToolStripMenuItem.Text = "修理";
@@ -350,6 +367,7 @@
             // 
             // BarcodeReportToolStripMenuItem
             // 
+            this.BarcodeReportToolStripMenuItem.Enabled = false;
             this.BarcodeReportToolStripMenuItem.Name = "BarcodeReportToolStripMenuItem";
             this.BarcodeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.BarcodeReportToolStripMenuItem.Text = "条码本";
@@ -390,35 +408,35 @@
             // ScrapByAbnormality
             // 
             this.ScrapByAbnormality.Name = "ScrapByAbnormality";
-            this.ScrapByAbnormality.Size = new System.Drawing.Size(130, 22);
+            this.ScrapByAbnormality.Size = new System.Drawing.Size(152, 22);
             this.ScrapByAbnormality.Text = "非正常损坏";
             this.ScrapByAbnormality.Click += new System.EventHandler(this.ScrapByAbnormality_Click);
             // 
             // ScrapByCategoryMenu
             // 
             this.ScrapByCategoryMenu.Name = "ScrapByCategoryMenu";
-            this.ScrapByCategoryMenu.Size = new System.Drawing.Size(130, 22);
+            this.ScrapByCategoryMenu.Size = new System.Drawing.Size(152, 22);
             this.ScrapByCategoryMenu.Text = "按类型";
             this.ScrapByCategoryMenu.Click += new System.EventHandler(this.ScrapByCategoryMenu_Click);
             // 
             // ScrapByUnitMenu
             // 
             this.ScrapByUnitMenu.Name = "ScrapByUnitMenu";
-            this.ScrapByUnitMenu.Size = new System.Drawing.Size(130, 22);
+            this.ScrapByUnitMenu.Size = new System.Drawing.Size(152, 22);
             this.ScrapByUnitMenu.Text = "按班组";
             this.ScrapByUnitMenu.Click += new System.EventHandler(this.ScrapByUnitMenu_Click);
             // 
             // ScrapByShipMenu
             // 
             this.ScrapByShipMenu.Name = "ScrapByShipMenu";
-            this.ScrapByShipMenu.Size = new System.Drawing.Size(130, 22);
+            this.ScrapByShipMenu.Size = new System.Drawing.Size(152, 22);
             this.ScrapByShipMenu.Text = "按船名";
             this.ScrapByShipMenu.Click += new System.EventHandler(this.ScrapByShipMenu_Click);
             // 
             // ScrapByColligateMenu
             // 
             this.ScrapByColligateMenu.Name = "ScrapByColligateMenu";
-            this.ScrapByColligateMenu.Size = new System.Drawing.Size(130, 22);
+            this.ScrapByColligateMenu.Size = new System.Drawing.Size(152, 22);
             this.ScrapByColligateMenu.Text = "综合分析";
             this.ScrapByColligateMenu.Click += new System.EventHandler(this.ScrapByColligateMenu_Click);
             // 

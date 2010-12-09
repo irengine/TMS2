@@ -14,6 +14,42 @@ namespace CarsMaintenance.ToolManagement
 {
     public partial class ViewToolCategoryForm : BaseForm
     {
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripToolCategory.Items.Count; i++)
+            {
+                contextMenuStripToolCategory.Items[i].Enabled = true;
+            }
+            for (int i = 0; i < contextMenuStripTool.Items.Count; i++)
+            {
+                contextMenuStripTool.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolsManage()
+        {
+            for (int i = 0; i < contextMenuStripToolCategory.Items.Count; i++)
+            {
+                contextMenuStripToolCategory.Items[i].Enabled = true;
+            }
+            for (int i = 0; i < contextMenuStripTool.Items.Count; i++)
+            {
+                contextMenuStripTool.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < contextMenuStripToolCategory.Items.Count; i++)
+            {
+                contextMenuStripToolCategory.Items[i].Enabled = true;
+            }
+            for (int i = 0; i < contextMenuStripTool.Items.Count; i++)
+            {
+                contextMenuStripTool.Items[i].Enabled = true;
+            }
+        }
+        #endregion 
+
         public ViewToolCategoryForm()
         {
             InitializeComponent();

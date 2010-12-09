@@ -14,10 +14,28 @@ namespace CarsMaintenance.UserManagement
 {
     public partial class ViewSystemUserForm : BaseForm
     {
+
         public ViewSystemUserForm()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
+
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < this.contextMenuStripSystemUser.Items.Count; i++)
+            {
+                this.contextMenuStripSystemUser.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < this.contextMenuStripSystemUser.Items.Count; i++)
+            {
+                this.contextMenuStripSystemUser.Items[i].Enabled = true;
+            }
+        }         
+        #endregion 
 
         private void LoadData()
         {

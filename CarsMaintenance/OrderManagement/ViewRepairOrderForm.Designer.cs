@@ -61,31 +61,34 @@
             this.toolStripMenuItemCreateRepairOrder,
             this.toolStripMenuItemCreateSelfRepairOrder});
             this.contextMenuStripRepairOrder.Name = "contextMenuStripToolInventory";
-            this.contextMenuStripRepairOrder.Size = new System.Drawing.Size(113, 76);
+            this.contextMenuStripRepairOrder.Size = new System.Drawing.Size(107, 76);
             // 
             // toolStripMenuItemBrowseRepairOrder
             // 
+            this.toolStripMenuItemBrowseRepairOrder.Enabled = false;
             this.toolStripMenuItemBrowseRepairOrder.Name = "toolStripMenuItemBrowseRepairOrder";
-            this.toolStripMenuItemBrowseRepairOrder.Size = new System.Drawing.Size(112, 22);
+            this.toolStripMenuItemBrowseRepairOrder.Size = new System.Drawing.Size(106, 22);
             this.toolStripMenuItemBrowseRepairOrder.Text = "查看";
             this.toolStripMenuItemBrowseRepairOrder.Click += new System.EventHandler(this.toolStripMenuItemBrowseRepairOrder_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(103, 6);
             // 
             // toolStripMenuItemCreateRepairOrder
             // 
+            this.toolStripMenuItemCreateRepairOrder.Enabled = false;
             this.toolStripMenuItemCreateRepairOrder.Name = "toolStripMenuItemCreateRepairOrder";
-            this.toolStripMenuItemCreateRepairOrder.Size = new System.Drawing.Size(112, 22);
+            this.toolStripMenuItemCreateRepairOrder.Size = new System.Drawing.Size(106, 22);
             this.toolStripMenuItemCreateRepairOrder.Text = "修理";
             this.toolStripMenuItemCreateRepairOrder.Click += new System.EventHandler(this.toolStripMenuItemCreateRepairOrder_Click);
             // 
             // toolStripMenuItemCreateSelfRepairOrder
             // 
+            this.toolStripMenuItemCreateSelfRepairOrder.Enabled = false;
             this.toolStripMenuItemCreateSelfRepairOrder.Name = "toolStripMenuItemCreateSelfRepairOrder";
-            this.toolStripMenuItemCreateSelfRepairOrder.Size = new System.Drawing.Size(112, 22);
+            this.toolStripMenuItemCreateSelfRepairOrder.Size = new System.Drawing.Size(106, 22);
             this.toolStripMenuItemCreateSelfRepairOrder.Text = "自修理";
             this.toolStripMenuItemCreateSelfRepairOrder.Click += new System.EventHandler(this.toolStripMenuItemCreateSelfRepairOrder_Click);
             // 
@@ -119,6 +122,7 @@
             this.repairOrderIDDataGridViewTextBoxColumn.HeaderText = "序号";
             this.repairOrderIDDataGridViewTextBoxColumn.Name = "repairOrderIDDataGridViewTextBoxColumn";
             this.repairOrderIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.repairOrderIDDataGridViewTextBoxColumn.Width = 60;
             // 
             // repairDateDataGridViewTextBoxColumn
             // 
@@ -126,6 +130,7 @@
             this.repairDateDataGridViewTextBoxColumn.HeaderText = "修理日期";
             this.repairDateDataGridViewTextBoxColumn.Name = "repairDateDataGridViewTextBoxColumn";
             this.repairDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.repairDateDataGridViewTextBoxColumn.Width = 150;
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -133,6 +138,7 @@
             this.codeDataGridViewTextBoxColumn.HeaderText = "修理单号";
             this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
             this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codeDataGridViewTextBoxColumn.Width = 180;
             // 
             // statusDataGridViewTextBoxColumn
             // 
@@ -235,13 +241,13 @@
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCreateSelfRepairOrder;
         private System.Windows.Forms.BindingSource repairOrderBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repairOrderIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn repairDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.DateTimePicker dtBeginDate;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repairOrderIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn repairDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }

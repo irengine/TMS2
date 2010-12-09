@@ -13,6 +13,31 @@ namespace CarsMaintenance.ToolManagement
 {
     public partial class ViewToolInventoryForm : BaseForm
     {
+
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripToolInventory.Items.Count; i++)
+            {
+                contextMenuStripToolInventory.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolsManage()
+        {
+            for (int i = 0; i < contextMenuStripToolInventory.Items.Count; i++)
+            {
+                contextMenuStripToolInventory.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < contextMenuStripToolInventory.Items.Count; i++)
+            {
+                contextMenuStripToolInventory.Items[i].Enabled = true;
+            }
+        }
+        #endregion 
+
         public ViewToolInventoryForm()
         {
             InitializeComponent();
@@ -27,66 +52,79 @@ namespace CarsMaintenance.ToolManagement
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "ToolID";
             column.Name = "序号";
+            column.Width = 40;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Code";
             column.Name = "工属具编码";
+            column.Width = 100;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Name";
             column.Name = "名称";
+            column.Width = 110;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Dimensions";
             column.Name = "规格";
+            column.Width = 150;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Quantity";
             column.Name = "数量";
+            column.Width = 60;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "OutQuantity";
             column.Name = "外借数";
+            column.Width = 80;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "PrescrapQuantity";
             column.Name = "预报废数";
+            column.Width = 110;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "ScrapQuantity";
             column.Name = "报废数";
+            column.Width = 80;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "RepairingQuantity";
             column.Name = "修理数";
+            column.Width = 80;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Unit";
             column.Name = "单位";
+            column.Width = 60;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "UnitPrice";
             column.Name = "单价";
+            column.Width = 60;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Supply";
             column.Name = "供应商";
+            column.Width = 140;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "LastTime";
             column.Name = "最后入库时间";
+            column.Width = 80;
             dataGridViewToolInventory.Columns.Add(column);
         }
 

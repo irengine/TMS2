@@ -13,6 +13,46 @@ namespace CarsMaintenance.OrderManagement
 {
     public partial class ViewOutboundOrderForm : BaseForm
     {
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripOutboundOrder.Items.Count; i++)
+            {
+                contextMenuStripOutboundOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsManage()
+        {
+            for (int i = 0; i < contextMenuStripOutboundOrder.Items.Count; i++)
+            {
+                contextMenuStripOutboundOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < contextMenuStripOutboundOrder.Items.Count; i++)
+            {
+                contextMenuStripOutboundOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsOutOrInUser()
+        {
+            for (int i = 0; i < contextMenuStripOutboundOrder.Items.Count; i++)
+            {
+                contextMenuStripOutboundOrder.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolsConservator()
+        {
+            for (int i = 0; i < contextMenuStripOutboundOrder.Items.Count; i++)
+            {
+                contextMenuStripOutboundOrder.Items[i].Enabled = true;
+            }
+        }
+        #endregion
         public ViewOutboundOrderForm()
         {
             InitializeComponent();

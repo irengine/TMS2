@@ -13,6 +13,47 @@ namespace CarsMaintenance.OrderManagement
 {
     public partial class ViewScrapOrderForm : BaseForm
     {
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripScrapOrder.Items.Count; i++)
+            {
+                contextMenuStripScrapOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsManage()
+        {
+            for (int i = 0; i < contextMenuStripScrapOrder.Items.Count; i++)
+            {
+                contextMenuStripScrapOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < contextMenuStripScrapOrder.Items.Count; i++)
+            {
+                contextMenuStripScrapOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsOutOrInUser()
+        {
+            for (int i = 0; i < contextMenuStripScrapOrder.Items.Count; i++)
+            {
+                contextMenuStripScrapOrder.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolsConservator()
+        {
+            for (int i = 0; i < contextMenuStripScrapOrder.Items.Count; i++)
+            {
+                contextMenuStripScrapOrder.Items[i].Enabled = true;
+            }
+        }
+        #endregion
+
         public ViewScrapOrderForm()
         {
             InitializeComponent();
@@ -160,7 +201,8 @@ namespace CarsMaintenance.OrderManagement
                         join t in SystemHelper.TMSContext.Tools on it.ToolID equals t.ToolID
                         where o.ScrapDate >= beginDate && o.ScrapDate <= endDate
                         orderby o.ScrapDate
-                        select new {
+                        select new
+                        {
                             o.ScrapOrderID,
                             o.ScrapDate,
                             ItemName = t.Name,

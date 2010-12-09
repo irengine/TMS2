@@ -11,11 +11,223 @@ using CarsMaintenance.Common;
 namespace CarsMaintenance
 {
 	public partial class MainForm : Form
-	{
+    {
 
-		#region : MainForm - Constructors/Destructor :
+        #region Role
+        private void initRole()
+        {
+            string roles = SystemHelper.CurrentUser.Roles;
+            if (roles.IndexOf('1') >= 0)
+            {
+                this.RoleToSystmeManage();
+            }
+            if (roles.IndexOf('2') >= 0)
+            {
+                this.RoleToToolArticleManage();
+            }
+            if (roles.IndexOf('3') >= 0)
+            {
+                this.RoleToToolsManage();
+            }
 
-		public MainForm()
+            if (roles.IndexOf('4') >= 0)
+            {
+                this.RoleToToolsConservator();
+            }
+
+            if (roles.IndexOf('5') >= 0)
+            {
+                this.RoleToToolsOutOrInUser();
+            }
+            if (roles.IndexOf('6') >= 0)
+            {
+                this.RoleToProduceUser();
+            }
+            if (roles.IndexOf('7') >= 0)
+            {
+                this.RoleToManageUser();
+            }
+
+        }
+        /// <summary>
+        /// 管理人员用户
+        /// </summary>
+        private void RoleToManageUser()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.articleToolStripMenuItem.Enabled = true;
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }  
+        }
+
+        /// <summary>
+        /// 生产部门用户
+        /// </summary>
+        private void RoleToProduceUser()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.articleToolStripMenuItem.Enabled = true;
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }  
+        }
+
+        /// <summary>
+        /// 工具收发工
+        /// </summary>
+        private void RoleToToolsOutOrInUser()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;            
+            this.articleToolStripMenuItem.Enabled = true;
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }  
+        }
+        /// <summary>
+        /// 工具管理员
+        /// </summary>
+        private void RoleToToolsConservator()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.unitToolStripMenuItem.Enabled = true;
+            this.userToolStripMenuItem.Enabled = true;
+            for (int i = 0; i < this.businessToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.businessToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+        }
+        /// <summary>
+        /// 工具主任
+        /// </summary>
+        private void RoleToToolsManage()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.businessToolStripMenuItem.Enabled = true;
+            this._mainMenuStrip.Enabled = true;
+            for (int i = 0; i < this.systemToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.systemToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+            for (int i = 0; i < this._mainMenuStrip.Items.Count; i++)
+            {
+                this._mainMenuStrip.Items[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.toolsToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.toolsToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.businessToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.businessToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }     
+        }
+        /// <summary>
+        /// 工具工艺主管
+        /// </summary>
+        private void RoleToToolArticleManage()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.businessToolStripMenuItem.Enabled = true;
+            this._mainMenuStrip.Enabled = true;
+            this.unitToolStripMenuItem.Enabled = true;
+            for (int i = 0; i < this._mainMenuStrip.Items.Count; i++)
+            {
+                this._mainMenuStrip.Items[i].Enabled = true;
+            }
+      
+            for (int i = 0; i < this.toolsToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.toolsToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.businessToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.businessToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }          
+        }
+
+        /// <summary>
+        /// 系统维护人员 权限
+        /// </summary>
+        private void RoleToSystmeManage()
+        {
+            this.btnLandingForm.Enabled = true;
+            this.btnViewOutboundOrderForm.Enabled = true;
+            this.btnViewRepairOrderForm.Enabled = true;
+            this.btnViewScrapOrderForm.Enabled = true;
+            this.btnViewToolInventoryForm.Enabled = true;
+            this.businessToolStripMenuItem.Enabled = true;
+            this._mainMenuStrip.Enabled = true;
+            for (int i = 0; i < this._mainMenuStrip.Items.Count;i++ )
+            {
+                this._mainMenuStrip.Items[i].Enabled = true;               
+            }
+
+            for (int i = 0; i < this.systemToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.systemToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+            for (int i = 0; i < this.toolsToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.toolsToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.businessToolStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.businessToolStripMenuItem.DropDownItems[i].Enabled = true;
+            }
+
+            for (int i = 0; i < this.reportStripMenuItem.DropDownItems.Count; i++)
+            {
+                this.reportStripMenuItem.DropDownItems[i].Enabled = true;
+            }            
+        }
+        #endregion 
+
+        #region : MainForm - Constructors/Destructor :
+
+        public MainForm()
 		{
 			InitializeComponent();
 		}
@@ -39,8 +251,9 @@ namespace CarsMaintenance
                         this.Close();
                     }
                 }
-
+                this.initRole();
 				this.Show();
+
 			});
 		}
 

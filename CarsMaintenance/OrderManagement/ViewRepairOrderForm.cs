@@ -13,6 +13,46 @@ namespace CarsMaintenance.OrderManagement
 {
     public partial class ViewRepairOrderForm : BaseForm
     {
+        #region Role
+        protected override void RoleToSystmeManage()
+        {
+            for (int i = 0; i < contextMenuStripRepairOrder.Items.Count; i++)
+            {
+                contextMenuStripRepairOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsManage()
+        {
+            for (int i = 0; i < contextMenuStripRepairOrder.Items.Count; i++)
+            {
+                contextMenuStripRepairOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolArticleManage()
+        {
+            for (int i = 0; i < contextMenuStripRepairOrder.Items.Count; i++)
+            {
+                contextMenuStripRepairOrder.Items[i].Enabled = true;
+            }
+
+        }
+        protected override void RoleToToolsOutOrInUser()
+        {
+            for (int i = 0; i < contextMenuStripRepairOrder.Items.Count; i++)
+            {
+                contextMenuStripRepairOrder.Items[i].Enabled = true;
+            }
+        }
+        protected override void RoleToToolsConservator()
+        {
+            for (int i = 0; i < contextMenuStripRepairOrder.Items.Count; i++)
+            {
+                contextMenuStripRepairOrder.Items[i].Enabled = true;
+            }
+        }
+        #endregion
         public ViewRepairOrderForm()
         {
             InitializeComponent();

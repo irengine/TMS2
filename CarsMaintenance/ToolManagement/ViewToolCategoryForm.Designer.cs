@@ -71,13 +71,13 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStripToolCategory.Name = "contextMenuStripToolCategory";
-            this.contextMenuStripToolCategory.Size = new System.Drawing.Size(161, 101);
+            this.contextMenuStripToolCategory.Size = new System.Drawing.Size(161, 99);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Enabled = false;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox1.Text = "工属具类别";
             // 
             // toolStripSeparator1
@@ -87,6 +87,7 @@
             // 
             // addToolStripMenuItem
             // 
+            this.addToolStripMenuItem.Enabled = false;
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.addToolStripMenuItem.Text = "添加";
@@ -94,6 +95,7 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.Enabled = false;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.editToolStripMenuItem.Text = "编辑";
@@ -101,6 +103,7 @@
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.deleteToolStripMenuItem.Text = "删除";
@@ -115,13 +118,13 @@
             this.Edit2ToolStripMenuItem,
             this.Delete2ToolStripMenuItem});
             this.contextMenuStripTool.Name = "contextMenuStripToolCategory";
-            this.contextMenuStripTool.Size = new System.Drawing.Size(161, 101);
+            this.contextMenuStripTool.Size = new System.Drawing.Size(161, 121);
             // 
             // toolStripTextBox2
             // 
             this.toolStripTextBox2.Enabled = false;
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 21);
             this.toolStripTextBox2.Text = "工属具";
             // 
             // toolStripSeparator2
@@ -134,6 +137,7 @@
             this.Add2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddToolToolStripMenuItem,
             this.AddToolGroupToolStripMenuItem});
+            this.Add2ToolStripMenuItem.Enabled = false;
             this.Add2ToolStripMenuItem.Name = "Add2ToolStripMenuItem";
             this.Add2ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.Add2ToolStripMenuItem.Text = "添加";
@@ -141,19 +145,20 @@
             // AddToolToolStripMenuItem
             // 
             this.AddToolToolStripMenuItem.Name = "AddToolToolStripMenuItem";
-            this.AddToolToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AddToolToolStripMenuItem.Text = "工属具";
             this.AddToolToolStripMenuItem.Click += new System.EventHandler(this.AddToolToolStripMenuItem_Click);
             // 
             // AddToolGroupToolStripMenuItem
             // 
             this.AddToolGroupToolStripMenuItem.Name = "AddToolGroupToolStripMenuItem";
-            this.AddToolGroupToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolGroupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AddToolGroupToolStripMenuItem.Text = "工属具组合";
             this.AddToolGroupToolStripMenuItem.Click += new System.EventHandler(this.AddToolGroupToolStripMenuItem_Click);
             // 
             // Edit2ToolStripMenuItem
             // 
+            this.Edit2ToolStripMenuItem.Enabled = false;
             this.Edit2ToolStripMenuItem.Name = "Edit2ToolStripMenuItem";
             this.Edit2ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.Edit2ToolStripMenuItem.Text = "编辑";
@@ -161,6 +166,7 @@
             // 
             // Delete2ToolStripMenuItem
             // 
+            this.Delete2ToolStripMenuItem.Enabled = false;
             this.Delete2ToolStripMenuItem.Name = "Delete2ToolStripMenuItem";
             this.Delete2ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.Delete2ToolStripMenuItem.Text = "删除";
@@ -208,6 +214,7 @@
             this.toolIDDataGridViewTextBoxColumn.HeaderText = "序号";
             this.toolIDDataGridViewTextBoxColumn.Name = "toolIDDataGridViewTextBoxColumn";
             this.toolIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.toolIDDataGridViewTextBoxColumn.Width = 40;
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -229,6 +236,7 @@
             this.Diameter.HeaderText = "直径";
             this.Diameter.Name = "Diameter";
             this.Diameter.ReadOnly = true;
+            this.Diameter.Width = 60;
             // 
             // Length
             // 
@@ -236,6 +244,7 @@
             this.Length.HeaderText = "长度";
             this.Length.Name = "Length";
             this.Length.ReadOnly = true;
+            this.Length.Width = 60;
             // 
             // Load2
             // 
@@ -243,6 +252,7 @@
             this.Load2.HeaderText = "负载";
             this.Load2.Name = "Load2";
             this.Load2.ReadOnly = true;
+            this.Load2.Width = 60;
             // 
             // dimensionsDataGridViewTextBoxColumn
             // 
@@ -257,6 +267,7 @@
             this.RatedQuantity.HeaderText = "额定数";
             this.RatedQuantity.Name = "RatedQuantity";
             this.RatedQuantity.ReadOnly = true;
+            this.RatedQuantity.Width = 80;
             // 
             // unitDataGridViewTextBoxColumn
             // 
@@ -264,6 +275,7 @@
             this.unitDataGridViewTextBoxColumn.HeaderText = "单位";
             this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
             this.unitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitDataGridViewTextBoxColumn.Width = 45;
             // 
             // commentDataGridViewTextBoxColumn
             // 
@@ -271,6 +283,7 @@
             this.commentDataGridViewTextBoxColumn.HeaderText = "备注";
             this.commentDataGridViewTextBoxColumn.Name = "commentDataGridViewTextBoxColumn";
             this.commentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.commentDataGridViewTextBoxColumn.Width = 160;
             // 
             // treeViewToolCategory
             // 
@@ -319,6 +332,8 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem AddToolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddToolGroupToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn toolIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -329,7 +344,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RatedQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem AddToolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddToolGroupToolStripMenuItem;
     }
 }

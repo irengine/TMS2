@@ -39,26 +39,26 @@
             this.outboundOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewOutboundOrder = new System.Windows.Forms.DataGridView();
-            this.panelSearch = new System.Windows.Forms.Panel();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDate = new System.Windows.Forms.Label();
             this.outboundOrderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outboundDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.berthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.machineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.berthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hatchDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.machineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.processDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdatedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtBeginDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             this.contextMenuStripOutboundOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outboundOrderBindingSource)).BeginInit();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -80,6 +80,7 @@
             // 
             // toolStripMenuItemBrowseOutboundOrder
             // 
+            this.toolStripMenuItemBrowseOutboundOrder.Enabled = false;
             this.toolStripMenuItemBrowseOutboundOrder.Name = "toolStripMenuItemBrowseOutboundOrder";
             this.toolStripMenuItemBrowseOutboundOrder.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemBrowseOutboundOrder.Text = "查看";
@@ -87,6 +88,7 @@
             // 
             // toolStripMenuItemPrintOutboundOrder
             // 
+            this.toolStripMenuItemPrintOutboundOrder.Enabled = false;
             this.toolStripMenuItemPrintOutboundOrder.Name = "toolStripMenuItemPrintOutboundOrder";
             this.toolStripMenuItemPrintOutboundOrder.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemPrintOutboundOrder.Text = "打印";
@@ -99,6 +101,7 @@
             // 
             // toolStripMenuItemCreateOutboundOrder
             // 
+            this.toolStripMenuItemCreateOutboundOrder.Enabled = false;
             this.toolStripMenuItemCreateOutboundOrder.Name = "toolStripMenuItemCreateOutboundOrder";
             this.toolStripMenuItemCreateOutboundOrder.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemCreateOutboundOrder.Text = "借用";
@@ -106,6 +109,7 @@
             // 
             // toolStripMenuItemAppendOutboundOrder
             // 
+            this.toolStripMenuItemAppendOutboundOrder.Enabled = false;
             this.toolStripMenuItemAppendOutboundOrder.Name = "toolStripMenuItemAppendOutboundOrder";
             this.toolStripMenuItemAppendOutboundOrder.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemAppendOutboundOrder.Text = "补借";
@@ -113,6 +117,7 @@
             // 
             // toolStripMenuItemReturnOutboundOrder
             // 
+            this.toolStripMenuItemReturnOutboundOrder.Enabled = false;
             this.toolStripMenuItemReturnOutboundOrder.Name = "toolStripMenuItemReturnOutboundOrder";
             this.toolStripMenuItemReturnOutboundOrder.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemReturnOutboundOrder.Text = "归还、转借";
@@ -134,7 +139,7 @@
             this.tableLayoutPanelMain.RowCount = 2;
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(695, 453);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(853, 484);
             this.tableLayoutPanelMain.TabIndex = 1;
             // 
             // dataGridViewOutboundOrder
@@ -142,6 +147,7 @@
             this.dataGridViewOutboundOrder.AllowUserToAddRows = false;
             this.dataGridViewOutboundOrder.AllowUserToDeleteRows = false;
             this.dataGridViewOutboundOrder.AutoGenerateColumns = false;
+            this.dataGridViewOutboundOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewOutboundOrder.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewOutboundOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOutboundOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -151,10 +157,10 @@
             this.codeDataGridViewTextBoxColumn,
             this.customerIDDataGridViewTextBoxColumn,
             this.jobDataGridViewTextBoxColumn,
-            this.berthDataGridViewTextBoxColumn,
-            this.machineDataGridViewTextBoxColumn,
             this.shipDataGridViewTextBoxColumn,
+            this.berthDataGridViewTextBoxColumn,
             this.hatchDataGridViewTextBoxColumn,
+            this.machineDataGridViewTextBoxColumn,
             this.cargoDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.processDataGridViewTextBoxColumn,
@@ -168,9 +174,129 @@
             this.dataGridViewOutboundOrder.ReadOnly = true;
             this.dataGridViewOutboundOrder.RowTemplate.Height = 23;
             this.dataGridViewOutboundOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOutboundOrder.Size = new System.Drawing.Size(689, 387);
+            this.dataGridViewOutboundOrder.Size = new System.Drawing.Size(847, 418);
             this.dataGridViewOutboundOrder.TabIndex = 1;
             this.dataGridViewOutboundOrder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOutboundOrder_CellDoubleClick);
+            // 
+            // outboundOrderIDDataGridViewTextBoxColumn
+            // 
+            this.outboundOrderIDDataGridViewTextBoxColumn.DataPropertyName = "OutboundOrderID";
+            this.outboundOrderIDDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.outboundOrderIDDataGridViewTextBoxColumn.HeaderText = "序号";
+            this.outboundOrderIDDataGridViewTextBoxColumn.Name = "outboundOrderIDDataGridViewTextBoxColumn";
+            this.outboundOrderIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // outboundDateDataGridViewTextBoxColumn
+            // 
+            this.outboundDateDataGridViewTextBoxColumn.DataPropertyName = "OutboundDate";
+            this.outboundDateDataGridViewTextBoxColumn.FillWeight = 110F;
+            this.outboundDateDataGridViewTextBoxColumn.HeaderText = "借用日期";
+            this.outboundDateDataGridViewTextBoxColumn.Name = "outboundDateDataGridViewTextBoxColumn";
+            this.outboundDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.versionDataGridViewTextBoxColumn.HeaderText = "补借次数";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.codeDataGridViewTextBoxColumn.HeaderText = "借用单号";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerIDDataGridViewTextBoxColumn
+            // 
+            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // jobDataGridViewTextBoxColumn
+            // 
+            this.jobDataGridViewTextBoxColumn.DataPropertyName = "Job";
+            this.jobDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.jobDataGridViewTextBoxColumn.HeaderText = "作业号";
+            this.jobDataGridViewTextBoxColumn.Name = "jobDataGridViewTextBoxColumn";
+            this.jobDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shipDataGridViewTextBoxColumn
+            // 
+            this.shipDataGridViewTextBoxColumn.DataPropertyName = "Ship";
+            this.shipDataGridViewTextBoxColumn.FillWeight = 105F;
+            this.shipDataGridViewTextBoxColumn.HeaderText = "船名";
+            this.shipDataGridViewTextBoxColumn.Name = "shipDataGridViewTextBoxColumn";
+            this.shipDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // berthDataGridViewTextBoxColumn
+            // 
+            this.berthDataGridViewTextBoxColumn.DataPropertyName = "Berth";
+            this.berthDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.berthDataGridViewTextBoxColumn.HeaderText = "泊位";
+            this.berthDataGridViewTextBoxColumn.Name = "berthDataGridViewTextBoxColumn";
+            this.berthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hatchDataGridViewTextBoxColumn
+            // 
+            this.hatchDataGridViewTextBoxColumn.DataPropertyName = "Hatch";
+            this.hatchDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.hatchDataGridViewTextBoxColumn.HeaderText = "舱口";
+            this.hatchDataGridViewTextBoxColumn.Name = "hatchDataGridViewTextBoxColumn";
+            this.hatchDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // machineDataGridViewTextBoxColumn
+            // 
+            this.machineDataGridViewTextBoxColumn.DataPropertyName = "Machine";
+            this.machineDataGridViewTextBoxColumn.FillWeight = 180F;
+            this.machineDataGridViewTextBoxColumn.HeaderText = "机械";
+            this.machineDataGridViewTextBoxColumn.Name = "machineDataGridViewTextBoxColumn";
+            this.machineDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cargoDataGridViewTextBoxColumn
+            // 
+            this.cargoDataGridViewTextBoxColumn.DataPropertyName = "Cargo";
+            this.cargoDataGridViewTextBoxColumn.FillWeight = 110F;
+            this.cargoDataGridViewTextBoxColumn.HeaderText = "货物";
+            this.cargoDataGridViewTextBoxColumn.Name = "cargoDataGridViewTextBoxColumn";
+            this.cargoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.FillWeight = 60F;
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "数量";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // processDataGridViewTextBoxColumn
+            // 
+            this.processDataGridViewTextBoxColumn.DataPropertyName = "Process";
+            this.processDataGridViewTextBoxColumn.FillWeight = 120F;
+            this.processDataGridViewTextBoxColumn.HeaderText = "作业过程";
+            this.processDataGridViewTextBoxColumn.Name = "processDataGridViewTextBoxColumn";
+            this.processDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastUpdatedByDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedByDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedBy";
+            this.lastUpdatedByDataGridViewTextBoxColumn.HeaderText = "LastUpdatedBy";
+            this.lastUpdatedByDataGridViewTextBoxColumn.Name = "lastUpdatedByDataGridViewTextBoxColumn";
+            this.lastUpdatedByDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedByDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // lastUpdateTimeDataGridViewTextBoxColumn
+            // 
+            this.lastUpdateTimeDataGridViewTextBoxColumn.DataPropertyName = "LastUpdateTime";
+            this.lastUpdateTimeDataGridViewTextBoxColumn.HeaderText = "LastUpdateTime";
+            this.lastUpdateTimeDataGridViewTextBoxColumn.Name = "lastUpdateTimeDataGridViewTextBoxColumn";
+            this.lastUpdateTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdateTimeDataGridViewTextBoxColumn.Visible = false;
             // 
             // panelSearch
             // 
@@ -181,7 +307,7 @@
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearch.Location = new System.Drawing.Point(3, 3);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(689, 54);
+            this.panelSearch.Size = new System.Drawing.Size(847, 54);
             this.panelSearch.TabIndex = 0;
             // 
             // btnQuery
@@ -217,119 +343,11 @@
             this.lblDate.TabIndex = 8;
             this.lblDate.Text = "日期范围";
             // 
-            // outboundOrderIDDataGridViewTextBoxColumn
-            // 
-            this.outboundOrderIDDataGridViewTextBoxColumn.DataPropertyName = "OutboundOrderID";
-            this.outboundOrderIDDataGridViewTextBoxColumn.HeaderText = "序号";
-            this.outboundOrderIDDataGridViewTextBoxColumn.Name = "outboundOrderIDDataGridViewTextBoxColumn";
-            this.outboundOrderIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // outboundDateDataGridViewTextBoxColumn
-            // 
-            this.outboundDateDataGridViewTextBoxColumn.DataPropertyName = "OutboundDate";
-            this.outboundDateDataGridViewTextBoxColumn.HeaderText = "借用日期";
-            this.outboundDateDataGridViewTextBoxColumn.Name = "outboundDateDataGridViewTextBoxColumn";
-            this.outboundDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "补借次数";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "借用单号";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerIDDataGridViewTextBoxColumn
-            // 
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
-            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // jobDataGridViewTextBoxColumn
-            // 
-            this.jobDataGridViewTextBoxColumn.DataPropertyName = "Job";
-            this.jobDataGridViewTextBoxColumn.HeaderText = "作业号";
-            this.jobDataGridViewTextBoxColumn.Name = "jobDataGridViewTextBoxColumn";
-            this.jobDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // berthDataGridViewTextBoxColumn
-            // 
-            this.berthDataGridViewTextBoxColumn.DataPropertyName = "Berth";
-            this.berthDataGridViewTextBoxColumn.HeaderText = "泊位";
-            this.berthDataGridViewTextBoxColumn.Name = "berthDataGridViewTextBoxColumn";
-            this.berthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // machineDataGridViewTextBoxColumn
-            // 
-            this.machineDataGridViewTextBoxColumn.DataPropertyName = "Machine";
-            this.machineDataGridViewTextBoxColumn.HeaderText = "机械";
-            this.machineDataGridViewTextBoxColumn.Name = "machineDataGridViewTextBoxColumn";
-            this.machineDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // shipDataGridViewTextBoxColumn
-            // 
-            this.shipDataGridViewTextBoxColumn.DataPropertyName = "Ship";
-            this.shipDataGridViewTextBoxColumn.HeaderText = "船名";
-            this.shipDataGridViewTextBoxColumn.Name = "shipDataGridViewTextBoxColumn";
-            this.shipDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hatchDataGridViewTextBoxColumn
-            // 
-            this.hatchDataGridViewTextBoxColumn.DataPropertyName = "Hatch";
-            this.hatchDataGridViewTextBoxColumn.HeaderText = "舱口";
-            this.hatchDataGridViewTextBoxColumn.Name = "hatchDataGridViewTextBoxColumn";
-            this.hatchDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cargoDataGridViewTextBoxColumn
-            // 
-            this.cargoDataGridViewTextBoxColumn.DataPropertyName = "Cargo";
-            this.cargoDataGridViewTextBoxColumn.HeaderText = "货物";
-            this.cargoDataGridViewTextBoxColumn.Name = "cargoDataGridViewTextBoxColumn";
-            this.cargoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "数量";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // processDataGridViewTextBoxColumn
-            // 
-            this.processDataGridViewTextBoxColumn.DataPropertyName = "Process";
-            this.processDataGridViewTextBoxColumn.HeaderText = "作业过程";
-            this.processDataGridViewTextBoxColumn.Name = "processDataGridViewTextBoxColumn";
-            this.processDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastUpdatedByDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedByDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedBy";
-            this.lastUpdatedByDataGridViewTextBoxColumn.HeaderText = "LastUpdatedBy";
-            this.lastUpdatedByDataGridViewTextBoxColumn.Name = "lastUpdatedByDataGridViewTextBoxColumn";
-            this.lastUpdatedByDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedByDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // lastUpdateTimeDataGridViewTextBoxColumn
-            // 
-            this.lastUpdateTimeDataGridViewTextBoxColumn.DataPropertyName = "LastUpdateTime";
-            this.lastUpdateTimeDataGridViewTextBoxColumn.HeaderText = "LastUpdateTime";
-            this.lastUpdateTimeDataGridViewTextBoxColumn.Name = "lastUpdateTimeDataGridViewTextBoxColumn";
-            this.lastUpdateTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdateTimeDataGridViewTextBoxColumn.Visible = false;
-            // 
             // ViewOutboundOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 453);
+            this.ClientSize = new System.Drawing.Size(853, 484);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "ViewOutboundOrderForm";
             this.Text = "借用单管理";
@@ -367,10 +385,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn berthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn machineDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn shipDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn berthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hatchDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn machineDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cargoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn processDataGridViewTextBoxColumn;

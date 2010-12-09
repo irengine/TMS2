@@ -75,6 +75,7 @@
             this.ItemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDimensions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetail)).BeginInit();
             this.panelMaster.SuspendLayout();
@@ -113,7 +114,8 @@
             this.ItemQuantity,
             this.ItemBalance,
             this.ItemName,
-            this.ItemDimensions});
+            this.ItemDimensions,
+            this.Description});
             this.dataGridViewDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewDetail.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewDetail.MultiSelect = false;
@@ -526,6 +528,12 @@
             this.ItemDimensions.ReadOnly = true;
             this.ItemDimensions.Width = 120;
             // 
+            // Description
+            // 
+            this.Description.HeaderText = "备注";
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
             // CreateOutboundOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -599,5 +607,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDimensions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }
