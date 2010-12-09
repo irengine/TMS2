@@ -294,7 +294,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.36423in</Height>
+              <Height>0.66631in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -573,8 +573,8 @@
         </TablixRowHierarchy>
         <DataSetName>dsTool</DataSetName>
         <Top>0.33549cm</Top>
-        <Height>2.12514cm</Height>
-        <Width>16.53236cm</Width>
+        <Height>2.89243cm</Height>
+        <Width>16.53238cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -582,7 +582,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.96875in</Height>
+    <Height>1.27084in</Height>
     <Style />
   </Body>
   <Width>6.60255in</Width>
@@ -599,21 +599,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>上海国际港务(集团)股份有限公司军工路分公司</Value>
-                  <Style>
-                    <FontFamily>SimHei</FontFamily>
-                    <FontSize>18pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>条码本</Value>
+                  <Value>工属具条码本</Value>
                   <Style>
                     <FontFamily>SimHei</FontFamily>
                     <FontSize>18pt</FontSize>
@@ -628,7 +614,7 @@
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.81174cm</Top>
           <Left>1.10278cm</Left>
-          <Height>1.37584cm</Height>
+          <Height>1.03188cm</Height>
           <Width>14.34042cm</Width>
           <Style>
             <Border>
@@ -667,7 +653,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.17639cm</Top>
+          <Top>0.17638cm</Top>
           <Left>13.71049cm</Left>
           <Height>0.6cm</Height>
           <Width>0.77611cm</Width>
@@ -696,7 +682,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>TotalPages</rd:DefaultName>
-          <Top>0.17639cm</Top>
+          <Top>0.17638cm</Top>
           <Left>14.66299cm</Left>
           <Height>0.6cm</Height>
           <Width>0.78021cm</Width>
