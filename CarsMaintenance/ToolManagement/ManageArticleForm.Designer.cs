@@ -135,7 +135,7 @@
             this.Controls.Add(this.lblSubject);
             this.Name = "ManageArticleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "工艺标准管理";
+            this.Text = "公告管理";
             this.Load += new System.EventHandler(this.ManageArticleForm_Load);
             this._operationsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();

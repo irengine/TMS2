@@ -9,12 +9,12 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ScrapByShipTableAdapter" GeneratorDataComponentClassName="ScrapByShipTableAdapter" Name="ScrapByShip" UserDataComponentName="ScrapByShipTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QueryConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>Select so.ScrapDate,o.JobType,o.Ship,SUM(sod.ScrapQuantity) as Quantity,SUM(sod.UnitPrice)as UnitPrice  from ScrapOrder as so 
 inner join  ScrapOrderDetail as sod 
- on so.OutboundOrderID=sod.ScrapOrderID
+ on so.ScrapOrderID=sod.ScrapOrderID
  inner join OutboundOrder as o 
  on so.OutboundOrderID=o.OutboundOrderID
  Group by o.Ship,so.ScrapDate,o.JobType

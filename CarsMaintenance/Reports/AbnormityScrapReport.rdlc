@@ -91,52 +91,52 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.3905in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.15092in</Width>
+              <Width>0.67175in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.75509in</Width>
+              <Width>0.61967in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.74467in</Width>
+              <Width>0.36979in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.54675in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.1405in</Width>
+              <Width>1.03633in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.09884in</Width>
+              <Width>0.93217in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.68217in</Width>
+              <Width>0.3905in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.52592in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.84387in</Width>
+              <Width>0.53137in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.69259in</Width>
+              <Width>0.55742in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.5155in</Width>
+              <Width>0.34883in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.73425in</Width>
+              <Width>0.35925in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.78634in</Width>
+              <Width>0.55717in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.49467in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>0.38008in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -167,10 +167,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -199,10 +201,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -231,10 +235,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -263,10 +269,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -295,10 +303,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -327,10 +337,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -359,10 +371,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -391,10 +405,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -423,10 +439,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -455,10 +473,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -487,10 +507,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -519,10 +541,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -551,10 +575,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -583,10 +609,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -615,10 +643,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -647,10 +677,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <WritingMode>Horizontal</WritingMode>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -1653,7 +1685,7 @@
         <DataSetName>AbnormityScrapDataSet</DataSetName>
         <Top>1.52612cm</Top>
         <Height>1.8cm</Height>
-        <Width>34.48409cm</Width>
+        <Width>22.12896cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1680,9 +1712,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.10583cm</Top>
-        <Left>16.20323cm</Left>
-        <Height>1.05833cm</Height>
+        <Top>0.32808cm</Top>
+        <Left>6.64679cm</Left>
+        <Height>0.89958cm</Height>
         <Width>7.59354cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1699,7 +1731,7 @@
     <Height>1.3095in</Height>
     <Style />
   </Body>
-  <Width>13.57641in</Width>
+  <Width>8.71219in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

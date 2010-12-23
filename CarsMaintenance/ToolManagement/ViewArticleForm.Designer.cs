@@ -122,7 +122,7 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.dataGridViewArticle);
             this.Name = "ViewArticleForm";
-            this.Text = "工艺标准管理";
+            this.Text = "公告管理";
             this.Load += new System.EventHandler(this.ViewArticleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticle)).EndInit();
             this.contextMenuStripArticle.ResumeLayout(false);

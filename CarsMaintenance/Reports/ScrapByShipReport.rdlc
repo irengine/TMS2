@@ -104,7 +104,7 @@
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=RowNumber(nothing)</Value>
+                                            <Value>=RowNumber("JobType")</Value>
                                             <Style />
                                           </TextRun>
                                         </TextRuns>
@@ -123,6 +123,7 @@
                                       <PaddingBottom>2pt</PaddingBottom>
                                     </Style>
                                   </Textbox>
+                                  <rd:Selected>true</rd:Selected>
                                 </CellContents>
                               </TablixCell>
                               <TablixCell>
@@ -1017,8 +1018,8 @@
         <DataSetName>ScrapByShipDataSet</DataSetName>
         <Top>1.5432cm</Top>
         <Left>0.01cm</Left>
-        <Height>3.67938cm</Height>
-        <Width>7.83854cm</Width>
+        <Height>3.67939cm</Height>
+        <Width>7.83857cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1061,7 +1062,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.05613in</Height>
+    <Height>2.05614in</Height>
     <Style />
   </Body>
   <Width>4.64404in</Width>

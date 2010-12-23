@@ -255,6 +255,10 @@ namespace CarsMaintenance
 				this.Show();
 
 			});
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.Reports.LandingForm), null);
+            });
 		}
 
 		private void _button_Click(object sender, EventArgs e)
@@ -544,6 +548,14 @@ namespace CarsMaintenance
             ExecuteActionHelper.ExecuteAction(delegate()
             {
                 FormsManager.OpenForm(typeof(CarsMaintenance.Reports.ToolInfoReport), null);
+            });
+        }
+
+        private void bt_Technics_Click(object sender, EventArgs e)
+        {
+            ExecuteActionHelper.ExecuteAction(delegate()
+            {
+                FormsManager.OpenForm(typeof(CarsMaintenance.ToolManagement.ViewTechnics), null);
             });
         }
 
