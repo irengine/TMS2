@@ -35,11 +35,11 @@ namespace CarsMaintenance.Reports
             foreach (Article a in query)
             {
                 if (i == 1)
-                    this.line1.Text = a.Subject;
+                    this.line1.Text ="1."+ a.Content;
                 else if (i == 2)
-                     this.line2.Text = a.Subject;
+                    this.line2.Text = "2." + a.Content;
                 else if (i == 3)
-                    this.line3.Text = a.Subject;
+                    this.line3.Text = "3." + a.Content;
 
                 i++;
             }
@@ -59,6 +59,7 @@ namespace CarsMaintenance.Reports
             lblTotal.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_RATED);
             lblStock.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_STOCK);
             lblOut.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_OUT);
+            lbScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_TOTAL_SCRAP);
 
             lblDay1Out.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY1_OUT, DateTime.Now.Day);
             lblDay2Out.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY2_OUT, DateTime.Now.Day);
@@ -68,6 +69,35 @@ namespace CarsMaintenance.Reports
             lblDayScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_DAY_SCRAP, DateTime.Now.Day);
             lblMonthScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_MONTH_SCRAP, DateTime.Now.Month);
             lblYearScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_YEAR_SCRAP, DateTime.Now.Year);
+
+            DataSet ds = SQLHelper.QueryLoginFormToTools();
+            for (int temp = 0; temp < ds.Tables[0].Rows.Count; temp++)
+            {
+                this.Gv_type.Columns.Add("name" + temp, ds.Tables[0].Rows[temp]["Name"].ToString());               
+            }
+            this.Gv_type.Rows.Add(4);          
+            for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
+            {
+                this.Gv_type.Rows[0].Cells[temp].Value = ds.Tables[0].Rows[temp]["RatedQuantity"].ToString()+" 件";
+            }
+            for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
+            {
+                this.Gv_type.Rows[1].Cells[temp].Value = ds.Tables[0].Rows[temp]["Quantity"].ToString() + " 件";
+            }
+            for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
+            {
+                this.Gv_type.Rows[2].Cells[temp].Value = ds.Tables[0].Rows[temp]["OutQuantity"].ToString() + " 件";
+            }
+            for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
+            {
+                this.Gv_type.Rows[3].Cells[temp].Value = ds.Tables[0].Rows[temp]["ScrapQuantity"].ToString() + " 件";
+            }
+        }
+
+        private void Currently_Time_Tick(object sender, EventArgs e)
+        {
+            this.Lb_Date.Text = System.DateTime.Now.Date.ToShortDateString();
+            this.Lb_Time.Text = System.DateTime.Now.ToLongTimeString();
         }
     }
 }

@@ -12,6 +12,17 @@ namespace CarsMaintenance.Common
 	{
 		private static string CONNECTION_NAME = "QueryConnectionString";
 
+
+        private static string sqlQueryLoginFormToTools = @"
+                           select Tc.Name,Sum(ti.Quantity) as Quantity,
+			                               Sum(ti.OutQuantity) as OutQuantity,
+			                               Sum(t.RatedQuantity) as RatedQuantity,
+			                               SUM(ti.ScrapQuantity) as ScrapQuantity
+                            from ToolCategory as tc
+                            inner join Tool as t on tc.ToolCategoryID=t.ToolCategoryID
+                            inner join ToolInventory as ti on ti.ToolID=t.ToolID 
+                            group by tc.Name";
+
 		private static string sqlOutboundOrder =
 						"select o.Code as OrderCode, o.OutboundDate as OrderDate, o.Version, " +
 								"o.Job, o.Berth, o.Machine, o.Ship, o.Hatch, o.Cargo, o.Quantity as lots, o.Process, " +
@@ -60,9 +71,9 @@ namespace CarsMaintenance.Common
 					Where Sod.ScrapQuantity>0 and  (So.ScrapDate between '{0}' and '{1}')
 						Group by So.CustomerID,u.Name,Pu.Name,summaryTotalPrice";
 		private static string sqlScrapByShip =
-					@"Select so.ScrapDate,o.JobType,o.Ship,SUM(sod.ScrapQuantity) as Quantity,SUM(sod.UnitPrice)as UnitPrice  from ScrapOrder as so 
+                    @"Select so.ScrapDate,o.JobType,o.Ship,SUM(sod.ScrapQuantity) as Quantity,SUM(sod.UnitPrice)as UnitPrice  from ScrapOrder as so 
 								inner join  ScrapOrderDetail as sod 
-									on so.OutboundOrderID=sod.ScrapOrderID
+									on so.ScrapOrderID=sod.ScrapOrderID
 									inner join OutboundOrder as o 
 									on so.OutboundOrderID=o.OutboundOrderID
 									 Where So.ScrapDate between '{0}' and '{1}'
@@ -159,6 +170,33 @@ namespace CarsMaintenance.Common
 											inner join Unit as pu on u.ParentUnitID= pu.UnitID
 											inner join OutboundOrder as o on o.OutboundOrderID=s.OutboundOrderID
 											inner join SystemUser as su on s.LastUpdatedBy=su.SystemUserID where sd.IsAbnormal!=0 AND (s.ScrapDate BETWEEN '{0}' AND '{1}')";
+
+
+
+        public static DataSet QueryLoginFormToTools()
+        {
+            DataSet dataSet = new DataSet();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[CONNECTION_NAME].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string sql =sqlQueryLoginFormToTools;
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, conn);
+                    dataAdapter.Fill(dataSet);
+                }
+                //catch (Exception e)
+                //{
+                //}
+                finally
+                {
+                    conn.Close();
+                }
+
+            }
+            return dataSet;
+        }
+
 
 		public static DataSet QueryAbnormityScrapReport(DateTime beginDate, DateTime endDate)
 		{
@@ -446,6 +484,7 @@ namespace CarsMaintenance.Common
 		public static string SQL_TOTAL_RATED = "SELECT SUM(RatedQuantity) FROM Tool";
 		public static string SQL_TOTAL_STOCK = "SELECT SUM(Quantity) FROM ToolInventory";
 		public static string SQL_TOTAL_OUT = "SELECT SUM(OutQuantity) FROM ToolInventory";
+        public static string SQL_TOTAL_SCRAP = "SELECT SUM(ScrapQuantity) FROM ToolInventory";
 
 		public static string QueryLandForm(string sql)
 		{

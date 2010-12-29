@@ -73,6 +73,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._openedFormsToolStrip = new System.Windows.Forms.ToolStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.bt_Technics = new System.Windows.Forms.Button();
             this._operationsTableLayoutPanel.SuspendLayout();
             this._mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -81,24 +82,23 @@
             // 
             this._operationsTableLayoutPanel.ColumnCount = 1;
             this._operationsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._operationsTableLayoutPanel.Controls.Add(this.btnViewRepairOrderForm, 0, 4);
-            this._operationsTableLayoutPanel.Controls.Add(this.btnViewScrapOrderForm, 0, 3);
-            this._operationsTableLayoutPanel.Controls.Add(this.btnViewOutboundOrderForm, 0, 2);
-            this._operationsTableLayoutPanel.Controls.Add(this.btnViewToolInventoryForm, 0, 1);
+            this._operationsTableLayoutPanel.Controls.Add(this.btnViewRepairOrderForm, 0, 5);
+            this._operationsTableLayoutPanel.Controls.Add(this.btnViewScrapOrderForm, 0, 4);
+            this._operationsTableLayoutPanel.Controls.Add(this.btnViewOutboundOrderForm, 0, 3);
+            this._operationsTableLayoutPanel.Controls.Add(this.btnViewToolInventoryForm, 0, 2);
             this._operationsTableLayoutPanel.Controls.Add(this.btnLandingForm, 0, 0);
+            this._operationsTableLayoutPanel.Controls.Add(this.bt_Technics, 0, 1);
             this._operationsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this._operationsTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
             this._operationsTableLayoutPanel.Name = "_operationsTableLayoutPanel";
-            this._operationsTableLayoutPanel.RowCount = 6;
+            this._operationsTableLayoutPanel.RowCount = 7;
+            this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this._operationsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this._operationsTableLayoutPanel.Size = new System.Drawing.Size(100, 497);
             this._operationsTableLayoutPanel.TabIndex = 1;
             // 
@@ -106,7 +106,7 @@
             // 
             this.btnViewRepairOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnViewRepairOrderForm.Enabled = false;
-            this.btnViewRepairOrderForm.Location = new System.Drawing.Point(3, 371);
+            this.btnViewRepairOrderForm.Location = new System.Drawing.Point(3, 463);
             this.btnViewRepairOrderForm.Name = "btnViewRepairOrderForm";
             this.btnViewRepairOrderForm.Size = new System.Drawing.Size(94, 86);
             this.btnViewRepairOrderForm.TabIndex = 7;
@@ -120,7 +120,7 @@
             // 
             this.btnViewScrapOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnViewScrapOrderForm.Enabled = false;
-            this.btnViewScrapOrderForm.Location = new System.Drawing.Point(3, 279);
+            this.btnViewScrapOrderForm.Location = new System.Drawing.Point(3, 371);
             this.btnViewScrapOrderForm.Name = "btnViewScrapOrderForm";
             this.btnViewScrapOrderForm.Size = new System.Drawing.Size(94, 86);
             this.btnViewScrapOrderForm.TabIndex = 6;
@@ -134,7 +134,7 @@
             // 
             this.btnViewOutboundOrderForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnViewOutboundOrderForm.Enabled = false;
-            this.btnViewOutboundOrderForm.Location = new System.Drawing.Point(3, 187);
+            this.btnViewOutboundOrderForm.Location = new System.Drawing.Point(3, 279);
             this.btnViewOutboundOrderForm.Name = "btnViewOutboundOrderForm";
             this.btnViewOutboundOrderForm.Size = new System.Drawing.Size(94, 86);
             this.btnViewOutboundOrderForm.TabIndex = 5;
@@ -148,7 +148,7 @@
             // 
             this.btnViewToolInventoryForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnViewToolInventoryForm.Enabled = false;
-            this.btnViewToolInventoryForm.Location = new System.Drawing.Point(3, 95);
+            this.btnViewToolInventoryForm.Location = new System.Drawing.Point(3, 187);
             this.btnViewToolInventoryForm.Name = "btnViewToolInventoryForm";
             this.btnViewToolInventoryForm.Size = new System.Drawing.Size(94, 86);
             this.btnViewToolInventoryForm.TabIndex = 4;
@@ -267,7 +267,7 @@
             this.articleToolStripMenuItem.Enabled = false;
             this.articleToolStripMenuItem.Name = "articleToolStripMenuItem";
             this.articleToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.articleToolStripMenuItem.Text = "工艺标准管理";
+            this.articleToolStripMenuItem.Text = "公告管理";
             this.articleToolStripMenuItem.Click += new System.EventHandler(this.articleToolStripMenuItem_Click);
             // 
             // businessToolStripMenuItem
@@ -361,7 +361,7 @@
             // viewInventoryToolStripMenuItem
             // 
             this.viewInventoryToolStripMenuItem.Name = "viewInventoryToolStripMenuItem";
-            this.viewInventoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewInventoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.viewInventoryToolStripMenuItem.Text = "即时库存";
             this.viewInventoryToolStripMenuItem.Visible = false;
             // 
@@ -369,26 +369,26 @@
             // 
             this.BarcodeReportToolStripMenuItem.Enabled = false;
             this.BarcodeReportToolStripMenuItem.Name = "BarcodeReportToolStripMenuItem";
-            this.BarcodeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.BarcodeReportToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.BarcodeReportToolStripMenuItem.Text = "条码本";
             this.BarcodeReportToolStripMenuItem.Click += new System.EventHandler(this.BarcodeReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
             // 
             // OrderSummaryReportToolStripMenuItem
             // 
             this.OrderSummaryReportToolStripMenuItem.Name = "OrderSummaryReportToolStripMenuItem";
-            this.OrderSummaryReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OrderSummaryReportToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.OrderSummaryReportToolStripMenuItem.Text = "工属具借用表";
             this.OrderSummaryReportToolStripMenuItem.Click += new System.EventHandler(this.OrderSummaryReportToolStripMenuItem_Click);
             // 
             // ToolInfoMenu
             // 
             this.ToolInfoMenu.Name = "ToolInfoMenu";
-            this.ToolInfoMenu.Size = new System.Drawing.Size(152, 22);
+            this.ToolInfoMenu.Size = new System.Drawing.Size(142, 22);
             this.ToolInfoMenu.Text = "工属具明细";
             this.ToolInfoMenu.Click += new System.EventHandler(this.ToolInfoMenu_Click);
             // 
@@ -401,56 +401,56 @@
             this.ScrapByShipMenu,
             this.ScrapByColligateMenu});
             this.ScrapReportMune.Name = "ScrapReportMune";
-            this.ScrapReportMune.Size = new System.Drawing.Size(152, 22);
+            this.ScrapReportMune.Size = new System.Drawing.Size(142, 22);
             this.ScrapReportMune.Text = "工属具消耗表";
             this.ScrapReportMune.Click += new System.EventHandler(this.ScrapReportMune_Click);
             // 
             // ScrapByAbnormality
             // 
             this.ScrapByAbnormality.Name = "ScrapByAbnormality";
-            this.ScrapByAbnormality.Size = new System.Drawing.Size(152, 22);
+            this.ScrapByAbnormality.Size = new System.Drawing.Size(130, 22);
             this.ScrapByAbnormality.Text = "非正常损坏";
             this.ScrapByAbnormality.Click += new System.EventHandler(this.ScrapByAbnormality_Click);
             // 
             // ScrapByCategoryMenu
             // 
             this.ScrapByCategoryMenu.Name = "ScrapByCategoryMenu";
-            this.ScrapByCategoryMenu.Size = new System.Drawing.Size(152, 22);
+            this.ScrapByCategoryMenu.Size = new System.Drawing.Size(130, 22);
             this.ScrapByCategoryMenu.Text = "按类型";
             this.ScrapByCategoryMenu.Click += new System.EventHandler(this.ScrapByCategoryMenu_Click);
             // 
             // ScrapByUnitMenu
             // 
             this.ScrapByUnitMenu.Name = "ScrapByUnitMenu";
-            this.ScrapByUnitMenu.Size = new System.Drawing.Size(152, 22);
+            this.ScrapByUnitMenu.Size = new System.Drawing.Size(130, 22);
             this.ScrapByUnitMenu.Text = "按班组";
             this.ScrapByUnitMenu.Click += new System.EventHandler(this.ScrapByUnitMenu_Click);
             // 
             // ScrapByShipMenu
             // 
             this.ScrapByShipMenu.Name = "ScrapByShipMenu";
-            this.ScrapByShipMenu.Size = new System.Drawing.Size(152, 22);
+            this.ScrapByShipMenu.Size = new System.Drawing.Size(130, 22);
             this.ScrapByShipMenu.Text = "按船名";
             this.ScrapByShipMenu.Click += new System.EventHandler(this.ScrapByShipMenu_Click);
             // 
             // ScrapByColligateMenu
             // 
             this.ScrapByColligateMenu.Name = "ScrapByColligateMenu";
-            this.ScrapByColligateMenu.Size = new System.Drawing.Size(152, 22);
+            this.ScrapByColligateMenu.Size = new System.Drawing.Size(130, 22);
             this.ScrapByColligateMenu.Text = "综合分析";
             this.ScrapByColligateMenu.Click += new System.EventHandler(this.ScrapByColligateMenu_Click);
             // 
             // OutToolMenu
             // 
             this.OutToolMenu.Name = "OutToolMenu";
-            this.OutToolMenu.Size = new System.Drawing.Size(152, 22);
+            this.OutToolMenu.Size = new System.Drawing.Size(142, 22);
             this.OutToolMenu.Text = "外借工具总览";
             this.OutToolMenu.Click += new System.EventHandler(this.OutToolMenu_Click);
             // 
             // ScrapAdvanceMenu
             // 
             this.ScrapAdvanceMenu.Name = "ScrapAdvanceMenu";
-            this.ScrapAdvanceMenu.Size = new System.Drawing.Size(152, 22);
+            this.ScrapAdvanceMenu.Size = new System.Drawing.Size(142, 22);
             this.ScrapAdvanceMenu.Text = "预报废总览";
             this.ScrapAdvanceMenu.Click += new System.EventHandler(this.ScrapAdvanceMenu_Click);
             // 
@@ -485,6 +485,17 @@
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStripMain";
             // 
+            // bt_Technics
+            // 
+            this.bt_Technics.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bt_Technics.Location = new System.Drawing.Point(3, 95);
+            this.bt_Technics.Name = "bt_Technics";
+            this.bt_Technics.Size = new System.Drawing.Size(94, 86);
+            this.bt_Technics.TabIndex = 8;
+            this.bt_Technics.Text = "工艺标准";
+            this.bt_Technics.UseVisualStyleBackColor = true;
+            this.bt_Technics.Click += new System.EventHandler(this.bt_Technics_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -498,7 +509,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this._mainMenuStrip;
             this.Name = "MainForm";
-            this.Text = "工属具管理系统";
+            this.Text = "上港集团军工路分公司工属具管理应用系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this._operationsTableLayoutPanel.ResumeLayout(false);
@@ -555,6 +566,7 @@
         private System.Windows.Forms.ToolStripMenuItem OutToolMenu;
         private System.Windows.Forms.ToolStripMenuItem ToolInfoMenu;
         private System.Windows.Forms.ToolStripMenuItem ScrapAdvanceMenu;
+        private System.Windows.Forms.Button bt_Technics;
 	}
 }
 

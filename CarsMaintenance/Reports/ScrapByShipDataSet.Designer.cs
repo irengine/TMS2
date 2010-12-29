@@ -900,7 +900,7 @@ namespace CarsMaintenance.Reports.ScrapByShipDataSetTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"Select so.ScrapDate,o.JobType,o.Ship,SUM(sod.ScrapQuantity) as Quantity,SUM(sod.UnitPrice)as UnitPrice  from ScrapOrder as so 
 inner join  ScrapOrderDetail as sod 
- on so.OutboundOrderID=sod.ScrapOrderID
+ on so.ScrapOrderID=sod.ScrapOrderID
  inner join OutboundOrder as o 
  on so.OutboundOrderID=o.OutboundOrderID
  Group by o.Ship,so.ScrapDate,o.JobType

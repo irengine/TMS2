@@ -344,6 +344,12 @@
     <Compile Include="ToolManagement\ViewArticleForm.Designer.cs">
       <DependentUpon>ViewArticleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToolManagement\ViewTechnics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolManagement\ViewTechnics.Designer.cs">
+      <DependentUpon>ViewTechnics.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToolManagement\ViewToolInventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ViewArticleForm.resx">
       <DependentUpon>ViewArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolManagement\ViewTechnics.resx">
+      <DependentUpon>ViewTechnics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToolManagement\ViewToolInventoryForm.resx">
       <DependentUpon>ViewToolInventoryForm.cs</DependentUpon>

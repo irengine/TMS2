@@ -276,7 +276,10 @@ namespace CarsMaintenance.OrderManagement
                         item.Balance = quantity;
                         item.UnitPrice = t.ToolInventory.UnitPrice;
                         item.OutboundDate = CurrentOrder.LastUpdateTime;
-                        item.Description = dgvr.Cells["Description"].Value.ToString();
+                        if (dgvr.Cells["Description"] != null && dgvr.Cells["Description"].Value != null)
+                            item.Description = dgvr.Cells["Description"].Value.ToString();
+                        else
+                            item.Description = "";
                         CurrentOrder.Items.Add(item);
 
                         OrderManager.Lend(CurrentOrder, item);
