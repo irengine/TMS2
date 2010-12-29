@@ -514,6 +514,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram.cd" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -695,7 +696,6 @@
     <None Include="Images\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ClassDiagram.cd" />
     <None Include="Common\Validation\ClassDiagram.cd" />
     <None Include="Common\ClassDiagram.cd" />
   </ItemGroup>

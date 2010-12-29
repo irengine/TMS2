@@ -1,60 +1,604 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CarsMaintenance.CreateCarsFleetSpotChecksMaintenanceForm" Collapsed="true">
-    <Position X="0.5" Y="3.25" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AQBoAAAAACAACIAAAADgAAAGAYAAEAAAAAAQAAAAABA=</HashCode>
-      <FileName>CarMaintenanceManagement\CreateCarsFleetSpotChecksMaintenanceForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CarsMaintenance.ManageCarMaintenanceForm" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AEABAAAACCAQAIAIAACgABCGAJAEAAAAAQAQIAQoABA=</HashCode>
-      <FileName>CarMaintenanceManagement\ManageCarMaintenanceForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CarsMaintenance.ViewCarMaintenancesForm" Collapsed="true">
-    <Position X="3.25" Y="1.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AABAYACQASQYAACBAgGQAgACCDEgAEAERAghIAACQkQ=</HashCode>
-      <FileName>CarMaintenanceManagement\ViewCarMaintenancesForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CarsMaintenance.ManageCarForm" Collapsed="true">
-    <Position X="4.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QUABAABACCAQAIgAAACgQACGApCAAIQAAAAQIIAAABI=</HashCode>
-      <FileName>CarManagement\ManageCarForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CarsMaintenance.ViewCarsDetailsForm" Collapsed="true">
-    <Position X="6" Y="1.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>KICAAAGKACiQAABAQACRGABigSIARDAQiAAAAQUEAgQ=</HashCode>
-      <FileName>CarManagement\ViewCarsDetailsForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="CarsMaintenance.BaseForm" Collapsed="true">
-    <Position X="3.25" Y="0.5" Width="1.5" />
+    <Position X="29.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAQAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAA0AAICAQAAQAgACACAACAAAAAAAAAQABAAAAAAA=</HashCode>
       <FileName>Common\BaseForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CarsMaintenance.MainForm" Collapsed="true">
-    <Position X="3.25" Y="5" Width="1.5" />
+  <Class Name="CarsMaintenance.FormsManager" Collapsed="true">
+    <Position X="65" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAEAACCAAQAAAQCCEAACACAAAAAQAgABCgIAAAA=</HashCode>
+      <HashCode>AAAAIIUgAAAAIAAIAEBAgARAoQAAABAAAAAAAAAQAAA=</HashCode>
+      <FileName>Common\FormsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.LoginForm" Collapsed="true">
+    <Position X="72" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABAAgCAAABEAAACAAIACAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.MainForm" Collapsed="true">
+    <Position X="73.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CsQg7l+A4DITAQIEgQiKGAISBqGCA4OKEwAhqxIACoE=</HashCode>
       <FileName>MainForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CarsMaintenance.CarMaintenanceReportForm" Collapsed="true">
-    <Position X="6.5" Y="3.25" Width="2.25" />
+  <Class Name="CarsMaintenance.Program" Collapsed="true">
+    <Position X="72" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAACgEAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Reports\CarMaintenanceReportForm.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Font Name="Segoe UI" Size="9" />
+  <Class Name="CarsMaintenance.Common.ExecuteActionHelper" Collapsed="true">
+    <Position X="63.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Common\ExecuteActionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Common.SQLHelper" Collapsed="true">
+    <Position X="65" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MUAQAAAAhAAQAkRAgBAAwBCQEAQABCABIAQEAAgDAIA=</HashCode>
+      <FileName>Common\SQLHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Common.SystemHelper" Collapsed="true">
+    <Position X="66.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAEIACAAAAEAgCAMCAAAEQAAAAAggAAAAAAAA=</HashCode>
+      <FileName>Common\SystemHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Common.Sorting.PropertyComparer&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="73.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAIABAAAAAAAAAAAAIAIAAABBAAAAAAA=</HashCode>
+      <FileName>Common\Sorting\PropertyComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Sorting.SortableBindingList&lt;T&gt;" Collapsed="true">
+    <Position X="63.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgAAAAAAAEABgAAAACBAAAEIAAgAAAABAAAAEAA=</HashCode>
+      <FileName>Common\Sorting\SortableBindingList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.DecimalValidator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\DecimalValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.GridEmptyVaildator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="66.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\GridEmptyVaildator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.IntValidator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="68.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\IntValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.JobTypeValidData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Common\Validation\JobTypeValidData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.ParentCodeValidator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="70.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\ParentCodeValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.RequiredValidator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="61.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\RequiredValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CarsMaintenance.Common.Validation.ValidationManager" Collapsed="true">
+    <Position X="66.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Common\Validation\ValidationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.CreateInboundOrderForm" Collapsed="true">
+    <Position X="52.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUKCAhICAYCKAB0AihABACAJAAEgrAIAASoEIAABY=</HashCode>
+      <FileName>OrderManagement\CreateInboundOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.CreateOutboundOrderForm" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQIUIeEBMCAwCOIAEBKgBBI7IJDIIgKCoAAyKgIQGlQ=</HashCode>
+      <FileName>OrderManagement\CreateOutboundOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.CreatePurchaseOrderForm" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACARAIAAAACgICAiAJIYEAJACAASoAIAgBA=</HashCode>
+      <FileName>OrderManagement\CreatePurchaseOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.CreateRepairOrderForm" Collapsed="true">
+    <Position X="72" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAMICABICgQCKAAgICgABAKIJCAIAIAIAASoWIAEBQ=</HashCode>
+      <FileName>OrderManagement\CreateRepairOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.CreateScrapOrderForm" Collapsed="true">
+    <Position X="73.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEqiABICgQCKAAgACgABCKIJDAIAMAIAASoGIAEBQ=</HashCode>
+      <FileName>OrderManagement\CreateScrapOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.OrderManager" Collapsed="true">
+    <Position X="68.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAEAAAAAIAAAAAAQAACAAAAAAAAAIECAAAAI=</HashCode>
+      <FileName>OrderManagement\OrderManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.ViewOutboundOrderForm" Collapsed="true">
+    <Position X="27.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IsAAAmECISbQAAAAgIDUCgBKAAYAAUoEAEEiGAAIABQ=</HashCode>
+      <FileName>OrderManagement\ViewOutboundOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.ViewRepairOrderForm" Collapsed="true">
+    <Position X="36.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkQAIkEEICIQgAEQgICACCACAAQABEsFAAIACAAJIBA=</HashCode>
+      <FileName>OrderManagement\ViewRepairOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.OrderManagement.ViewScrapOrderForm" Collapsed="true">
+    <Position X="43.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEIECkEIICIQAAAAoICICCKCCAAAAEsEAAIBiGAMAJI=</HashCode>
+      <FileName>OrderManagement\ViewScrapOrderForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Properties.Resources" Collapsed="true">
+    <Position X="63.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAACAABBEAAAAQAAAAAAAAAQAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Properties.Settings" Collapsed="true">
+    <Position X="61.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAIAAAAAABAAAACAAAAIAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.AbnormityScrapDataSet" Collapsed="true">
+    <Position X="63.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABCAAQABAAAgCQBggAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.AbnormityScrapReport" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAEAAACAEAAAAAICAAAACAAAAAAgkAAAACAAIAAA=</HashCode>
+      <FileName>Reports\AbnormityScrapReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.BarcodeReport" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAACAAAAAAAAGAAAACAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reports\BarcodeReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColliagteReport" Collapsed="true">
+    <Position X="18.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAAECAACEEAAAAQICAAAACAAAAAAgEAAAACAAIAAA=</HashCode>
+      <FileName>Reports\ColliagteReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColligateDataSet" Collapsed="true">
+    <Position X="68.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAwAAAAJABAAAQCAkAAgCSBgBAAEAAAUABJA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.LandingForm" Collapsed="true">
+    <Position X="29.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACAYABIAAAGEAQECAACAAABIBSIhIAAAASA=</HashCode>
+      <FileName>Reports\LandingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutBoundOrderByUintReport" Collapsed="true">
+    <Position X="38.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAACAEAAAAAICAAAgCAAAAAAiEAAAACAAIAAA=</HashCode>
+      <FileName>Reports\OutBoundOrderByUintReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderByUnitDataSet" Collapsed="true">
+    <Position X="72" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAwAAAAJABAAAQAAAAAgCQBgAAAAAAAEAJDA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderDataSet" Collapsed="true">
+    <Position X="73.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABAAAQAAAAAgCQBiCABAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderReport" Collapsed="true">
+    <Position X="54.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAEgAAAAACAAAACAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Reports\OutboundOrderReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundSummaryDataSet" Collapsed="true">
+    <Position X="65" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAALEBAAAQAAAAAgCQBgAAAAAIAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundSummaryReport" Collapsed="true">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAACAEQAAAAICAAAACAAAAAAgEAAAACAAJAAA=</HashCode>
+      <FileName>Reports\OutboundSummaryReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundToolDataSet" Collapsed="true">
+    <Position X="68.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABAAAQAAAAAgCQBiCABAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByShipDataSet" Collapsed="true">
+    <Position X="65" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQwAAAAJABAABQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByShipReport" Collapsed="true">
+    <Position X="23" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEAEAAACAEAAAgAICAAAACAAAAAAgEAAAACAAIAAA=</HashCode>
+      <FileName>Reports\ScrapByShipReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByUintReport" Collapsed="true">
+    <Position X="32" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAIACAEAAAAAICAAAACAAAAAAgEAAAACIAIAAA=</HashCode>
+      <FileName>Reports\ScrapByUintReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByUnitDataSet" Collapsed="true">
+    <Position X="68.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAAAwAAAAJABAAAQAAAAAoCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapDataSet" Collapsed="true">
+    <Position X="70.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABAACQAAAAAgCQBgAAAAAAAECBFA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapReport" Collapsed="true">
+    <Position X="47.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAICAEAAAAAICAAAACAAAAAAgEAEAACAAIAAA=</HashCode>
+      <FileName>Reports\ScrapReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolDataSet" Collapsed="true">
+    <Position X="73.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwABAAJABAAAQAAAACgCQBoAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolInfoDataSet" Collapsed="true">
+    <Position X="63.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAAAJABAAAQAAAAAwCQBgAQAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolInfoReport" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAACAEABAAEICAAIACAAAAAggGAAAACAAIAAA=</HashCode>
+      <FileName>Reports\ToolInfoReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolReport" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAEAAACAEABAAAACAAAACAAABAAAEAAgAKAAIAAA=</HashCode>
+      <FileName>Reports\ToolReport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.AbnormityScrapDataSetTableAdapters.AbnormityDataSetTableAdapter" Collapsed="true">
+    <Position X="61.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.AbnormityScrapDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="61.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColligateDataSetTableAdapters.ColligateByJobTypeTableAdapter" Collapsed="true">
+    <Position X="66.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColligateDataSetTableAdapters.ColligateByJobPositionTableAdapter" Collapsed="true">
+    <Position X="65" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColligateDataSetTableAdapters.CooligateByUnitNameTableAdapter" Collapsed="true">
+    <Position X="70.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ColligateDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="70.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderByUnitDataSetTableAdapters.OutboundOrderByUintTableAdapter" Collapsed="true">
+    <Position X="70.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderByUnitDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="65" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderDataSetTableAdapters.OutboundOrderTableAdapter" Collapsed="true">
+    <Position X="63.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundOrderDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="66.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundSummaryDataSetTableAdapters.OutboundSummaryTableAdapter" Collapsed="true">
+    <Position X="66.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundSummaryDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="63.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundToolDataSetTableAdapters.OutboundOrderTableAdapter" Collapsed="true">
+    <Position X="61.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.OutboundToolDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="72" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBABAAMAAgAAACgAAAAAQABAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByShipDataSetTableAdapters.ScrapByShipTableAdapter" Collapsed="true">
+    <Position X="66.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByShipDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="68.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByUnitDataSetTableAdapters.ScrapOrderByUintTableAdapter" Collapsed="true">
+    <Position X="73.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapByUnitDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="68.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapDataSetTableAdapters.ScrapInfoTableAdapter" Collapsed="true">
+    <Position X="72" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ScrapDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="73.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolDataSetTableAdapters.ToolDataSetTableAdapter" Collapsed="true">
+    <Position X="61.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="72" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolInfoDataSetTableAdapters.ToolInfoDatasetTableAdapter" Collapsed="true">
+    <Position X="65" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.Reports.ToolInfoDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="70.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageArticleForm" Collapsed="true">
+    <Position X="61.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAACACAQAIAAAAChAAASIJAAAAAAEAAQICAAABA=</HashCode>
+      <FileName>ToolManagement\ManageArticleForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageSupplyForm" Collapsed="true">
+    <Position X="50" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAAAAAACAQAIAAAACgAAACAJAAEAJAAAAQICAAABQ=</HashCode>
+      <FileName>ToolManagement\ManageSupplyForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageToolCategoryForm" Collapsed="true">
+    <Position X="56.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAACAQAIAAAACgCAACAJAAAAIAAAASIAAgABQ=</HashCode>
+      <FileName>ToolManagement\ManageToolCategoryForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageToolForm" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAKAAAiAQIIEAADigAAgLAJAAEANAAABQIIQAAJQ=</HashCode>
+      <FileName>ToolManagement\ManageToolForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageToolGroupForm" Collapsed="true">
+    <Position X="65" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEIKABIiAQAKEAADigABgLAJAAEANAIABQIIQAAJQ=</HashCode>
+      <FileName>ToolManagement\ManageToolGroupForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ManageUnitForm" Collapsed="true">
+    <Position X="66.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASAAAAAAAKAQAIAAAACgAAACAJAAEAJAIIAQKAAAABQ=</HashCode>
+      <FileName>ToolManagement\ManageUnitForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ViewArticleForm" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAgAgIDAQAAAAiFCQAAACAAEAIAACACAAkAAAAEA=</HashCode>
+      <FileName>ToolManagement\ViewArticleForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ViewSupplyForm" Collapsed="true">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAgAgICAQAKAAgECgAAICAAEAIAACACkAsAgEAAA=</HashCode>
+      <FileName>ToolManagement\ViewSupplyForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ViewToolCategoryForm" Collapsed="true">
+    <Position X="34.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQxhIgksJCBwAGAAggCSASBaAERgISABQCCBkAoIAIE=</HashCode>
+      <FileName>ToolManagement\ViewToolCategoryForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ViewToolInventoryForm" Collapsed="true">
+    <Position X="41" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAmAAICIQAAAAgQCAAAAKAAAABAIAAAAACACIAAA=</HashCode>
+      <FileName>ToolManagement\ViewToolInventoryForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.ToolManagement.ViewUnitForm" Collapsed="true">
+    <Position X="45.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAkICAQgAAAAACAIEAGAAUAIAACgCBAkAgKCAA=</HashCode>
+      <FileName>ToolManagement\ViewUnitForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.UserManagement.ManageSystemUserForm" Collapsed="true">
+    <Position X="63.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQgAAAAAACAQAIAAAAigACACAJAYABIAAgAQIAAgABQ=</HashCode>
+      <FileName>UserManagement\ManageSystemUserForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarsMaintenance.UserManagement.ViewSystemUserForm" Collapsed="true">
+    <Position X="59" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgYAEgAgICAQAAAgAACAAAACAgUAIAECACABmAgAAAg=</HashCode>
+      <FileName>UserManagement\ViewSystemUserForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CarsMaintenance.Common.Validation.IValidator" Collapsed="true">
+    <Position X="61.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Validation\IValidator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="CarsMaintenance.Common.ExecuteActionDelegate" Collapsed="true">
+    <Position X="61.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\ExecuteActionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Microsoft YaHei" Size="9" />
 </ClassDiagram>
