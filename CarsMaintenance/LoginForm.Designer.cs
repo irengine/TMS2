@@ -114,7 +114,7 @@
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "工属具管理系统";
+            this.Text = "上港集团军工路分公司工属具管理应用系统";
             this.ResumeLayout(false);
             this.PerformLayout();
 
