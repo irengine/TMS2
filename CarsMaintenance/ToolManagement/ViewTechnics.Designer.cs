@@ -53,8 +53,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.10204F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.89796F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.Controls.Add(this.FileList, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ExplorerTree, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -72,9 +72,9 @@
             this.FileList.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FileList.GridLines = true;
             this.FileList.LargeImageList = this.image2;
-            this.FileList.Location = new System.Drawing.Point(114, 3);
+            this.FileList.Location = new System.Drawing.Point(150, 3);
             this.FileList.Name = "FileList";
-            this.FileList.Size = new System.Drawing.Size(618, 445);
+            this.FileList.Size = new System.Drawing.Size(582, 445);
             this.FileList.SmallImageList = this.image2;
             this.FileList.StateImageList = this.image2;
             this.FileList.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.ExplorerTree.Location = new System.Drawing.Point(3, 3);
             this.ExplorerTree.Name = "ExplorerTree";
             this.ExplorerTree.SelectedImageIndex = 0;
-            this.ExplorerTree.Size = new System.Drawing.Size(105, 445);
+            this.ExplorerTree.Size = new System.Drawing.Size(141, 445);
             this.ExplorerTree.TabIndex = 2;
             this.ExplorerTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ExplorerTree_NodeMouseClick);
             // 
