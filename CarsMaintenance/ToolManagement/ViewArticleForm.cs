@@ -48,6 +48,7 @@ namespace CarsMaintenance.ToolManagement
         private void LoadData()
         {
             var query = from s in SystemHelper.TMSContext.Articles
+                        where s.Deleted==false
                         orderby s.ArticleID
                         select s;
 
