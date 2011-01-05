@@ -85,10 +85,17 @@ namespace CarsMaintenance.ToolManagement
 
         private void FileList_DoubleClick(object sender, EventArgs e)
         {
-            if (FileList.SelectedIndices.Count > 0)
-            {             
-                Process openProcess = Process.Start(FileList.SelectedItems[0].Tag.ToString());
-                openProcess.WaitForExit();
+            try
+            {
+                if (FileList.SelectedIndices.Count > 0)
+                {
+                    Process openProcess = Process.Start(FileList.SelectedItems[0].Tag.ToString());
+                    openProcess.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("请安装PDF阅读工具。");
             }
         }
     }

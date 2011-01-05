@@ -48,6 +48,7 @@ namespace CarsMaintenance.ToolManagement
         private void LoadData()
         {
             var query = from s in SystemHelper.TMSContext.Articles
+                        where s.Deleted==false
                         orderby s.ArticleID
                         select s;
 
@@ -63,13 +64,13 @@ namespace CarsMaintenance.ToolManagement
         {
             if (dataGridViewArticle.SelectedRows.Count == 0)
             {
-                MessageBox.Show("请选择工艺标准!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("请选择公告!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return null;
             }
             int id;
             if (!int.TryParse(Convert.ToString(dataGridViewArticle.SelectedRows[0].Cells[0].Value), out id))
             {
-                MessageBox.Show("请重新选择工艺标准!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("请重新选择公告!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return null;
             }
 
@@ -106,7 +107,7 @@ namespace CarsMaintenance.ToolManagement
         {
             Article u = GetSelectedArticle();
 
-            if (u != null && MessageBox.Show("请确定是否删除工艺标准?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (u != null && MessageBox.Show("请确定是否删除公告?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (CarsMaintenance.Properties.Settings.Default.DeleteFlag)
                 {

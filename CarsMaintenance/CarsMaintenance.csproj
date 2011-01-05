@@ -700,6 +700,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Images\1.jpg" />
     <Content Include="Reports\tip.jpg" />
     <None Include="Resources\Login.tif" />
     <None Include="Images\Logo.png">

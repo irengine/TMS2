@@ -71,6 +71,12 @@ namespace CarsMaintenance.ToolManagement
                     return;
                 }
 
+                if (this.txtCode.Text.IndexOf('-') >= 0)
+                {
+                    MessageBox.Show("组织编码内不能包含有'-'符号！", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    return;
+                }
+
                 CurrentUnit.Code = txtCode.Text;
                 CurrentUnit.Name = txtName.Text;
                 CurrentUnit.Comment = txtComment.Text;

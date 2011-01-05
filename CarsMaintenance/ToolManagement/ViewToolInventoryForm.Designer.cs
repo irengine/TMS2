@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.contextMenuStripToolInventory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemPurchaseOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
@@ -79,12 +82,33 @@
             this.dataGridViewToolInventory.AllowUserToAddRows = false;
             this.dataGridViewToolInventory.AllowUserToDeleteRows = false;
             this.dataGridViewToolInventory.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewToolInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewToolInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToolInventory.ContextMenuStrip = this.contextMenuStripToolInventory;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewToolInventory.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewToolInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewToolInventory.Location = new System.Drawing.Point(3, 63);
             this.dataGridViewToolInventory.Name = "dataGridViewToolInventory";
             this.dataGridViewToolInventory.ReadOnly = true;
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewToolInventory.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewToolInventory.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dataGridViewToolInventory.RowTemplate.Height = 23;
             this.dataGridViewToolInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewToolInventory.Size = new System.Drawing.Size(744, 404);

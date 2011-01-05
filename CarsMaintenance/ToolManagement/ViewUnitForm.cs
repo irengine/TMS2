@@ -31,7 +31,7 @@ namespace CarsMaintenance.ToolManagement
         private void LoadData()
         {
             var parentQuery = from u in SystemHelper.TMSContext.Units
-                              where u.ParentUnit == null
+                              where u.ParentUnit == null && u.Deleted==false
                               orderby u.InternalCode
                               select u;
             try
@@ -64,10 +64,13 @@ namespace CarsMaintenance.ToolManagement
         {
             foreach (Unit u in parentUnit.ChildUnits)
             {
-                TreeNode n = new TreeNode(u.Code + "-" + u.Name);
-                parentNode.Nodes.Add(n);
+                if (!u.Deleted)
+                {
+                    TreeNode n = new TreeNode(u.Code + "-" + u.Name);
+                    parentNode.Nodes.Add(n);
 
-                AddNode(n, u);
+                    AddNode(n, u);
+                }
             }
         }
 
@@ -81,7 +84,7 @@ namespace CarsMaintenance.ToolManagement
             string unitCode = GetSelectedUnitCode();
 
             var childQuery = from u in SystemHelper.TMSContext.Units
-                             where u.ParentUnit.Code == unitCode
+                             where u.ParentUnit.Code == unitCode && u.Deleted==false
                              orderby u.Code
                              select u;
 
@@ -135,6 +138,15 @@ namespace CarsMaintenance.ToolManagement
 
             if (u != null && MessageBox.Show("请确定是否删除组织?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+
+                var queryUnit = from pus in SystemHelper.TMSContext.Units where pus.ParentUnitID == u.UnitID select pus.UnitID;
+                if (queryUnit.ToList().Count > 0)
+                {
+                    MessageBox.Show("对不起!不能删除该组织，因为该组织还有下级组织！",this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                                    
+
                 if (CarsMaintenance.Properties.Settings.Default.DeleteFlag)
                 {
                     SystemHelper.TMSContext.DeleteObject(u);

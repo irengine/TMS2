@@ -73,34 +73,62 @@ namespace CarsMaintenance.ToolManagement
             column.Width = 150;
             dataGridViewToolInventory.Columns.Add(column);
 
+            DataGridViewCellStyle dsc=new DataGridViewCellStyle();
+            dsc.Format = "n0";
+            column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "RatedQuantity";
+            column.Name = "额定数";
+            column.Width = 80;
+            column.DefaultCellStyle = dsc;
+            dataGridViewToolInventory.Columns.Add(column);
+
+            column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "DoQuantity";
+            column.Name = "可用数";
+            column.Width = 80;
+            column.DefaultCellStyle = dsc;
+            dataGridViewToolInventory.Columns.Add(column);
+
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "Quantity";
-            column.Name = "数量";
-            column.Width = 60;
+            column.Name = "在库数";
+            column.Width = 80;
+            column.DefaultCellStyle = dsc;
             dataGridViewToolInventory.Columns.Add(column);
+
+            column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "RenewQuantity";
+            column.Name = "补充数";
+            column.Width = 80;
+            column.DefaultCellStyle = dsc;
+            dataGridViewToolInventory.Columns.Add(column);          
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "OutQuantity";
             column.Name = "外借数";
             column.Width = 80;
+            column.DefaultCellStyle = dsc;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "PrescrapQuantity";
             column.Name = "预报废数";
-            column.Width = 110;
+            column.Width = 60;
+            column.DefaultCellStyle = dsc;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "ScrapQuantity";
             column.Name = "报废数";
             column.Width = 80;
+            column.DefaultCellStyle = dsc;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
             column.DataPropertyName = "RepairingQuantity";
             column.Name = "修理数";
             column.Width = 80;
+            column.DefaultCellStyle = dsc;
             dataGridViewToolInventory.Columns.Add(column);
 
             column = new DataGridViewTextBoxColumn();
@@ -142,6 +170,13 @@ namespace CarsMaintenance.ToolManagement
                             Code = t.Code,
                             Name = t.Name,
                             Dimensions = t.Dimensions,
+                            //额定数
+                            RatedQuantity=t.RatedQuantity,
+                            //可用数
+                            DoQuantity=t.RatedQuantity-ti.ScrapQuantity-ti.RepairingQuantity,
+                            //补充数
+                            RenewQuantity=t.RatedQuantity-(t.RatedQuantity-ti.ScrapQuantity-ti.RepairingQuantity)-ti.RepairingQuantity,
+
                             Quantity = ti.Quantity,
                             OutQuantity = ti.OutQuantity,
                             PrescrapQuantity = ti.PrescrapQuantity,
