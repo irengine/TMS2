@@ -21,7 +21,7 @@ namespace CarsMaintenance.Reports
         }
 
         private void LoadData()
-        {
+        {            
             var query = (from o in SystemHelper.TMSContext.Articles
                         orderby o.LastUpdateTime descending
                         where o.IsTop
