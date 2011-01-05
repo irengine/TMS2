@@ -112,7 +112,7 @@ namespace CarsMaintenance.Common
         public static void BindComboxToCustomer(ComboBox cbCustomer)
         {
             var queryCustomer = from s in SystemHelper.TMSContext.Units
-                              where s.Deleted == false
+                              where s.Deleted == false && !(from pus in  SystemHelper.TMSContext.Units select pus.ParentUnitID).Contains(s.UnitID)
                               orderby s.Code
                               select s;
 
