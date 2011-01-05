@@ -71,26 +71,28 @@ namespace CarsMaintenance.Reports
             lblYearScrap.Text = SQLHelper.QueryLandForm(SQLHelper.SQL_YEAR_SCRAP, DateTime.Now.Year);
 
             DataSet ds = SQLHelper.QueryLoginFormToTools();
+            this.Gv_type.Columns.Clear();
+            this.Gv_type.Rows.Clear();
             for (int temp = 0; temp < ds.Tables[0].Rows.Count; temp++)
             {
                 this.Gv_type.Columns.Add("name" + temp, ds.Tables[0].Rows[temp]["Name"].ToString());               
-            }
+            }  
             this.Gv_type.Rows.Add(4);          
             for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
             {
-                this.Gv_type.Rows[0].Cells[temp].Value = ds.Tables[0].Rows[temp]["RatedQuantity"].ToString()+" 件";
+                this.Gv_type.Rows[0].Cells[temp].Value = ds.Tables[0].Rows[temp]["RatedQuantity"].ToString().Replace(".00"," ")+" 件";
             }
             for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
             {
-                this.Gv_type.Rows[1].Cells[temp].Value = ds.Tables[0].Rows[temp]["Quantity"].ToString() + " 件";
+                this.Gv_type.Rows[1].Cells[temp].Value = ds.Tables[0].Rows[temp]["Quantity"].ToString().Replace(".00", " ") + " 件";
             }
             for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
             {
-                this.Gv_type.Rows[2].Cells[temp].Value = ds.Tables[0].Rows[temp]["OutQuantity"].ToString() + " 件";
+                this.Gv_type.Rows[2].Cells[temp].Value = ds.Tables[0].Rows[temp]["OutQuantity"].ToString().Replace(".00", " ") + " 件";
             }
             for (int temp = 0; temp < this.Gv_type.Columns.Count; temp++)
             {
-                this.Gv_type.Rows[3].Cells[temp].Value = ds.Tables[0].Rows[temp]["ScrapQuantity"].ToString() + " 件";
+                this.Gv_type.Rows[3].Cells[temp].Value = ds.Tables[0].Rows[temp]["ScrapQuantity"].ToString().Replace(".00", " ") + " 件";
             }
         }
 
@@ -98,6 +100,14 @@ namespace CarsMaintenance.Reports
         {
             this.Lb_Date.Text = System.DateTime.Now.Date.ToShortDateString();
             this.Lb_Time.Text = System.DateTime.Now.ToLongTimeString();
+        }
+
+        private void LandingForm_Activated(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            LoadData();
+            this.ResumeLayout();
+            
         }
     }
 }
