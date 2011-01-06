@@ -315,6 +315,8 @@ namespace CarsMaintenance.Reports {
             
             private global::System.Data.DataColumn columnBalance;
             
+            private global::System.Data.DataColumn columnDescription;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OutboundOrderDataTable() {
@@ -494,6 +496,14 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -547,7 +557,8 @@ namespace CarsMaintenance.Reports {
                         string Name, 
                         string Dimensions, 
                         decimal Quantity, 
-                        decimal Balance) {
+                        decimal Balance, 
+                        string Description) {
                 OutboundOrderRow rowOutboundOrderRow = ((OutboundOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OrderCode,
@@ -567,7 +578,8 @@ namespace CarsMaintenance.Reports {
                         Name,
                         Dimensions,
                         Quantity,
-                        Balance};
+                        Balance,
+                        Description};
                 rowOutboundOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOutboundOrderRow);
                 return rowOutboundOrderRow;
@@ -608,6 +620,7 @@ namespace CarsMaintenance.Reports {
                 this.columnDimensions = base.Columns["Dimensions"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnBalance = base.Columns["Balance"];
+                this.columnDescription = base.Columns["Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -649,6 +662,8 @@ namespace CarsMaintenance.Reports {
                 base.Columns.Add(this.columnQuantity);
                 this.columnBalance = new global::System.Data.DataColumn("Balance", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBalance);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
                 this.columnOrderCode.AllowDBNull = false;
                 this.columnOrderCode.MaxLength = 20;
                 this.columnOrderDate.AllowDBNull = false;
@@ -673,6 +688,7 @@ namespace CarsMaintenance.Reports {
                 this.columnDimensions.MaxLength = 50;
                 this.columnQuantity.AllowDBNull = false;
                 this.columnBalance.AllowDBNull = false;
+                this.columnDescription.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1053,6 +1069,22 @@ namespace CarsMaintenance.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableOutboundOrder.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'OutboundOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOutboundOrder.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsJobNull() {
                 return this.IsNull(this.tableOutboundOrder.JobColumn);
             }
@@ -1145,6 +1177,18 @@ namespace CarsMaintenance.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetProcessNull() {
                 this[this.tableOutboundOrder.ProcessColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableOutboundOrder.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableOutboundOrder.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1325,6 +1369,7 @@ namespace CarsMaintenance.Reports.OutboundOrderDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Dimensions", "Dimensions");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             tableMapping.ColumnMappings.Add("Balance", "Balance");
+            tableMapping.ColumnMappings.Add("Description", "Description");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1344,7 +1389,7 @@ namespace CarsMaintenance.Reports.OutboundOrderDataSetTableAdapters {
             this._commandCollection[0].CommandText = @"select o.Code as OrderCode, o.OutboundDate as OrderDate, o.Version,
 o.Job, o.Berth, o.Machine, o.Ship, o.Hatch, o.Cargo, o.Quantity as lots, o.Process,
 c.Name as CustomerName, u.Name as UserName,
-t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance
+t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance,i.[Description]
 from OutboundOrder o
 inner join OutboundOrderDetail i on o.OutboundOrderID = i.OutboundOrderDetailID
 inner join Unit c on o.CustomerID = c.UnitID

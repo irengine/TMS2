@@ -15,7 +15,7 @@
                     <CommandText>select o.Code as OrderCode, o.OutboundDate as OrderDate, o.Version,
 o.Job, o.Berth, o.Machine, o.Ship, o.Hatch, o.Cargo, o.Quantity as lots, o.Process,
 c.Name as CustomerName, u.Name as UserName,
-t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance
+t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance,i.[Description]
 from OutboundOrder o
 inner join OutboundOrderDetail i on o.OutboundOrderID = i.OutboundOrderDetailID
 inner join Unit c on o.CustomerID = c.UnitID
@@ -45,6 +45,7 @@ inner join Tool t on i.ToolID = t.ToolID</CommandText>
               <Mapping SourceColumn="Dimensions" DataSetColumn="Dimensions" />
               <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
               <Mapping SourceColumn="Balance" DataSetColumn="Balance" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -161,6 +162,13 @@ inner join Tool t on i.ToolID = t.ToolID</CommandText>
               </xs:element>
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" />
               <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:decimal" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

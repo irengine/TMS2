@@ -24,16 +24,16 @@ namespace CarsMaintenance.Common
                             group by tc.Name";
 
 		private static string sqlOutboundOrder =
-						@"select o.Code as OrderCode, o.OutboundDate as OrderDate, o.Version,
-                            o.Job, o.Berth, o.Machine, o.Ship, o.Hatch, o.Cargo, o.Quantity as lots, o.Process,
-                            c.Name as CustomerName, u.Name as UserName,
-                            t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance
+                        @"select o.Code as OrderCode, o.OutboundDate as OrderDate, o.Version,
+                                o.Job, o.Berth, o.Machine, o.Ship, o.Hatch, o.Cargo, o.Quantity as lots, o.Process,
+                                c.Name as CustomerName, u.Name as UserName,
+                                t.Code, t.Name, t.Dimensions, i.Quantity,i.Balance,i.[Description]
                             from OutboundOrder o
-                            inner join OutboundOrderDetail i on o.OutboundOrderID = i.OutboundOrderDetailID
-                            inner join Unit c on o.CustomerID = c.UnitID
-                            inner join SystemUser u on o.LastUpdatedBy = u.SystemUserID
-                            inner join Tool t on i.ToolID = t.ToolID " +
-								"where  o.OutboundOrderID = {0}";
+                                inner join OutboundOrderDetail i on o.OutboundOrderID = i.OutboundOrderDetailID
+                                inner join Unit c on o.CustomerID = c.UnitID
+                                inner join SystemUser u on o.LastUpdatedBy = u.SystemUserID
+                                inner join Tool t on i.ToolID = t.ToolID" +
+						    " where  o.OutboundOrderID = {0}";
 
 		private static string sqlScrapReport =
 						 @"SELECT ToolCategory.Name AS ToolCategoryName, Tool.Name AS ToolName, 

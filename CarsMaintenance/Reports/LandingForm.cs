@@ -104,9 +104,9 @@ namespace CarsMaintenance.Reports
 
         private void LandingForm_Activated(object sender, EventArgs e)
         {
-            this.SuspendLayout();
-            LoadData();
-            this.ResumeLayout();
+            //this.SuspendLayout();
+            //LoadData();
+            //this.ResumeLayout();
             
         }
     }
