@@ -145,6 +145,12 @@ namespace CarsMaintenance.ToolManagement
                     MessageBox.Show("对不起!不能删除该组织，因为该组织还有下级组织！",this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                if (u.ParentUnit == null)
+                {
+                    MessageBox.Show("不能删除顶级组织机构!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                                     
 
                 if (CarsMaintenance.Properties.Settings.Default.DeleteFlag)
