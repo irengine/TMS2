@@ -144,6 +144,35 @@ namespace CarsMaintenance
 			return true;
 		}
 
+        public static Boolean ReloadForm(Type type, params Object[] parameters)
+        {
+            if (m_mdiParent == null)
+            {
+                throw new ArgumentNullException("MdiParent", "FormsManager is not configured. To configure it call its Configure() method.");
+            }
+            if (!typeof(BaseForm).IsAssignableFrom(type))
+            {
+                return false;
+            }
+
+            BaseForm form;
+            if ((form = FindChild(type)) != null)
+            {
+                form.Close();
+            }
+
+            form = (BaseForm)Activator.CreateInstance(type);
+            form.MdiParent = m_mdiParent;
+            form.WindowState = FormWindowState.Maximized;
+            AssignParameters(ref form, parameters);
+            UpdateOpenedWindowsToolStrip(form, null);
+
+            AssignEventHandlers(form);
+            form.Show();
+
+            return true;
+        }
+
 		public static bool OpenMultipleForm(string key, Type type, params object[] parameters)
 		{
 			if (string.IsNullOrEmpty(key))

@@ -365,7 +365,7 @@ namespace CarsMaintenance
 		{
 			ExecuteActionHelper.ExecuteAction(delegate()
 			{
-				FormsManager.OpenForm(typeof(CarsMaintenance.Reports.LandingForm), null);
+				FormsManager.ReloadForm(typeof(CarsMaintenance.Reports.LandingForm), null);
 			});
 		}
 
